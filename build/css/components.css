@@ -2283,3 +2283,51 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 
 /* Тело секции под центрированной шапкой остаётся в своей раскладке —
    центрируется только сама шапка. */
+
+/* ── Ховер плиток: заливка акцентом (2026-09-08, решение пользователя) ──
+   В покое все плитки одинаковые — светлый фон, акцентная иконка, тёмный
+   текст. При наведении заливается сам бокс, а иконка и текст уходят
+   в белый.
+
+   Приём не выдуман: в макете акцентной заливкой помечена активная
+   карточка (`171:101`), и правило проекта требует реагировать на
+   наведение тем же приёмом, каким в макете помечено активное состояние.
+
+   CUSTOM-CSS: у контейнера в Elementor есть Hover → Background, но
+   перекрасить его ДЕТЕЙ (заголовок, текст, иконку) нативным контролом
+   нельзя — связка «родитель → ребёнок» пишется в Custom CSS секции. */
+
+.icon-card,
+.role {
+  transition: background-color .2s ease;
+}
+
+.icon-card__icon,
+.icon-card__title,
+.icon-card__text,
+.role__icon,
+.role__title {
+  transition: color .2s ease;
+}
+
+.icon-card:hover,
+.role:hover {
+  background: var(--color-accent);
+}
+
+.icon-card:hover .icon-card__icon,
+.icon-card:hover .icon-card__title,
+.icon-card:hover .icon-card__text,
+.role:hover .role__icon,
+.role:hover .role__title {
+  color: var(--color-white);
+}
+
+/* Строки прайса — не боксы, поэтому заливка акцентом во всю ширину
+   читалась бы тяжелее самой таблицы: здесь тише, тёплым фоном. */
+.tier { transition: background-color .2s ease; }
+.tier:hover { background: var(--bg-warm); }
+
+/* Наведение на плитку, которая и так залита акцентом (Appero, 171:101),
+   ничего не меняет — состояние уже конечное. */
+.icon-card--accent:hover { background: var(--color-accent); }
