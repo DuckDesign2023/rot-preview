@@ -21,8 +21,8 @@
 .s-clients    { padding-top: 140px; padding-bottom: 120px; }
 .s-roles      { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тонированной секцией отзывов */
 .s-quotes     { padding-top: 140px; padding-bottom: 140px; background: var(--bg-warm); }
-.s-expertise  { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тонированной полосой */
-.s-partner    { padding: 0; }                                /* полоса 720/720 во всю ширину */
+.s-expertise  { padding-top: 140px; padding-bottom: 120px; }
+.s-partner    { padding-top: 140px; padding-bottom: 140px; } /* полоса внутри сетки, +20 перед тёмной */
 .s-delivery   { padding-top: 100px; padding-bottom: 100px; }
 .s-pricing    { padding-top: 140px; padding-bottom: 140px; } /* +20 перед футером */
 
@@ -108,12 +108,17 @@
 
 .s-roles__lead { max-width: 60ch; margin-bottom: var(--space-lg); }
 
+/* Лид идёт сразу под центрированной шапкой — по той же оси, иначе
+   текст возвращает взгляд к левому краю сразу после центра. */
+.s-roles__lead--center,
+.s-delivery__lead--center { margin-inline: auto; text-align: center; }
+
 /* ── 10 · 3-step delivery model ────────────────────────────────
    Аккордеон шагов и плитка с фотографией — та же пара, что в
    «How it works» на Appero. Фото подрезается плиткой: кадр
    горизонтальный, а колонка почти квадратная. */
 
-.s-delivery__lead { max-width: 75ch; margin-bottom: var(--space-lg); }
+.s-delivery__lead { max-width: 68ch; margin-bottom: var(--space-lg); }
 
 .delivery-row {
   display: flex;
@@ -169,8 +174,9 @@
   .s-clients,
   .s-roles,
   .s-quotes,
-  .s-expertise { padding-top: 116px; padding-bottom: 96px; }
-  .s-expertise { padding-bottom: 116px; }
+  .s-expertise,
+  .s-partner   { padding-top: 116px; padding-bottom: 96px; }
+  .s-partner   { padding-bottom: 116px; }
   .s-delivery  { padding-block: 80px; }
   .s-pricing   { padding-top: 116px; padding-bottom: 116px; }
 
@@ -208,8 +214,9 @@
   .s-clients,
   .s-roles,
   .s-quotes,
-  .s-expertise { padding-top: 92px; padding-bottom: 72px; }
-  .s-expertise { padding-bottom: 92px; }
+  .s-expertise,
+  .s-partner   { padding-top: 92px; padding-bottom: 72px; }
+  .s-partner   { padding-bottom: 92px; }
   .s-delivery  { padding-block: 64px; }
   .s-pricing   { padding-top: 92px; padding-bottom: 92px; }
 

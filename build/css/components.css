@@ -2173,3 +2173,113 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
    тёмным. Нужна, когда рядом уже есть тёмная секция и вторая
    тёмная поверхность подряд слила бы их в одну. */
 .split__panel--warm { background: var(--bg-warm); }
+
+/* ── Split в сетке + прилипающая панель (Staff Augmentation, 2026-09-08) ──
+   На Appero полоса 720/720 идёт во всю ширину экрана. Здесь так нельзя:
+   текстовая панель начиналась от края страницы и на широких экранах
+   выпадала из общей сетки — левый край текста не совпадал ни с одной
+   другой секцией. Вариант --in-grid живёт внутри рабочей ширины 1360.  */
+
+.split--in-grid { min-height: 0; }
+
+.split--in-grid .split__panel {
+  padding: var(--space-2xl) var(--space-2xl) var(--space-2xl) var(--space-lg);
+}
+
+/* Панель прилипает и едет вниз, пока не кончится ряд. Работает только
+   при align-items: flex-start — растянутая на всю высоту панель никуда
+   «ехать» не может. Высоту ряда задаёт колонка с фотографией.
+   Elementor: у контейнера панели Motion Effects → Sticky: Top,
+   Offset 40, **Stay In Column: Yes** — иначе панель уедет за секцию. */
+.split--sticky { align-items: flex-start; }
+
+.split--sticky .split__panel {
+  position: sticky;
+  top: var(--space-xl);          /* безопасный отступ сверху */
+  align-self: flex-start;
+}
+
+/* Высота ряда задаётся здесь, а не пропорциями снимка: у вертикального
+   кадра 1024 × 1536 при ширине половины 672 собственная высота 1008 —
+   секция получалась выше экрана. 780 оставляет прилипшей панели ~200 px
+   хода и держит секцию компактной. */
+.split--sticky .split__media {
+  height: 780px;
+  align-self: flex-start;
+}
+
+/* ── Заголовок секции по центру ───────────────────────────────────────
+   Отклонение от общей схемы section-head (лейбл слева + лид справа):
+   у строки логотипов нет пары «лейбл / лид», центр читается спокойнее. */
+.section-title--center { text-align: center; }
+
+/* ── Плиточная сетка логотипов ────────────────────────────────────────
+   Логотипы стоят в равных ячейках по центру, а не по левому краю
+   строки: разная ширина знаков (от квадратного .NET до широкого PHP)
+   при выключке влево давала рваный правый край. Логотип меньше (40),
+   ячейка выше — воздух вокруг каждого знака больше. */
+.partner-grid--tiles {
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-lg) var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.partner-grid--tiles .partner-grid__cell {
+  height: auto;
+  min-height: 96px;
+  justify-content: center;
+  padding: var(--space-sm);
+}
+
+.partner-grid--tiles .partner-grid__cell img { height: 40px; max-width: 100%; object-fit: contain; }
+
+@media (max-width: 1024px) {
+  .split--in-grid .split__panel { padding: var(--space-xl) var(--space-lg); }
+  /* На узких экранах ряд встаёт колонкой — прилипать больше не к чему */
+  .split--sticky { align-items: stretch; }
+  .split--sticky .split__panel { position: static; }
+  .split--sticky .split__media { height: auto; min-height: 320px; align-self: stretch; }
+
+  .partner-grid--tiles { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 767px) {
+  .partner-grid--tiles { grid-template-columns: repeat(3, 1fr); gap: var(--space-md) var(--space-2xs); }
+  .partner-grid--tiles .partner-grid__cell { min-height: 76px; }
+  .partner-grid--tiles .partner-grid__cell img { height: 32px; }
+}
+
+/* ── Section head по центру (Staff Augmentation, 2026-09-08) ──────────
+   В макете section-head — это ряд «лейбл 316 слева + лид справа»
+   (блок 1). На странице без макета пользователь попросил ставить
+   лейбл и заголовок по одной оси, по центру: при выключке влево
+   надзаголовок отрывался от заголовка и читался как отдельный
+   элемент, а не как его надстрочник.
+
+   Схема: колонка по центру, лейбл сверху, под ним заголовок.
+   Красная строка лида здесь не нужна — она отбивала лид от лейбла
+   в ряду, а в колонке этой пары нет.
+
+   ВНИМАНИЕ: на Home и Appero остаётся макетная схема (лейбл слева),
+   пока не решено менять её и там. */
+
+.section-head--center {
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  text-align: center;
+}
+
+.section-head--center .section-head__label {
+  width: auto;
+  flex: 0 0 auto;
+}
+
+.section-head--center .section-head__lead {
+  flex: 0 1 auto;
+  text-indent: 0;
+  max-width: 24ch;
+}
+
+/* Тело секции под центрированной шапкой остаётся в своей раскладке —
+   центрируется только сама шапка. */
