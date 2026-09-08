@@ -1,0 +1,2175 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — библиотека блоков
+   Все значения сняты через get_design_context с узлов Figma
+   (node-id указан у каждого блока). Правило среды: высоты — auto,
+   фиксируются только min-height и ширины колонок из макета.
+   Desktop-first, медиазапросы только 1024 / 767.
+   Метка CUSTOM-CSS = свойство не выставляется контролом Elementor,
+   переносится через Custom CSS (Pro) и дублируется в спеку секции.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ══ БАЗА ══════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--color-white);
+  color: var(--color-dark);
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { max-width: 100%; display: block; }
+p { margin: 0; }
+h1, h2, h3, h4 { margin: 0; font-weight: 500; }
+a { color: inherit; text-decoration: none; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+/* ══ ТИПОГРАФИКА — наборы «как Global Font» ════════════════════
+   Каждый класс = один Global Font в Elementor: family + size +
+   weight + line-height + letter-spacing + transform одним набором. */
+
+/* Длинные слова не должны выталкивать страницу вбок: на 320 «Transformation»
+   в Display 40 шире рабочих 265. Актуально и для переводов — норвежский
+   и немецкий дают составные слова длиннее английских. */
+.t-display,
+.t-h1,
+.t-h2 { overflow-wrap: break-word; }
+
+.t-display {                      /* Display — H1 главной и подстраниц */
+  font-family: var(--font-primary);
+  font-size: var(--fs-display);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: var(--color-dark);
+}
+
+.t-h1 {                           /* Heading 1 — лид секции */
+  font-family: var(--font-primary);
+  font-size: var(--fs-h1);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: var(--color-dark);
+}
+
+.t-h1--normal { font-weight: 400; } /* Heading 1 Normal — заголовок тёмной секции */
+
+.t-h2 {                           /* Heading 2 — заголовок строки леджера */
+  font-family: var(--font-primary);
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-dark);
+}
+
+.t-h3 {                           /* Heading 3 — заголовок карточки */
+  font-family: var(--font-primary);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-dark);
+}
+
+.t-stat {                         /* Stat — число в плитке */
+  font-family: var(--font-primary);
+  font-size: var(--fs-stat);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.t-overline {                     /* Overline — лейбл секции, дата поста */
+  font-family: var(--font-primary);
+  font-size: var(--fs-overline);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.t-lead {                         /* Body Large — лиды и описания */
+  font-family: var(--font-primary);
+  font-size: var(--fs-lead);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--text-lead);
+}
+
+.t-body {                         /* Body — текст карточек */
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--text-body);
+}
+
+.t-nav {                          /* Nav Link */
+  font-family: var(--font-primary);
+  font-size: var(--fs-nav);
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: var(--gray-500);
+}
+
+.t-badge {                        /* Badge — единственное место с Inter */
+  font-family: var(--font-badge);
+  font-size: var(--fs-badge);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* На тёмном фоне текст перекрашивается ролями, а не отдельными классами */
+.on-dark { color: var(--color-white); }
+.on-dark .t-display,
+.on-dark .t-h1,
+.on-dark .t-h2,
+.on-dark .t-h3 { color: var(--color-white); }
+.on-dark .t-lead,
+.on-dark .t-body { color: var(--text-on-dark-80); }
+.on-dark .t-overline { color: rgba(255, 255, 255, .70); }
+
+/* ══ КАРКАС СЕКЦИИ ═════════════════════════════════════════════
+   Секция = top-level Container (Full Width, боковой паддинг 40),
+   внутри — Boxed-контейнер 1360 с вертикальным стеком gap 44. */
+
+.section {
+  padding: var(--space-section) var(--gutter);
+}
+
+.section--tight  { padding-block: var(--space-section-tight); }   /* 83:557 Our Products */
+.section--flush  { padding-block: 0; }                            /* 83:636 — ритм задан внутри */
+.section--dark   { background: var(--bg-near-black); }            /* Background/Near Black */
+.section--darker { background: var(--bg-dark); }
+
+.section__inner {
+  max-width: var(--content-width);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* ══ 16.1 АТОМ: Button ═════════════════════════════════════════
+   83:496 / 83:498 · высота 48 = 24 (line-height) + 12 + 12 */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px var(--space-sm);
+  border-radius: var(--radius-btn);
+  border: var(--border-width) solid transparent;
+  font-family: var(--font-primary);
+  font-size: var(--fs-button);
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.btn--outline {
+  background: transparent;
+  border-color: #1C1917;          /* обводка в макете чуть теплее чистого чёрного */
+  color: var(--color-black);
+}
+
+/* ── ПРАВИЛО ХОВЕРА (принято 2026-09-04, макет состояний не задаёт) ──
+   Язык макета — тонкие линии и приглушённые элементы, которые «загораются»
+   акцентом (так уже сделана активная карточка адреса и номера леджера).
+   Ховер работает тем же приёмом: линия становится акцентной, приглушённое
+   набирает цвет, фон уходит в тёплый белый. Ничего не двигается, не
+   масштабируется и не отбрасывает тень — подъём карточек противоречил бы
+   строгой сетке. Длительность везде 200 ms.
+   Всё это нативные контролы Elementor (вкладка Hover + Transition Duration),
+   кроме связок «ховер родителя → ребёнок» — они помечены CUSTOM-CSS. */
+
+.btn--primary:hover { background: #C92E17; }   /* заливка на ступень глубже */
+
+.btn--outline:hover {                          /* контур перекрашивается в акцент */
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ══ 16.2 АТОМ: Badge ══════════════════════════════════════════
+   166:2473 · Inter SemiBold 12, паддинг 6/12, пилюля */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;         /* в колонке бейдж жмётся по содержимому, а не тянется */
+  padding: 6px var(--space-xs);
+  border-radius: var(--radius-pill);
+  background: var(--accent-tint);
+  border: var(--border-width) solid var(--accent-tint-line);
+  color: var(--color-accent);
+  font-family: var(--font-badge);
+  font-size: var(--fs-badge);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+/* ══ 16.3 АТОМ: Divider ════════════════════════════════════════
+   83:571 · линия 1px чёрная 10% (на тёмном — белая 10%) */
+
+.divider         { height: 1px; background: var(--hairline); border: 0; margin: 0; }
+.divider--soft   { background: var(--gray-100); }
+.divider--ondark { background: var(--hairline-on-dark); }
+.divider--ondark-soft { background: var(--hairline-on-dark-soft); }   /* 152:222 — над копирайтом */
+
+/* ══ 1. SECTION HEAD — label + lead ════════════════════════════
+   83:505 / 83:558 / 83:590 / 83:757 · 12+ повторов на двух страницах
+   Колонка-лейбл 316 + gap 32 + лид (остаток). Паддинг блока 32 сверху/снизу. */
+
+.section-head {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-start;
+  padding-block: var(--space-lg);
+}
+
+.section-head__label {
+  width: var(--col-label);
+  flex: 0 0 var(--col-label);
+}
+
+.section-head__lead {
+  flex: 1 1 0;
+  min-width: 0;
+  /* CUSTOM-CSS: красная строка лида (в макете indent 116px) — контрола
+     text-indent в Elementor нет, переносится через Custom CSS секции */
+  text-indent: var(--lead-indent);
+}
+
+/* ══ 2. CARD GRID 4 × ════════════════════════════════════════════
+   83:508 · четыре карточки, чётные сдвинуты вниз на 52.
+   Высота ряда не фиксируется: min-height + визуал flex:1. */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--col-gap);
+  min-height: 530px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.card--offset { padding-top: var(--card-offset); }   /* шахматный сдвиг: карточки 2 и 4 */
+
+.card__visual {
+  flex: 1 1 auto;
+  min-height: 240px;
+  background: var(--bg-warm);
+  overflow: hidden;
+  position: relative;
+}
+
+.card__visual > img,
+.card__visual > svg { width: 100%; height: 100%; object-fit: cover; }
+
+/* Иллюстрация-сетка (2025:100) заполняет плитку целиком. Абсолют обязателен:
+   в потоке картинка с height:100% берёт натуральные пропорции и сама растит
+   карточку — на 1024 сетка вырастала с 530 до 1113. Так высоту по-прежнему
+   задаёт сетка карточек, а рисунок просто заполняет отведённое место.
+   Elementor: контейнер Overflow: Hidden + Image с Position: Absolute. */
+.card__visual--fill > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Вариант визуала — декоративная векторная композиция (83:511 / 530 / 541 / 550):
+   она не кадрируется, а стоит по центру плитки в натуральную величину. */
+.card__visual--art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__visual--art > img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* ══ 3. LEDGER — нумерованные строки ═══════════════════════════
+   83:561 · медиа 432 + текст + номер справа; разделитель между строками */
+
+/* Зазор между строками отдан самим строкам как padding, а разделитель —
+   это Border Top строки, а не отдельный Divider. Иначе между строками
+   остаётся полоса 65 px, на которой не наведена ни одна из них: проводя
+   курсор с первой строки на вторую, пользователь пересекает её, раскрытие
+   успевает отыграть назад и секция дёргается. */
+.ledger {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ledger__row {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-start;
+  padding-block: var(--space-lg);
+}
+
+.ledger__row:first-child { padding-top: 0; }
+.ledger__row:last-child  { padding-bottom: 0; }
+.ledger__row + .ledger__row { border-top: var(--border-width) solid var(--hairline); }
+
+.ledger__media {
+  width: var(--ledger-media);
+  flex: 0 0 var(--ledger-media);
+  min-height: 140px;
+  background: var(--gray-100);
+  overflow: hidden;
+  position: relative;
+  transition: min-height .35s ease;
+}
+
+.ledger__media--dark { background: var(--bg-dark); }   /* 83:563 — плитка NOVA */
+
+/* Раскрытая строка: плитка 140 → 424, номер набирает полный цвет.
+   По умолчанию раскрыта первая (83:561), при наведении раскрывается та,
+   на которую навели, а дефолтная схлопывается (2021:44).
+   CUSTOM-CSS: связка «сосед по родителю» через :has() — нативного контрола
+   в Elementor нет, идёт в Custom CSS секции Our Products. */
+.ledger__row--open .ledger__media { min-height: 424px; }
+
+.ledger:has(.ledger__row:hover) .ledger__row--open:not(:hover) .ledger__media,
+.ledger:has(.ledger__row:focus-within) .ledger__row--open:not(:focus-within) .ledger__media { min-height: 140px; }
+
+.ledger__row:hover .ledger__media,
+.ledger__row:focus-within .ledger__media { min-height: 424px; }
+
+.ledger__body {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.ledger__num {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: right;
+}
+
+/* Номер приглушён у нераскрытых строк и набирает полный цвет у раскрытой
+   (2021:44: 02 в полную силу, 01 и 03 под 40 %). */
+.ledger__num { color: var(--text-faint); transition: color .2s ease; }
+
+.ledger__row--open .ledger__num { color: var(--color-dark); }
+
+.ledger:has(.ledger__row:hover) .ledger__row--open:not(:hover) .ledger__num,
+.ledger:has(.ledger__row:focus-within) .ledger__row--open:not(:focus-within) .ledger__num { color: var(--text-faint); }
+
+.ledger__row:hover .ledger__num,
+.ledger__row:focus-within .ledger__num { color: var(--color-dark); }
+
+/* ══ 4. STAT GRID 2 × 2 ════════════════════════════════════════
+   83:622 / 83:629 · внутренний крест из линий 1px чёрный 5%,
+   вторая плитка залита акцентом */
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  padding: var(--space-md);
+  border: 0 solid var(--hairline-soft);
+  background: var(--color-white);
+}
+
+.stat:nth-child(1) { border-bottom-width: 1px; border-right-width: 1px; }
+.stat:nth-child(2) { border-bottom-width: 1px; border-left-width: 1px; }
+.stat:nth-child(3) { border-top-width: 1px; border-right-width: 1px; background: transparent; }
+.stat:nth-child(4) { border-top-width: 1px; border-left-width: 1px; }
+
+.stat--accent {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.stat--accent .t-stat  { color: var(--color-white); }
+.stat--accent .t-lead  { color: var(--text-on-dark-80); }
+
+/* ══ 5. CIRCLE GRAPHIC ═════════════════════════════════════════
+   83:597 (why us) · 190:815 · 184:161 — три повтора на двух страницах.
+   Единая сетка с шагом 70: круги Ø90 (13 шт) и точки Ø8 (10 шт).
+   Тёмные элементы берут currentColor, акцентные — --color-accent. */
+
+.circle-graphic {
+  display: block;
+  width: 100%;
+  max-width: 440px;      /* натуральный размер композиции — крупнее не растёт */
+  height: auto;
+  color: var(--color-dark);
+}
+
+.circle-graphic .cg-line   { fill: none; stroke: currentColor; stroke-width: 1; }
+.circle-graphic .cg-fill   { fill: currentColor; }
+.circle-graphic .cg-line-a { fill: none; stroke: var(--color-accent); stroke-width: 1; }
+.circle-graphic .cg-fill-a { fill: var(--color-accent); }
+
+/* Подложка. По умолчанию графика видна целиком и не жмётся к краям —
+   в viewBox SVG заложен запас в 1 px, иначе обводка крайних кругов
+   срезается границей вьюпорта. */
+.graphic-plate {
+  background: var(--bg-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  min-height: 260px;
+}
+
+/* Вариант из макета: композиция крупнее плитки и подрезается её краями
+   (83:596 — нижний ряд кругов уходит за границу). Применять на странице,
+   не в витрине. */
+.graphic-plate--crop {
+  overflow: hidden;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 54px 0 0 54px;
+}
+
+/* ══ 6. ADDRESS BLOCK × 3 ══════════════════════════════════════
+   83:653 · три равные колонки без зазора, верхняя линия 3px,
+   активная выделена акцентной линией и подсветкой фона */
+
+.address-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md) var(--space-md) 40px;
+  border-top: var(--accent-rule) solid var(--hairline-on-dark);
+}
+
+.address--active {
+  border-top-color: var(--color-accent);
+  background: var(--surface-on-dark);
+}
+
+/* ══ 7. POST GRID — карточки блога ═════════════════════════════
+   83:761 · четыре карточки в ряд, рамки соседей схлопнуты в одну
+   линию: у карточки border-top/left, у ряда — border-right/bottom */
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-right: var(--border-width) solid var(--gray-200);
+  border-bottom: var(--border-width) solid var(--gray-200);
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 440px;
+  border-top: var(--border-width) solid var(--gray-200);
+  border-left: var(--border-width) solid var(--gray-200);
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+.post-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+}
+
+.post-card__media {
+  flex: 1 1 auto;
+  min-height: 160px;
+  background: var(--gray-100);
+  overflow: hidden;
+}
+
+.post-card__media > img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Ховер по общему правилу: верхняя линия загорается акцентом, фон уходит
+   в тёплый белый. Рифмуется с активной карточкой адреса (83:654).
+   В Elementor: контейнер с HTML Tag = a, вкладка Hover (Border Color + Background). */
+a.post-card:hover {
+  background: var(--bg-warm);
+  border-top-color: var(--color-accent);
+}
+
+/* ══ 8. HEADER ═════════════════════════════════════════════════
+   83:476 · лого 200 · меню gap 32 · EN + кнопка справа (колонка 200) */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* точка отсчёта для мобильной панели меню и слой выше затемнения */
+  position: relative;
+  z-index: 70;
+  background: var(--color-white);
+  /* Меню из шести длинных пунктов (735 px) плюс лого 200 и колонка действий 200
+     помещаются в строку только от ~1300. Ниже зазор поджимается, а пункты
+     переносятся на вторую строку — высота хедера при этом не растёт, потому что
+     бокс логотипа (62) выше двух строк меню (24 + 8 + 24 = 56). */
+  column-gap: clamp(16px, 2.2vw, var(--col-gap));
+  row-gap: var(--space-2xs);
+  padding: 4px var(--gutter);
+}
+
+/* Высоту хедера (70) задаёт бокс логотипа 200 × 62 плюс паддинг 4:
+   кнопка 48 и пункты меню 24 центрируются внутри этой высоты. */
+.site-header__logo {
+  width: 200px;
+  flex: 0 0 200px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+}
+
+.site-header__logo img { width: 100%; height: auto; }
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: clamp(16px, 2.2vw, var(--col-gap));
+  row-gap: var(--space-2xs);
+  min-width: 0;
+}
+
+/* Ховер по общему правилу: пункт набирает цвет и под ним проявляется
+   акцентная линия. Линия заложена прозрачной, поэтому текст не дёргается.
+   В Elementor: Nav Menu → Pointer: Underline, цвет акцента (нативно). */
+.site-nav__link {
+  white-space: nowrap;
+  border-bottom: 1px solid transparent;
+  transition: color .2s ease, border-color .2s ease;
+}
+
+.site-nav__link:hover,
+.site-nav__link[aria-current="page"] {
+  color: var(--color-dark);
+  border-bottom-color: var(--color-accent);
+}
+
+.site-header__actions {
+  width: 200px;
+  flex: 0 0 200px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+}
+
+/* Пока панель открыта, страница за ней не прокручивается. Без этой строки
+   полоса прокрутки исчезает вместе с прокруткой, рабочая ширина прибавляет
+   её толщину (15 px), и вся страница — вместе с логотипом и тоглом — прыгает
+   вправо. `stable` держит место под полосу постоянно, поэтому ничего не едет.
+   В Elementor — Site Settings → Custom CSS. */
+html { scrollbar-gutter: stable; }
+
+/* Кнопка меню, панель и затемнение — только ≤1024. Блок CTA внутри панели
+   дублирует EN и «Book a meeting» из строки хедера: на ≤767 они оттуда уходят,
+   и единственная видимая копия — та, что в панели. */
+.site-menu { display: contents; }
+.site-header__burger { display: none; }
+.site-menu__cta { display: none; }
+
+.site-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  /* заходит на зарезервированную полосу прокрутки, иначе справа от затемнения
+     остаётся светлый просвет шириной с полосу */
+  right: -20px;
+  z-index: 50;
+  background: rgba(30, 30, 30, .4);
+}
+
+.site-menu-backdrop[hidden] { display: none; }
+
+/* ══ 9. HERO — главная ═════════════════════════════════════════
+   83:490 · заголовок 664 слева + лид/кнопки справа, ниже широкий визуал */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.hero__top {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-end;
+}
+
+/* В макете заголовок и правая колонка — по 664, то есть ровно половины строки.
+   Задаём именно половинами, а не фиксированной шириной: иначе ниже 1360
+   заголовок держит 664, а лид с кнопками сжимается до неработающих 250. */
+.hero__title { flex: 1 1 0; min-width: 0; }
+
+.hero__aside {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-bottom: var(--space-xs);
+}
+
+.hero__lead { max-width: 441px; }
+
+.hero__actions { display: flex; gap: var(--space-xs); flex-wrap: wrap; }
+
+.hero__visual {
+  position: relative;
+  min-height: 504px;
+  background: var(--gray-100);
+  overflow: hidden;
+}
+
+/* Фото заполняет плитку абсолютом: при height:100% в блоке с одним лишь
+   min-height высота не разрешается, и ниже 1360 под снимком оставалась
+   серая полоса. В Elementor это Image с Object Fit: Cover внутри
+   контейнера с Min Height — поведение то же. */
+.hero__visual > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ══ 10. HERO SPLIT — подстраницы (с бейджем) ══════════════════
+   152:1837 · текст слева / визуал справа 50/50, разделитель и приписка */
+
+.hero-split {
+  display: flex;
+  gap: var(--space-xl);
+  align-items: stretch;
+}
+
+.hero-split__content {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  justify-content: center;
+}
+
+.hero-split__stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.hero-split__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.hero-split__lead { max-width: 604px; }
+
+.hero-split__note {
+  font-family: var(--font-badge);
+  font-size: var(--fs-badge);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--text-lead);
+  max-width: 604px;
+}
+
+.hero-split__visual {
+  flex: 1 1 0;
+  min-width: 0;
+  aspect-ratio: 658 / 706;   /* 152:1847 — визуал занимает всю правую колонку */
+  background: var(--gray-100);
+  overflow: hidden;
+}
+
+.hero-split__visual > img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ══ 11. LOGO STRIP — клиенты ══════════════════════════════════
+   83:669 · ряд лого шире контента (1639 против 1360) и подрезается
+   краями страницы; по краям — градиентные шторки 199 px.
+   Шторки в макете это ОТДЕЛЬНЫЕ слои (83:678 / 83:679), а не
+   псевдоэлементы: в Elementor два контейнера с Position: Absolute
+   и градиентным фоном — нативно, без кастомного CSS. */
+
+.logo-strip {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  /* выходим из бокового паддинга секции к краям страницы: Margin −40 */
+  margin-inline: calc(-1 * var(--gutter));
+}
+
+.logo-strip__row {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--logo-strip-gap);
+}
+
+.logo-strip__row img {
+  display: block;
+  width: auto;
+  height: 32px;
+  /* В макете лого обесцвечены и приглушены — цветными остаются только
+     логотипы платформенных партнёрств ниже по секции.
+     Elementor: Image → Style → CSS Filters → Saturation 0, Opacity 60. */
+  filter: grayscale(1);
+  opacity: .6;
+}
+
+.logo-strip__item--tall img { height: 44px; }   /* двухстрочные лого */
+
+.logo-strip__fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--logo-fade);
+  pointer-events: none;
+}
+
+.logo-strip__fade--left  { left: 0;  background: linear-gradient(to right, var(--color-white), rgba(255, 255, 255, 0)); }
+.logo-strip__fade--right { right: 0; background: linear-gradient(to left,  var(--color-white), rgba(255, 255, 255, 0)); }
+
+/* ══ 12. CASE ROW — кейсы ══════════════════════════════════════
+   83:681 · четыре равные колонки 316 с зазором 32:
+   лейбл · список кейсов · карточка · мета-список */
+
+.case-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--col-gap);
+  align-items: start;
+  padding-block: var(--space-lg);
+}
+
+/* Список кейсов: активный подчёркнут акцентом, остальные приглушены до 50 % */
+.case-list { display: flex; flex-direction: column; gap: var(--space-2xs); }
+
+.case-list__item {
+  display: flex;
+  gap: var(--col-gap);
+  padding-block: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color .2s ease;
+  /* кнопка таба: снимаем дефолты браузера, раскладка остаётся строкой */
+  width: 100%;
+  background: none;
+  border-inline: 0;
+  border-top: 0;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  padding-inline: 0;
+}
+
+/* В макете номера идут естественной шириной, из-за чего заголовки встают
+   лесенкой (41 / 46 / 47 px). Колонка номера зафиксирована по самой широкой
+   цифре — список выравнивается по левому краю заголовков. */
+.case-list__num   { min-width: 15px; }
+
+.case-list__num,
+.case-list__title { transition: opacity .2s ease; }
+
+.case-list__item--active { border-bottom-color: var(--color-accent); }
+
+.case-list__item:not(.case-list__item--active) .case-list__num,
+.case-list__item:not(.case-list__item--active) .case-list__title { opacity: .5; }
+
+/* Состояния взяты из компонента 2021:76: в покое текст приглушён до 50 %,
+   при наведении набирает полную силу и красится акцентом (линия при этом
+   НЕ загорается — она метит только выбранный таб), у выбранного — полный
+   цвет и акцентная линия снизу. */
+.case-list__item:hover .case-list__num,
+.case-list__item:hover .case-list__title,
+.case-list__item:focus-visible .case-list__num,
+.case-list__item:focus-visible .case-list__title { opacity: 1; color: var(--color-accent); }
+
+/* Выбранный таб при наведении остаётся тёмным: акцентом метится намерение
+   переключиться, а не текущее состояние (в макете пары selected + hover нет). */
+.case-list__item--active:hover .case-list__num,
+.case-list__item--active:hover .case-list__title { color: var(--color-dark); }
+
+.case-list__item:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+
+/* Панели кейсов занимают две правые колонки ряда и лежат стопкой в одной
+   ячейке грида: высота ряда берётся по самой высокой панели, поэтому при
+   переключении таба страница не дёргается. Скрытая панель убрана
+   visibility — место держит, но из дерева доступности и таб-порядка выпадает.
+   В Elementor это контент-панели виджета Nested Tabs; там панели скрываются
+   через display, поэтому контейнеру задаётся Min Height по самой высокой. */
+.case-panels {
+  grid-column: 3 / -1;
+  display: grid;
+  align-items: start;
+}
+
+.case-panel {
+  grid-area: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--col-gap);
+  align-items: start;
+}
+
+.case-panel--off { visibility: hidden; }
+
+/* Карточка кейса: плитка-плейсхолдер с логотипом клиента в углу */
+.case-card { display: flex; flex-direction: column; gap: var(--space-md); }
+
+.case-card__media {
+  position: relative;
+  min-height: 348px;
+  background: var(--gray-100);
+  overflow: hidden;
+}
+
+.case-card__mark {
+  position: absolute;
+  left: var(--space-md);
+  top: var(--space-md);
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.case-card__body { display: flex; flex-direction: column; gap: var(--space-xs); }
+
+
+/* Мета-список: подпись + значение, между парами линия 1 px */
+.meta-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+.meta-list__item { display: flex; flex-direction: column; gap: 4px; }
+
+/* ══ 13. PARTNER ROW — платформенные партнёрства ═══════════════
+   83:711 · лейбл 316 + шесть равных ячеек, лого высотой 52 */
+
+.partner-row {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-start;
+  padding-block: var(--space-lg);
+}
+
+.partner-row__label { width: var(--col-label); flex: 0 0 var(--col-label); }
+
+.partner-grid {
+  flex: 1 1 0;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.partner-grid__cell { height: 64px; display: flex; align-items: center; }
+.partner-grid__cell img { height: 52px; width: auto; display: block; }
+
+/* ══ 14. INTRO — лид в две ступени яркости ═════════════════════
+   83:503 · первая фраза Primary/Dark, продолжение — 50 % того же цвета */
+
+.lead-dim { color: var(--text-dim); }
+
+/* ══ 15. DARK SPLIT — Norway + India ═══════════════════════════
+   83:637 · текст 896 + графика 432, ряд выровнен по нижнему краю.
+   В макете текстовый блок вылезает за нижнюю границу ряда на 35 px
+   (следствие фиксированной высоты фрейма) — здесь он прижат к низу,
+   высота секции при этом сохранена. */
+
+.dark-split {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-end;
+}
+
+.dark-split__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.dark-split__lead { max-width: 605px; }
+
+.dark-split__graphic {
+  flex: 0 0 432px;
+  min-height: 384px;
+}
+
+.dark-split__graphic img { width: 100%; height: auto; }
+
+/* ══ 16. ЛЕДЖЕР: содержимое медиа-плиток ═══════════════════════
+   83:563 · тёмная плитка NOVA: паддинг 24 / 34, вордмарк 30, скриншот на всю ширину */
+
+.ledger__media--dark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 17px;
+  padding: var(--space-md) 34px;
+}
+
+.ledger__media--dark img { width: 100%; height: auto; }
+.ledger__media--dark .ledger__wordmark { width: auto; height: 30px; }
+
+/* Скриншот продукта виден только в раскрытой строке: в схлопнутой плитке
+   (2021:50) остаётся один вордмарк по центру. */
+.ledger__shot {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height .35s ease, opacity .25s ease;
+}
+
+.ledger__row--open .ledger__shot { max-height: 330px; opacity: 1; }
+
+.ledger:has(.ledger__row:hover) .ledger__row--open:not(:hover) .ledger__shot,
+.ledger:has(.ledger__row:focus-within) .ledger__row--open:not(:focus-within) .ledger__shot { max-height: 0; opacity: 0; }
+
+.ledger__row:hover .ledger__shot,
+.ledger__row:focus-within .ledger__shot { max-height: 330px; opacity: 1; }
+
+/* Плитка по центру: логотип продукта (83:583) или его название текстом (83:574) */
+.ledger__media--center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+.ledger__media--center img { width: auto; height: 56px; mix-blend-mode: darken; }  /* 2021:69 — гасит белую подложку логотипа */
+
+.ledger__wordmark-text {
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--text-body);
+}
+
+/* ══ 17. FOOTER ════════════════════════════════════════════════
+   152:131 · фотофон с двумя градиентными засветками, сверху блок
+   «контакты + форма» (620 / 740), снизу навигация и копирайт.
+   Обе засветки — отдельные слои макета: в Elementor это контейнеры
+   с Position: Absolute и градиентным фоном, по одному градиенту на слой. */
+
+.site-footer {
+  position: relative;
+  overflow: hidden;
+  padding: 40px var(--gutter);
+  background: var(--bg-near-black);
+}
+
+.site-footer__photo,
+.site-footer__wash,
+.site-footer__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.site-footer__photo {
+  background: url("../../assets/footer-fjord.webp") center bottom / cover no-repeat;
+}
+
+.site-footer__wash {
+  background: linear-gradient(180deg, var(--color-white) 0%, rgba(255, 255, 255, 0) 51.27%);
+}
+
+.site-footer__glow {
+  background: radial-gradient(circle 513px at 345px 210px, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.site-footer__inner {
+  position: relative;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section);
+}
+
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Пропорция колонок 620 / 740 из макета задана долями ширины, а не фиксированной
+   шириной формы: на 1360 выходит ровно 620 / 740, а ниже колонки ужимаются вместе,
+   а не одна за счёт другой. Именно проценты, а не flex-grow: при box-sizing:
+   border-box паддинг формы 60 + 60 входит в базу и перекашивает раздачу. */
+.footer-contact {
+  flex: 0 1 45.6%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.footer-contact__label { width: var(--col-label); }
+.footer-contact__lead  { max-width: 475px; }
+
+/* Чек-лист достоинств: две колонки по три пункта */
+.check-list { display: flex; gap: var(--space-md); width: 100%; }
+.check-list__col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--space-xs); }
+.check-item { display: flex; align-items: center; gap: var(--space-2xs); }
+
+.check-item svg {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  color: var(--color-accent);
+  fill: currentColor;
+}
+
+/* Форма — белая панель 740 с паддингом 60 */
+.footer-form {
+  flex: 0 1 54.4%;
+  min-width: 0;
+  background: var(--color-white);
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.footer-form__title { text-align: center; }
+
+.form { display: flex; flex-direction: column; gap: 20px; }
+.form__row { display: flex; gap: 20px; }
+
+.field { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.field--last { padding-bottom: var(--space-2xs); }   /* 152:185 — отбивка перед кнопкой */
+
+.field__control {
+  width: 100%;
+  height: 46px;
+  padding: 0 var(--space-xs);
+  background: var(--color-white);
+  border: var(--border-width) solid var(--gray-300);
+  border-radius: var(--radius-btn);
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--color-dark);
+  transition: border-color .2s ease;
+}
+
+textarea.field__control { height: 126px; padding: var(--space-xs); resize: vertical; }
+
+/* Фокус в макете не задан — по общему правилу линия набирает акцент */
+.field__control:focus { outline: none; border-color: var(--color-accent); }
+
+.form .btn { width: 100%; }
+
+/* Навигация футера */
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding-block: 40px;
+}
+
+.footer-nav__cols { display: flex; gap: var(--col-gap); }
+
+.footer-nav__col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.footer-nav__label { color: var(--footer-label); }
+
+.footer-nav__links { display: flex; flex-direction: column; gap: var(--space-md); }
+
+.footer-nav__link {
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--color-white);
+  transition: color .2s ease;
+}
+
+.footer-nav__link:hover { color: var(--color-accent); }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  gap: var(--col-gap);
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  line-height: 1.1;
+  color: var(--text-on-dark-40);
+}
+
+.footer-bottom__copy { flex: 1 1 0; min-width: 0; }
+.footer-bottom a { transition: color .2s ease; }
+.footer-bottom a:hover { color: var(--color-white); }
+
+/* ══ 20. ICON LIST — строки «иконка + текст» ═══════════════════
+   190:927 · три строки в колонке 680, разделитель между строками.
+   Иконки заданы Iconify-именами прямо в макете и взяты один в один.
+   Elementor: Icon Box (позиция иконки слева) + Divider, или контейнер
+   row с виджетами Icon и Text. */
+
+.icon-list { display: flex; flex-direction: column; }
+
+.icon-list__row {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  padding: var(--space-md) 120px var(--space-md) var(--space-md);
+  border-bottom: var(--border-width) solid var(--gray-200);
+}
+
+.icon-list__row:last-child { border-bottom: 0; }
+
+.icon-list__icon {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  color: var(--color-accent);
+}
+
+.icon-list__icon svg { display: block; width: 100%; height: 100%; }
+
+.icon-list__text { color: var(--text-lead); }
+
+/* ══ 21. STATEMENT CARD — тёмная плитка с выводом ══════════════
+   190:885 · вторая половина ряда: знак цитаты сверху, вывод и
+   приписка прижаты к низу. Заголовок в макете потерял привязку
+   к стилю и отрисован Arial Bold 17/25.5 — переносим как
+   Heading 3 (Poppins 600 / 16) с line-height 1.6. */
+
+.statement {
+  background: var(--color-dark);
+  border-bottom: var(--border-width) solid var(--gray-200);
+  border-left: var(--border-width) solid var(--gray-200);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+}
+
+.statement__mark { width: 24px; height: 24px; color: var(--color-accent); }
+.statement__mark svg { display: block; width: 100%; height: 100%; }
+
+.statement__body { display: flex; flex-direction: column; gap: var(--space-md); }
+.statement__title { line-height: 1.6; color: var(--color-white); }
+.statement__note  { color: var(--gray-100); opacity: .8; }
+.statement__rule  { height: 1px; background: rgba(255, 255, 255, .2); border: 0; margin: 0; }
+
+/* ══ 22. ICON GRID — сетка карточек 3 × 2 ══════════════════════
+   171:101 · внутренние линии сетки собраны зазором 1 px на фоне
+   Gray 200: outer-рамки не возникает, а при 2 и 1 колонке линия
+   остаётся одинарной без правки правил. Elementor: Container Grid,
+   Gap 1, Background Gray 200; карточка — Background White.
+   Заголовки — тот же случай Arial Bold 17, см. блок 21. */
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--border-width);
+  background: var(--gray-200);
+  margin-top: var(--space-xs);   /* 171:101 — padding-top 12 у контейнера */
+}
+
+.icon-card {
+  background: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+}
+
+.icon-card__icon { width: 24px; height: 24px; color: var(--color-accent); }
+.icon-card__icon svg { display: block; width: 100%; height: 100%; }
+
+.icon-card__body  { display: flex; flex-direction: column; gap: 4px; }
+.icon-card__title { line-height: 1.6; }
+/* Цвет с альфой, а не opacity: правило паспорта проекта. Opacity .8
+   поверх Gray 500 давала #938D89 — 3.27 на белом, ниже порога AA 4.5.
+   Чистый Gray 500 даёт 4.63 при почти том же виде (правка 2026-09-08,
+   касается и Appero — там блок тот же). */
+.icon-card__text  { color: var(--gray-500); }
+
+.icon-card--accent { background: var(--color-accent); }
+.icon-card--accent .icon-card__icon  { color: var(--color-white); }
+.icon-card--accent .icon-card__title { color: var(--color-white); }
+/* На акценте даже чистый Gray 100 даёт 3.34 — берём белый (4.01,
+   потолок для этого фона). Иерархию с заголовком держит размер,
+   а не цвет. Порог AA закроется, когда дизайнер утвердит более
+   глубокий акцент #C92E17 — вопрос открыт с фазы Home. */
+.icon-card--accent .icon-card__text  { color: var(--color-white); }
+
+/* ══ 23. COMPARE — таблица сравнения ═══════════════════════════
+   180:529 · НЕ html-таблица: строки-контейнеры, иначе адаптив не
+   собрать. Колонка-лейбл 150 фиксирована, две колонки вариантов
+   делят остаток. Колонка B подложена --bg-dark, её шапка — акцентом.
+   Elementor: контейнер-колонка, строка = row из трёх контейнеров,
+   между строками Divider. */
+
+.compare { display: flex; flex-direction: column; width: 100%; }
+
+.compare__row  { display: flex; align-items: stretch; }
+.compare__rule { height: 1px; background: rgba(253, 249, 247, .15); border: 0; margin: 0; }
+
+.compare__cell {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.compare__cell--label { flex: 0 0 150px; width: 150px; color: var(--gray-400); }
+.compare__cell--label .t-overline { color: inherit; }
+/* В таблице текст чисто белый, а не белый 80 % как в остальном .on-dark */
+.compare__cell .t-lead,
+.compare__cell .t-body { color: var(--color-white); }
+.compare__cell--b     { background: var(--bg-dark); }
+
+.compare__head .compare__cell--b { background: var(--color-accent); }
+
+/* Подпись варианта внутри ячейки: нужна только на мобильном, где
+   шапка таблицы уезжает. Elementor: Advanced → Responsive → Hide on
+   Desktop / Tablet, а не псевдоэлемент. */
+.compare__mobile-label { display: none; color: var(--gray-400); }
+
+/* ══ 24. SPLIT — полоса 720 / 720 ══════════════════════════════
+   187:494 (финальный CTA) и 187:497 (whitepaper) · во всю ширину
+   страницы: половина текста, половина визуала. Панель текста
+   центрирует содержимое по вертикали, боковой паддинг слева равен
+   полю страницы. Elementor: контейнер Full Width, direction row. */
+
+.split { display: flex; align-items: stretch; width: 100%; min-height: 530px; }
+.split--tall { min-height: 758px; }   /* 187:494 — высота задана паддингом 220 сверху и снизу */
+
+.split__panel {
+  flex: 0 0 50%;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-lg);
+  padding: 100px 100px 100px var(--gutter);
+}
+
+.split__panel--dark { background: var(--bg-near-black); }
+.split__panel--dark .split__title { color: var(--gray-100); }
+
+.split__media {
+  flex: 1 1 0;
+  min-width: 0;
+  background: var(--gray-100);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.split__media > img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Скриншот продукта заполняет панель: кадр прижат к левому краю окна
+   приложения, а не центрирован — иначе панель режет случайный кусок UI. */
+.split__media--shot > img { object-position: left center; }
+
+/* Обложка документа лежит на подложке в натуральных пропорциях —
+   кадрировать её нельзя, это готовый макет клиента. */
+.split__media--doc { background: var(--color-white); }
+.split__media--doc > img { width: auto; height: 400px; object-fit: contain; }
+
+.split__body    { display: flex; flex-direction: column; gap: var(--space-md); }
+.split__actions { display: flex; gap: var(--space-xs); flex-wrap: wrap; }
+
+/* Контурная кнопка на тёмном: контур Gray 200, текст белый */
+.btn--outline-dark {
+  border-color: var(--gray-200);
+  color: var(--color-white);
+}
+.btn--outline-dark:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* ══ 25. PROFILE CARD + TAGS ═══════════════════════════════════
+   180:648 · тёмная карточка: заголовок, маркированный список
+   (точка 8 px акцентом) и пилюли-теги. Тег — отдельный атом:
+   заливка Gray 400, прямые углы, Badge-шрифт (Inter). Это НЕ
+   .badge из hero — там акцентная обводка и радиус 100. */
+
+.profile-card {
+  background: var(--color-dark);
+  border-bottom: var(--border-width) solid var(--gray-200);
+  border-left: var(--border-width) solid var(--gray-200);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.profile-card__title { line-height: 1.6; color: var(--color-white); }
+
+.profile-card__list { display: flex; flex-direction: column; gap: 4px; }
+
+.profile-card__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  color: var(--gray-100);
+  opacity: .8;
+}
+
+.profile-card__item .t-body { color: inherit; }
+
+.profile-card__dot {
+  flex: 0 0 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.tag-row { display: flex; flex-wrap: wrap; gap: var(--space-2xs); }
+
+.tag {
+  background: var(--gray-400);
+  color: rgba(12, 16, 15, .8);
+  padding: 4px 6px;
+  font-family: var(--font-badge);
+  font-size: var(--fs-badge);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* ══ 26. FIT LIST — чек-лист крупными строками ═════════════════
+   186:311 · вариант леджера: восемь строк, номер Stat 64 справа
+   в колонке 120, текст Heading 2 приглушён Gray 500, номер — Gray 100.
+   В макете строка 03 показана в состоянии наведения (номер акцентом,
+   текст в полную силу, линия акцентная) — отсюда и правило ховера.
+   CUSTOM-CSS: связка «родитель → ребёнок», контрола в панели нет. */
+
+.fit-list { display: flex; flex-direction: column; }
+
+.fit-list__row {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-lg);
+  padding: var(--space-md) var(--space-md) var(--space-md) 0;
+  border-bottom: var(--border-width) solid var(--gray-100);
+  transition: border-color .2s ease;
+}
+
+.fit-list__text {
+  flex: 1 1 0;
+  min-width: 0;
+  color: var(--gray-500);
+  transition: color .2s ease;
+}
+
+.fit-list__num {
+  flex: 0 0 120px;
+  width: 120px;
+  text-align: right;
+  color: var(--gray-100);
+  transition: color .2s ease;
+}
+
+.fit-list__row:hover { border-bottom-color: var(--color-accent); }
+.fit-list__row:hover .fit-list__text { color: var(--color-dark); }
+.fit-list__row:hover .fit-list__num  { color: var(--color-accent); }
+
+/* ══ 27. LOCKUP — партнёрская связка ═══════════════════════════
+   185:214 · ЛОГО → ТЕКСТ ← ЛОГО в рамке 1 px. Ряд центрирован,
+   боковые поля берутся из свободного места, а не из паддинга. */
+
+.lockup {
+  border: var(--border-width) solid var(--gray-200);
+  padding-block: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+}
+
+/* Стороны сжимаемые: на 1025 ряд 1185 не помещался в рабочие 945 и вылезал
+   за экран — ширина 320 это запас вокруг логотипа, его и отдаём первым. */
+.lockup__side {
+  flex: 0 1 320px;
+  min-width: 0;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lockup__logo {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lockup__logo img  { width: 200px; max-width: 100%; height: auto; }
+.lockup__mark img  { width: 100px; height: 100px; }
+.lockup__label     { color: var(--gray-500); text-align: center; }
+
+.lockup__center {
+  background: var(--bg-warm);
+  height: 140px;
+  padding-inline: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-500);
+}
+
+.lockup__center .t-h2 { color: inherit; }
+
+.lockup__arrow { flex: 0 0 24px; width: 24px; height: 9px; color: var(--gray-500); }
+.lockup__arrow svg { display: block; width: 100%; height: 100%; }
+.lockup__arrow--back svg { transform: scaleX(-1); }
+
+/* ══ 28. PROCESS — шаги процесса ═══════════════════════════════
+   152:2000 · пять шагов на тёмном: у активного акцентная линия
+   слева, подсветка фона и раскрытое описание, у остальных описания
+   скрыты (hidden) — то есть аккордеон с одним открытым шагом.
+   Разметка на <details name>: клавиатура и скринридер работают без
+   скриптов, а браузер сам закрывает соседний пункт.
+   Elementor: виджет Accordion (Pro) — Normal / Active со своими
+   Background и Border Left. */
+
+/* Шаг раскрывается по наведению (и по фокусу с клавиатуры / тапу).
+   Описание не удаляется из потока, а схлопывается по max-height — текст
+   остаётся в DOM и доступен скринридеру в любом состоянии.
+   Геометрия макета: закрытый шаг 24 + 16 + 12 + 12 = 64,
+   раскрытый 24 + 16 + 12 + 40 + 24 = 116. */
+
+.process { display: flex; flex-direction: column; }
+
+.process__item {
+  border-left: var(--accent-rule) solid var(--hairline-on-dark);
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+.process__title {
+  padding: var(--space-md) var(--space-md) var(--space-xs);
+  color: var(--color-white);
+  cursor: default;
+}
+
+.process__text {
+  padding: 0 var(--space-md) var(--space-xs);
+  color: var(--text-on-dark-80);
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height .35s ease, opacity .25s ease, padding-bottom .35s ease;
+}
+
+/* CUSTOM-CSS: раскрытие соседа и смена кадра — связки через :has(),
+   нативных контролов в Elementor нет. Идёт в Custom CSS секции How it works. */
+.process__item--open .process__text {
+  max-height: 200px;
+  opacity: 1;
+  padding-bottom: var(--space-md);
+}
+
+.process__item--open {
+  border-left-color: var(--color-accent);
+  background: var(--surface-on-dark);
+}
+
+/* Наведение (или фокус) перебивает шаг, раскрытый по умолчанию */
+.process:has(.process__item:hover) .process__item--open:not(:hover),
+.process:has(.process__item:focus-within) .process__item--open:not(:focus-within) {
+  border-left-color: var(--hairline-on-dark);
+  background: transparent;
+}
+
+.process:has(.process__item:hover) .process__item--open:not(:hover) .process__text,
+.process:has(.process__item:focus-within) .process__item--open:not(:focus-within) .process__text {
+  max-height: 0;
+  opacity: 0;
+  padding-bottom: var(--space-xs);
+}
+
+.process__item:hover,
+.process__item:focus-within {
+  border-left-color: var(--color-accent);
+  background: var(--surface-on-dark);
+}
+
+.process__item:hover .process__text,
+.process__item:focus-within .process__text {
+  max-height: 200px;
+  opacity: 1;
+  padding-bottom: var(--space-md);
+}
+
+.process__item:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+/* Плитка справа: кадры продукта лежат стопкой, виден кадр активного шага */
+.process-plate {
+  flex: 1 1 0;
+  min-width: 0;
+  background: var(--color-dark);
+  overflow: hidden;
+  position: relative;
+}
+
+.process-plate__shot {
+  position: absolute;
+  inset: var(--space-md);
+  width: calc(100% - var(--space-md) * 2);
+  height: calc(100% - var(--space-md) * 2);
+  object-fit: contain;   /* кадр UI показываем целиком — обрезка режет таблицу по живому */
+  object-position: center;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.process-plate__shot--on { opacity: 1; }
+
+/* Кадр активного шага. Порядок важен: сначала гасим кадр шага по умолчанию,
+   затем зажигаем кадр того шага, на котором курсор или фокус. */
+.how-row:has(.process__item:not(:first-child):hover) .process-plate__shot--on,
+.how-row:has(.process__item:not(:first-child):focus-within) .process-plate__shot--on { opacity: 0; }
+
+.how-row:has(.process__item:nth-child(1):hover) .process-plate__shot:nth-child(1),
+.how-row:has(.process__item:nth-child(1):focus-within) .process-plate__shot:nth-child(1) { opacity: 1; }
+.how-row:has(.process__item:nth-child(2):hover) .process-plate__shot:nth-child(2),
+.how-row:has(.process__item:nth-child(2):focus-within) .process-plate__shot:nth-child(2) { opacity: 1; }
+.how-row:has(.process__item:nth-child(3):hover) .process-plate__shot:nth-child(3),
+.how-row:has(.process__item:nth-child(3):focus-within) .process-plate__shot:nth-child(3) { opacity: 1; }
+.how-row:has(.process__item:nth-child(4):hover) .process-plate__shot:nth-child(4),
+.how-row:has(.process__item:nth-child(4):focus-within) .process-plate__shot:nth-child(4) { opacity: 1; }
+.how-row:has(.process__item:nth-child(5):hover) .process-plate__shot:nth-child(5),
+.how-row:has(.process__item:nth-child(5):focus-within) .process-plate__shot:nth-child(5) { opacity: 1; }
+
+/* ══ 29. Плитка circle-graphic со смещением ════════════════════
+   190:814 / 184:160 · композиция 440 × 259 лежит со сдвигом
+   −185 / +131 и подрезается краями плитки. Elementor: контейнер
+   Overflow: Hidden, внутри Image с Position: Absolute. */
+
+.graphic-plate--offset {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.graphic-plate--offset .circle-graphic {
+  position: absolute;
+  left: -185px;
+  top: 131px;
+  width: 440px;
+  height: auto;
+  max-width: none;
+}
+
+.graphic-plate__note {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-lg) var(--space-sm);
+  color: var(--text-muted);
+}
+
+/* ══ ПЛАНШЕТ ≤ 1024 ════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+
+  /* section-head: лейбл встаёт над лидом, красная строка снимается */
+  .section-head {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  .section-head__label { width: auto; flex: none; }
+
+  /* card-grid 4 → 2, шахматный сдвиг снят через --card-offset: 0 */
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    min-height: 0;
+  }
+
+  /* hero: заголовок над лидом */
+  .hero__top { flex-direction: column; align-items: stretch; gap: var(--space-md); }
+  .hero__title { width: auto; flex: none; }
+  .hero__lead { max-width: none; }
+  .hero__visual { min-height: 360px; }
+
+  .hero-split { flex-direction: column; gap: var(--space-lg); }
+  /* В колонке flex-basis 0 задаёт ВЫСОТУ — визуал схлопнулся бы в ноль,
+     поэтому обе колонки переходят на авто, а высоту держит пропорция. */
+  .hero-split__content { flex: 0 0 auto; }
+  .hero-split__visual  { flex: 0 0 auto; width: 100%; aspect-ratio: 16 / 10; }
+
+  .post-grid { grid-template-columns: repeat(2, 1fr); }
+  .post-card { min-height: 380px; }
+
+  .ledger__media--feature { min-height: 320px; }
+
+  /* номер перестаёт быть равноправной колонкой: место уходит тексту */
+  .ledger__num { flex: 0 0 auto; }
+
+  /* лого-строка: шторки уже, лого мельче */
+  .logo-strip__row img { height: 28px; }
+  .logo-strip__item--tall img { height: 38px; }
+
+  /* кейсы: лейбл и список идут во всю строку, карточка и мета — парой */
+  .case-row { grid-template-columns: repeat(2, 1fr); }
+  .case-panels { grid-column: 1 / -1; }
+
+  /* Ниже 1024 наведения нет: все шаги раскрыты, кадр остаётся один.
+     Селекторы повторяют базовые, иначе специфичность :has() их перебьёт. */
+  .process .process__item .process__text,
+  .process:has(.process__item:hover) .process__item--open:not(:hover) .process__text,
+  .process:has(.process__item:focus-within) .process__item--open:not(:focus-within) .process__text {
+    max-height: none;
+    opacity: 1;
+    padding-bottom: var(--space-md);
+  }
+
+  .process .process__item,
+  .process:has(.process__item:hover) .process__item--open:not(:hover),
+  .process:has(.process__item:focus-within) .process__item--open:not(:focus-within) {
+    border-left-color: var(--hairline-on-dark);
+    background: transparent;
+  }
+
+  .process .process__item:hover,
+  .process .process__item:focus-within {
+    border-left-color: var(--color-accent);
+    background: var(--surface-on-dark);
+  }
+  .case-row__label,
+  .case-list { grid-column: 1 / -1; }
+
+  /* партнёры: лейбл над сеткой, три колонки */
+  .partner-row { flex-direction: column; gap: var(--space-xs); }
+  .partner-row__label { width: auto; flex: none; }
+  .partner-grid { width: 100%; grid-template-columns: repeat(3, 1fr); row-gap: var(--space-md); }
+
+  /* тёмная секция: графика ужимается, но остаётся в ряду */
+  .dark-split__graphic { flex: 0 0 320px; min-height: 0; }
+
+  /* футер: форма уходит под контакты */
+  .footer-top { flex-direction: column; align-items: stretch; gap: var(--space-2xl); }
+  .footer-contact__label { width: auto; }
+  /* в колонке flex-basis мерил бы высоту — ширину задаём явно */
+  .footer-form { flex: 0 0 auto; width: 100%; padding: 40px; }
+  .footer-nav__cols { flex-wrap: wrap; row-gap: var(--space-2xl); }
+  .footer-nav__col { flex: 1 1 40%; }
+
+  .ledger__media--feature { padding: var(--space-md); gap: var(--space-xs); }
+
+  /* Меню сворачивается в тогл (в Elementor — Nav Menu, Breakpoint: Tablet).
+     Панель выезжает под хедером во всю ширину: язык сайта — полноширинные
+     полосы с волосяными линиями, поэтому боковой drawer здесь чужероден.
+     Скрыта visibility + opacity, а не display: так работает переход и
+     панель остаётся вне таб-порядка, пока закрыта.
+     Панель — обёртка .site-menu, а НЕ сам <nav>: внутри неё лежат виджет
+     Nav Menu (только ссылки, источник — меню WordPress) и отдельный блок
+     с языком и кнопкой. */
+  .site-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    padding: 0 var(--gutter) var(--space-md);
+    background: var(--color-white);
+    border-top: var(--border-width) solid var(--hairline);
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease, transform .2s ease, visibility .2s;
+  }
+
+  .site-header[data-menu="open"] .site-menu {
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .site-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+  }
+
+  /* Пункт меню — строка на всю ширину: зона нажатия 16 + 24 + 16 = 56,
+     выше минимальных 44. Линия снизу заменяет зазор. */
+  .site-nav__link {
+    white-space: normal;
+    padding-block: var(--space-sm);
+    border-bottom: var(--border-width) solid var(--hairline);
+  }
+
+  .site-nav__link:hover,
+  .site-nav__link[aria-current="page"] { border-bottom-color: var(--color-accent); }
+
+  /* Иконка тогла — один SVG, а не три блока: три отдельных бокса по 2 px
+     округляются к пиксельной сетке независимо, и при системном масштабе
+     125 % полосы выходят разной толщины. В SVG все три штриха живут в одной
+     системе координат и сглаживаются одинаково.
+     В Elementor это иконка виджета Nav Menu — здесь она только показана. */
+  /* Кнопка-тогл: зона нажатия 44 × 44 при иконке 24 — минимум для пальца. */
+  .site-header__burger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-right: -10px;      /* оптическое выравнивание по краю поля секции */
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--color-dark);
+    cursor: pointer;
+    transition: color .2s ease;
+  }
+
+  .site-header__burger:hover { color: var(--color-accent); }
+  .site-header__burger:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+  /* Иконка не подменяется картинкой, а перетекает: две крайние полоски
+     съезжают к центру и разворачиваются в крестик, средняя гаснет. Подмена
+     двух SVG давала мгновенный скачок, здесь переход идёт в обе стороны. */
+  .burger-icon { width: 24px; height: 24px; fill: currentColor; overflow: visible; }
+
+  .burger-icon__bar {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform .25s cubic-bezier(.4, 0, .2, 1), opacity .15s ease;
+  }
+
+  .site-header__burger[aria-expanded="true"] .burger-icon__bar--top { transform: translateY(6px) rotate(45deg); }
+  .site-header__burger[aria-expanded="true"] .burger-icon__bar--mid { opacity: 0; }
+  .site-header__burger[aria-expanded="true"] .burger-icon__bar--bot { transform: translateY(-6px) rotate(-45deg); }
+  .site-header__logo,
+  .site-header__actions { width: auto; flex: none; }
+
+  /* ── блоки страницы Appero ─────────────────────────────────── */
+  .icon-list__row { padding-right: var(--space-md); }
+  .icon-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .compare__cell { padding: var(--space-sm); }
+  .compare__cell--label { flex: 0 0 120px; width: 120px; }
+
+  .split { flex-direction: column; }
+  .split__panel { flex: 1 1 auto; max-width: none; padding: 80px var(--gutter); }
+  .split__media { min-height: 420px; }
+  .split__media--doc { padding-block: 60px; }
+  .split__media--doc > img { height: 340px; }
+
+  .fit-list__num { flex: 0 0 96px; width: 96px; }
+
+  .lockup { flex-wrap: wrap; padding-inline: var(--space-md); }
+  .lockup__side { flex: 0 1 240px; }
+  .lockup__center { padding-inline: var(--space-lg); }
+
+  .process-plate { min-height: 320px; }
+
+  /* Смещённая композиция: ниже 1024 карточка узкая, и сдвиг −185 оставлял
+     полплитки пустой заливкой — показываем композицию целиком по центру. */
+  .graphic-plate--offset {
+    flex-direction: column;          /* приписка над композицией, а не рядом с ней */
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    align-items: center;
+    justify-content: center;
+  }
+  .graphic-plate--offset .graphic-plate__note { padding: 0; align-self: flex-start; }
+  .graphic-plate--offset .circle-graphic { position: static; width: 100%; max-width: 440px; }
+}
+
+/* ══ МОБИЛЬНЫЙ ≤ 767 ═══════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  .card-grid  { grid-template-columns: 1fr; }
+  .post-grid  { grid-template-columns: 1fr; }
+  .stat-grid  { grid-template-columns: 1fr; }
+  .address-grid { grid-template-columns: 1fr; }
+
+  /* стат-плитки в одну колонку: остаётся только линия сверху */
+  .stat:nth-child(n) {
+    border-width: 1px 0 0 0;
+  }
+  .stat:first-child { border-top-width: 0; }
+
+  /* леджер: медиа сверху, номер над заголовком */
+  .ledger__row {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .ledger__media {
+    width: 100%;
+    flex: none;
+    order: 2;
+    min-height: 200px;
+  }
+  .ledger__media--feature { min-height: 260px; }
+  /* номер уходит наверх и читается как маркер пункта — поэтому по левому краю */
+  .ledger__num  { order: 1; flex: none; width: 100%; text-align: left; }
+  .ledger__body { order: 3; }
+
+  .hero__visual        { min-height: 240px; }
+  .hero-split__visual  { aspect-ratio: 4 / 3; }
+  .hero__actions .btn,
+  .hero-split .btn     { flex: 1 1 100%; }
+
+  /* Хедер на телефоне. Логотип 120 + EN + кнопка 151 + тогл не помещаются
+     в 305 px (320 с полосой прокрутки) — EN и «Book a meeting» уезжают
+     в панель меню (блок .site-nav__cta ниже). Elementor: у виджета Button →
+     Advanced → Responsive → Hide on Mobile, а в Nav Menu (Pro) — пункт-кнопка
+     в дропдауне. */
+  .site-header__actions .btn { display: none; }
+
+  .address { padding-bottom: var(--space-md); }
+
+  /* хедер: лого ужимается, переключатель языка уезжает в мобильное меню,
+     зазоры сжимаются — иначе CTA и тогл не помещаются в 375 */
+  .site-header { gap: var(--space-xs); }
+  .site-header__logo { width: 120px; height: auto; }
+  .site-header__actions { gap: var(--space-xs); }
+  .site-header__actions .site-nav__link { display: none; }
+
+  /* EN и CTA показываются внутри панели — в строке хедера для них нет места */
+  .site-menu__cta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding-top: var(--space-md);
+  }
+
+  .site-menu__lang {
+    color: var(--gray-500);
+    padding-block: var(--space-2xs);
+    transition: color .2s ease;
+  }
+
+  .site-menu__lang:hover { color: var(--color-dark); }
+  .site-header .btn { padding-inline: var(--space-xs); }
+
+  .logo-strip__row img { height: 24px; }
+  .logo-strip__item--tall img { height: 32px; }
+
+  .case-row { grid-template-columns: 1fr; }
+  .case-panel { grid-template-columns: 1fr; }
+  .partner-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* тёмная секция: графика под текстом, прижата вправо как в макете */
+  .dark-split { flex-direction: column; align-items: stretch; gap: var(--space-lg); }
+  .dark-split__graphic { flex: none; max-width: 320px; margin-left: auto; }
+
+  .footer-form { padding: var(--space-md); }
+  .form__row { flex-direction: column; }
+  .check-list { flex-direction: column; gap: var(--space-xs); }
+  .footer-nav__col { flex: 1 1 100%; }
+  .footer-bottom { flex-wrap: wrap; row-gap: var(--space-xs); }
+  .footer-bottom__copy { flex: 1 1 100%; }
+
+  .ledger__media--feature { min-height: 0; }
+  .case-card__media { min-height: 240px; }
+
+  .graphic-plate { padding: 24px; min-height: 180px; }
+
+  /* ── блоки страницы Appero ─────────────────────────────────── */
+  .icon-grid { grid-template-columns: 1fr; }
+
+  /* Таблица сравнения разворачивается в колонку: шапка теряет смысл,
+     подпись варианта показывается внутри ячейки (Hide on Desktop/Tablet). */
+  .compare__head { display: none; }
+  .compare__row { flex-direction: column; align-items: stretch; }
+  .compare__cell--label { flex: 0 0 auto; width: 100%; padding-bottom: 0; }
+  .compare__mobile-label { display: block; }
+
+  .split__panel { padding: 56px var(--gutter); }
+  .split__media { min-height: 300px; }
+  .split__media--doc > img { height: 260px; }
+
+  .fit-list__row { gap: var(--space-sm); }
+  .fit-list__num { flex: 0 0 72px; width: 72px; }
+
+  .lockup { flex-direction: column; gap: var(--space-md); padding-block: var(--space-lg); }
+  .lockup__side, .lockup__center { flex: 0 0 auto; width: 100%; }
+  .lockup__arrow svg { transform: rotate(90deg); }
+  .lockup__arrow--back svg { transform: rotate(90deg) scaleX(-1); }
+
+}
+
+/* ══ 30. PEOPLE LIST — «имя + роль» строками ═══════════════════
+   Макета нет: собран на Staff Augmentation (2026-09-08) под фото
+   руководителей. В референсе клиента (Final_Design_1.pdf) это три
+   плашки с именами под общим снимком; здесь — тот же смысл в языке
+   сайта: строки, разделённые волосяной линией, без плашек.
+   Elementor: контейнер-колонка, строка = два Text-виджета,
+   линия — Border Top у строки (не Divider: он добавляет свой отступ). */
+
+.people-list { display: flex; flex-direction: column; }
+
+.people-list__item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-block: var(--space-xs);
+  border-top: var(--border-width) solid var(--hairline);
+}
+
+.people-list__item:first-child { border-top: 0; padding-top: 0; }
+.people-list__name { line-height: 1.4; }
+.people-list__role { color: var(--text-body); }
+
+/* ══ 31. PULL — выдержка из текста ═════════════════════════════
+   Макета нет: собран на Staff Augmentation (2026-09-08).
+   Ключевая фраза набрана Heading 1 Normal на тёплом белом. Фон, а не
+   рамка: рамка «обводит» цитату и читается как чужеродный элемент
+   (ui-blockquote-testimonial). Ширина строки урезана — при крупном
+   кегле длинная строка не читается.
+   Elementor: контейнер с Background Warm White + Heading. */
+
+.pull {
+  background: var(--bg-warm);
+  padding: var(--space-lg);
+  margin-top: var(--space-2xs);
+}
+
+.pull__text { max-width: 30ch; }
+
+/* ══ 32. QUOTE CARD — отзыв клиента ════════════════════════════
+   Макета нет: собран на Staff Augmentation (2026-09-08) по контенту
+   клиента (три отзыва с логотипами). В референсе клиента это карусель —
+   развёрнута в сетку: три отзыва читаются разом и сравниваются, а
+   слайдер прячет два из трёх (ui-slideshow-antipattern).
+   Логотип клиента сверху — атрибуция и социальное доказательство
+   разом; автора НЕ гасим цветом, иерархию держим размером
+   (имя Heading 3 против роли Body). Знак кавычек — крупный
+   декоративный акцент в углу, тон Gray 200: заметен, но не спорит
+   с текстом.
+   Elementor: Container Grid 3 колонки; знак кавычек — Icon с
+   Position: Absolute, у карточки Overflow: Hidden. */
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--col-gap);
+  align-items: stretch;
+}
+
+/* Карточка — чистый белый на тонированной секции, а не тёплый белый
+   на белой странице: разница фонов #FDF9F7 и #FFF меньше 2 единиц
+   светлоты, карточки «тонут» и группа читается одной плоскостью
+   (T28 anti-slop). Тинт отдан секции — см. .s-quotes. */
+.quote-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  margin: 0;
+  background: var(--color-white);
+}
+
+/* Бокс фиксированной высоты: логотипы клиентов приходят в разных
+   пропорциях (квадрат, широкая полоса), выравнивает их бокс, не файл */
+.quote-card__logo { height: 40px; display: flex; align-items: center; }
+.quote-card__logo img { max-height: 100%; width: auto; max-width: 180px; object-fit: contain; }
+
+.quote-card__body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex: 1 1 auto;
+}
+
+.quote-card__author {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: var(--space-md);
+  border-top: var(--border-width) solid var(--hairline);
+}
+
+.quote-card__name { line-height: 1.4; }
+.quote-card__role { color: var(--text-body); }
+
+.quote-card__mark {
+  position: absolute;
+  right: -8px;
+  bottom: -12px;
+  width: 96px;
+  height: 96px;
+  color: var(--gray-300);
+  pointer-events: none;
+}
+
+.quote-card__mark svg { display: block; width: 100%; height: 100%; }
+
+/* ══ 33. ROLE GRID — сетка ролей ═══════════════════════════════
+   Макета нет: собран на Staff Augmentation (2026-09-08).
+   Тот же приём линий, что и в icon-grid (блок 22): зазор 1 px на
+   фоне Gray 200 — одинарная линия при 3, 2 и 1 колонке без правил
+   на каждый брейкпоинт. Отличие от icon-grid: строка, а не колонка,
+   и нет описания — это перечень, а не карточки.
+   Elementor: Container Grid, Gap 1, Background Gray 200. */
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--border-width);
+  background: var(--gray-200);
+}
+
+.role {
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+}
+
+/* Иконка ролей — Gray 500, а не акцент: девять акцентных значков
+   подряд спорят с кнопками и чек-листом. Акцент на странице остаётся
+   у кнопок, аргументов «Why us» и уровней прайса (ui-color-60-30-10) */
+.role__icon { flex: 0 0 24px; width: 24px; height: 24px; color: var(--gray-500); }
+.role__icon svg { display: block; width: 100%; height: 100%; }
+.role__title { line-height: 1.4; }
+
+/* ══ 34. TIER LIST — уровни (прайс-модель) ═════════════════════
+   Макета нет: собран на Staff Augmentation (2026-09-08).
+   Три уровня опыта строками: иконка, название Heading 2, условие.
+   Три, а не больше — выбор из трёх сравнивается без усилий
+   (ux-buyer-objections-on-page: «сложно выбрать» лечится сокращением).
+   Разделители — border-top у строки, как в леджере.
+   Elementor: контейнер-колонка, строка = row (Icon + два Text). */
+
+.tier-list { display: flex; flex-direction: column; }
+
+.tier {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding-block: var(--space-md);
+  border-top: var(--border-width) solid var(--hairline);
+}
+
+.tier:first-child { border-top: 0; }
+
+.tier__icon { flex: 0 0 32px; width: 32px; height: 32px; color: var(--color-accent); }
+.tier__icon svg { display: block; width: 100%; height: 100%; }
+
+.tier__body { display: flex; flex-direction: column; gap: var(--space-2xs); }
+.tier__name { line-height: 1.2; }
+.tier__note { color: var(--text-lead); }
+
+/* ── Модификаторы существующих блоков, впервые понадобившиеся здесь ── */
+
+/* icon-grid на 2 колонки — 4 карточки «Why us» (блок 22) */
+.icon-grid--2 { grid-template-columns: repeat(2, 1fr); }
+
+/* Номер шага в аккордеоне (атом Process steps): на Appero шаги без
+   номеров, здесь модель называется «3-step» — номер несёт смысл */
+/* Номер белый, а не акцентный: акцент на тёмном #1E1E1E даёт 4.14 —
+   ниже AA. Активный шаг и так помечен акцентной линией слева. */
+.process__num { color: var(--color-white); margin-right: var(--space-2xs); }
+
+/* ── Адаптив блоков 30–34 ─────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  /* Три отзыва в ряд на 960 дают колонку текста ~230 px — короче
+     нижней границы читаемой строки, поэтому сразу одна колонка */
+  .quote-grid { grid-template-columns: 1fr; }
+  .quote-card { padding: var(--space-md); }
+  .quote-card__mark { width: 72px; height: 72px; }
+
+  .role-grid  { grid-template-columns: repeat(2, 1fr); }
+  /* Девять ролей в двух колонках оставляют последнюю ячейку пустой,
+     и в ней просвечивает фон сетки. Последняя занимает обе колонки.
+     Elementor: у элемента Grid-контейнера есть контрол Column Span. */
+  .role:last-child { grid-column: span 2; }
+  .pull       { padding: var(--space-md); }
+  .pull__text { max-width: none; }
+}
+
+@media (max-width: 767px) {
+  .icon-grid--2 { grid-template-columns: 1fr; }
+  .role-grid    { grid-template-columns: 1fr; }
+  .role:last-child { grid-column: auto; }
+
+  .tier      { align-items: flex-start; gap: var(--space-sm); }
+  .tier__icon { flex-basis: 24px; width: 24px; height: 24px; }
+
+  .quote-card__mark { width: 56px; height: 56px; right: -4px; bottom: -8px; }
+}
+
+/* Светлая панель split: та же полоса 720/720, но текст остаётся
+   тёмным. Нужна, когда рядом уже есть тёмная секция и вторая
+   тёмная поверхность подряд слила бы их в одну. */
+.split__panel--warm { background: var(--bg-warm); }

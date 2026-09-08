@@ -1,0 +1,112 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — главная: вертикальный ритм секций
+   и две раскладки, которые встречаются только здесь.
+   Всё остальное берётся из components.css без изменений.
+
+   Ритм. В макете (83:474) страница — колонка фреймов с зазором 20
+   между ними. В Elementor секции идут соседними контейнерами без
+   общего гэпа, поэтому эти 20 сложены в паддинги: обычно в
+   padding-top следующей секции, а перед тонированными секциями
+   (тёмная Norway+India и футер с фото) — в padding-bottom
+   предыдущей, иначе белый зазор окрасился бы фоном секции.
+   ══════════════════════════════════════════════════════════════ */
+
+.s-hero     { padding-top:  84px; padding-bottom:  40px; }
+.s-intro    { padding-top:  20px; padding-bottom:   0; }   /* 32/32 даёт сам section-head */
+.s-what     { padding-top: 140px; padding-bottom: 120px; }
+.s-products { padding-top:  52px; padding-bottom:  32px; }
+.s-why      { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тёмной секцией */
+.s-geo      { padding-top:   0;   padding-bottom:   0; }
+.s-clients  { padding-top: 140px; padding-bottom:   0; }   /* секция заканчивается линией */
+.s-insights { padding-top: 140px; padding-bottom: 140px; } /* +20 перед футером */
+
+/* ── Секция why us (83:593) ────────────────────────────────────
+   Две колонки фиксированной ширины, разведённые по краям:
+   548 (текст + графика) и 664 (стат-плитки), зазор выходит 148. */
+
+.why-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--col-gap);
+  align-items: flex-start;
+}
+
+/* Обе колонки могут ужиматься: при фиксированной стат-сетке 664 ниже 1360
+   текстовая колонка схлопывалась до 250 и графика вставала в угол. */
+.why-row__text {
+  flex: 0 1 548px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding-top: var(--space-md);
+}
+
+.why-row__stats { flex: 0 1 664px; min-width: 0; }
+
+/* Плитка с графикой (83:596): композиция 440 × 259 лежит со сдвигом 54 / 54
+   и нижний ряд кругов уходит за нижнюю границу плитки. Обрезка — часть
+   рисунка, поэтому высота здесь именно фиксированная, а не min-height.
+   Elementor: Container → Height: Custom 250 + Overflow: Hidden. */
+.why-row .graphic-plate { height: 250px; min-height: 0; }
+
+/* ── Секция Norway + India (83:636) ────────────────────────────
+   Между текстовым рядом и адресами 80, а не общий gap 44. */
+
+.s-geo .section__inner { gap: var(--space-2xl); }
+
+/* ── Секция clients (83:663) ───────────────────────────────────
+   Внутри своя вертикаль: между блоками 64, а не общий gap 44. */
+
+.s-clients .section__inner { gap: 64px; }
+
+/* Шапка секции и лого-строка живут в одном блоке с паддингом 32 (83:664) */
+.clients-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding-block: var(--space-lg);
+}
+
+.clients-head .section-head { padding-block: 0; }
+
+/* ══ ПЛАНШЕТ ≤ 1024 ════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+
+  .s-hero     { padding-top: 56px; padding-bottom: 32px; }
+  .s-what,
+  .s-clients,
+  .s-insights { padding-top: 116px; }
+  .s-why      { padding-top: 116px; padding-bottom: 116px; }
+  .s-insights { padding-bottom: 116px; }
+  .s-what     { padding-bottom: 96px; }
+
+  /* стат-плитки перестают быть фиксированной колонкой */
+  .why-row { flex-direction: column; gap: var(--space-2xl); }
+  .why-row__text,
+  .why-row__stats { flex: 1 1 auto; width: 100%; }
+
+  /* плитка графики не растягивается на всю строку — иначе композиция
+     440 тонет в пустом тёплом поле; держим ширину из макета */
+  .why-row .graphic-plate { max-width: 548px; }
+
+  .s-clients .section__inner { gap: 48px; }
+}
+
+/* ══ МОБИЛЬНЫЙ ≤ 767 ═══════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  .s-hero     { padding-top: 40px; padding-bottom: 24px; }
+  .s-what,
+  .s-clients,
+  .s-insights { padding-top: 92px; }
+  .s-why      { padding-top: 92px; padding-bottom: 92px; }
+  .s-insights { padding-bottom: 92px; }
+  .s-what     { padding-bottom: 72px; }
+
+  .why-row { gap: var(--space-2xl); }
+  .s-clients .section__inner { gap: 40px; }
+
+  /* на узком экране плитка мельче, сдвиг композиции пропорционально меньше */
+  .why-row .graphic-plate { height: 190px; padding: 32px 0 0 32px; }
+}

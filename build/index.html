@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Orange Technologies — Igniting Digital Transformation</title>
+  <meta name="description" content="Red Orange Technologies combines people, platforms, AI and product development — Salesforce partner, staff augmentation and AI-driven products from Norway and India.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<!-- ══ 1 · HEADER — 83:476 → Theme Builder → Header ═══════════════ -->
+<header class="site-header" data-el="container" data-name="header">
+  <a class="site-header__logo" href="index.html" data-el="image" aria-label="Red Orange Technologies — home">
+    <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
+  </a>
+  <!-- Панель меню: внутри только виджет Nav Menu (пункты берутся из меню
+       WordPress) и отдельный блок с языком и CTA — ссылки правятся
+       в «Внешний вид → Меню», не трогая Elementor -->
+  <div class="site-menu" id="site-menu" data-el="container">
+    <nav class="site-nav" data-el="nav-menu" aria-label="Main">
+      <a class="t-nav site-nav__link" href="#">Staff Augmentation</a>
+      <a class="t-nav site-nav__link" href="appero.html">Appero</a>
+      <a class="t-nav site-nav__link" href="#">Salesforce</a>
+      <a class="t-nav site-nav__link" href="#">AI &amp; Product Development</a>
+      <a class="t-nav site-nav__link" href="#">Products</a>
+      <a class="t-nav site-nav__link" href="#">Company</a>
+    </nav>
+
+    <div class="site-menu__cta" data-el="container">
+      <a class="t-nav site-menu__lang" href="#" data-el="text">EN</a>
+      <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    </div>
+  </div>
+  <div class="site-header__actions" data-el="container">
+      <a class="t-nav site-nav__link" href="#" data-el="text">EN</a>
+    <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    <button class="site-header__burger" type="button" data-el="button"
+            aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <svg class="burger-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect class="burger-icon__bar burger-icon__bar--top" x="0" y="5"  width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--mid" x="0" y="11" width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--bot" x="0" y="17" width="24" height="2"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- затемнение под мобильным меню: сосед хедера, иначе
+     оказывается внутри его stacking context и накрывает логотип -->
+<div class="site-menu-backdrop" hidden></div>
+
+<main>
+
+  <!-- ══ 2 · HERO — 83:490 ════════════════════════════════════════ -->
+  <section class="section s-hero" data-el="container" data-name="hero">
+    <div class="section__inner" data-el="container">
+      <div class="hero" data-el="container">
+        <div class="hero__top" data-el="container">
+          <h1 class="t-display hero__title" data-el="heading">Igniting Digital Transformation</h1>
+          <div class="hero__aside" data-el="container">
+            <p class="t-lead hero__lead" data-el="text">We help businesses realize their digital potential — through Salesforce, innovative AI platforms and the right expertise.</p>
+            <div class="hero__actions" data-el="container">
+              <a class="btn btn--primary" href="#contact" data-el="button">Contact us</a>
+              <a class="btn btn--outline" href="#" data-el="button">See our products</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero__visual" data-el="image">
+          <img src="../assets/hero-mountains.webp" width="2000" height="741"
+               alt="Mountain ridge above the sea at sunrise, Northern Norway">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 3 · INTRO — 83:501 ═══════════════════════════════════════ -->
+  <section class="section s-intro" data-el="container" data-name="intro">
+    <div class="section__inner" data-el="container">
+      <div class="section-head" data-el="container">
+        <p class="t-overline section-head__label" data-el="text">A modern technology company.<br>not a traditional IT consultancy</p>
+        <p class="t-h1 section-head__lead" data-el="text">Red Orange Technologies combines people, platforms, AI and product development. We give companies access <span class="lead-dim">to experienced technology specialists, help them implement and run leading platforms such as Salesforce, and build AI-powered digital products — both for our customers and as ventures we own ourselves.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 4 · WHAT WE DO — 83:504 ══════════════════════════════════ -->
+  <section class="section s-what" data-el="container" data-name="what-we-do">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">What we do</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Specialist technology expertise across people, platforms and AI-driven products.</h2>
+      </div>
+
+      <div class="card-grid" data-el="container">
+        <article class="card" data-el="container">
+          <div class="card__visual card__visual--fill" data-el="image">
+            <img src="../assets/card-ai.svg" width="316" height="358" alt="" role="presentation">
+          </div>
+          <div class="card__body" data-el="container">
+            <h3 class="t-h3" data-el="heading">AI &amp; Product Development</h3>
+            <p class="t-body" data-el="text">The most forward-looking part of our positioning. We develop digital products, AI solutions, platforms and custom software — for customers and for our own ventures. AI runs through the company, not as an isolated service.</p>
+          </div>
+        </article>
+
+        <article class="card card--offset" data-el="container">
+          <div class="card__visual card__visual--fill" data-el="image">
+            <img src="../assets/card-salesforce.svg" width="316" height="366" alt="" role="presentation">
+          </div>
+          <div class="card__body" data-el="container">
+            <h3 class="t-h3" data-el="heading">Salesforce Partner</h3>
+            <p class="t-body" data-el="text">Consulting, implementation, development and integrations — supporting customers from strategy through continuous improvement.</p>
+          </div>
+        </article>
+
+        <article class="card" data-el="container">
+          <div class="card__visual card__visual--fill" data-el="image">
+            <img src="../assets/card-staff.svg" width="316" height="378" alt="" role="presentation">
+          </div>
+          <div class="card__body" data-el="container">
+            <h3 class="t-h3" data-el="heading">Staff Augmentation</h3>
+            <p class="t-body" data-el="text">Access to experienced technology specialists and dedicated development teams. Senior competence, flexibility and scalability — combining a Norwegian customer interface with international delivery.</p>
+          </div>
+        </article>
+
+        <article class="card card--offset" data-el="container">
+          <div class="card__visual card__visual--fill" data-el="image">
+            <img src="../assets/card-appero.svg" width="316" height="366" alt="" role="presentation">
+          </div>
+          <div class="card__body" data-el="container">
+            <h3 class="t-h3" data-el="heading">Appero Partner</h3>
+            <p class="t-body" data-el="text">Red Orange Technologies is an Appero partner for the Nordics and India, with a natural connection to our Salesforce capabilities.</p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 5 · OUR PRODUCTS — 83:557 ════════════════════════════════ -->
+  <section class="section s-products" data-el="container" data-name="our-products">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Our Products</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">We don't just implement technology. We build it.</h2>
+      </div>
+
+      <div class="ledger" data-el="container">
+
+        <div class="ledger__row ledger__row--open" data-el="container">
+          <div class="ledger__media ledger__media--dark" data-el="container">
+            <img class="ledger__wordmark" src="../assets/product-nova-mark.webp" width="518" height="108" alt="NOVA for Salesforce">
+            <img class="ledger__shot" src="../assets/product-nova-screen.webp" width="1088" height="984" alt="NOVA for Salesforce — lead routing screen">
+          </div>
+          <div class="ledger__body" data-el="container">
+            <h3 class="t-h2" data-el="heading">NOVA for Salesforce</h3>
+            <p class="t-lead" data-el="text">Our own Red Orange Technologies product — connecting our Salesforce expertise with our AI and product-development capabilities. Prominent position.</p>
+          </div>
+          <div class="t-h2 ledger__num" data-el="text">01</div>
+        </div>
+
+        <div class="ledger__row" data-el="container">
+          <div class="ledger__media ledger__media--center" data-el="container">
+            <span class="ledger__wordmark-text">WorkHub</span>
+          </div>
+          <div class="ledger__body" data-el="container">
+            <h3 class="t-h2" data-el="heading">WorkHub</h3>
+            <p class="t-lead" data-el="text">A technology platform where Red Orange Technologies is both partner and owner — more than a conventional third-party partnership.</p>
+          </div>
+          <div class="t-h2 ledger__num" data-el="text">02</div>
+        </div>
+
+        <div class="ledger__row" data-el="container">
+          <div class="ledger__media ledger__media--center" data-el="container">
+            <img src="../assets/product-novalab.webp" width="220" height="92" alt="NOVAlab">
+          </div>
+          <div class="ledger__body" data-el="container">
+            <h3 class="t-h2" data-el="heading">NOVAlab</h3>
+            <p class="t-lead" data-el="text">An AI platform where we are both technology partner and owner. Enables companies to build secure AI solutions, agents and workflows while maintaining control over data, integrations and governance.</p>
+          </div>
+          <div class="t-h2 ledger__num" data-el="text">03</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 6 · WHY US — 83:589 ══════════════════════════════════════ -->
+  <section class="section s-why" data-el="container" data-name="why-us">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">why us</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Proven delivery, senior competence, long-term partnership.</h2>
+      </div>
+
+      <div class="why-row" data-el="container">
+
+        <div class="why-row__text" data-el="container">
+          <p class="t-lead" data-el="text">14+ years combining Norwegian customer proximity with international delivery capacity — built to scale with our customers, not just staff their projects.</p>
+          <div class="graphic-plate graphic-plate--crop" data-el="image">
+            <svg class="circle-graphic" viewBox="-1 -1 442 261" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decorative grid of circles">
+              <!-- ряд точек 1 (y = 4) -->
+              <circle class="cg-fill"   cx="45"  cy="4"  r="4"/>
+              <circle class="cg-fill"   cx="115" cy="4"  r="4"/>
+              <circle class="cg-fill-a" cx="185" cy="4"  r="4"/>
+              <circle class="cg-fill-a" cx="255" cy="4"  r="4"/>
+              <circle class="cg-fill"   cx="325" cy="4"  r="4"/>
+              <circle class="cg-fill-a" cx="395" cy="4"  r="4"/>
+              <!-- ряд 2 (y = 74): точки по краям, круги в середине -->
+              <circle class="cg-fill-a" cx="45"  cy="74" r="4"/>
+              <circle class="cg-fill"   cx="115" cy="74" r="4"/>
+              <circle class="cg-line-a" cx="185" cy="74" r="44.5"/>
+              <circle class="cg-fill"   cx="255" cy="74" r="45"/>
+              <circle class="cg-fill-a" cx="325" cy="74" r="4"/>
+              <circle class="cg-fill"   cx="395" cy="74" r="4"/>
+              <!-- ряд 3 (y = 144) -->
+              <circle class="cg-fill-a" cx="115" cy="144" r="45"/>
+              <circle class="cg-line"   cx="185" cy="144" r="44.5"/>
+              <circle class="cg-line-a" cx="255" cy="144" r="44.5"/>
+              <circle class="cg-line"   cx="325" cy="144" r="44.5"/>
+              <circle class="cg-fill"   cx="395" cy="144" r="45"/>
+              <!-- ряд 4 (y = 214) -->
+              <circle class="cg-line"   cx="45"  cy="214" r="44.5"/>
+              <circle class="cg-fill"   cx="115" cy="214" r="45"/>
+              <circle class="cg-line"   cx="185" cy="214" r="44.5"/>
+              <circle class="cg-line-a" cx="255" cy="214" r="44.5"/>
+              <circle class="cg-line"   cx="325" cy="214" r="44.5"/>
+              <circle class="cg-line-a" cx="395" cy="214" r="44.5"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="why-row__stats" data-el="container">
+          <div class="stat-grid" data-el="container">
+            <div class="stat" data-el="container">
+              <div class="t-stat" data-el="heading">14</div>
+              <p class="t-lead" data-el="text">Years — proven track record delivering technology projects</p>
+            </div>
+            <div class="stat stat--accent" data-el="container">
+              <div class="t-stat" data-el="heading">300+</div>
+              <p class="t-lead" data-el="text">Projects completed across Salesforce, staff augmentation and product development</p>
+            </div>
+            <div class="stat" data-el="container">
+              <div class="t-stat" data-el="heading">30 min</div>
+              <p class="t-lead" data-el="text">Average answer time — fast, direct access to senior people</p>
+            </div>
+            <div class="stat" data-el="container">
+              <div class="t-stat" data-el="heading">2–6 wks</div>
+              <p class="t-lead" data-el="text">To create or extend a dedicated development team</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 7 · NORWAY + INDIA — 83:636 ══════════════════════════════ -->
+  <section class="section s-geo section--dark on-dark" data-el="container" data-name="norway-india">
+    <div class="section__inner" data-el="container">
+
+      <div class="dark-split" data-el="container">
+        <div class="dark-split__text" data-el="container">
+          <h2 class="t-h1 t-h1--normal" data-el="heading">Norway + India — a Nordic customer interface with international delivery capacity</h2>
+          <p class="t-lead dark-split__lead" data-el="text">A Norwegian customer interface combined with international delivery capabilities out of India, giving customers senior local contact and scalable execution capacity.</p>
+        </div>
+        <div class="dark-split__graphic" data-el="image">
+          <img src="../assets/norway-graphic.svg" width="432" height="384" alt="" role="presentation">
+        </div>
+      </div>
+
+      <div class="address-grid" data-el="container">
+        <div class="address address--active" data-el="container">
+          <h3 class="t-h3" data-el="heading">Asker, Norway</h3>
+          <p class="t-body" data-el="text">Lensmannslia 4, N-1386 Asker</p>
+        </div>
+        <div class="address" data-el="container">
+          <h3 class="t-h3" data-el="heading">Pune, India</h3>
+          <p class="t-body" data-el="text">4th Floor, Ascent Avenue, Vitthal Nagar, Amanora Park Town, Hadapsar, Pune 411028</p>
+        </div>
+        <div class="address" data-el="container">
+          <h3 class="t-h3" data-el="heading">Mohali, India</h3>
+          <p class="t-body" data-el="text">C 86 Phase 7 Industrial Area, Sahibzada Ajit Singh Nagar, Punjab 160055</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 8 · CLIENTS / CASES / PARTNERSHIPS — 83:663 ══════════════ -->
+  <section class="section s-clients" data-el="container" data-name="clients">
+    <div class="section__inner" data-el="container">
+
+      <!-- 8a · лейбл + лид + лого-строка (83:664) -->
+      <div class="clients-head" data-el="container">
+        <div class="section-head" data-el="container">
+          <div class="t-overline section-head__label" data-el="text">Clients</div>
+          <h2 class="t-h1 section-head__lead" data-el="heading">We are working with the best. Our dedication to working with industry leaders reflects our pursuit of innovation and quality.</h2>
+        </div>
+
+        <!-- Лого-строка шире контента и подрезается краями страницы (83:669) -->
+        <div class="logo-strip" data-el="container">
+          <div class="logo-strip__row" data-el="container">
+            <span class="logo-strip__item"><img src="../assets/client-oneflow.webp" width="768" height="169" alt="Oneflow"></span>
+            <span class="logo-strip__item logo-strip__item--tall"><img src="../assets/client-flame.webp" width="608" height="231" alt="FLAME University"></span>
+            <span class="logo-strip__item"><img src="../assets/client-plantasjen.webp" width="1024" height="173" alt="Plantasjen"></span>
+            <span class="logo-strip__item"><img src="../assets/client-aspire.webp" width="276" height="73" alt="Aspire Digital Solutions"></span>
+            <span class="logo-strip__item"><img src="../assets/client-glynde.webp" width="300" height="92" alt="Glynde Mitre 10"></span>
+            <span class="logo-strip__item"><img src="../assets/client-sams.webp" width="296" height="86" alt="Sam's of Gedney Way"></span>
+            <span class="logo-strip__item logo-strip__item--tall"><img src="../assets/client-techila.webp" width="625" height="179" alt="Techila Global Services"></span>
+            <span class="logo-strip__item"><img src="../assets/client-loandepot.webp" width="550" height="110" alt="loanDepot"></span>
+          </div>
+          <div class="logo-strip__fade logo-strip__fade--left" aria-hidden="true"></div>
+          <div class="logo-strip__fade logo-strip__fade--right" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <hr class="divider" data-el="divider">
+
+      <!-- 8b · выбранные кейсы (83:681) -->
+      <div class="case-row" data-el="container">
+        <div class="t-overline case-row__label" data-el="text">Selected cases</div>
+
+        <div class="case-list" role="tablist" aria-label="Selected cases"
+             aria-orientation="vertical" data-el="container">
+          <button class="case-list__item case-list__item--active" type="button" role="tab" id="case-tab-1"
+                  aria-controls="case-panel-1" aria-selected="true" tabindex="0" data-el="container">
+            <span class="t-h2 case-list__num" data-el="text">1</span>
+            <span class="t-h2 case-list__title" data-el="text">HDFC Bank</span>
+          </button>
+          <button class="case-list__item" type="button" role="tab" id="case-tab-2"
+                  aria-controls="case-panel-2" aria-selected="false" tabindex="-1" data-el="container">
+            <span class="t-h2 case-list__num" data-el="text">2</span>
+            <span class="t-h2 case-list__title" data-el="text">Star Autoco</span>
+          </button>
+          <button class="case-list__item" type="button" role="tab" id="case-tab-3"
+                  aria-controls="case-panel-3" aria-selected="false" tabindex="-1" data-el="container">
+            <span class="t-h2 case-list__num" data-el="text">3</span>
+            <span class="t-h2 case-list__title" data-el="text">Unified Finance CRM</span>
+          </button>
+        </div>
+
+        <div class="case-panels" data-el="container">
+
+        <div class="case-panel" id="case-panel-1" role="tabpanel"
+             aria-labelledby="case-tab-1" data-el="container">
+
+          <article class="case-card" data-el="container">
+            <div class="case-card__media" data-el="container">
+            <img class="case-card__mark" src="../assets/case-hdfc-mark.webp" width="192" height="192" alt="HDFC Bank">
+            </div>
+            <div class="case-card__body" data-el="container">
+              <h3 class="t-h3" data-el="heading">HDFC Bank: India's Largest Private Bank</h3>
+              <p class="t-body" data-el="text">Headquartered in Mumbai — one of India's largest private-sector banks.</p>
+            </div>
+          </article>
+
+          <div class="meta-list" data-el="container">
+            <div class="meta-list__item" data-el="container">
+              <p class="t-body" data-el="text">Industry</p>
+              <p class="t-h3" data-el="text">Banking &amp; Finance</p>
+            </div>
+            <hr class="divider" data-el="divider">
+            <div class="meta-list__item" data-el="container">
+              <p class="t-body" data-el="text">Service</p>
+              <p class="t-h3" data-el="text">Salesforce Service Cloud</p>
+            </div>
+            <hr class="divider" data-el="divider">
+            <div class="meta-list__item" data-el="container">
+              <p class="t-body" data-el="text">Region</p>
+              <p class="t-h3" data-el="text">India</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="case-panel case-panel--off" id="case-panel-2" role="tabpanel"
+             aria-labelledby="case-tab-2" data-el="container">
+
+          <article class="case-card" data-el="container">
+            <div class="case-card__media" data-el="container">
+            </div>
+            <div class="case-card__body" data-el="container">
+              <h3 class="t-h3" data-el="heading">Star Autoco: Driving Excellence in Oslo</h3>
+              <p class="t-body" data-el="text">A trusted destination for premium used cars in Oslo, Norway.</p>
+            </div>
+          </article>
+
+          <div class="meta-list" data-el="container">
+            <div class="meta-list__item" data-el="container">
+              <p class="t-body" data-el="text">Industry</p>
+              <p class="t-h3" data-el="text">Automotive</p>
+            </div>
+            <hr class="divider" data-el="divider">
+            <div class="meta-list__item" data-el="container">
+              <p class="t-body" data-el="text">Service</p>
+              <p class="t-h3" data-el="text">Sales Cloud &amp; FinancialForce</p>
+            </div>
+            <hr class="divider" data-el="divider">
+            <div class="meta-list__item" data-el="container">
+              <p class="t-body" data-el="text">Region</p>
+              <p class="t-h3" data-el="text">Norway</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="case-panel case-panel--off" id="case-panel-3" role="tabpanel"
+             aria-labelledby="case-tab-3" data-el="container">
+
+          <article class="case-card" data-el="container">
+            <div class="case-card__media" data-el="container">
+            </div>
+            <div class="case-card__body" data-el="container">
+              <h3 class="t-h3" data-el="heading">Unified Finance CRM</h3>
+              <p class="t-body" data-el="text">A lending group grown through acquisitions, unified on one CRM.</p>
+            </div>
+          </article>
+
+          <div class="meta-list" data-el="container">
+            <div class="meta-list__item" data-el="container">
+              <p class="t-body" data-el="text">Industry</p>
+              <p class="t-h3" data-el="text">Finance &amp; Lending</p>
+            </div>
+            <hr class="divider" data-el="divider">
+            <div class="meta-list__item" data-el="container">
+              <p class="t-body" data-el="text">Service</p>
+              <p class="t-h3" data-el="text">Sales Cloud with integrations</p>
+            </div>
+            <hr class="divider" data-el="divider">
+            <div class="meta-list__item" data-el="container">
+              <p class="t-body" data-el="text">Region</p>
+              <p class="t-h3" data-el="text">USA</p>
+            </div>
+          </div>
+
+        </div>
+        </div>
+
+      </div>
+
+      <!-- 8c · платформенные партнёрства (83:711) -->
+      <div class="partner-row" data-el="container">
+        <div class="t-overline partner-row__label" data-el="text">Platform partnerships</div>
+        <div class="partner-grid" data-el="container">
+          <div class="partner-grid__cell" data-el="image"><img src="../assets/logos/salesforce.svg" width="74" height="52" alt="Salesforce"></div>
+          <div class="partner-grid__cell" data-el="image"><img src="../assets/logos/google-cloud.svg" width="64" height="52" alt="Google Cloud"></div>
+          <div class="partner-grid__cell" data-el="image"><img src="../assets/logos/microsoft.svg" width="52" height="52" alt="Microsoft"></div>
+          <div class="partner-grid__cell" data-el="image"><img src="../assets/logos/hubspot.svg" width="52" height="52" alt="HubSpot"></div>
+          <div class="partner-grid__cell" data-el="image"><img src="../assets/logos/aws.svg" width="87" height="52" alt="Amazon Web Services"></div>
+          <div class="partner-grid__cell" data-el="image"><img src="../assets/partner-appero.webp" width="104" height="104" alt="Appero"></div>
+        </div>
+      </div>
+
+      <hr class="divider" data-el="divider">
+
+    </div>
+  </section>
+
+  <!-- ══ 9 · INSIGHTS — 83:755 ════════════════════════════════════ -->
+  <section class="section s-insights" data-el="container" data-name="insights">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Insights</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Latest news, thinking and updates from Red Orange Technologies</h2>
+      </div>
+
+      <div class="post-grid" data-el="container">
+        <a class="post-card" href="#" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <div class="t-overline" data-el="text">Jul 6, 2025</div>
+            <h3 class="t-h3" data-el="heading">Blog post title</h3>
+            <p class="t-body" data-el="text">Lorem ipsum dolor sit amet consectetur. Sagittis pellentesque condimentum sed arcu non.</p>
+          </div>
+          <div class="post-card__media" data-el="image"></div>
+        </a>
+        <a class="post-card" href="#" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <div class="t-overline" data-el="text">Jul 6, 2025</div>
+            <h3 class="t-h3" data-el="heading">Blog post title</h3>
+            <p class="t-body" data-el="text">Lorem ipsum dolor sit amet consectetur. Sagittis pellentesque condimentum sed arcu non.</p>
+          </div>
+          <div class="post-card__media" data-el="image"></div>
+        </a>
+        <a class="post-card" href="#" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <div class="t-overline" data-el="text">Jul 6, 2025</div>
+            <h3 class="t-h3" data-el="heading">Blog post title</h3>
+            <p class="t-body" data-el="text">Lorem ipsum dolor sit amet consectetur. Sagittis pellentesque condimentum sed arcu non.</p>
+          </div>
+          <div class="post-card__media" data-el="image"></div>
+        </a>
+        <a class="post-card" href="#" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <div class="t-overline" data-el="text">Jul 6, 2025</div>
+            <h3 class="t-h3" data-el="heading">Blog post title</h3>
+            <p class="t-body" data-el="text">Lorem ipsum dolor sit amet consectetur. Sagittis pellentesque condimentum sed arcu non.</p>
+          </div>
+          <div class="post-card__media" data-el="image"></div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ══ 10 · FOOTER — 152:131 → Theme Builder → Footer ═════════════ -->
+<footer class="site-footer" id="contact" data-el="container" data-name="footer">
+  <div class="site-footer__photo" aria-hidden="true"></div>
+  <div class="site-footer__wash" aria-hidden="true"></div>
+  <div class="site-footer__glow" aria-hidden="true"></div>
+
+  <div class="site-footer__inner" data-el="container">
+
+    <div class="footer-top" data-el="container">
+
+      <div class="footer-contact" data-el="container">
+        <div class="t-overline footer-contact__label" data-el="text">Get in touch</div>
+        <h2 class="t-h1 t-h1--normal" data-el="heading">Collaborate with us for complete IT solutions</h2>
+        <p class="t-lead footer-contact__lead" data-el="text">We're happy to answer any questions and help determine which of our services best fit your needs.</p>
+
+        <div class="check-list" data-el="container">
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Client-oriented</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Independent</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Competent</span>
+            </div>
+          </div>
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Results-driven</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Problem-solving</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Transparent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-form" data-el="container">
+        <h2 class="t-h2 footer-form__title" data-el="heading">Let us talk about your next solution</h2>
+        <form class="form" data-el="form" action="#" method="post">
+          <div class="form__row" data-el="container">
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-first" data-el="text">First name</label>
+              <input class="field__control" id="f-first" name="first-name" type="text" autocomplete="given-name">
+            </div>
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-last" data-el="text">Last name</label>
+              <input class="field__control" id="f-last" name="last-name" type="text" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-email" data-el="text">Email</label>
+            <input class="field__control" id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-company" data-el="text">Company</label>
+            <input class="field__control" id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field field--last" data-el="container">
+            <label class="t-body" for="f-message" data-el="text">Message</label>
+            <textarea class="field__control" id="f-message" name="message" rows="5"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit" data-el="button">Send message</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-nav" data-el="container">
+      <div class="footer-nav__cols" data-el="container">
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Solutions</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#">Staff Augmentation</a>
+            <a class="footer-nav__link" href="#">Salesforce Services</a>
+            <a class="footer-nav__link" href="appero.html">Appero</a>
+            <a class="footer-nav__link" href="#">AI &amp; Product Development</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Products</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#">NOVA for Salesforce</a>
+            <a class="footer-nav__link" href="#">WorkHub</a>
+            <a class="footer-nav__link" href="#">NOVAlab</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Company</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#">About us</a>
+            <a class="footer-nav__link" href="#">Why us</a>
+            <a class="footer-nav__link" href="#">Team</a>
+            <a class="footer-nav__link" href="#">Case studies</a>
+            <a class="footer-nav__link" href="#">Blog</a>
+            <a class="footer-nav__link" href="#">Careers</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Contact</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#">Asker, Norway</a>
+            <a class="footer-nav__link" href="#">Pune, India</a>
+            <a class="footer-nav__link" href="#">Mohali, India</a>
+            <a class="footer-nav__link" href="mailto:contact@redorangetechnologies.com">contact@redorangetechnologies.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider divider--ondark-soft" data-el="divider">
+
+      <div class="footer-bottom" data-el="container">
+        <span class="footer-bottom__copy" data-el="text">© 2026 Red Orange Technologies</span>
+        <a href="/terms/" data-el="text">Terms &amp; Conditions</a>
+        <a href="/privacy/" data-el="text">Privacy Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

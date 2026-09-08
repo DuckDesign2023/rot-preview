@@ -1,0 +1,222 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — Staff Augmentation (/solutions/staff-augmentation)
+
+   Макета в Figma НЕТ. Страница собрана из библиотеки блоков по
+   контенту клиента (`_client/Content_Staff_Augmentation.docx`,
+   12 секций) и порядку секций из его референса
+   (`_client/Final_Design_1.pdf`). Референс — только структура:
+   визуальный язык остаётся язык утверждённого макета
+   (главная 83:474 и Appero 152:1821).
+
+   Ритм тот же, что на Appero: у секции padding-bottom 120, а
+   padding-top 140 — это 120 плюс зазор 20 между фреймами макета.
+   Перед тонированной секцией зазор уходит в padding-bottom
+   предыдущей, иначе белая полоса окрасилась бы её фоном.
+   ══════════════════════════════════════════════════════════════ */
+
+.s-hero       { padding-top:  84px; padding-bottom:  40px; }
+.s-intro      { padding-top: 140px; padding-bottom: 120px; }
+.s-why        { padding-top: 140px; padding-bottom: 120px; }
+.s-solutions  { padding-top: 140px; padding-bottom: 120px; }
+.s-clients    { padding-top: 140px; padding-bottom: 120px; }
+.s-roles      { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тонированной секцией отзывов */
+.s-quotes     { padding-top: 140px; padding-bottom: 140px; background: var(--bg-warm); }
+.s-expertise  { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тонированной полосой */
+.s-partner    { padding: 0; }                                /* полоса 720/720 во всю ширину */
+.s-delivery   { padding-top: 100px; padding-bottom: 100px; }
+.s-pricing    { padding-top: 140px; padding-bottom: 140px; } /* +20 перед футером */
+
+/* ── 2 · Intro ─────────────────────────────────────────────────
+   Колонка 432 с фотографией руководителей и списком имён, текст
+   занимает остаток. Та же пара «aside 432 + тело», что в секции
+   Fit check на Appero — раскладка переиспользуется, а не заводится
+   заново. */
+
+.intro-row {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-start;
+}
+
+.intro-row__aside {
+  flex: 0 1 432px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.intro-row__text {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Кадр групповой съёмки — 3:2. aspect-ratio, а не height: снимок
+   клиента заменяем без правки CSS, а сетка не прыгает. */
+.intro-photo { width: 100%; }
+
+.intro-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+/* ── 4 · Solutions we deliver ──────────────────────────────────
+   Две равные половины: слева лид и чек-лист, справа фотография
+   команды. Половины растянуты по высоте — фото добирает высоту
+   списка, а не задаёт её. */
+
+.solutions-row {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: stretch;
+}
+
+.solutions-row__text {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.solutions-row__media { flex: 1 1 0; min-width: 0; }
+
+.solutions-row__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+}
+
+/* ── 5 · Клиенты ───────────────────────────────────────────────
+   Лого-строка (блок 7a) выходит за поля секции, поэтому она лежит
+   вне .section__inner, а заголовок — внутри. Отбивка между ними
+   равна зазору section-head и тела секции. */
+
+.s-clients .logo-strip { margin-top: var(--space-xl); }
+
+/* ── 6 · Роли ──────────────────────────────────────────────────
+   Лид ограничен по длине строки: на всю рабочую ширину 1360 строка
+   уходит за 100 знаков и распадается при чтении. */
+
+.s-roles__lead { max-width: 60ch; margin-bottom: var(--space-lg); }
+
+/* ── 10 · 3-step delivery model ────────────────────────────────
+   Аккордеон шагов и плитка с фотографией — та же пара, что в
+   «How it works» на Appero. Фото подрезается плиткой: кадр
+   горизонтальный, а колонка почти квадратная. */
+
+.s-delivery__lead { max-width: 75ch; margin-bottom: var(--space-lg); }
+
+.delivery-row {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: stretch;
+}
+
+.delivery-row > .process { flex: 1 1 0; min-width: 0; }
+
+.delivery-row__media { flex: 1 1 0; min-width: 0; overflow: hidden; }
+
+.delivery-row__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+}
+
+/* ── 11 · Прайс-модель ─────────────────────────────────────────
+   Слева условия и ссылка на статью, справа три уровня опыта.
+   Колонка условий уже: в ней короткие абзацы и теги, а уровни —
+   смысловой центр секции. */
+
+.pricing-row {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-start;
+}
+
+.pricing-row__aside {
+  flex: 0 1 432px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.pricing-row > .tier-list { flex: 1 1 0; min-width: 0; }
+
+/* Сноска о том, что цены плавают — самая мелкая ступень текста
+   на странице, но не приглушённая до нечитаемости */
+.pricing-note { color: var(--text-body); }
+
+/* ══ ПЛАНШЕТ ≤ 1024 ════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+
+  .s-hero      { padding-top: 56px; padding-bottom: 32px; }
+  .s-intro,
+  .s-why,
+  .s-solutions,
+  .s-clients,
+  .s-roles,
+  .s-quotes,
+  .s-expertise { padding-top: 116px; padding-bottom: 96px; }
+  .s-expertise { padding-bottom: 116px; }
+  .s-delivery  { padding-block: 80px; }
+  .s-pricing   { padding-top: 116px; padding-bottom: 116px; }
+
+  .intro-row,
+  .solutions-row,
+  .delivery-row,
+  .pricing-row { flex-direction: column; align-items: stretch; }
+
+  .intro-row__aside,
+  .pricing-row__aside { flex: 1 1 auto; width: 100%; }
+
+  /* В колонке flex-basis 0 схлопывает плитку в ноль: у контейнера
+     высота auto, growth не работает, а overflow: hidden обнуляет
+     и min-content. Возвращаем базис по содержимому. */
+  .solutions-row__media,
+  .delivery-row__media { flex: 1 1 auto; }
+
+  /* В колонку фотография рядом с текстом уже не встаёт — кадр
+     становится широкой полосой, чтобы не занимать целый экран */
+  .intro-photo img { aspect-ratio: 2 / 1; }
+
+  .solutions-row__media img,
+  .delivery-row__media img { min-height: 280px; aspect-ratio: 2 / 1; height: auto; }
+
+  .s-clients .logo-strip { margin-top: var(--space-lg); }
+}
+
+/* ══ МОБИЛЬНЫЙ ≤ 767 ═══════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  .s-hero      { padding-top: 40px; padding-bottom: 24px; }
+  .s-intro,
+  .s-why,
+  .s-solutions,
+  .s-clients,
+  .s-roles,
+  .s-quotes,
+  .s-expertise { padding-top: 92px; padding-bottom: 72px; }
+  .s-expertise { padding-bottom: 92px; }
+  .s-delivery  { padding-block: 64px; }
+  .s-pricing   { padding-top: 92px; padding-bottom: 92px; }
+
+  .intro-photo img { aspect-ratio: 3 / 2; }
+
+  .solutions-row__media img,
+  .delivery-row__media img { min-height: 220px; aspect-ratio: 3 / 2; }
+
+  .pricing-row__aside .btn { width: 100%; text-align: center; }
+}

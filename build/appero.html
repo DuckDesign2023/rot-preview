@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>appero quote | Salesforce CPQ Light | Red Orange Technologies</title>
+  <meta name="description" content="Simplify quoting in Salesforce with appero quote. A native, lean and visual CPQ Light solution for pricing, product selection and professional quote generation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/appero.css">
+</head>
+<body>
+
+<!-- ══ HEADER — 152:1823 → Theme Builder → Header (общий с главной) ══ -->
+<header class="site-header" data-el="container" data-name="header">
+  <a class="site-header__logo" href="index.html" data-el="image" aria-label="Red Orange Technologies — home">
+    <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
+  </a>
+  <!-- Панель меню: внутри только виджет Nav Menu (пункты берутся из меню
+       WordPress) и отдельный блок с языком и CTA — ссылки правятся
+       в «Внешний вид → Меню», не трогая Elementor -->
+  <div class="site-menu" id="site-menu" data-el="container">
+    <nav class="site-nav" data-el="nav-menu" aria-label="Main">
+      <a class="t-nav site-nav__link" href="#">Staff Augmentation</a>
+      <a class="t-nav site-nav__link" href="appero.html" aria-current="page">Appero</a>
+      <a class="t-nav site-nav__link" href="#">Salesforce</a>
+      <a class="t-nav site-nav__link" href="#">AI &amp; Product Development</a>
+      <a class="t-nav site-nav__link" href="#">Products</a>
+      <a class="t-nav site-nav__link" href="#">Company</a>
+    </nav>
+
+    <div class="site-menu__cta" data-el="container">
+      <a class="t-nav site-menu__lang" href="#" data-el="text">EN</a>
+      <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    </div>
+  </div>
+  <div class="site-header__actions" data-el="container">
+      <a class="t-nav site-nav__link" href="#" data-el="text">EN</a>
+    <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    <button class="site-header__burger" type="button" data-el="button"
+            aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <svg class="burger-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect class="burger-icon__bar burger-icon__bar--top" x="0" y="5"  width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--mid" x="0" y="11" width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--bot" x="0" y="17" width="24" height="2"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- затемнение под мобильным меню: сосед хедера, иначе
+     оказывается внутри его stacking context и накрывает логотип -->
+<div class="site-menu-backdrop" hidden></div>
+
+<main>
+
+  <!-- ══ 1 · HERO — 152:1837 ══════════════════════════════════════ -->
+  <section class="section s-hero" data-el="container" data-name="hero">
+    <div class="section__inner" data-el="container">
+      <div class="hero-split" data-el="container">
+        <div class="hero-split__content" data-el="container">
+          <div class="hero-split__stack" data-el="container">
+            <span class="badge" data-el="text">Native. Lean. Visual.</span>
+            <div class="hero-split__body" data-el="container">
+              <h1 class="t-display" data-el="heading">A smarter way to quote in Salesforce</h1>
+              <p class="t-lead hero-split__lead" data-el="text">Red Orange Technologies and Appero have partnered to help Salesforce customers in the Nordics and India create accurate, professional proposals directly in Salesforce — without the complexity of traditional CPQ.</p>
+              <div class="hero__actions" data-el="container">
+                <a class="btn btn--primary" href="#contact" data-el="button">Book a CPQ FIT Assessment</a>
+                <a class="btn btn--outline" href="#contact" data-el="button">Request a demo</a>
+              </div>
+            </div>
+          </div>
+          <hr class="divider divider--soft">
+          <p class="hero-split__note" data-el="text">Already using Salesforce Sales Cloud?<br>You may be closer to better quoting than you think.</p>
+        </div>
+        <div class="hero-split__visual" data-el="image">
+          <img src="../assets/appero-hero-mockup.webp" width="1316" height="1412"
+               alt="appero quote Editor open in Salesforce on a desktop monitor">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2 · PROBLEM — 152:1936 ═══════════════════════════════════ -->
+  <section class="section s-problem" data-el="container" data-name="problem">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Still building quotes in Word or Excel?</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Your sales process is in Salesforce. Why is your quoting process somewhere else?</h2>
+      </div>
+
+      <div class="problem-row" data-el="container">
+
+        <div class="icon-list" data-el="container">
+          <div class="icon-list__row" data-el="container">
+            <span class="icon-list__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M6 18H4q-.425 0-.712-.288T3 17t.288-.712T4 16h3q.425 0 .713.288T8 17v3q0 .425-.288.713T7 21t-.712-.288T6 20zm12 0v2q0 .425-.288.713T17 21t-.712-.288T16 20v-3q0-.425.288-.712T17 16h3q.425 0 .713.288T21 17t-.288.713T20 18zM6 6V4q0-.425.288-.712T7 3t.713.288T8 4v3q0 .425-.288.713T7 8H4q-.425 0-.712-.288T3 7t.288-.712T4 6zm12 0h2q.425 0 .713.288T21 7t-.288.713T20 8h-3q-.425 0-.712-.288T16 7V4q0-.425.288-.712T17 3t.713.288T18 4z"/></svg></span>
+            <p class="t-body icon-list__text" data-el="text">Many organisations run their sales process in Salesforce but leave the CRM when it is time to create the actual customer proposal.</p>
+          </div>
+          <div class="icon-list__row" data-el="container">
+            <span class="icon-list__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m.5 13.5l13-13m-4 0h4v4M9 9l4.5 4.5m-4 0h4v-4M5 5L.5.5"/></svg></span>
+            <p class="t-body icon-list__text" data-el="text">Pricing is calculated in spreadsheets. Quotes are assembled in Word. Discounts are checked manually. Documents are copied, edited and sent between colleagues.</p>
+          </div>
+          <div class="icon-list__row" data-el="container">
+            <span class="icon-list__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M9.01 14H2v2h7.01v3L13 15l-3.99-4zm5.98-1v-3H22V8h-7.01V5L11 9z"/></svg></span>
+            <p class="t-body icon-list__text" data-el="text">Every additional manual step creates friction between opportunity and quote.</p>
+          </div>
+        </div>
+
+        <div class="statement" data-el="container">
+          <span class="statement__mark" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M9.33301 15V5C9.33301 4.73478 9.22758 4.48051 9.04004 4.29297C8.8525 4.10543 8.59822 4 8.33301 4H5.33301C5.06779 4 4.81351 4.10543 4.62598 4.29297C4.43844 4.4805 4.33301 4.73478 4.33301 5V11C4.33301 11.2652 4.43844 11.5195 4.62598 11.707C4.79012 11.8712 5.00538 11.9724 5.23438 11.9951L5.53027 12.0098C5.98827 12.0551 6.41878 12.2577 6.74707 12.5859C7.12214 12.961 7.33301 13.4696 7.33301 14V15C7.33301 15.7956 7.01671 16.5585 6.4541 17.1211C5.89149 17.6837 5.12866 18 4.33301 18V20C5.65909 20 6.93048 19.4728 7.86816 18.5352C8.80585 17.5975 9.33301 16.3261 9.33301 15ZM20.333 15V5C20.333 4.73478 20.2276 4.48051 20.04 4.29297C19.8525 4.10543 19.5982 4 19.333 4H16.333C16.0678 4 15.8135 4.10543 15.626 4.29297C15.4384 4.48051 15.333 4.73478 15.333 5V11C15.333 11.2652 15.4384 11.5195 15.626 11.707C15.7901 11.8712 16.0054 11.9724 16.2344 11.9951L16.5303 12.0098C16.9883 12.0551 17.4188 12.2577 17.7471 12.5859C18.1221 12.961 18.333 13.4696 18.333 14V15C18.333 15.7957 18.0167 16.5585 17.4541 17.1211C16.8915 17.6837 16.1287 18 15.333 18V20C16.6591 20 17.9305 19.4728 18.8682 18.5352C19.8058 17.5975 20.333 16.3261 20.333 15ZM11.333 15C11.333 16.8565 10.596 18.6374 9.2832 19.9502C7.97045 21.2629 6.18952 22 4.33301 22C3.80258 22 3.29402 21.7891 2.91895 21.4141C2.54387 21.039 2.33301 20.5304 2.33301 20V18C2.33301 17.4696 2.54387 16.961 2.91895 16.5859C3.24723 16.2577 3.67774 16.0551 4.13574 16.0098L4.43164 15.9951C4.66064 15.9724 4.8759 15.8712 5.04004 15.707C5.22758 15.5195 5.33301 15.2652 5.33301 15V14C4.53736 14 3.77452 13.6837 3.21191 13.1211C2.6493 12.5585 2.33301 11.7956 2.33301 11V5C2.33301 4.20435 2.6493 3.44152 3.21191 2.87891C3.77452 2.3163 4.53736 2 5.33301 2H8.33301C9.12866 2 9.89149 2.3163 10.4541 2.87891C11.0167 3.44152 11.333 4.20435 11.333 5V15ZM22.333 15C22.333 16.8565 21.596 18.6374 20.2832 19.9502C18.9704 21.2629 17.1895 22 15.333 22C14.8026 22 14.294 21.7891 13.9189 21.4141C13.5439 21.039 13.333 20.5304 13.333 20V18C13.333 17.4696 13.5439 16.961 13.9189 16.5859C14.2472 16.2577 14.6777 16.0551 15.1357 16.0098L15.4316 15.9951C15.6606 15.9724 15.8759 15.8712 16.04 15.707C16.2276 15.5195 16.333 15.2652 16.333 15V14C15.5374 14 14.7745 13.6837 14.2119 13.1211C13.6493 12.5585 13.333 11.7957 13.333 11V5C13.333 4.20435 13.6493 3.44152 14.2119 2.87891C14.7745 2.3163 15.5374 2 16.333 2H19.333C20.1287 2 20.8915 2.3163 21.4541 2.87891C22.0167 3.44152 22.333 4.20435 22.333 5V15Z"/></svg></span>
+          <div class="statement__body" data-el="container">
+            <h3 class="t-h3 statement__title" data-el="heading">Keep the entire quoting process where your sales process already lives: Salesforce.</h3>
+            <hr class="statement__rule">
+            <p class="t-body statement__note" data-el="text">Eliminate the friction. Automate the flow. Close deals faster.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 3 · MEET APPERO QUOTE — 190:806 ══════════════════════════ -->
+  <section class="section s-meet" data-el="container" data-name="meet-appero">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Meet appero quote</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">CPQ Light, built natively for Salesforce</h2>
+      </div>
+
+      <div class="card-grid" data-el="container">
+
+        <div class="card" data-el="container">
+          <p class="t-body card-grid__text" data-el="text">appero quote focuses on what most Salesforce teams actually need: pricing and professional quote generation inside Sales Cloud — without a full CPQ overhaul. It combines product selection, pricing, discounts, and document generation natively in Salesforce, avoiding the need for a separate CPQ platform.</p>
+          <div class="card__visual graphic-plate graphic-plate--offset" data-el="image">
+            <svg class="circle-graphic" viewBox="-1 -1 442 261" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decorative grid of circles">
+            <!-- ряд точек 1 (y = 4) -->
+            <circle class="cg-fill"   cx="45"  cy="4"  r="4"/>
+            <circle class="cg-fill"   cx="115" cy="4"  r="4"/>
+            <circle class="cg-fill-a" cx="185" cy="4"  r="4"/>
+            <circle class="cg-fill-a" cx="255" cy="4"  r="4"/>
+            <circle class="cg-fill"   cx="325" cy="4"  r="4"/>
+            <circle class="cg-fill-a" cx="395" cy="4"  r="4"/>
+            <!-- ряд 2 (y = 74): точки по краям, круги в середине -->
+            <circle class="cg-fill-a" cx="45"  cy="74" r="4"/>
+            <circle class="cg-fill"   cx="115" cy="74" r="4"/>
+            <circle class="cg-line-a" cx="185" cy="74" r="44.5"/>
+            <circle class="cg-fill"   cx="255" cy="74" r="45"/>
+            <circle class="cg-fill-a" cx="325" cy="74" r="4"/>
+            <circle class="cg-fill"   cx="395" cy="74" r="4"/>
+            <!-- ряд 3 (y = 144) -->
+            <circle class="cg-fill-a" cx="115" cy="144" r="45"/>
+            <circle class="cg-line"   cx="185" cy="144" r="44.5"/>
+            <circle class="cg-line-a" cx="255" cy="144" r="44.5"/>
+            <circle class="cg-line"   cx="325" cy="144" r="44.5"/>
+            <circle class="cg-fill"   cx="395" cy="144" r="45"/>
+            <!-- ряд 4 (y = 214) -->
+            <circle class="cg-line"   cx="45"  cy="214" r="44.5"/>
+            <circle class="cg-fill"   cx="115" cy="214" r="45"/>
+            <circle class="cg-line"   cx="185" cy="214" r="44.5"/>
+            <circle class="cg-line-a" cx="255" cy="214" r="44.5"/>
+            <circle class="cg-line"   cx="325" cy="214" r="44.5"/>
+            <circle class="cg-line-a" cx="395" cy="214" r="44.5"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="card card--offset" data-el="container">
+          <div class="card__visual card__visual--art" data-el="image">
+            <img src="../assets/art-native.svg" width="241" height="131" alt="">
+          </div>
+          <div class="card__body" data-el="container">
+            <h3 class="t-h3" data-el="heading">Native</h3>
+            <p class="t-body" data-el="text">Built on Salesforce standards, keeping the core quoting process and quotation data inside the Salesforce environment.</p>
+          </div>
+        </div>
+
+        <div class="card" data-el="container">
+          <div class="card__visual card__visual--art" data-el="image">
+            <img src="../assets/art-lean.svg" width="104" height="110" alt="">
+          </div>
+          <div class="card__body" data-el="container">
+            <h3 class="t-h3" data-el="heading">Lean</h3>
+            <p class="t-body" data-el="text">Focused on pricing, quote generation and practical product configuration without unnecessary enterprise complexity.</p>
+          </div>
+        </div>
+
+        <div class="card card--offset" data-el="container">
+          <div class="card__visual card__visual--art" data-el="image">
+            <img src="../assets/art-visual.svg" width="243" height="196" alt="">
+          </div>
+          <div class="card__body" data-el="container">
+            <h3 class="t-h3" data-el="heading">Visual</h3>
+            <p class="t-body" data-el="text">Create and edit customer-facing proposals directly in the visual Lightning Editor.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 4 · HOW IT WORKS — 152:1983 ══════════════════════════════ -->
+  <section class="section section--dark s-how on-dark" data-el="container" data-name="how-it-works">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">How it works</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">From opportunity to professional quote</h2>
+      </div>
+
+      <div class="how-row" data-el="container">
+
+        <div class="process" data-el="container" data-name="process-steps">
+          <div class="process__item process__item--open" tabindex="0" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading">Start from the opportunity</h3>
+            <p class="t-body process__text" data-el="text">Move directly from a Salesforce Opportunity into the quoting process. Relevant recipients and quote templates can already be available from the opportunity.</p>
+          </div>
+          <div class="process__item" tabindex="0" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading">Select the right products</h3>
+            <p class="t-body process__text" data-el="text">Search products, select the right items and work with product information directly inside the quote.</p>
+          </div>
+          <div class="process__item" tabindex="0" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading">Apply the right pricing</h3>
+            <p class="t-body process__text" data-el="text">Automate pricing logic including discounts, tiered pricing, surcharges, deductions and price dependencies.</p>
+          </div>
+          <div class="process__item" tabindex="0" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading">Build the proposal visually</h3>
+            <p class="t-body process__text" data-el="text">Edit content while keeping the actual customer document in view. Use Salesforce data in the document and maintain control over layout and presentation.</p>
+          </div>
+          <div class="process__item" tabindex="0" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading">Generate and send</h3>
+            <p class="t-body process__text" data-el="text">Create a professional customer-facing proposal without rebuilding the document outside Salesforce.</p>
+          </div>
+        </div>
+
+        <div class="process-plate" data-el="container">
+          <img class="process-plate__shot process-plate__shot--on" src="../assets/appero-step-1-opportunity.webp"
+               width="1400" height="798" alt="Salesforce Opportunity with the appero quote actions in place">
+          <img class="process-plate__shot" src="../assets/appero-step-2-products.webp"
+               width="1400" height="752" alt="Product search inside the quote, filtering a large price book">
+          <img class="process-plate__shot" src="../assets/appero-step-3-pricing.webp"
+               width="1400" height="762" alt="Inline editing of list price, discount and end price on a quote line">
+          <img class="process-plate__shot" src="../assets/appero-step-4-editor.webp"
+               width="1400" height="729" alt="Quote Editor with the customer document in view while it is edited">
+          <img class="process-plate__shot" src="../assets/appero-step-5-send.webp"
+               width="1400" height="803" alt="Finished quote sent from Salesforce through Lightning Email">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 5 · BUSINESS BENEFITS — 152:2010 ═════════════════════════ -->
+  <section class="section s-benefits" data-el="container" data-name="benefits">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Business benefits</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Less administration. More selling. A better quoting process is not only about creating a PDF faster. It is about removing friction from the commercial process.</h2>
+      </div>
+
+      <div class="icon-grid" data-el="container">
+
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M10 3h8l-4 6h4L6 21l4-9H6z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Faster quote creation</h3>
+            <p class="t-body icon-card__text" data-el="text">Reduce repetitive manual work between opportunity and customer proposal.</p>
+          </div>
+        </div>
+
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M20 2.007h-7.087a2 2 0 0 0-1.414.586l-8.906 8.906a2 2 0 0 0 0 2.828l7.086 7.086a2 2 0 0 0 2.828 0l8.906-8.906c.376-.374.587-.883.587-1.413V4.007a2 2 0 0 0-2-2M17.007 9a2 2 0 1 1-.001-3.999A2 2 0 0 1 17.007 9"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">More consistent pricing</h3>
+            <p class="t-body icon-card__text" data-el="text">Apply defined pricing and discount logic instead of relying on individual spreadsheets.</p>
+          </div>
+        </div>
+
+        <div class="icon-card icon-card--accent" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16 8H8V6h8zm0 2H8v2h8zm4-6v12l-6 6H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2m-2 10V4H6v16h6v-4a2 2 0 0 1 2-2z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Professional proposals</h3>
+            <p class="t-body icon-card__text" data-el="text">Create visually consistent, company-branded customer documents directly from Salesforce.</p>
+          </div>
+        </div>
+
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M21 21H3v-2h18zM8 10H4v7h4zm6-7h-4v14h4zm6 3h-4v11h4z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Better sales data</h3>
+            <p class="t-body icon-card__text" data-el="text">Keep quotation information connected to the CRM and improve visibility into the pipeline.</p>
+          </div>
+        </div>
+
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M21 7h-2V3a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v2H3a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2h2a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2m-4 14H7v-8h2a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7V3h10v4h-2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2zm4-4h-6V9h6z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Easier administration</h3>
+            <p class="t-body icon-card__text" data-el="text">Maintain products and pricing through Salesforce-oriented configuration.</p>
+          </div>
+        </div>
+
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.5 13.4c0 1.2-.2 2.3-.7 3.4s-1.2 2-2.1 2.9c-.9.8-1.9 1.5-3.1 1.9c-.5.2-1.1.4-1.7.5l.3-.1s2.2-1.3 2.7-4.1c.2-2.5-1.9-3.6-1.9-3.6s-1.1 1.4-2.6 1.4c-2.4 0-2-4-2-4s-3.6 1.9-3.6 5.9c0 2.5 2.6 4.4 2.6 4.4c-.3-.1-.7-.2-1-.3c-1.2-.4-2.2-1.1-3.1-1.9S3.7 18 3.2 16.9s-.7-2.2-.7-3.4c0-3.9 4.6-7.7 4.6-7.7s.4 3 2.7 3c4.2 0 2.7-6.7 2.7-6.7s3.8 2.2 4.9 8.2c2.1-.3 1.9-3 1.9-3s2.2 2.9 2.2 6.1"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Faster time-to-value</h3>
+            <p class="t-body icon-card__text" data-el="text">Start with the quoting capabilities you actually need, not a large transformation programme.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider section-rule">
+    </div>
+  </section>
+
+  <!-- ══ 6 · CPQ LIGHT POSITIONING — 180:519 ══════════════════════ -->
+  <section class="section section--dark s-positioning on-dark" data-el="container" data-name="positioning">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">CPQ Light positioning</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Do you really need enterprise CPQ?</h2>
+      </div>
+
+      <div class="positioning-row" data-el="container">
+
+        <div class="positioning-col" data-el="container">
+          <div class="positioning-col__art" data-el="image">
+            <img src="../assets/art-semicircles-positioning.svg" width="212" height="169" alt="">
+          </div>
+          <div class="positioning-col__text" data-el="container">
+            <p class="t-lead" data-el="text">Not every organisation needs the same approach. Here's how the two paths compare.</p>
+            <p class="t-lead" data-el="text">The right CPQ solution is not the one with the most functionality. It is the one that fits the way you sell.</p>
+            <div data-el="container">
+              <a class="btn btn--primary" href="#contact" data-el="button">Find out if CPQ Light fits your business</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="compare" data-el="container" data-name="comparison-table">
+
+          <div class="compare__row compare__head" data-el="container">
+            <div class="compare__cell compare__cell--label" data-el="container"></div>
+            <div class="compare__cell" data-el="container">
+              <span class="t-lead" data-el="text">ENTERPRISE CPQ</span>
+            </div>
+            <div class="compare__cell compare__cell--b" data-el="container">
+              <span class="t-lead" data-el="text">CPQ LIGHT — APPERO QUOTE</span>
+            </div>
+          </div>
+          <hr class="compare__rule">
+
+          <div class="compare__row" data-el="container">
+            <div class="compare__cell compare__cell--label" data-el="container">
+              <span class="t-overline" data-el="text">Scope</span>
+            </div>
+            <div class="compare__cell" data-el="container">
+              <span class="t-overline compare__mobile-label" data-el="text">Enterprise CPQ</span>
+              <p class="t-body" data-el="text">Full quote-to-cash: configuration, billing, subscriptions, revenue recognition</p>
+            </div>
+            <div class="compare__cell compare__cell--b" data-el="container">
+              <span class="t-overline compare__mobile-label" data-el="text">CPQ Light — appero quote</span>
+              <p class="t-body" data-el="text">Pricing + professional quote generation, native to Salesforce</p>
+            </div>
+          </div>
+          <hr class="compare__rule">
+
+          <div class="compare__row" data-el="container">
+            <div class="compare__cell compare__cell--label" data-el="container">
+              <span class="t-overline" data-el="text">Best for</span>
+            </div>
+            <div class="compare__cell" data-el="container">
+              <span class="t-overline compare__mobile-label" data-el="text">Enterprise CPQ</span>
+              <p class="t-body" data-el="text">Complex, global monetisation and billing requirements</p>
+            </div>
+            <div class="compare__cell compare__cell--b" data-el="container">
+              <span class="t-overline compare__mobile-label" data-el="text">CPQ Light — appero quote</span>
+              <p class="t-body" data-el="text">Salesforce-first teams that need better pricing and quotes, fast</p>
+            </div>
+          </div>
+          <hr class="compare__rule">
+
+          <div class="compare__row" data-el="container">
+            <div class="compare__cell compare__cell--label" data-el="container">
+              <span class="t-overline" data-el="text">Complexity</span>
+            </div>
+            <div class="compare__cell" data-el="container">
+              <span class="t-overline compare__mobile-label" data-el="text">Enterprise CPQ</span>
+              <p class="t-body" data-el="text">High</p>
+            </div>
+            <div class="compare__cell compare__cell--b" data-el="container">
+              <span class="t-overline compare__mobile-label" data-el="text">CPQ Light — appero quote</span>
+              <p class="t-body" data-el="text">Focused and manageable</p>
+            </div>
+          </div>
+          <hr class="compare__rule">
+
+          <div class="compare__row" data-el="container">
+            <div class="compare__cell compare__cell--label" data-el="container">
+              <span class="t-overline" data-el="text">Time-to-value</span>
+            </div>
+            <div class="compare__cell" data-el="container">
+              <span class="t-overline compare__mobile-label" data-el="text">Enterprise CPQ</span>
+              <p class="t-body" data-el="text">Several months</p>
+            </div>
+            <div class="compare__cell compare__cell--b" data-el="container">
+              <span class="t-overline compare__mobile-label" data-el="text">CPQ Light — appero quote</span>
+              <p class="t-body" data-el="text">Live in weeks</p>
+            </div>
+          </div>
+          <hr class="compare__rule">
+
+          <div class="compare__row" data-el="container">
+            <div class="compare__cell compare__cell--label" data-el="container">
+              <span class="t-overline" data-el="text">Cost</span>
+            </div>
+            <div class="compare__cell" data-el="container">
+              <span class="t-overline compare__mobile-label" data-el="text">Enterprise CPQ</span>
+              <p class="t-body" data-el="text">Premium licensing + implementation</p>
+            </div>
+            <div class="compare__cell compare__cell--b" data-el="container">
+              <span class="t-overline compare__mobile-label" data-el="text">CPQ Light — appero quote</span>
+              <p class="t-body" data-el="text">Lower list price, lean setup</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 7 · FIT CHECK — 180:625 ══════════════════════════════════ -->
+  <section class="section s-fit" data-el="container" data-name="fit-check">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Fit check</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Is appero quote right for your business?</h2>
+      </div>
+
+      <div class="fit-row" data-el="container">
+
+        <div class="fit-row__aside" data-el="container">
+          <div class="profile-card" data-el="container">
+            <h3 class="t-h3 profile-card__title" data-el="heading">appero quote profile</h3>
+            <div class="profile-card__list" data-el="container">
+              <div class="profile-card__item" data-el="container">
+                <span class="profile-card__dot" aria-hidden="true"></span>
+                <span class="t-body" data-el="text">Salesforce Sales Cloud</span>
+              </div>
+              <div class="profile-card__item" data-el="container">
+                <span class="profile-card__dot" aria-hidden="true"></span>
+                <span class="t-body" data-el="text">B2B, growing sales team</span>
+              </div>
+              <div class="profile-card__item" data-el="container">
+                <span class="profile-card__dot" aria-hidden="true"></span>
+                <span class="t-body" data-el="text">Structured pricing</span>
+              </div>
+              <div class="profile-card__item" data-el="container">
+                <span class="profile-card__dot" aria-hidden="true"></span>
+                <span class="t-body" data-el="text">Faster time-to-value</span>
+              </div>
+            </div>
+            <div class="tag-row" data-el="container">
+              <span class="tag" data-el="text">Professional Services</span>
+              <span class="tag" data-el="text">IT &amp; Consulting</span>
+              <span class="tag" data-el="text">SaaS</span>
+              <span class="tag" data-el="text">Technology</span>
+              <span class="tag" data-el="text">Media</span>
+            </div>
+          </div>
+          <p class="t-body" data-el="text">For highly complex physical product configuration or specialised regulatory requirements, we recommend a technical fit assessment before deciding on the solution.</p>
+        </div>
+
+        <div class="fit-list" data-el="container">
+          <div class="fit-list__row" data-el="container">
+            <h3 class="t-h2 fit-list__text" data-el="heading">Uses or is implementing Salesforce Sales Cloud</h3>
+            <span class="t-stat fit-list__num" data-el="text" aria-hidden="true">01</span>
+          </div>
+          <div class="fit-list__row" data-el="container">
+            <h3 class="t-h2 fit-list__text" data-el="heading">Still relies on Word/Excel for quoting</h3>
+            <span class="t-stat fit-list__num" data-el="text" aria-hidden="true">02</span>
+          </div>
+          <div class="fit-list__row" data-el="container">
+            <h3 class="t-h2 fit-list__text" data-el="heading">Needs more control over pricing and discounts</h3>
+            <span class="t-stat fit-list__num" data-el="text" aria-hidden="true">03</span>
+          </div>
+          <div class="fit-list__row" data-el="container">
+            <h3 class="t-h2 fit-list__text" data-el="heading">Creates content-heavy, highly designed proposals</h3>
+            <span class="t-stat fit-list__num" data-el="text" aria-hidden="true">04</span>
+          </div>
+          <div class="fit-list__row" data-el="container">
+            <h3 class="t-h2 fit-list__text" data-el="heading">Handles significant quotation volumes</h3>
+            <span class="t-stat fit-list__num" data-el="text" aria-hidden="true">05</span>
+          </div>
+          <div class="fit-list__row" data-el="container">
+            <h3 class="t-h2 fit-list__text" data-el="heading">Needs structured quoting data in Salesforce</h3>
+            <span class="t-stat fit-list__num" data-el="text" aria-hidden="true">06</span>
+          </div>
+          <div class="fit-list__row" data-el="container">
+            <h3 class="t-h2 fit-list__text" data-el="heading">Wants brand-consistent customer documents</h3>
+            <span class="t-stat fit-list__num" data-el="text" aria-hidden="true">07</span>
+          </div>
+          <div class="fit-list__row" data-el="container">
+            <h3 class="t-h2 fit-list__text" data-el="heading">Values leaner implementation and simpler administration</h3>
+            <span class="t-stat fit-list__num" data-el="text" aria-hidden="true">08</span>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider section-rule">
+    </div>
+  </section>
+
+  <!-- ══ 8 · PARTNERSHIP — 184:152 ════════════════════════════════ -->
+  <section class="section s-partnership" data-el="container" data-name="partnership">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Red Orange Technologies × appero</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Product expertise meets Salesforce implementation expertise</h2>
+      </div>
+
+      <div class="card-grid" data-el="container">
+
+        <div class="card" data-el="container">
+          <p class="t-body card-grid__text" data-el="text">Our partnership brings together two complementary capabilities.</p>
+          <div class="card__visual graphic-plate graphic-plate--offset" data-el="image">
+            <p class="t-body graphic-plate__note" data-el="text">Understand → Design → Configure → Implement → Launch → Improve</p>
+            <svg class="circle-graphic" viewBox="-1 -1 442 261" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decorative grid of circles">
+            <!-- ряд точек 1 (y = 4) -->
+            <circle class="cg-fill"   cx="45"  cy="4"  r="4"/>
+            <circle class="cg-fill"   cx="115" cy="4"  r="4"/>
+            <circle class="cg-fill-a" cx="185" cy="4"  r="4"/>
+            <circle class="cg-fill-a" cx="255" cy="4"  r="4"/>
+            <circle class="cg-fill"   cx="325" cy="4"  r="4"/>
+            <circle class="cg-fill-a" cx="395" cy="4"  r="4"/>
+            <!-- ряд 2 (y = 74): точки по краям, круги в середине -->
+            <circle class="cg-fill-a" cx="45"  cy="74" r="4"/>
+            <circle class="cg-fill"   cx="115" cy="74" r="4"/>
+            <circle class="cg-line-a" cx="185" cy="74" r="44.5"/>
+            <circle class="cg-fill"   cx="255" cy="74" r="45"/>
+            <circle class="cg-fill-a" cx="325" cy="74" r="4"/>
+            <circle class="cg-fill"   cx="395" cy="74" r="4"/>
+            <!-- ряд 3 (y = 144) -->
+            <circle class="cg-fill-a" cx="115" cy="144" r="45"/>
+            <circle class="cg-line"   cx="185" cy="144" r="44.5"/>
+            <circle class="cg-line-a" cx="255" cy="144" r="44.5"/>
+            <circle class="cg-line"   cx="325" cy="144" r="44.5"/>
+            <circle class="cg-fill"   cx="395" cy="144" r="45"/>
+            <!-- ряд 4 (y = 214) -->
+            <circle class="cg-line"   cx="45"  cy="214" r="44.5"/>
+            <circle class="cg-fill"   cx="115" cy="214" r="45"/>
+            <circle class="cg-line"   cx="185" cy="214" r="44.5"/>
+            <circle class="cg-line-a" cx="255" cy="214" r="44.5"/>
+            <circle class="cg-line"   cx="325" cy="214" r="44.5"/>
+            <circle class="cg-line-a" cx="395" cy="214" r="44.5"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="card" data-el="container">
+          <div class="card__visual card__visual--art" data-el="image">
+            <img src="../assets/art-native.svg" width="241" height="131" alt="">
+          </div>
+          <div class="card__body" data-el="container">
+            <h3 class="t-h3" data-el="heading">appero</h3>
+            <p class="t-body" data-el="text">The product expertise behind appero quote and its Salesforce-native CPQ Light technology.</p>
+          </div>
+        </div>
+
+        <div class="card card--offset" data-el="container">
+          <div class="card__visual card__visual--art" data-el="image">
+            <img src="../assets/art-lean.svg" width="104" height="110" alt="">
+          </div>
+          <div class="card__body" data-el="container">
+            <h3 class="t-h3" data-el="heading">Red Orange Technologies</h3>
+            <p class="t-body" data-el="text">Salesforce consulting and implementation expertise to translate commercial requirements into an effective Salesforce solution.</p>
+          </div>
+        </div>
+
+        <div class="card" data-el="container">
+          <div class="card__visual card__visual--art" data-el="image">
+            <img src="../assets/art-visual.svg" width="243" height="196" alt="">
+          </div>
+          <div class="card__body" data-el="container">
+            <h3 class="t-h3" data-el="heading">Together</h3>
+            <p class="t-body" data-el="text">We help Salesforce customers across the Nordics and India assess, implement and develop a quoting process that works for their organisation.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="lockup" data-el="container" data-name="partnership-lockup">
+        <div class="lockup__side" data-el="container">
+          <div class="lockup__logo" data-el="image">
+            <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
+          </div>
+          <span class="t-overline lockup__label" data-el="text">ROT expertise</span>
+        </div>
+        <span class="lockup__arrow" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 9"><path fill="currentColor" d="M18.7528 0C19.8793 1.21001 20.8534 2.13213 21.675 2.76634C22.4966 3.39221 23.2716 3.85953 24 4.16829V4.73157C23.1615 5.13213 22.3483 5.64534 21.5606 6.27121C20.7729 6.88873 19.8327 7.79833 18.7401 9H17.7618C18.558 7.32267 19.3923 6.03338 20.2647 5.13213H0V3.86787H20.2647C19.621 3.05841 19.172 2.45758 18.9179 2.06537C18.6638 1.67316 18.2869 0.984701 17.7872 0H18.7528Z"/></svg></span>
+        <div class="lockup__center" data-el="container">
+          <span class="t-h2" data-el="text">CUSTOMER SOLUTION</span>
+        </div>
+        <span class="lockup__arrow lockup__arrow--back" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 9"><path fill="currentColor" d="M18.7528 0C19.8793 1.21001 20.8534 2.13213 21.675 2.76634C22.4966 3.39221 23.2716 3.85953 24 4.16829V4.73157C23.1615 5.13213 22.3483 5.64534 21.5606 6.27121C20.7729 6.88873 19.8327 7.79833 18.7401 9H17.7618C18.558 7.32267 19.3923 6.03338 20.2647 5.13213H0V3.86787H20.2647C19.621 3.05841 19.172 2.45758 18.9179 2.06537C18.6638 1.67316 18.2869 0.984701 17.7872 0H18.7528Z"/></svg></span>
+        <div class="lockup__side" data-el="container">
+          <div class="lockup__logo lockup__mark" data-el="image">
+            <img src="../assets/partner-appero.webp" width="104" height="104" alt="appero">
+          </div>
+          <span class="t-overline lockup__label" data-el="text">appero technology</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 9 · ФИНАЛЬНЫЙ CTA + WHITEPAPER — 187:509 ═════════════════ -->
+  <section class="section section--flush s-cta" data-el="container" data-name="closing">
+
+    <!-- 187:494 — полоса 720 / 720: текст на тёмном + продуктовый визуал -->
+    <div class="split split--tall" data-el="container">
+      <div class="split__panel split__panel--dark on-dark" data-el="container">
+        <h2 class="t-h1 t-h1--normal split__title" data-el="heading">Ready to make quoting simpler?</h2>
+        <div class="split__body" data-el="container">
+          <p class="t-lead" data-el="text">If Salesforce is already at the heart of your sales process, your quoting process should not have to live somewhere else.</p>
+          <p class="t-lead" data-el="text">Discover how Red Orange Technologies and appero can help you create faster, more consistent and more professional quotes directly in Salesforce.</p>
+          <div class="split__actions" data-el="container">
+            <a class="btn btn--primary" href="#contact" data-el="button">Book a CPQ Fit Assessment</a>
+            <a class="btn btn--outline btn--outline-dark" href="#contact" data-el="button">Request a Demo</a>
+          </div>
+        </div>
+      </div>
+      <div class="split__media split__media--shot" data-el="image">
+        <img src="../assets/appero-quote-editor.webp" width="1600" height="834"
+             alt="Quote Editor in appero quote: the customer document stays in view while the quote is edited">
+      </div>
+    </div>
+
+    <!-- 187:497 — полоса 720 / 720: обложка whitepaper + лид-магнит -->
+    <div class="split" data-el="container">
+      <div class="split__media split__media--doc" data-el="image">
+        <img src="../assets/wp-cover.webp" width="566" height="800"
+             alt="Cover of the CPQ Decision 2026 whitepaper">
+      </div>
+      <div class="split__panel" data-el="container">
+        <h2 class="t-h1 t-h1--normal split__title" data-el="heading">CPQ Decision 2026</h2>
+        <div class="split__body" data-el="container">
+          <p class="t-lead" data-el="text">Revenue Cloud, Third-Party CPQ or Native CPQ Light? Choosing a CPQ platform is ultimately a question of fit. Download appero's practical decision guide comparing the three approaches across:</p>
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Complexity</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Cost</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Time-to-Value</span>
+            </div>
+          </div>
+          <div class="split__actions" data-el="container">
+            <a class="btn btn--primary" href="../assets/EN_Whitepaper_CPQ_Decision_2026.pdf" data-el="button">Download the CPQ Decision Guide</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- ══ 10 · FOOTER — 152:131 → Theme Builder → Footer ═════════════ -->
+<footer class="site-footer" id="contact" data-el="container" data-name="footer">
+  <div class="site-footer__photo" aria-hidden="true"></div>
+  <div class="site-footer__wash" aria-hidden="true"></div>
+  <div class="site-footer__glow" aria-hidden="true"></div>
+
+  <div class="site-footer__inner" data-el="container">
+
+    <div class="footer-top" data-el="container">
+
+      <div class="footer-contact" data-el="container">
+        <div class="t-overline footer-contact__label" data-el="text">Get in touch</div>
+        <h2 class="t-h1 t-h1--normal" data-el="heading">Collaborate with us for complete IT solutions</h2>
+        <p class="t-lead footer-contact__lead" data-el="text">We're happy to answer any questions and help determine which of our services best fit your needs.</p>
+
+        <div class="check-list" data-el="container">
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Client-oriented</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Independent</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Competent</span>
+            </div>
+          </div>
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Results-driven</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Problem-solving</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Transparent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-form" data-el="container">
+        <h2 class="t-h2 footer-form__title" data-el="heading">Let us talk about your next solution</h2>
+        <form class="form" data-el="form" action="#" method="post">
+          <div class="form__row" data-el="container">
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-first" data-el="text">First name</label>
+              <input class="field__control" id="f-first" name="first-name" type="text" autocomplete="given-name">
+            </div>
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-last" data-el="text">Last name</label>
+              <input class="field__control" id="f-last" name="last-name" type="text" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-email" data-el="text">Email</label>
+            <input class="field__control" id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-company" data-el="text">Company</label>
+            <input class="field__control" id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field field--last" data-el="container">
+            <label class="t-body" for="f-message" data-el="text">Message</label>
+            <textarea class="field__control" id="f-message" name="message" rows="5"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit" data-el="button">Send message</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-nav" data-el="container">
+      <div class="footer-nav__cols" data-el="container">
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Solutions</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#">Staff Augmentation</a>
+            <a class="footer-nav__link" href="#">Salesforce Services</a>
+            <a class="footer-nav__link" href="appero.html">Appero</a>
+            <a class="footer-nav__link" href="#">AI &amp; Product Development</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Products</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#">NOVA for Salesforce</a>
+            <a class="footer-nav__link" href="#">WorkHub</a>
+            <a class="footer-nav__link" href="#">NOVAlab</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Company</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#">About us</a>
+            <a class="footer-nav__link" href="#">Why us</a>
+            <a class="footer-nav__link" href="#">Team</a>
+            <a class="footer-nav__link" href="#">Case studies</a>
+            <a class="footer-nav__link" href="#">Blog</a>
+            <a class="footer-nav__link" href="#">Careers</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Contact</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#">Asker, Norway</a>
+            <a class="footer-nav__link" href="#">Pune, India</a>
+            <a class="footer-nav__link" href="#">Mohali, India</a>
+            <a class="footer-nav__link" href="mailto:contact@redorangetechnologies.com">contact@redorangetechnologies.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider divider--ondark-soft" data-el="divider">
+
+      <div class="footer-bottom" data-el="container">
+        <span class="footer-bottom__copy" data-el="text">© 2026 Red Orange Technologies</span>
+        <a href="/terms/" data-el="text">Terms &amp; Conditions</a>
+        <a href="/privacy/" data-el="text">Privacy Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

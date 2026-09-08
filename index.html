@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Red Orange Technologies — превью вёрстки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent:#ED3A20; --dark:#1E1E1E; --warm:#FDF9F7;
+    --line:rgba(0,0,0,.10); --muted:rgba(30,30,30,.70);
+  }
+  * { margin:0; box-sizing:border-box; }
+  body {
+    background:var(--warm); color:var(--dark);
+    font-family:'Poppins',system-ui,sans-serif;
+    padding:clamp(24px,5vw,80px) clamp(20px,5vw,40px);
+    max-width:900px; margin:0 auto;
+  }
+  .logo { height:44px; width:auto; display:block; margin-bottom:clamp(32px,6vw,64px); }
+  h1 { font-weight:500; font-size:clamp(30px,5vw,44px); line-height:1.1; letter-spacing:-.04em; max-width:20ch; }
+  .lead { margin-top:16px; font-size:16px; line-height:1.4; letter-spacing:-.02em; color:var(--muted); max-width:60ch; }
+  section { margin-top:clamp(36px,6vw,64px); }
+  h2 { font-size:14px; font-weight:500; letter-spacing:-.04em; text-transform:uppercase; color:var(--muted); }
+  .note { margin-top:8px; font-size:14px; line-height:1.4; color:var(--muted); max-width:60ch; }
+  nav { margin-top:20px; border-top:1px solid var(--line); }
+  a.row {
+    display:flex; justify-content:space-between; align-items:baseline; gap:24px;
+    padding:22px 0; border-bottom:1px solid var(--line);
+    text-decoration:none; color:inherit; transition:padding-left .2s ease, color .2s ease;
+  }
+  a.row:hover { padding-left:10px; color:var(--accent); }
+  a.row b { font-weight:600; font-size:24px; letter-spacing:-.02em; }
+  a.row .path { font-size:14px; color:var(--muted); }
+  a.row:hover .path { color:var(--accent); }
+  ul.planned { margin-top:16px; list-style:none; display:flex; flex-wrap:wrap; gap:8px; }
+  ul.planned li { font-size:12px; font-weight:500; padding:6px 10px; background:#E5E5E5; color:rgba(12,16,15,.8); }
+  footer { margin-top:clamp(48px,8vw,88px); padding-top:24px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); }
+</style>
+</head>
+<body>
+  <img class="logo" src="assets/logo-redorange.webp" alt="Red Orange Technologies">
+  <h1>Вёрстка нового сайта</h1>
+  <p class="lead">Эталон страниц перед переносом в WordPress и Elementor. Каждая страница
+  свёрстана из общей библиотеки блоков и сверена на 1440 / 1024 / 767 / 375.</p>
+
+    <section>
+      <h2>В навигации</h2>
+      <p class="note">Проверены и одобрены — связаны между собой меню и футером.</p>
+      <nav>
+      <a class="row" href="build/index.html">
+        <b>Home</b>
+        <span class="path">/</span>
+      </a>
+      <a class="row" href="build/appero.html">
+        <b>Appero</b>
+        <span class="path">/salesforce/appero-quote/</span>
+      </a>
+      </nav>
+    </section>
+    <section>
+      <h2>Ждут проверки</h2>
+      <p class="note">Свёрстаны, но в навигацию сайта ещё не добавлены — открываются только отсюда.</p>
+      <nav>
+      <a class="row" href="build/staff-augmentation.html">
+        <b>Staff Augmentation</b>
+        <span class="path">/staff-augmentation/</span>
+      </a>
+      </nav>
+    </section>
+
+    <section>
+      <h2>В работе</h2>
+      <ul class="planned">
+        <li>Salesforce</li>
+        <li>AI & Product Development</li>
+        <li>Products</li>
+        <li>NOVA for Salesforce</li>
+        <li>WorkHub</li>
+        <li>NOVAlab</li>
+        <li>Company</li>
+        <li>About us</li>
+        <li>Why us</li>
+        <li>Team</li>
+        <li>Careers</li>
+        <li>Contact</li>
+        <li>Locations</li>
+        <li>Insights</li>
+        <li>Case Studies</li>
+      </ul>
+    </section>
+
+  <footer>Внутреннее превью duck.design. Страница закрыта от индексации.</footer>
+</body>
+</html>

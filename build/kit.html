@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Orange Technologies — дизайн-система и библиотека блоков</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/kit.css">
+</head>
+<body class="kit-page">
+
+<header class="kit-masthead">
+  <h1>Red Orange Technologies — дизайн-система</h1>
+  <p>
+    Витрина токенов и блоков. Все значения сняты через <code>get_design_context</code>
+    с макета <code>xPdISu3J2W5IyYZJSAkuOB</code> — node-id указан у каждого блока.
+    Страницы сайта собираются из этих блоков, а не верстаются заново.
+  </p>
+  <nav class="kit-toc">
+    <a href="#colors">Цвета</a>
+    <a href="#type">Типографика</a>
+    <a href="#grid">Сетка и ритм</a>
+    <a href="#atoms">Атомы</a>
+    <a href="#header">Header</a>
+    <a href="#hero">Hero</a>
+    <a href="#section-head">Section head</a>
+    <a href="#card-grid">Card grid</a>
+    <a href="#ledger">Ledger</a>
+    <a href="#stats">Stat grid</a>
+    <a href="#circle">Circle graphic</a>
+    <a href="#address">Address block</a>
+    <a href="#posts">Blog cards</a>
+    <a href="#todo">Ещё не снято</a>
+  </nav>
+</header>
+
+<!-- ══ ТОКЕНЫ: ЦВЕТА ══════════════════════════════════════════ -->
+<section class="kit-part" id="colors">
+  <h2>Токены · цвета</h2>
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Global Colors</span>
+      <span class="kit-item__meta">tokens.css → Site Settings → Global Colors</span>
+      <span class="kit-item__note">
+        Акцент — единственный цветной. Он держит кнопки, одну стат-плитку, активную карточку
+        адреса и часть кругов графики; остальное — чёрно-белая шкала.
+      </span>
+    </div>
+    <div class="kit-swatches">
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--color-accent)"></div>
+        <div class="kit-swatch__name">Accent / Red</div>
+        <div class="kit-swatch__code">--color-accent · #ED3A20</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--color-dark)"></div>
+        <div class="kit-swatch__name">Primary / Dark</div>
+        <div class="kit-swatch__code">--color-dark · #1E1E1E</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--color-black)"></div>
+        <div class="kit-swatch__name">Primary / Black</div>
+        <div class="kit-swatch__code">--color-black · #000000</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--color-white)"></div>
+        <div class="kit-swatch__name">Primary / White</div>
+        <div class="kit-swatch__code">--color-white · #FFFFFF</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--bg-warm)"></div>
+        <div class="kit-swatch__name">Background / Warm White</div>
+        <div class="kit-swatch__code">--bg-warm · #FDF9F7</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--bg-dark)"></div>
+        <div class="kit-swatch__name">Background / Dark</div>
+        <div class="kit-swatch__code">--bg-dark · #0C100F</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--bg-near-black)"></div>
+        <div class="kit-swatch__name">Background / Near Black</div>
+        <div class="kit-swatch__code">--bg-near-black · #121212</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--gray-100)"></div>
+        <div class="kit-swatch__name">Neutral / Gray 100</div>
+        <div class="kit-swatch__code">--gray-100 · #E8E8E8</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--gray-200)"></div>
+        <div class="kit-swatch__name">Neutral / Gray 200</div>
+        <div class="kit-swatch__code">--gray-200 · #E5E5E5</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--gray-300)"></div>
+        <div class="kit-swatch__name">Neutral / Gray 300</div>
+        <div class="kit-swatch__code">--gray-300 · #D6D3D1</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--gray-400)"></div>
+        <div class="kit-swatch__name">Neutral / Gray 400</div>
+        <div class="kit-swatch__code">--gray-400 · #C4C4C4</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--gray-500)"></div>
+        <div class="kit-swatch__name">Neutral / Gray 500</div>
+        <div class="kit-swatch__code">--gray-500 · #78716C · пункты меню</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Производные прозрачности</span>
+      <span class="kit-item__meta">в макете — opacity слоя, в Elementor — цвет с alpha</span>
+      <span class="kit-item__note">
+        Дизайнер гасит текст прозрачностью слоя. Переносить <b>opacity</b> нельзя — она гасит
+        и вложенные элементы; вместо неё в Elementor задаётся цвет с альфой.
+      </span>
+    </div>
+    <div class="kit-swatches">
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--text-lead)"></div>
+        <div class="kit-swatch__name">Text / Lead</div>
+        <div class="kit-swatch__code">rgba(30,30,30,.8) · Body Large</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--text-body)"></div>
+        <div class="kit-swatch__name">Text / Body</div>
+        <div class="kit-swatch__code">rgba(0,0,0,.8) · Body 14</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--text-muted)"></div>
+        <div class="kit-swatch__name">Text / Muted</div>
+        <div class="kit-swatch__code">rgba(30,30,30,.7) · Overline</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--text-faint)"></div>
+        <div class="kit-swatch__name">Text / Faint</div>
+        <div class="kit-swatch__code">rgba(30,30,30,.4) · номера 02–03</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--hairline)"></div>
+        <div class="kit-swatch__name">Hairline</div>
+        <div class="kit-swatch__code">rgba(0,0,0,.1) · разделители</div>
+      </div>
+      <div class="kit-swatch">
+        <div class="kit-swatch__chip" style="background: var(--hairline-soft)"></div>
+        <div class="kit-swatch__name">Hairline / Soft</div>
+        <div class="kit-swatch__code">rgba(0,0,0,.05) · сетка статов</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ТОКЕНЫ: ТИПОГРАФИКА ════════════════════════════════════ -->
+<section class="kit-part" id="type">
+  <h2>Токены · типографика</h2>
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Poppins — 12 стилей, Inter — только Badge</span>
+      <span class="kit-item__meta">→ Site Settings → Global Fonts</span>
+      <span class="kit-item__note">
+        letter-spacing в Figma задан <b>в процентах</b>: −4 → −0.04em, −2 → −0.02em
+        (проверено: Display 72px даёт −2.88px). Размеры ниже — десктопные;
+        значения для 1024 и 767 переопределяются в <code>tokens.css</code>.
+      </span>
+    </div>
+
+    <div class="kit-demo">
+      <div class="kit-type-row">
+        <div class="kit-type-row__spec">Display<br>Poppins Medium 500 · 72 / 1.1 / −0.04em<br>1024: 56 · 767: 40</div>
+        <div class="kit-type-row__sample"><span class="t-display">Igniting Digital Transformation</span></div>
+      </div>
+      <div class="kit-type-row">
+        <div class="kit-type-row__spec">Heading 1<br>Poppins Medium 500 · 44 / 1.1 / −0.04em<br>1024: 36 · 767: 30</div>
+        <div class="kit-type-row__sample"><span class="t-h1">We don't just implement technology. We build it.</span></div>
+      </div>
+      <div class="kit-type-row">
+        <div class="kit-type-row__spec">Heading 1 Normal<br>Poppins Regular 400 · 44 / 1.1 / −0.04em</div>
+        <div class="kit-type-row__sample"><span class="t-h1 t-h1--normal">Norway + India — a Nordic customer interface</span></div>
+      </div>
+      <div class="kit-type-row">
+        <div class="kit-type-row__spec">Stat<br>Poppins SemiBold 600 · 64 / 1.0 / −0.02em<br>1024: 48 · 767: 40</div>
+        <div class="kit-type-row__sample"><span class="t-stat">300+</span></div>
+      </div>
+      <div class="kit-type-row">
+        <div class="kit-type-row__spec">Heading 2<br>Poppins SemiBold 600 · 24 / 1.0 / −0.02em</div>
+        <div class="kit-type-row__sample"><span class="t-h2">NOVA for Salesforce</span></div>
+      </div>
+      <div class="kit-type-row">
+        <div class="kit-type-row__spec">Heading 3<br>Poppins SemiBold 600 · 16 / 1.0 / −0.02em</div>
+        <div class="kit-type-row__sample"><span class="t-h3">AI &amp; Product Development</span></div>
+      </div>
+      <div class="kit-type-row">
+        <div class="kit-type-row__spec">Overline<br>Poppins Medium 500 · 14 / 1.1 / −0.04em · UPPERCASE</div>
+        <div class="kit-type-row__sample"><span class="t-overline">What we do</span></div>
+      </div>
+      <div class="kit-type-row">
+        <div class="kit-type-row__spec">Body Large<br>Poppins Regular 400 · 16 / 1.4 / −0.02em</div>
+        <div class="kit-type-row__sample"><span class="t-lead">We help businesses realize their digital potential — through Salesforce, innovative AI platforms and the right expertise.</span></div>
+      </div>
+      <div class="kit-type-row">
+        <div class="kit-type-row__spec">Body<br>Poppins Regular 400 · 14 / 1.4 / −0.02em</div>
+        <div class="kit-type-row__sample"><span class="t-body">Consulting, implementation, development and integrations — supporting customers from strategy through continuous improvement.</span></div>
+      </div>
+      <div class="kit-type-row">
+        <div class="kit-type-row__spec">Nav Link<br>Poppins Regular 400 · 14 / 24px / 0 · Gray 500</div>
+        <div class="kit-type-row__sample"><span class="t-nav">Staff Augmentation</span></div>
+      </div>
+      <div class="kit-type-row">
+        <div class="kit-type-row__spec">Button<br>Poppins Regular 400 · 16 / 24px / 0</div>
+        <div class="kit-type-row__sample"><span style="font-size:16px; line-height:24px; letter-spacing:0">Book a meeting</span></div>
+      </div>
+      <div class="kit-type-row">
+        <div class="kit-type-row__spec">Badge<br><b>Inter</b> SemiBold 600 · 12 / 1.0 / −0.02em</div>
+        <div class="kit-type-row__sample"><span class="t-badge">Native. Lean. Visual.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ СЕТКА И РИТМ ═══════════════════════════════════════════ -->
+<section class="kit-part" id="grid">
+  <h2>Сетка и вертикальный ритм</h2>
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Сетка</span>
+      <span class="kit-item__meta">макет 1440 · поля 40 · контент 1360</span>
+      <span class="kit-item__note">
+        Секция = Full-width контейнер с боковым паддингом <b>40</b>, внутри —
+        Boxed-контейнер <b>1360</b>. Основная сетка секции: колонка-лейбл <b>316</b> + gap
+        <b>32</b> + остаток под контент (1012 на десктопе).
+        Elements Gap по умолчанию — <b>32</b>.
+      </span>
+    </div>
+    <div class="kit-demo">
+      <div class="kit-gridvis">
+        <div style="width:var(--col-label); flex:0 0 var(--col-label); background:var(--bg-warm); display:flex; align-items:center; justify-content:center">
+          <span class="kit-item__meta">колонка-лейбл 316</span>
+        </div>
+        <div style="flex:1 1 0; background:var(--gray-100); display:flex; align-items:center; justify-content:center">
+          <span class="kit-item__meta">контент 1012 (остаток)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Шкала отступов</span>
+      <span class="kit-item__meta">все значения из макета, без промежуточных</span>
+      <span class="kit-item__note">
+        Вертикальный паддинг секции — <b>120</b> (у секции Our Products в макете <b>32</b>);
+        между section-head и телом секции — <b>44</b>.
+      </span>
+    </div>
+    <div class="kit-scale">
+      <div class="kit-scale__row"><div class="kit-scale__bar" style="width:8px"></div><span class="kit-scale__label">8 — внутри стат-плитки и строки леджера</span></div>
+      <div class="kit-scale__row"><div class="kit-scale__bar" style="width:12px"></div><span class="kit-scale__label">12 — элементы карточки, зазор между кнопками, паддинг хедера</span></div>
+      <div class="kit-scale__row"><div class="kit-scale__bar" style="width:16px"></div><span class="kit-scale__label">16 — горизонтальный паддинг кнопки, зазор EN / кнопка</span></div>
+      <div class="kit-scale__row"><div class="kit-scale__bar" style="width:24px"></div><span class="kit-scale__label">24 — паддинг карточек, зазор визуал / текст</span></div>
+      <div class="kit-scale__row"><div class="kit-scale__bar" style="width:32px"></div><span class="kit-scale__label">32 — колонки, ряды леджера, паддинг section-head</span></div>
+      <div class="kit-scale__row"><div class="kit-scale__bar" style="width:44px"></div><span class="kit-scale__label">44 — section-head → тело секции</span></div>
+      <div class="kit-scale__row"><div class="kit-scale__bar" style="width:52px"></div><span class="kit-scale__label">52 — шахматный сдвиг чётных карточек в card-grid</span></div>
+      <div class="kit-scale__row"><div class="kit-scale__bar" style="width:80px"></div><span class="kit-scale__label">80 — крупные разрывы в тёмной секции</span></div>
+      <div class="kit-scale__row"><div class="kit-scale__bar" style="width:120px"></div><span class="kit-scale__label">120 — вертикальный паддинг секции</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ АТОМЫ ══════════════════════════════════════════════════ -->
+<section class="kit-part" id="atoms">
+  <h2>Атомы</h2>
+
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Button</span>
+      <span class="kit-item__meta">83:496 · 83:498 → Button widget</span>
+      <span class="kit-item__note">
+        Паддинг 12 / 16, радиус 4, текст 16 / 24 — высота выходит <b>48</b>.
+        <br>
+        <b>Правило ховера</b> (макет состояний не задаёт, принято 2026-09-04): интерфейс
+        реагирует тем же приёмом, каким в макете помечено активное состояние, — линия
+        становится акцентной, приглушённое набирает цвет, фон уходит в тёплый белый.
+        Ничего не поднимается, не масштабируется и не отбрасывает тень: подъём карточек
+        спорил бы со строгой сеткой. Длительность 200 ms.
+        Первичная кнопка уходит заливкой на ступень глубже, вторичная перекрашивает
+        контур и текст в акцент. Всё — вкладка Hover в Elementor, без кастомного CSS.
+      </span>
+    </div>
+    <div class="kit-demo kit-row">
+      <button class="btn btn--primary" type="button">Contact us</button>
+      <button class="btn btn--outline" type="button">See our products</button>
+    </div>
+  </div>
+
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Badge</span>
+      <span class="kit-item__meta">166:2473 → Heading / Text с фоном и радиусом</span>
+      <span class="kit-item__note">
+        Единственное место с Inter. Паддинг 6 / 12, радиус 100, фон акцента 8 %,
+        обводка акцента 20 %.
+      </span>
+    </div>
+    <div class="kit-demo kit-row">
+      <span class="badge">Native. Lean. Visual.</span>
+    </div>
+  </div>
+
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Divider</span>
+      <span class="kit-item__meta">83:571 · 166:2468 → Divider widget</span>
+      <span class="kit-item__note">Линия 1 px: чёрная 10 % между строками леджера, Gray 100 в hero подстраниц, белая 10 % на тёмном.</span>
+    </div>
+    <div class="kit-demo">
+      <hr class="divider">
+      <div style="height:16px"></div>
+      <hr class="divider divider--soft">
+      <div style="height:16px"></div>
+      <div style="background:var(--bg-near-black); padding:20px"><hr class="divider divider--ondark"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HEADER ═════════════════════════════════════════════════ -->
+<section class="kit-part" id="header">
+  <h2>Каркас</h2>
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Header</span>
+      <span class="kit-item__meta">83:476 → Theme Builder → Header</span>
+      <span class="kit-item__note">
+        Лого 200 × 62 · меню gap 32, Nav Link Gray 500 · справа EN и кнопка (колонка 200).
+        Ховер пункта — цвет темнеет и проявляется акцентная линия снизу
+        (в Elementor: Nav Menu → Pointer: Underline).
+        На ≤ 1024 меню сворачивается в тогл — виджет <b>Nav Menu (Pro)</b>, Breakpoint: Tablet;
+        иконка тогла — один SVG, а не три блока по 2 px: отдельные боксы округляются к
+        пиксельной сетке независимо и при системном масштабе 125 % дают полосы разной толщины.
+        Логотип в витрине — плашка-плейсхолдер: файл <code>Red-Orange-Logo_2color_2.png</code>
+        забирается из карточки Trello на этапе ассетов.
+      </span>
+    </div>
+    <div class="kit-demo kit-demo--framed">
+      <header class="site-header">
+        <div class="site-header__logo">
+          <div style="aspect-ratio:362/112; background:var(--gray-100); display:flex; align-items:center; justify-content:center">
+            <span class="kit-item__meta">logo 200×62</span>
+          </div>
+        </div>
+        <nav class="site-nav">
+          <a class="t-nav site-nav__link" href="#">Staff Augmentation</a>
+          <a class="t-nav site-nav__link" href="#">Appero</a>
+          <a class="t-nav site-nav__link" href="#">Salesforce</a>
+          <a class="t-nav site-nav__link" href="#">AI &amp; Product Development</a>
+          <a class="t-nav site-nav__link" href="#">Products</a>
+          <a class="t-nav site-nav__link" href="#">Company</a>
+        </nav>
+        <div class="site-header__actions">
+          <a class="t-nav site-nav__link" href="#">EN</a>
+          <a class="btn btn--primary" href="#">Book a meeting</a>
+          <span class="site-header__burger" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="5"  width="24" height="2"/>
+              <rect x="0" y="11" width="24" height="2"/>
+              <rect x="0" y="17" width="24" height="2"/>
+            </svg>
+          </span>
+        </div>
+      </header>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HERO ═══════════════════════════════════════════════════ -->
+<section class="kit-part" id="hero">
+  <h2>Hero</h2>
+
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Hero — главная</span>
+      <span class="kit-item__meta">83:490 → Container column, gap 44</span>
+      <span class="kit-item__note">
+        Заголовок 664 слева и лид с кнопками справа выровнены <b>по нижнему краю</b>,
+        под ними — визуал во всю ширину (в макете 1360 × 504).
+        Ширина лида ограничена 441 — длина строки, не жёсткий размер.
+      </span>
+    </div>
+    <div class="kit-demo kit-demo--framed">
+      <div class="hero">
+        <div class="hero__top">
+          <h1 class="t-display hero__title">Igniting Digital Transformation</h1>
+          <div class="hero__aside">
+            <p class="t-lead hero__lead">We help businesses realize their digital potential — through Salesforce, innovative AI platforms and the right expertise.</p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#">Contact us</a>
+              <a class="btn btn--outline" href="#">See our products</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div style="height:100%; min-height:inherit; display:flex; align-items:center; justify-content:center">
+            <span class="kit-item__meta">визуал 1360 × 504 — ассет ставится на этапе Home</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Hero split — подстраницы</span>
+      <span class="kit-item__meta">152:1837 (Appero) → Container row 50 / 50</span>
+      <span class="kit-item__note">
+        Второй тип hero: текст слева, визуал справа. Отличия от главной — бейдж над заголовком,
+        разделитель под кнопками и приписка Inter 12 под ним.
+      </span>
+    </div>
+    <div class="kit-demo kit-demo--framed">
+      <div class="hero-split">
+        <div class="hero-split__content">
+          <div class="hero-split__stack">
+            <span class="badge">Native. Lean. Visual.</span>
+            <div class="hero-split__body">
+              <h1 class="t-display">A smarter way to quote in Salesforce</h1>
+              <p class="t-lead hero-split__lead">Red Orange Technologies and Appero have partnered to help Salesforce customers in the Nordics and India create accurate, professional proposals directly in Salesforce — without the complexity of traditional CPQ.</p>
+              <div class="hero__actions">
+                <a class="btn btn--primary" href="#">Book a CPQ FIT Assessment</a>
+                <a class="btn btn--outline" href="#">Request a demo</a>
+              </div>
+            </div>
+          </div>
+          <hr class="divider divider--soft">
+          <p class="hero-split__note">Already using Salesforce Sales Cloud?<br>You may be closer to better quoting than you think.</p>
+        </div>
+        <div class="hero-split__visual">
+          <div style="height:100%; min-height:inherit; display:flex; align-items:center; justify-content:center">
+            <span class="kit-item__meta">визуал 658 × 605</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION HEAD ═══════════════════════════════════════════ -->
+<section class="kit-part" id="section-head">
+  <h2>Блок 1 · Section head</h2>
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Label + lead</span>
+      <span class="kit-item__meta">83:505 · 83:558 · 83:590 · 83:757 · 12+ повторов → Saved Block</span>
+      <span class="kit-item__note">
+        Самый частый блок сайта. Лейбл Overline в колонке 316, лид Heading 1 в остатке,
+        паддинг блока 32 сверху и снизу.
+        <b>CUSTOM-CSS:</b> красная строка лида (text-indent 116) — контрола в панели нет,
+        переносится через Custom CSS секции. На ≤ 1024 лейбл встаёт над лидом, отступ снимается.
+      </span>
+    </div>
+    <div class="kit-demo kit-demo--framed">
+      <div class="section-head">
+        <div class="t-overline section-head__label">What we do</div>
+        <h2 class="t-h1 section-head__lead">Specialist technology expertise across people, platforms and AI-driven products.</h2>
+      </div>
+      <hr class="divider">
+      <div class="section-head">
+        <div class="t-overline section-head__label">Our Products</div>
+        <h2 class="t-h1 section-head__lead">We don't just implement technology. We build it.</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CARD GRID ══════════════════════════════════════════════ -->
+<section class="kit-part" id="card-grid">
+  <h2>Блок 2 · Card grid 4 ×</h2>
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Карточка: визуал + H3 + текст</span>
+      <span class="kit-item__meta">83:508 → Container grid, 4 колонки, gap 32</span>
+      <span class="kit-item__note">
+        Чётные карточки сдвинуты вниз на <b>52</b> — это не разные высоты визуалов, а
+        шахматный ритм ряда. Высота ряда не фиксируется: min-height 530 и визуал flex: 1,
+        поэтому длинный текст растит карточку, а не обрезается.
+        На ≤ 1024 сдвиг снимается, сетка 4 → 2 → 1.
+      </span>
+    </div>
+    <div class="kit-demo kit-demo--framed">
+      <div class="card-grid">
+        <article class="card">
+          <div class="card__visual"></div>
+          <div class="card__body">
+            <h3 class="t-h3">AI &amp; Product Development</h3>
+            <p class="t-body">The most forward-looking part of our positioning. We develop digital products, AI solutions, platforms and custom software — for customers and for our own ventures. AI runs through the company, not as an isolated service.</p>
+          </div>
+        </article>
+        <article class="card card--offset">
+          <div class="card__visual"></div>
+          <div class="card__body">
+            <h3 class="t-h3">Salesforce Partner</h3>
+            <p class="t-body">Consulting, implementation, development and integrations — supporting customers from strategy through continuous improvement.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card__visual"></div>
+          <div class="card__body">
+            <h3 class="t-h3">Staff Augmentation</h3>
+            <p class="t-body">Access to experienced technology specialists and dedicated development teams. Senior competence, flexibility and scalability — combining a Norwegian customer interface with international delivery.</p>
+          </div>
+        </article>
+        <article class="card card--offset">
+          <div class="card__visual"></div>
+          <div class="card__body">
+            <h3 class="t-h3">Appero Partner</h3>
+            <p class="t-body">Red Orange Technologies is an Appero partner for the Nordics and India, with a natural connection to our Salesforce capabilities.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LEDGER ═════════════════════════════════════════════════ -->
+<section class="kit-part" id="ledger">
+  <h2>Блок 3 · Ledger</h2>
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Нумерованные строки</span>
+      <span class="kit-item__meta">83:561 (Our Products) · 186:311 (Fit check, Appero)</span>
+      <span class="kit-item__note">
+        Строка: медиа 432 + текст + номер справа, между строками — линия 1 px чёрная 10 %.
+        Первая строка выделена: медиа выше (424 против 140) и номер в полную силу,
+        у остальных номер приглушён до 40 %.
+        На ≤ 767 строка разворачивается в колонку: номер, медиа, текст.
+      </span>
+    </div>
+    <div class="kit-demo kit-demo--framed">
+      <div class="ledger">
+        <div class="ledger__row">
+          <div class="ledger__media ledger__media--feature"></div>
+          <div class="ledger__body">
+            <h3 class="t-h2">NOVA for Salesforce</h3>
+            <p class="t-lead">Our own Red Orange Technologies product — connecting our Salesforce expertise with our AI and product-development capabilities. Prominent position.</p>
+          </div>
+          <div class="t-h2 ledger__num">01</div>
+        </div>
+        <hr class="divider">
+        <div class="ledger__row">
+          <div class="ledger__media"></div>
+          <div class="ledger__body">
+            <h3 class="t-h2">WorkHub</h3>
+            <p class="t-lead">A technology platform where Red Orange Technologies is both partner and owner — more than a conventional third-party partnership.</p>
+          </div>
+          <div class="t-h2 ledger__num ledger__num--muted">02</div>
+        </div>
+        <hr class="divider">
+        <div class="ledger__row">
+          <div class="ledger__media"></div>
+          <div class="ledger__body">
+            <h3 class="t-h2">NOVAlab</h3>
+            <p class="t-lead">An AI platform where we are both technology partner and owner. Enables companies to build secure AI solutions, agents and workflows while maintaining control over data, integrations and governance.</p>
+          </div>
+          <div class="t-h2 ledger__num ledger__num--muted">03</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STAT GRID ══════════════════════════════════════════════ -->
+<section class="kit-part" id="stats">
+  <h2>Блок 4 · Stat grid</h2>
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Четыре плитки 2 × 2</span>
+      <span class="kit-item__meta">83:622 · 83:629 → Container grid + Heading / Text</span>
+      <span class="kit-item__note">
+        Разделители — не Divider, а границы самих плиток (1 px чёрный 5 %), сходящиеся в крест.
+        Вторая плитка залита акцентом — это единственное цветное пятно секции.
+        На ≤ 767 плитки идут в одну колонку и остаётся только верхняя линия.
+      </span>
+    </div>
+    <div class="kit-demo kit-demo--framed">
+      <div class="stat-grid" style="max-width:664px">
+        <div class="stat">
+          <div class="t-stat">14</div>
+          <p class="t-lead">Years — proven track record delivering technology projects</p>
+        </div>
+        <div class="stat stat--accent">
+          <div class="t-stat">300+</div>
+          <p class="t-lead">Projects completed across Salesforce, staff augmentation and product development</p>
+        </div>
+        <div class="stat">
+          <div class="t-stat">30 min</div>
+          <p class="t-lead">Average answer time — fast, direct access to senior people</p>
+        </div>
+        <div class="stat">
+          <div class="t-stat">2–6 wks</div>
+          <p class="t-lead">To create or extend a dedicated development team</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CIRCLE GRAPHIC ═════════════════════════════════════════ -->
+<section class="kit-part" id="circle">
+  <h2>Блок 5 · Circle graphic</h2>
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Сетка кругов 440 × 259</span>
+      <span class="kit-item__meta">83:597 · 190:815 · 184:161 — три повтора → один SVG</span>
+      <span class="kit-item__note">
+        В макете набран 23 отдельными фигурами, но это <b>регулярная сетка с шагом 70</b>:
+        6 колонок, 2 ряда точек Ø 8 сверху и 3 ряда кругов Ø 90 (13 кругов, 10 точек).
+        Собран одним inline SVG: тёмные фигуры берут <code>currentColor</code>, акцентные —
+        переменную акцента, поэтому один файл работает и на светлом, и на тёмном фоне.
+        В viewBox заложен запас 1 px по краям — без него обводка крайних кругов
+        срезается границей вьюпорта. В витрине графика показана целиком; на странице
+        она крупнее плитки и подрезается её краями, как в макете
+        (модификатор <code>.graphic-plate--crop</code>).
+        <b>В Elementor:</b> Image / Icon widget с SVG — нужна включённая загрузка SVG
+        (Safe SVG или Unfiltered Files).
+      </span>
+    </div>
+    <div class="kit-demo kit-demo--framed">
+      <div class="graphic-plate" style="max-width:548px">
+        <svg class="circle-graphic" viewBox="-1 -1 442 261" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Decorative grid of circles">
+          <!-- ряд точек 1 (y = 4) -->
+          <circle class="cg-fill"   cx="45"  cy="4"  r="4"/>
+          <circle class="cg-fill"   cx="115" cy="4"  r="4"/>
+          <circle class="cg-fill-a" cx="185" cy="4"  r="4"/>
+          <circle class="cg-fill-a" cx="255" cy="4"  r="4"/>
+          <circle class="cg-fill"   cx="325" cy="4"  r="4"/>
+          <circle class="cg-fill-a" cx="395" cy="4"  r="4"/>
+          <!-- ряд 2 (y = 74): точки по краям, круги в середине -->
+          <circle class="cg-fill-a" cx="45"  cy="74" r="4"/>
+          <circle class="cg-fill"   cx="115" cy="74" r="4"/>
+          <circle class="cg-line-a" cx="185" cy="74" r="44.5"/>
+          <circle class="cg-fill"   cx="255" cy="74" r="45"/>
+          <circle class="cg-fill-a" cx="325" cy="74" r="4"/>
+          <circle class="cg-fill"   cx="395" cy="74" r="4"/>
+          <!-- ряд 3 (y = 144) -->
+          <circle class="cg-fill-a" cx="115" cy="144" r="45"/>
+          <circle class="cg-line"   cx="185" cy="144" r="44.5"/>
+          <circle class="cg-line-a" cx="255" cy="144" r="44.5"/>
+          <circle class="cg-line"   cx="325" cy="144" r="44.5"/>
+          <circle class="cg-fill"   cx="395" cy="144" r="45"/>
+          <!-- ряд 4 (y = 214) -->
+          <circle class="cg-line"   cx="45"  cy="214" r="44.5"/>
+          <circle class="cg-fill"   cx="115" cy="214" r="45"/>
+          <circle class="cg-line"   cx="185" cy="214" r="44.5"/>
+          <circle class="cg-line-a" cx="255" cy="214" r="44.5"/>
+          <circle class="cg-line"   cx="325" cy="214" r="44.5"/>
+          <circle class="cg-line-a" cx="395" cy="214" r="44.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ADDRESS ════════════════════════════════════════════════ -->
+<section class="kit-part" id="address">
+  <h2>Блок 6 · Address block</h2>
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Три офиса</span>
+      <span class="kit-item__meta">83:653 (тёмная секция #121212) → Container grid 3 колонки</span>
+      <span class="kit-item__note">
+        Колонки без зазора, разделены верхней линией 3 px. Норвежский офис выделен:
+        линия акцентная, фон белый 5 %. Паддинг 24 / 24 / 40 — низ больше верха.
+      </span>
+    </div>
+    <div class="kit-demo kit-demo--dark">
+      <div class="address-grid on-dark">
+        <div class="address address--active">
+          <h3 class="t-h3">Asker, Norway</h3>
+          <p class="t-body">Lensmannslia 4, N-1386 Asker</p>
+        </div>
+        <div class="address">
+          <h3 class="t-h3">Pune, India</h3>
+          <p class="t-body">4th Floor, Ascent Avenue, Vitthal Nagar, Amanora Park Town, Hadapsar, Pune 411028</p>
+        </div>
+        <div class="address">
+          <h3 class="t-h3">Mohali, India</h3>
+          <p class="t-body">C 86 Phase 7 Industrial Area, Sahibzada Ajit Singh Nagar, Punjab 160055</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ POSTS ══════════════════════════════════════════════════ -->
+<section class="kit-part" id="posts">
+  <h2>Блок 7 · Blog cards</h2>
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Карточка записи</span>
+      <span class="kit-item__meta">83:761 → Loop Grid (Pro) + шаблон карточки</span>
+      <span class="kit-item__note">
+        Дата Overline, заголовок H3, анонс Body, снизу — изображение, растягивающееся
+        на остаток высоты. Рамки соседних карточек в макете схлопнуты в одну линию;
+        здесь это сделано границами top / left у карточки и right / bottom у ряда —
+        так линия остаётся одинарной и при 2, и при 1 колонке.
+      </span>
+    </div>
+    <div class="kit-demo kit-demo--framed">
+      <div class="post-grid">
+        <a class="post-card" href="#">
+          <div class="post-card__body">
+            <div class="t-overline">Jul 6, 2025</div>
+            <h3 class="t-h3">Blog post title</h3>
+            <p class="t-body">Lorem ipsum dolor sit amet consectetur. Sagittis pellentesque condimentum sed arcu non.</p>
+          </div>
+          <div class="post-card__media"></div>
+        </a>
+        <a class="post-card" href="#">
+          <div class="post-card__body">
+            <div class="t-overline">Jul 6, 2025</div>
+            <h3 class="t-h3">Blog post title</h3>
+            <p class="t-body">Lorem ipsum dolor sit amet consectetur. Sagittis pellentesque condimentum sed arcu non.</p>
+          </div>
+          <div class="post-card__media"></div>
+        </a>
+        <a class="post-card" href="#">
+          <div class="post-card__body">
+            <div class="t-overline">Jul 6, 2025</div>
+            <h3 class="t-h3">Blog post title</h3>
+            <p class="t-body">Lorem ipsum dolor sit amet consectetur. Sagittis pellentesque condimentum sed arcu non.</p>
+          </div>
+          <div class="post-card__media"></div>
+        </a>
+        <a class="post-card" href="#">
+          <div class="post-card__body">
+            <div class="t-overline">Jul 6, 2025</div>
+            <h3 class="t-h3">Blog post title</h3>
+            <p class="t-body">Lorem ipsum dolor sit amet consectetur. Sagittis pellentesque condimentum sed arcu non.</p>
+          </div>
+          <div class="post-card__media"></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ЧТО ЕЩЁ НЕ СНЯТО ═══════════════════════════════════════ -->
+<section class="kit-part" id="todo">
+  <h2>Ещё не снято с макета</h2>
+  <div class="kit-item">
+    <div class="kit-item__head">
+      <span class="kit-item__name">Блоки, которые войдут в библиотеку в своей фазе</span>
+      <span class="kit-item__meta">инвентарь — spec/components.md</span>
+      <span class="kit-item__note">
+        Эти блоки в kit не выдуманы намеренно: их значения берутся из макета в той фазе,
+        где блок впервые нужен, — иначе в системе окажутся числа «на глаз».
+      </span>
+    </div>
+    <div class="kit-demo">
+      <ul style="display:flex; flex-direction:column; gap:10px; max-width:900px">
+        <li class="t-body"><b>Logo strip</b> (83:669 клиенты, 83:713 партнёры) и <b>Case card + meta</b> (83:693, 83:699) — фаза Home, вместе с выгрузкой логотипов.</li>
+        <li class="t-body"><b>Footer</b> (152:131, выбран вариант 124:410) — фаза Home; в метаданных узел пустой, снимается отдельным вызовом.</li>
+        <li class="t-body"><b>Icon card</b> (190:927, 171:101), <b>Comparison table</b> (180:529), <b>Profile card + tags</b> (180:648), <b>Split CTA</b> (187:494, 187:497), <b>Partnership lockup</b> (185:214), <b>Numbered process list</b> (152:2000) — фаза Appero.</li>
+        <li class="t-body"><b>Numbered process list</b> — у шагов 2–5 описания в макете скрыты: статика или аккордеон, вопрос к дизайнеру.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

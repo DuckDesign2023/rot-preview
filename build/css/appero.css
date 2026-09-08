@@ -1,0 +1,161 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — Appero (152:1821, 1440 × 10208):
+   вертикальный ритм секций и раскладки, которые встречаются
+   только здесь. Блоки — из components.css без изменений.
+
+   Ритм. В макете страница — колонка фреймов с зазором 20 между
+   ними. В Elementor секции идут соседними контейнерами без общего
+   гэпа, поэтому 20 сложены в паддинги: обычно в padding-top
+   следующей секции, а перед тонированными (how it works,
+   CPQ positioning, финальный CTA) — в padding-bottom предыдущей,
+   иначе белый зазор окрасился бы фоном секции.
+   ══════════════════════════════════════════════════════════════ */
+
+.s-hero         { padding-top:  84px; padding-bottom:  40px; }
+.s-problem      { padding-top: 140px; padding-bottom: 120px; }
+.s-meet         { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тёмной */
+.s-how          { padding-top: 100px; padding-bottom: 100px; }
+.s-benefits     { padding-top: 140px; padding-bottom:   0;   } /* секция кончается линией */
+.s-positioning  { padding-top: 100px; padding-bottom: 100px; }
+.s-fit          { padding-top: 140px; padding-bottom:   0;   } /* секция кончается линией */
+.s-partnership  { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тёмным CTA */
+.s-cta          { padding: 0; }                                /* полосы 720/720 во всю ширину, без полей секции */
+
+/* Замыкающая линия секции: 64 от контента, 20 до следующей секции
+   (152:2101 и 180:680 — Divider во всю рабочую ширину). Линия — такой же
+   ребёнок .section__inner, как и блоки, поэтому к margin добавляется
+   общий gap 44: 44 + 20 = 64. */
+.section-rule { margin-top: 20px; margin-bottom: 20px; }
+.s-fit .section-rule { margin-bottom: 0; }   /* дальше светлая секция, зазор её */
+
+/* ── 2 · Problem (190:928) ─────────────────────────────────────
+   Ряд из двух половин по 680 без зазора: слева строки с иконками,
+   справа тёмная плитка с выводом. */
+
+.problem-row { display: flex; align-items: stretch; }
+.problem-row > * { flex: 1 1 0; min-width: 0; }
+
+/* ── 3 · Meet appero quote (190:810) ───────────────────────────
+   Card grid 4×: первая колонка — текст и плитка с графикой,
+   остальные три — визуал + заголовок + описание. Шахматный сдвиг
+   тот же, что на главной: карточки 2 и 4 опущены на 52. */
+
+.s-meet .card-grid__text { padding-bottom: var(--space-md); }
+
+/* ── 4 · How it works (170:87) ─────────────────────────────────
+   Две равные колонки 664 с зазором 32: аккордеон шагов и плитка. */
+
+.how-row { display: flex; gap: var(--col-gap); align-items: stretch; }
+.how-row > .process { flex: 1 1 0; min-width: 0; }
+
+/* ── 6 · CPQ Light positioning (180:583) ───────────────────────
+   Левая колонка 395 фиксирована и прижата к низу ряда, таблица
+   занимает остаток. Плитка с графикой растёт на свободную высоту. */
+
+.positioning-row {
+  display: flex;
+  gap: var(--space-xl);
+  align-items: flex-end;
+}
+
+.positioning-col {
+  flex: 0 1 395px;
+  min-width: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.positioning-col__art {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+}
+
+.positioning-col__art img { width: 212px; height: auto; max-width: 100%; }
+
+.positioning-col__text { display: flex; flex-direction: column; gap: var(--space-sm); }
+
+.positioning-row > .compare { flex: 1 1 0; min-width: 0; }
+
+/* ── 7 · Fit check (186:312) ───────────────────────────────────
+   Колонка карточки-профиля 432 и чек-лист 896, зазор 32. Отбивка 12
+   сверху — как у сетки benefits (у контейнера в макете padding-top 12). */
+
+.fit-row {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-start;
+  margin-top: var(--space-xs);
+}
+
+.fit-row__aside {
+  flex: 0 1 432px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.fit-row > .fit-list { flex: 1 1 0; min-width: 0; }
+
+/* ── 8 · Partnership (184:156) ─────────────────────────────────
+   Тот же card grid, но сдвинута третья карточка, а не вторая
+   и четвёртая: в макете выше стоят appero и Together. */
+
+.s-partnership .graphic-plate--offset { min-height: 466px; }
+
+/* ══ ПЛАНШЕТ ≤ 1024 ════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+
+  .s-hero        { padding-top: 56px; padding-bottom: 32px; }
+  .s-problem,
+  .s-meet,
+  .s-fit,
+  .s-partnership { padding-top: 116px; }
+  .s-problem     { padding-bottom: 96px; }
+  .s-meet,
+  .s-partnership { padding-bottom: 116px; }
+  .s-benefits    { padding-top: 116px; }
+  .s-how,
+  .s-positioning { padding-block: 80px; }
+
+  .section-rule  { margin-top: 16px; }
+
+  .problem-row   { flex-direction: column; }
+
+  .how-row       { flex-direction: column; gap: var(--space-lg); }
+
+  .positioning-row { flex-direction: column; align-items: stretch; gap: var(--space-lg); }
+  .positioning-col { flex: 1 1 auto; }
+  .positioning-col__art { align-items: center; justify-content: flex-start; }
+
+  .fit-row       { flex-direction: column; }
+  .fit-row__aside { flex: 1 1 auto; width: 100%; }
+  .s-meet .graphic-plate--offset,
+  .s-partnership .graphic-plate--offset { min-height: 300px; }
+}
+
+/* ══ МОБИЛЬНЫЙ ≤ 767 ═══════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  .s-hero        { padding-top: 40px; padding-bottom: 24px; }
+  .s-problem,
+  .s-meet,
+  .s-fit,
+  .s-partnership { padding-top: 92px; }
+  .s-problem     { padding-bottom: 72px; }
+  .s-meet,
+  .s-partnership { padding-bottom: 92px; }
+  .s-benefits    { padding-top: 92px; }
+  .s-how,
+  .s-positioning { padding-block: 64px; }
+
+  .section-rule  { margin-top: 8px; }
+
+  .s-partnership .graphic-plate--offset,
+  .s-meet .graphic-plate--offset { min-height: 260px; }
+}

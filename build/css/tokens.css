@@ -1,0 +1,122 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — токены дизайн-системы
+   Источник значений: Figma xPdISu3J2W5IyYZJSAkuOB, узлы
+   83:476 menu · 83:490 hero · 83:504 what we do · 83:557 our products ·
+   83:589 why us · 83:636 norway+india · 83:755 insights · 152:1837 hero Appero.
+   Каждая переменная мапится на Global в Elementor — таблица в
+   project.md и spec/site-settings.md.
+   ══════════════════════════════════════════════════════════════ */
+:root {
+  /* ── Цвета → Global Colors ──────────────────────────────────── */
+  --color-accent:      #ED3A20;   /* Accent/Red        — кнопки, акценты, стат-плитка */
+  --color-dark:        #1E1E1E;   /* Primary/Dark      — весь основной текст */
+  --color-black:       #000000;   /* Primary/Black     — обводка outline-кнопки (#1C1917) и body-текст */
+  --color-white:       #FFFFFF;   /* Primary/White */
+  --bg-warm:           #FDF9F7;   /* Background/Warm White — подложка визуалов карточек */
+  --bg-dark:           #0C100F;   /* Background/Dark       — медиа-плитка NOVA */
+  --bg-near-black:     #121212;   /* Background/Near Black — тёмная секция Norway+India */
+  --gray-100:          #E8E8E8;   /* Neutral/Gray 100 — плитки-плейсхолдеры, hairline на светлом */
+  --gray-200:          #E5E5E5;   /* Neutral/Gray 200 — рамка карточки блога */
+  --gray-300:          #D6D3D1;   /* Neutral/Gray 300 */
+  --gray-400:          #C4C4C4;   /* Neutral/Gray 400 */
+  --gray-500:          #78716C;   /* Neutral/Gray 500 — пункты меню, EN */
+
+  /* ── Производные: в макете это opacity слоя, в Elementor — цвет с alpha ── */
+  --text-lead:         rgba(30, 30, 30, .80);   /* Body Large (16) — лиды, описания. 8.6:1 на белом */
+  --text-body:         rgba(0, 0, 0, .80);      /* Body (14) — текст карточек. 12.6:1 на белом */
+  --text-muted:        rgba(30, 30, 30, .70);   /* Overline — лейблы секций. 6.8:1 на белом */
+  --text-faint:        rgba(30, 30, 30, .40);   /* неактивные номера леджера (02, 03) — декор, не текст */
+  --text-dim:          rgba(30, 30, 30, .50);   /* вторая половина лида в секции intro (83:503) */
+  --text-on-dark-80:   rgba(255, 255, 255, .80);
+  --text-on-dark-40:   rgba(255, 255, 255, .40); /* копирайт и правовые ссылки футера */
+  --footer-label:      rgba(196, 196, 196, .70); /* лейблы колонок футера: Gray 400 под opacity 70 */
+
+  --hairline:          rgba(0, 0, 0, .10);      /* разделители леджера */
+  --hairline-soft:     rgba(0, 0, 0, .05);      /* внутренние границы стат-сетки */
+  --hairline-on-dark:  rgba(255, 255, 255, .10);
+  --hairline-on-dark-soft: rgba(255, 255, 255, .05); /* разделитель над копирайтом (152:222) */
+  --surface-on-dark:   rgba(255, 255, 255, .05); /* подсветка активной карточки адреса */
+  --accent-tint:       rgba(237, 58, 32, .08);   /* фон бейджа */
+  --accent-tint-line:  rgba(237, 58, 32, .20);   /* обводка бейджа */
+
+  /* ── Шрифты → Global Fonts ──────────────────────────────────── */
+  --font-primary: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-badge:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* ── Кегли. letter-spacing в Figma задан в процентах: −4 → −0.04em ── */
+  --fs-display:  72px;   /* Display        · Medium 500 · lh 1.1 · ls −0.04em */
+  --fs-h1:       44px;   /* Heading 1      · Medium 500 / Regular 400 · lh 1.1 · ls −0.04em */
+  --fs-stat:     64px;   /* Stat           · SemiBold 600 · lh 1.0 · ls −0.02em */
+  --fs-h2:       24px;   /* Heading 2      · SemiBold 600 · lh 1.0 · ls −0.02em */
+  --fs-h3:       16px;   /* Heading 3      · SemiBold 600 · lh 1.0 · ls −0.02em */
+  --fs-lead:     16px;   /* Body Large     · Regular 400 · lh 1.4 · ls −0.02em */
+  --fs-body:     14px;   /* Body           · Regular 400 · lh 1.4 · ls −0.02em */
+  --fs-overline: 14px;   /* Overline       · Medium 500 · lh 1.1 · ls −0.04em · UPPERCASE */
+  --fs-nav:      14px;   /* Nav Link       · Regular 400 · lh 24px · ls 0 */
+  --fs-button:   16px;   /* Button         · Regular 400 · lh 24px · ls 0 */
+  --fs-badge:    12px;   /* Badge          · Inter SemiBold 600 · lh 1.0 · ls −0.02em */
+
+  /* ── Сетка → Site Settings → Layout ─────────────────────────── */
+  --page-width:     1440px;  /* ширина макета — справочно */
+  --content-width:  1360px;  /* Content Width: рабочая ширина контента */
+  --gutter:           40px;  /* боковые поля секции */
+  --col-label:       316px;  /* колонка-лейбл в section-head */
+  --col-gap:          32px;  /* Elements Gap между колонками */
+  --lead-indent:     116px;  /* красная строка у лида section-head */
+  --ledger-media:    432px;  /* ширина медиа-плитки в строке леджера */
+  --logo-strip-gap:   80px;  /* зазор лого-строки клиентов (83:669) */
+  --logo-fade:       199px;  /* ширина градиентной шторки по краям лого-строки */
+
+  /* ── Вертикальный ритм ──────────────────────────────────────── */
+  --space-2xs:         8px;  /* внутри стат-плитки, леджер-текста */
+  --space-xs:         12px;  /* между элементами карточки, зазор кнопок */
+  --space-sm:         16px;  /* горизонтальный паддинг кнопки, зазор EN/кнопка */
+  --space-md:         24px;  /* паддинг карточек, зазор блоков */
+  --space-lg:         32px;  /* колонки, ряды леджера, паддинг section-head */
+  --space-xl:         44px;  /* между section-head и телом секции */
+  --space-2xl:        80px;  /* крупные разрывы в тёмной секции */
+  --space-section:   120px;  /* вертикальный паддинг обычной секции */
+  --space-section-tight: 32px; /* уменьшенный паддинг (секция Our Products) */
+  --card-offset:      52px;  /* сдвиг вниз у чётных карточек в card-grid */
+
+  /* ── Форма ──────────────────────────────────────────────────── */
+  --radius-btn:    4px;
+  --radius-pill: 100px;
+  --border-width:  1px;
+  --accent-rule:   3px;      /* верхняя линия карточки адреса */
+}
+
+/* ── Планшет ≤1024: кегли и ритм уменьшаются, сетка распадается ── */
+@media (max-width: 1024px) {
+  :root {
+    --fs-display:      56px;
+    --fs-h1:           36px;
+    --fs-stat:         48px;
+    --gutter:          32px;
+    --content-width:  960px;
+    --lead-indent:      0px;   /* лид уходит под лейбл — красная строка теряет смысл */
+    --ledger-media:   320px;
+    --logo-strip-gap:  56px;
+    --logo-fade:       96px;
+    --space-section:   96px;
+    --space-xl:        32px;
+    --card-offset:      0px;   /* шахматный сдвиг карточек отключается */
+  }
+}
+
+/* ── Мобильный ≤767 ─────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  :root {
+    --fs-display:      40px;
+    --fs-h1:           30px;
+    --fs-stat:         40px;
+    --fs-h2:           20px;
+    --gutter:          20px;
+    --content-width:  100%;
+    --space-section:   72px;
+    --space-2xl:       48px;
+    --space-lg:        24px;
+    --logo-strip-gap:  40px;
+    --logo-fade:       48px;
+  }
+}
