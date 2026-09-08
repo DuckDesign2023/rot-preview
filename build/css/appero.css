@@ -92,12 +92,20 @@
   margin-top: var(--space-xs);
 }
 
+/* Профиль прилипает и едет вдоль чек-листа: список из восьми строк
+   заметно длиннее карточки, и без прилипания она уезжает из вида на
+   первых же пунктах — а именно с ней их и сверяют.
+   Работает благодаря align-items: flex-start у ряда.
+   Elementor: Motion Effects → Sticky: Top, Offset 44, Stay In Column. */
 .fit-row__aside {
   flex: 0 1 432px;
   min-width: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
+  position: sticky;
+  top: var(--space-xl);
+  align-self: flex-start;
 }
 
 .fit-row > .fit-list { flex: 1 1 0; min-width: 0; }
@@ -134,7 +142,7 @@
   .positioning-col__art { align-items: center; justify-content: flex-start; }
 
   .fit-row       { flex-direction: column; }
-  .fit-row__aside { flex: 1 1 auto; width: 100%; }
+  .fit-row__aside { flex: 1 1 auto; width: 100%; position: static; }
   .s-meet .graphic-plate--offset,
   .s-partnership .graphic-plate--offset { min-height: 300px; }
 }
