@@ -1,0 +1,129 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — Salesforce services.
+   Макета в Figma нет: страница собрана из библиотеки блоков по
+   контенту staging `/salesforce-services/` (клиент дал ссылку
+   в Trello 2026-09-02 и отдельно попросил использовать логотип
+   Salesforce и названия продуктов).
+   Здесь только вертикальный ритм и раскладки, которых нет
+   в components.css.
+   ══════════════════════════════════════════════════════════════ */
+
+.s-hero     { padding-top:  84px; padding-bottom:  40px; }
+.s-clouds   { padding-top: 140px; padding-bottom: 120px; }
+.s-expect   { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тёмной */
+.s-process  { padding-top: 100px; padding-bottom: 100px; }
+.s-why      { padding-top: 140px; padding-bottom: 120px; }
+.s-signals  { padding-top: 140px; padding-bottom: 120px; }
+.s-services { padding-top: 140px; padding-bottom: 140px; }
+.s-cta      { padding-top: 140px; padding-bottom: 140px; }
+
+/* ── 1 · Hero ──────────────────────────────────────────────────
+   Клиент просил показать логотип Salesforce. Он стоит один
+   в плитке: логотип — знак, а не иллюстрация, растягивать его
+   на всю высоту колонки нельзя. */
+
+.hero-split__visual--logo {
+  background: var(--bg-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl);
+  align-self: center;
+  min-height: 0;
+}
+
+.hero-split__visual--logo > img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
+/* ── 2 · Cloud solutions ───────────────────────────────────────
+   Семь облаков в сетке role-grid. Число нечётное, а линии сетки
+   рисуются фоном контейнера, видимым в зазорах, — поэтому пустая
+   ячейка превращается в серый прямоугольник. Последняя ячейка
+   занимает строку целиком (`1 / -1`), и дыры не остаётся. */
+
+.role-grid--clouds .role:last-child { grid-column: 1 / -1; }
+
+.s-clouds__note { max-width: 72ch; margin-top: var(--space-xl); }
+
+/* ── 3 · What can you expect ───────────────────────────────────
+   Текст слева, чек-лист справа — половины с зазором 32. */
+
+.expect-row {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-start;
+}
+
+.expect-row > * { flex: 1 1 0; min-width: 0; }
+
+.expect-row__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* ── 6 · Signals ───────────────────────────────────────────────
+   Лид перед чек-листом; сам список — блок 27 fit-list. */
+
+.s-signals__lead { max-width: 72ch; margin-bottom: var(--space-lg); }
+
+/* ── 7 · Services ──────────────────────────────────────────────
+   В ledger вместо скриншота продукта — иконка услуги: медиа-плитка
+   светлая, знак по центру. */
+
+.ledger__icon { display: block; color: var(--color-accent); }
+.ledger__icon svg { width: 56px; height: 56px; }
+
+.services-close {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+  max-width: 72ch;
+  margin-top: var(--space-xl);
+}
+
+/* ══ ПЛАНШЕТ ≤ 1024 ════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+
+  .s-hero     { padding-top: 56px; padding-bottom: 32px; }
+  .s-clouds,
+  .s-why,
+  .s-signals  { padding-top: 116px; padding-bottom: 96px; }
+  .s-expect,
+  .s-services,
+  .s-cta      { padding-top: 116px; padding-bottom: 116px; }
+  .s-process  { padding-block: 80px; }
+
+  .hero-split__visual--logo { padding: var(--space-xl); }
+  .hero-split__visual--logo > img { max-width: 240px; }
+
+  .expect-row { flex-direction: column; }
+
+  /* И на двух колонках последняя занимает строку целиком */
+  .role-grid--clouds .role:last-child { grid-column: 1 / -1; }
+}
+
+/* ══ МОБИЛЬНЫЙ ≤ 767 ═══════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  .s-hero     { padding-top: 40px; padding-bottom: 24px; }
+  .s-clouds,
+  .s-why,
+  .s-signals  { padding-top: 92px; padding-bottom: 72px; }
+  .s-expect,
+  .s-services,
+  .s-cta      { padding-top: 92px; padding-bottom: 92px; }
+  .s-process  { padding-block: 64px; }
+
+  .hero-split__visual--logo { padding: var(--space-lg); }
+  .hero-split__visual--logo > img { max-width: 180px; }
+
+  /* Одна колонка — растягивать нечего */
+  .role-grid--clouds .role:last-child { grid-column: auto; }
+
+  .services-close .btn { width: 100%; text-align: center; }
+}

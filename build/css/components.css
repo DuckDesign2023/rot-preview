@@ -747,9 +747,41 @@ html { scrollbar-gutter: stable; }
   position: relative;
   overflow: hidden;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   /* выходим из бокового паддинга секции к краям страницы: Margin −40 */
   margin-inline: calc(-1 * var(--gutter));
+}
+
+/* ── Бегущая строка (решение пользователя, 2026-09-09) ────────────────
+   Раньше ряд просто стоял шире экрана и подрезался краями: часть
+   логотипов была видна наполовину и никогда не показывалась целиком.
+   Раз это строка, а не сетка, она едет.
+
+   Как устроено: в разметке ДВА одинаковых набора логотипов подряд
+   (второй — `aria-hidden`, для скринридера и SEO он дубль). Лента
+   уезжает ровно на половину своей ширины, и в этот момент второй
+   набор стоит там, где начинался первый — стык незаметен, цикл
+   бесшовный.
+
+   Скорость задана длительностью, а не пикселями в секунду: 45 s на
+   полный проход при восьми логотипах ≈ спокойное чтение, лента не
+   мельтешит и не тормозит.
+
+   CUSTOM-CSS: keyframes в панели Elementor нет. Нативная альтернатива —
+   виджет **Image Carousel** (Free): Autoplay, Infinite Loop, стрелки и
+   точки выключены, Slides to Show по числу видимых лого. Он листает
+   слайдами, а не едет непрерывно, — если такой характер устроит,
+   Custom CSS не нужен вовсе. */
+
+.logo-strip__track {
+  display: flex;
+  width: max-content;
+  /* Без этого лента как flex-ребёнок сжимается до ширины экрана:
+     тогда translateX(-50%) отсчитывается от неверной ширины, и на
+     стыке наборов появляется рывок. Проверено измерением: 1425
+     против фактических 3136. */
+  flex: 0 0 auto;
+  animation: logo-marquee 45s linear infinite;
 }
 
 .logo-strip__row {
@@ -757,6 +789,23 @@ html { scrollbar-gutter: stable; }
   display: flex;
   align-items: center;
   gap: var(--logo-strip-gap);
+  /* зазор между концом первого набора и началом второго — тот же,
+     что между логотипами, иначе на стыке появляется провал */
+  padding-inline-end: var(--logo-strip-gap);
+}
+
+@keyframes logo-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Наведение останавливает ленту: логотип можно рассмотреть и прочитать */
+.logo-strip:hover .logo-strip__track { animation-play-state: paused; }
+
+/* Уважаем системную настройку «меньше движения»: лента замирает,
+   логотипы остаются на своих местах и видны целиком. */
+@media (prefers-reduced-motion: reduce) {
+  .logo-strip__track { animation: none; }
 }
 
 .logo-strip__row img {
