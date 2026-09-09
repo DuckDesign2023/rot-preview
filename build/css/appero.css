@@ -28,25 +28,12 @@
 .section-rule { margin-top: 20px; margin-bottom: 20px; }
 .s-fit .section-rule { margin-bottom: 0; }   /* дальше светлая секция, зазор её */
 
-/* ── 2 · Problem (190:928) ─────────────────────────────────────
-   Ряд из двух половин по 680 без зазора: слева строки с иконками,
-   справа тёмная плитка с выводом. */
-
-.problem-row { display: flex; align-items: stretch; }
-.problem-row > * { flex: 1 1 0; min-width: 0; }
-
 /* ── 3 · Meet appero quote (190:810) ───────────────────────────
    Card grid 4×: первая колонка — текст и плитка с графикой,
    остальные три — визуал + заголовок + описание. Шахматный сдвиг
    тот же, что на главной: карточки 2 и 4 опущены на 52. */
 
 .s-meet .card-grid__text { padding-bottom: var(--space-md); }
-
-/* ── 4 · How it works (170:87) ─────────────────────────────────
-   Две равные колонки 664 с зазором 32: аккордеон шагов и плитка. */
-
-.how-row { display: flex; gap: var(--col-gap); align-items: stretch; }
-.how-row > .process { flex: 1 1 0; min-width: 0; }
 
 /* ── 6 · CPQ Light positioning (180:583) ───────────────────────
    Левая колонка 395 фиксирована и прижата к низу ряда, таблица
@@ -132,10 +119,6 @@
   .s-positioning { padding-block: 80px; }
 
   .section-rule  { margin-top: 16px; }
-
-  .problem-row   { flex-direction: column; }
-
-  .how-row       { flex-direction: column; gap: var(--space-lg); }
 
   .positioning-row { flex-direction: column; align-items: stretch; gap: var(--space-lg); }
   .positioning-col { flex: 1 1 auto; }

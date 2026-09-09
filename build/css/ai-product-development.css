@@ -1,0 +1,121 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — AI & Product Development.
+   Макета в Figma нет: страница собрана из библиотеки блоков по
+   брифу клиента (Red_Orange_Technologies_Landing_Pages_and_Visual_
+   Direction.docx, раздел 1). Здесь только вертикальный ритм и те
+   раскладки, которых нет в components.css.
+
+   Указание клиента по визуалу (раздел 5 брифа): никакой типовой
+   «AI-образности» — ни роботов, ни мозгов из микросхем, ни
+   светящихся людей у экранов. Поэтому иллюстрации — те же
+   геометрические композиции, что и на остальных страницах.
+   ══════════════════════════════════════════════════════════════ */
+
+.s-hero         { padding-top:  84px; padding-bottom:  40px; }
+.s-why          { padding-top: 140px; padding-bottom: 120px; }
+.s-build        { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тёмной */
+.s-process      { padding-top: 100px; padding-bottom: 100px; }
+.s-products     { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тёмной */
+.s-architecture { padding-top: 100px; padding-bottom: 100px; }
+.s-cta          { padding-top: 140px; padding-bottom: 140px; }
+
+/* ── 1 · Hero ──────────────────────────────────────────────────
+   Подзаголовок стоит между Display и лидом, поэтому у него свой
+   отступ: иначе строка липнет к заголовку. */
+
+.hero-split__sub { margin-top: 4px; }
+
+/* Визуал героя — вектор, а не фото. Плитка не тянется на всю высоту
+   текстовой колонки: у неё своя высота по содержимому, иначе вокруг
+   некрупной композиции остаётся полполосы пустой заливки. */
+.hero-split__visual--art {
+  background: var(--bg-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  align-self: center;
+  min-height: 0;
+}
+
+.hero-split__visual--art > img {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ── 2 · Why now ───────────────────────────────────────────────
+   Лид в две ступени яркости под шапкой, затем ряд «список / вывод»
+   двумя половинами — тот же приём, что в секции Problem на Appero. */
+
+.why-lead,
+.products-lead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-width: 72ch;
+}
+
+/* ── 4 · Process ───────────────────────────────────────────────
+   Шесть шагов вместо пяти, поэтому колонка выше плитки: плитка
+   выравнивается по верху, а не растягивается на всю высоту. */
+
+.graphic-plate--dark {
+  background: var(--surface-on-dark);
+  align-self: flex-start;
+}
+
+.s-process__actions { margin-top: var(--space-xl); }
+
+/* ── 5 · Our products ──────────────────────────────────────────
+   Хвост секции: теги качеств, вывод и кнопка. */
+
+.products-close {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+  max-width: 72ch;
+  margin-top: var(--space-xl);
+}
+
+/* ══ ПЛАНШЕТ ≤ 1024 ════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+
+  .s-hero         { padding-top: 56px; padding-bottom: 32px; }
+  .s-why,
+  .s-build,
+  .s-products,
+  .s-cta          { padding-top: 116px; }
+  .s-why          { padding-bottom: 96px; }
+  .s-build,
+  .s-products,
+  .s-cta          { padding-bottom: 116px; }
+  .s-process,
+  .s-architecture { padding-block: 80px; }
+
+  .hero-split__visual--art { padding: var(--space-xl); }
+  .hero-split__visual--art > img { max-height: 320px; }
+}
+
+/* ══ МОБИЛЬНЫЙ ≤ 767 ═══════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  .s-hero         { padding-top: 40px; padding-bottom: 24px; }
+  .s-why,
+  .s-build,
+  .s-products,
+  .s-cta          { padding-top: 92px; }
+  .s-why          { padding-bottom: 72px; }
+  .s-build,
+  .s-products,
+  .s-cta          { padding-bottom: 92px; }
+  .s-process,
+  .s-architecture { padding-block: 64px; }
+
+  .hero-split__visual--art { padding: var(--space-lg); }
+  .hero-split__visual--art > img { max-height: 240px; }
+
+  .products-close .btn { width: 100%; text-align: center; }
+}

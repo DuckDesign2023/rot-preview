@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI &amp; Product Development | Red Orange Technologies</title>
+  <meta name="description" content="Turn ideas into scalable digital products. Red Orange Technologies designs, builds and launches AI-powered platforms, applications and products from concept to production.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/ai-product-development.css">
+</head>
+<body>
+
+<!-- ══ HEADER — 152:1823 → Theme Builder → Header (общий с главной) ══ -->
+<header class="site-header" data-el="container" data-name="header">
+  <a class="site-header__logo" href="index.html" data-wp="/" data-el="image" aria-label="Red Orange Technologies — home">
+    <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
+  </a>
+  <!-- Панель меню: внутри только виджет Nav Menu (пункты берутся из меню
+       WordPress) и отдельный блок с языком и CTA — ссылки правятся
+       в «Внешний вид → Меню», не трогая Elementor -->
+  <div class="site-menu" id="site-menu" data-el="container">
+    <nav class="site-nav" data-el="nav-menu" aria-label="Main">
+      <a class="t-nav site-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+      <a class="t-nav site-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/salesforce-services/">Salesforce</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/ai-product-development/" aria-current="page">AI &amp; Product Development</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/products/">Products</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/company/">Company</a>
+    </nav>
+
+    <div class="site-menu__cta" data-el="container">
+      <a class="t-nav site-menu__lang" href="#" data-el="text">EN</a>
+      <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    </div>
+  </div>
+  <div class="site-header__actions" data-el="container">
+      <a class="t-nav site-nav__link" href="#" data-el="text">EN</a>
+    <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    <button class="site-header__burger" type="button" data-el="button"
+            aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <svg class="burger-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect class="burger-icon__bar burger-icon__bar--top" x="0" y="5"  width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--mid" x="0" y="11" width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--bot" x="0" y="17" width="24" height="2"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- затемнение под мобильным меню: сосед хедера, иначе
+     оказывается внутри его stacking context и накрывает логотип -->
+<div class="site-menu-backdrop" hidden></div>
+
+<main>
+
+  <!-- ══ 1 · HERO — блок 10 «hero подстраницы» ═══════════════════════ -->
+  <section class="section s-hero" data-el="container" data-name="hero">
+    <div class="section__inner" data-el="container">
+      <div class="hero-split" data-el="container">
+        <div class="hero-split__content" data-el="container">
+          <div class="hero-split__stack" data-el="container">
+            <span class="badge" data-el="text">Product engineering</span>
+            <div class="hero-split__body" data-el="container">
+              <h1 class="t-display" data-el="heading">AI &amp; Product Development</h1>
+              <p class="t-h1 t-h1--normal hero-split__sub" data-el="text">From idea to working product.</p>
+              <p class="t-lead hero-split__lead" data-el="text">Great digital products do not start with technology. <span class="lead-dim">They start with a problem worth solving.</span></p>
+              <div class="hero__actions" data-el="container">
+                <a class="btn btn--primary" href="#contact" data-el="button">Start your product journey</a>
+                <a class="btn btn--outline" href="#products" data-el="button">Explore our products</a>
+              </div>
+            </div>
+          </div>
+          <hr class="divider divider--soft">
+          <p class="hero-split__note" data-el="text">Strategy. UX. Architecture. AI. Development. Integration. Launch.<br>One team. One direction. One goal: build something that works.</p>
+        </div>
+        <div class="hero-split__visual hero-split__visual--art" data-el="image">
+          <img src="../assets/card-ai.svg" width="316" height="418" alt="" role="presentation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2 · WHY NOW — section-head + ряд «список / вывод» ═══════════ -->
+  <section class="section s-why" data-el="container" data-name="why-now">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Why now</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Stop discussing AI. Start building with it.</h2>
+      </div>
+
+      <div class="why-lead" data-el="container">
+        <p class="t-lead" data-el="text">AI is creating opportunities across almost every industry. But there is a significant difference between experimenting with AI and building something that creates measurable business value. That is where we come in.</p>
+        <p class="t-lead" data-el="text">We combine product thinking, software engineering, AI architecture and business understanding to create solutions that become part of how your company actually operates.</p>
+      </div>
+
+      <div class="problem-row" data-el="container">
+
+        <div class="icon-list" data-el="container">
+          <div class="icon-list__row" data-el="container">
+            <span class="icon-list__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m9 4l2.5 5.5L17 12l-5.5 2.5L9 20l-2.5-5.5L1 12l5.5-2.5zm0 4.83L8 11l-2.17 1L8 13l1 2.17L10 13l2.17-1L10 11zM19 9l-1.26-2.74L15 5l2.74-1.25L19 1l1.25 2.75L23 5l-2.75 1.26zm0 14l-1.26-2.74L15 19l2.74-1.25L19 15l1.25 2.75L23 19l-2.75 1.26z"/></svg></span>
+            <p class="t-body icon-list__text" data-el="text">That may mean building a completely new AI-powered product.</p>
+          </div>
+          <div class="icon-list__row" data-el="container">
+            <span class="icon-list__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M21 2H3a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2M11 17.5L9.5 19L5 14.5L9.5 10l1.5 1.5l-3 3zm3.5 1.5L13 17.5l3-3l-3-3l1.5-1.5l4.5 4.5zM21 7H3V4h18z"/></svg></span>
+            <p class="t-body icon-list__text" data-el="text">It may mean adding intelligent capabilities to an existing platform.</p>
+          </div>
+          <div class="icon-list__row" data-el="container">
+            <span class="icon-list__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77l1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16l-.05-.68l.05-.69l-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15l.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13l.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45l-.74.44l-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44l-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74l-.03-.44l.03-.44l-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45l.77-.44l.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44l1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74l.03.44z"/></svg></span>
+            <p class="t-body icon-list__text" data-el="text">Or it may mean replacing manual workflows with systems and agents that can understand information, make recommendations, generate content and execute tasks.</p>
+          </div>
+        </div>
+
+        <div class="statement" data-el="container">
+          <span class="statement__mark" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m7 17l3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9a.9.9 0 0 0 .9.9a.9.9 0 0 0 .9-.9a.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8a8 8 0 0 0 8 8a8 8 0 0 0 8-8a8 8 0 0 0-8-8"/></svg></span>
+          <div class="statement__body" data-el="container">
+            <h3 class="t-h3 statement__title" data-el="heading">The objective is never AI for the sake of AI.</h3>
+            <hr class="statement__rule">
+            <p class="t-body statement__note" data-el="text">The objective is a better product, a better process or a better business.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 3 · WHAT WE BUILD — блок 4б icon grid 3 × 2 ═════════════════ -->
+  <section class="section s-build" data-el="container" data-name="what-we-build">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Capabilities</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">What we build</h2>
+      </div>
+
+      <div class="icon-grid" data-el="container" data-name="build-grid">
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m9 4l2.5 5.5L17 12l-5.5 2.5L9 20l-2.5-5.5L1 12l5.5-2.5zm0 4.83L8 11l-2.17 1L8 13l1 2.17L10 13l2.17-1L10 11zM19 9l-1.26-2.74L15 5l2.74-1.25L19 1l1.25 2.75L23 5l-2.75 1.26zm0 14l-1.26-2.74L15 19l2.74-1.25L19 15l1.25 2.75L23 19l-2.75 1.26z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">AI-powered products</h3>
+            <p class="t-body icon-card__text" data-el="text">Build applications where AI is part of the product itself, from intelligent assistants and autonomous agents to advanced data analysis, document processing, knowledge systems and decision support.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 19c0 .34.03.67.08 1H6.5c-1.5 0-2.81-.5-3.89-1.57C1.54 17.38 1 16.09 1 14.58q0-1.95 1.17-3.48C3.34 9.57 4 9.43 5.25 9.15c.42-1.53 1.25-2.77 2.5-3.72S10.42 4 12 4c1.95 0 3.6.68 4.96 2.04S19 9.05 19 11c1.15.13 2.1.63 2.86 1.5c.06.05.1.13.14.19c-.9-.44-1.92-.69-3-.69c-3.87 0-7 3.13-7 7m11.83 1.64l-1 1.73c-.07.13-.2.13-.33.13l-1.23-.5c-.27.18-.54.34-.84.47l-.19 1.32c-.02.12-.13.21-.24.21h-2c-.14 0-.24-.09-.26-.21l-.19-1.32c-.31-.12-.59-.29-.85-.47l-1.24.5c-.12 0-.25 0-.31-.13l-1-1.73a.26.26 0 0 1 .06-.32l1.06-.82a4.2 4.2 0 0 1 0-1l-1.06-.82a.25.25 0 0 1-.06-.32l1-1.73c.07-.13.2-.13.31-.13l1.24.5c.26-.18.55-.34.85-.47l.19-1.32A.26.26 0 0 1 18 14h2c.11 0 .22.09.23.21l.19 1.32c.31.12.58.29.85.47l1.23-.5c.13 0 .26 0 .32.13l1 1.73c.06.11.03.24-.06.32l-1.06.82c.03.17.04.33.04.5s-.02.33-.04.5l1.07.82c.09.08.12.21.06.32M20.5 19c0-.83-.68-1.5-1.5-1.5s-1.5.67-1.5 1.5s.66 1.5 1.5 1.5s1.5-.67 1.5-1.5"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">SaaS platforms</h3>
+            <p class="t-body icon-card__text" data-el="text">Turn your business idea into a secure, scalable cloud platform designed for real customers and real growth.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M21 2H3a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2M11 17.5L9.5 19L5 14.5L9.5 10l1.5 1.5l-3 3zm3.5 1.5L13 17.5l3-3l-3-3l1.5-1.5l4.5 4.5zM21 7H3V4h18z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Enterprise applications</h3>
+            <p class="t-body icon-card__text" data-el="text">Replace fragmented tools, spreadsheets and manual processes with applications built around the way your organisation actually works.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.9 18.45c1.35 0 2.45-1.1 2.45-2.45s-1.1-2.45-2.45-2.45c-1.36 0-2.45 1.1-2.45 2.45s1.09 2.45 2.45 2.45m5.2-1.77l1.48 1.16c.13.11.17.29.08.45l-1.4 2.42a.35.35 0 0 1-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.27 1.85c-.02.17-.17.3-.34.3h-2.8c-.18 0-.32-.13-.35-.3l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.75.7c-.15.06-.34 0-.42-.15l-1.4-2.42a.35.35 0 0 1 .08-.45l1.48-1.16l-.05-.68l.05-.69l-1.48-1.15a.35.35 0 0 1-.08-.45l1.4-2.42c.08-.16.27-.22.42-.16l1.75.71c.36-.28.75-.52 1.18-.69l.26-1.86c.03-.16.17-.29.35-.29h2.8c.17 0 .32.13.34.29l.27 1.86c.42.17.82.41 1.18.69l1.74-.71c.17-.06.34 0 .43.16l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.15l.05.69zM6.69 8.07c.87 0 1.57-.7 1.57-1.57s-.7-1.58-1.57-1.58A1.58 1.58 0 0 0 5.11 6.5c0 .87.71 1.57 1.58 1.57m3.34-1.13l.97.74c.07.07.09.19.03.29l-.9 1.56c-.05.1-.17.14-.27.1l-1.12-.45l-.74.44l-.19 1.19c-.02.11-.11.19-.22.19h-1.8c-.12 0-.21-.08-.23-.19L5.4 9.62l-.76-.44l-1.14.45c-.09.04-.2 0-.26-.1l-.9-1.56c-.06-.1-.03-.22.05-.29l.95-.74l-.03-.44l.03-.44l-.95-.74a.23.23 0 0 1-.05-.29l.9-1.56c.06-.1.17-.14.26-.1l1.13.45l.77-.44l.16-1.19c.02-.11.11-.19.23-.19h1.8c.11 0 .2.08.22.19L8 3.38l.74.44l1.12-.45c.1-.04.22 0 .27.1l.9 1.56c.06.1.04.22-.03.29l-.97.74l.03.44z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">AI agents &amp; automation</h3>
+            <p class="t-body icon-card__text" data-el="text">Build agents that do more than answer questions. Give them access to the right systems, data and workflows and let them research, analyse, generate, coordinate and execute within defined guardrails.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 6v3l4-4l-4-4v3a8 8 0 0 0-8 8c0 1.57.46 3.03 1.24 4.26L6.7 14.8A5.9 5.9 0 0 1 6 12a6 6 0 0 1 6-6m6.76 1.74L17.3 9.2c.44.84.7 1.8.7 2.8a6 6 0 0 1-6 6v-3l-4 4l4 4v-3a8 8 0 0 0 8-8c0-1.57-.46-3.03-1.24-4.26"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Product modernisation</h3>
+            <p class="t-body icon-card__text" data-el="text">Transform existing software into a more intelligent, connected and scalable product without starting from scratch.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M3 1c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h11c1.11 0 2-.89 2-2v-3h-2v3H3V3h11v2h2V3c0-1.11-.89-2-2-2M9 7c-1.11 0-2 .89-2 2v3h2V9h11v11H9v-2H7v2c0 1.11.89 2 2 2h11c1.11 0 2-.89 2-2V9c0-1.11-.89-2-2-2z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Integrations</h3>
+            <p class="t-body icon-card__text" data-el="text">Connect your product to the systems your business already depends on, from CRM and ERP to Microsoft 365, APIs, cloud services and proprietary enterprise systems.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 4 · PROCESS — атом process, 6 шагов + плитка ════════════════ -->
+  <section class="section section--dark s-process on-dark" data-el="container" data-name="process">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">How we work</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">From first conversation to production</h2>
+      </div>
+
+      <div class="how-row" data-el="container">
+
+        <div class="process" data-el="container" data-name="process-steps">
+          <div class="process__item process__item--open" data-el="container" tabindex="0">
+            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">01</span> Discover</h3>
+            <div class="process__text" data-el="container">
+              <p class="t-body" data-el="text">We define the problem, users, commercial opportunity and technical requirements. Not every idea needs to become a product. The first job is determining what should actually be built.</p>
+            </div>
+          </div>
+          <div class="process__item" data-el="container" tabindex="0">
+            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">02</span> Design</h3>
+            <div class="process__text" data-el="container">
+              <p class="t-body" data-el="text">We turn the concept into user journeys, product architecture, interfaces and a clear development roadmap.</p>
+            </div>
+          </div>
+          <div class="process__item" data-el="container" tabindex="0">
+            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">03</span> Build</h3>
+            <div class="process__text" data-el="container">
+              <p class="t-body" data-el="text">Our developers and AI engineers build the platform using modern cloud, application and AI technologies.</p>
+            </div>
+          </div>
+          <div class="process__item" data-el="container" tabindex="0">
+            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">04</span> Integrate</h3>
+            <div class="process__text" data-el="container">
+              <p class="t-body" data-el="text">We connect the product to the systems, data and services it needs to become useful in the real world.</p>
+            </div>
+          </div>
+          <div class="process__item" data-el="container" tabindex="0">
+            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">05</span> Launch</h3>
+            <div class="process__text" data-el="container">
+              <p class="t-body" data-el="text">We move from development into production with testing, deployment and operational support.</p>
+            </div>
+          </div>
+          <div class="process__item" data-el="container" tabindex="0">
+            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">06</span> Improve</h3>
+            <div class="process__text" data-el="container">
+              <p class="t-body" data-el="text">Products are never finished. We use real-world feedback and usage to continuously improve functionality, intelligence and user experience.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="graphic-plate graphic-plate--dark" data-el="container">
+          <img src="../assets/art-semicircles-process.svg" width="432" height="384" alt="" role="presentation">
+        </div>
+
+      </div>
+
+      <div class="s-process__actions" data-el="container">
+        <a class="btn btn--primary" href="#contact" data-el="button">Discuss your product idea</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 5 · OUR OWN PRODUCTS — блок 3 ledger ════════════════════════ -->
+  <section class="section s-products" id="products" data-el="container" data-name="our-products">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Our products</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">We don't just build products for clients. We build our own.</h2>
+      </div>
+
+      <div class="products-lead" data-el="container">
+        <p class="t-lead" data-el="text">Product development changes when the people advising you are also building and launching technology themselves. At Red Orange Technologies, our teams have developed products including NOVAlab, NOVA for Salesforce and WorkHub.</p>
+        <p class="t-lead" data-el="text">That means we understand the decisions that come after the prototype.</p>
+      </div>
+
+      <div class="ledger" data-el="container" data-name="products-ledger">
+        <div class="ledger__row ledger__row--open" data-el="container" tabindex="0">
+          <div class="ledger__media ledger__media--dark" data-el="container">
+            <img class="ledger__wordmark" src="../assets/product-nova-mark.webp" width="518" height="108" alt="NOVA for Salesforce">
+            <img class="ledger__shot" src="../assets/product-nova-screen.webp" width="1088" height="984" alt="NOVA for Salesforce — lead routing screen">
+          </div>
+          <div class="ledger__body" data-el="container">
+            <h3 class="t-h2" data-el="heading">NOVA for Salesforce</h3>
+            <p class="t-lead" data-el="text">Describe what you need in plain English — NOVA designs, configures, builds and deploys it inside Salesforce.</p>
+          </div>
+          <div class="t-h2 ledger__num" data-el="text">01</div>
+        </div>
+        <div class="ledger__row" data-el="container" tabindex="0">
+          <div class="ledger__media ledger__media--center" data-el="container">
+            <span class="ledger__wordmark-text">WorkHub</span>
+          </div>
+          <div class="ledger__body" data-el="container">
+            <h3 class="t-h2" data-el="heading">WorkHub</h3>
+            <p class="t-lead" data-el="text">One workspace for project-driven teams: projects, people, documents, compliance, sales and finance in one connected environment.</p>
+          </div>
+          <div class="t-h2 ledger__num" data-el="text">02</div>
+        </div>
+        <div class="ledger__row" data-el="container" tabindex="0">
+          <div class="ledger__media ledger__media--center" data-el="container">
+            <img src="../assets/product-novalab.webp" width="220" height="92" alt="NOVAlab">
+          </div>
+          <div class="ledger__body" data-el="container">
+            <h3 class="t-h2" data-el="heading">NOVAlab</h3>
+            <p class="t-lead" data-el="text">A governed environment for enterprise AI: multi-model orchestration, agents and integrations without handing over control of your data.</p>
+          </div>
+          <div class="t-h2 ledger__num" data-el="text">03</div>
+        </div>
+      </div>
+
+      <div class="products-close" data-el="container">
+        <div class="tag-row" data-el="container">
+          <span class="tag" data-el="text">Architecture</span>
+          <span class="tag" data-el="text">Security</span>
+          <span class="tag" data-el="text">Integrations</span>
+          <span class="tag" data-el="text">User experience</span>
+          <span class="tag" data-el="text">Commercialisation</span>
+          <span class="tag" data-el="text">Scalability</span>
+          <span class="tag" data-el="text">AI governance</span>
+        </div>
+        <p class="t-lead" data-el="text">And the thousands of small product decisions between an idea and something customers will actually pay for.</p>
+        <a class="btn btn--outline" href="/products/" data-el="button">Explore our products</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 6 · ARCHITECTURE — блок 18 dark split ═══════════════════════ -->
+  <section class="section section--darker s-architecture on-dark" data-el="container" data-name="architecture">
+    <div class="section__inner" data-el="container">
+      <div class="dark-split" data-el="container">
+        <div class="dark-split__text" data-el="container">
+          <h2 class="t-h1 t-h1--normal" data-el="heading">AI is powerful. Architecture matters more.</h2>
+          <p class="t-lead dark-split__lead" data-el="text">Connecting an application to a large language model is easy. Building an AI-powered product you can trust is much harder.</p>
+          <p class="t-lead dark-split__lead" data-el="text">Production AI requires decisions around data security, model routing, governance, reliability, integrations, cost, user permissions and human oversight.</p>
+          <p class="t-lead dark-split__lead" data-el="text">Our own NOVAlab architecture, for example, uses a governed multi-stage pipeline, isolated customer contexts, controlled model routing and an EU-resident infrastructure to make AI suitable for enterprise use. We bring the same architectural thinking into the products we build with our customers.</p>
+        </div>
+        <div class="dark-split__graphic" data-el="image">
+          <img src="../assets/art-semicircles-positioning.svg" width="432" height="384" alt="" role="presentation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 7 · ФИНАЛЬНЫЙ CTA — блок 11 split 720 / 720 ═════════════════ -->
+  <section class="section s-cta" data-el="container" data-name="closing">
+    <div class="section__inner" data-el="container">
+      <div class="split split--in-grid split--sticky" data-el="container">
+        <div class="split__panel split__panel--warm" data-el="container">
+          <h2 class="t-h1 t-h1--normal split__title" data-el="heading">You bring the opportunity. We'll help turn it into a product.</h2>
+          <div class="split__body" data-el="container">
+            <p class="t-lead" data-el="text">You do not need a finished specification. You do not need to know which AI model to use. And you do not need to know the final architecture.</p>
+            <p class="t-lead" data-el="text">You need a problem worth solving and the ambition to solve it properly. We'll take it from there.</p>
+            <div class="split__actions" data-el="container">
+              <a class="btn btn--primary" href="#contact" data-el="button">Book a product discovery call</a>
+            </div>
+          </div>
+        </div>
+        <div class="split__media" data-el="image">
+          <img src="../assets/hero-mountains.webp" width="1360" height="504"
+               alt="" role="presentation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+
+
+<!-- ══ 10 · FOOTER — 152:131 → Theme Builder → Footer ═════════════ -->
+<footer class="site-footer" id="contact" data-el="container" data-name="footer">
+  <div class="site-footer__photo" aria-hidden="true"></div>
+  <div class="site-footer__wash" aria-hidden="true"></div>
+  <div class="site-footer__glow" aria-hidden="true"></div>
+
+  <div class="site-footer__inner" data-el="container">
+
+    <div class="footer-top" data-el="container">
+
+      <div class="footer-contact" data-el="container">
+        <div class="t-overline footer-contact__label" data-el="text">Get in touch</div>
+        <h2 class="t-h1 t-h1--normal" data-el="heading">Collaborate with us for complete IT solutions</h2>
+        <p class="t-lead footer-contact__lead" data-el="text">We're happy to answer any questions and help determine which of our services best fit your needs.</p>
+
+        <div class="check-list" data-el="container">
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Client-oriented</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Independent</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Competent</span>
+            </div>
+          </div>
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Results-driven</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Problem-solving</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Transparent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-form" data-el="container">
+        <h2 class="t-h2 footer-form__title" data-el="heading">Let us talk about your next solution</h2>
+        <form class="form" data-el="form" action="#" method="post">
+          <div class="form__row" data-el="container">
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-first" data-el="text">First name</label>
+              <input class="field__control" id="f-first" name="first-name" type="text" autocomplete="given-name">
+            </div>
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-last" data-el="text">Last name</label>
+              <input class="field__control" id="f-last" name="last-name" type="text" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-email" data-el="text">Email</label>
+            <input class="field__control" id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-company" data-el="text">Company</label>
+            <input class="field__control" id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field field--last" data-el="container">
+            <label class="t-body" for="f-message" data-el="text">Message</label>
+            <textarea class="field__control" id="f-message" name="message" rows="5"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit" data-el="button">Send message</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-nav" data-el="container">
+      <div class="footer-nav__cols" data-el="container">
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Solutions</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+            <a class="footer-nav__link" href="#" data-wp="/salesforce-services/">Salesforce Services</a>
+            <a class="footer-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+            <a class="footer-nav__link" href="#" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Products</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+            <a class="footer-nav__link" href="#" data-wp="/products/workhub/">WorkHub</a>
+            <a class="footer-nav__link" href="#" data-wp="/products/novalab/">NOVAlab</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Company</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/">About us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/why-us/">Why us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/team/">Team</a>
+            <a class="footer-nav__link" href="#" data-wp="/cases/">Case studies</a>
+            <a class="footer-nav__link" href="#" data-wp="/insights/">Blog</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/careers/">Careers</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Contact</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Asker, Norway</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Pune, India</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Mohali, India</a>
+            <a class="footer-nav__link" href="mailto:contact@redorangetechnologies.com">contact@redorangetechnologies.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider divider--ondark-soft" data-el="divider">
+
+      <div class="footer-bottom" data-el="container">
+        <span class="footer-bottom__copy" data-el="text">© 2026 Red Orange Technologies</span>
+        <a href="/terms/" data-el="text">Terms &amp; Conditions</a>
+        <a href="/privacy/" data-el="text">Privacy Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

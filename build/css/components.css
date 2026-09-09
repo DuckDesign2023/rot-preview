@@ -2291,3 +2291,26 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 /* Наведение на плитку, которая и так залита акцентом (Appero, 171:101),
    ничего не меняет — состояние уже конечное. */
 .icon-card--accent:hover { background: var(--color-accent); }
+
+
+/* ── Пары «список / вывод» и «шаги / плитка» ──────────────────────────
+   Сняты с Appero (`190:928` Problem и `170:87` How it works), но живут
+   уже на двух страницах, поэтому переехали из appero.css в библиотеку.
+
+   problem-row — две половины впритык, без зазора: слева строки
+   с иконками, справа плитка с выводом. Половины равные и тянутся
+   по высоте, чтобы плитка не «висела» короче списка.
+
+   how-row — две равные колонки с зазором 32: аккордеон шагов
+   и плитка с графикой. */
+
+.problem-row { display: flex; align-items: stretch; }
+.problem-row > * { flex: 1 1 0; min-width: 0; }
+
+.how-row { display: flex; gap: var(--col-gap); align-items: stretch; }
+.how-row > .process { flex: 1 1 0; min-width: 0; }
+
+@media (max-width: 1024px) {
+  .problem-row { flex-direction: column; }
+  .how-row     { flex-direction: column; gap: var(--space-lg); }
+}
