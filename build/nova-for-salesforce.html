@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVA for Salesforce | Build Salesforce Faster with AI | Red Orange Technologies</title>
+  <meta name="description" content="Configure, automate and develop Salesforce using natural language. NOVA helps admins, developers and business teams build more themselves and rely less on expensive consulting hours.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/nova-for-salesforce.css">
+</head>
+<body>
+
+<!-- ══ HEADER — 152:1823 → Theme Builder → Header (общий с главной) ══ -->
+<header class="site-header" data-el="container" data-name="header">
+  <a class="site-header__logo" href="index.html" data-wp="/" data-el="image" aria-label="Red Orange Technologies — home">
+    <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
+  </a>
+  <!-- Панель меню: внутри только виджет Nav Menu (пункты берутся из меню
+       WordPress) и отдельный блок с языком и CTA — ссылки правятся
+       в «Внешний вид → Меню», не трогая Elementor -->
+  <div class="site-menu" id="site-menu" data-el="container">
+    <nav class="site-nav" data-el="nav-menu" aria-label="Main">
+      <a class="t-nav site-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+      <a class="t-nav site-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/salesforce-services/">Salesforce</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/products/" aria-current="page">Products</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/company/">Company</a>
+    </nav>
+
+    <div class="site-menu__cta" data-el="container">
+      <a class="t-nav site-menu__lang" href="#" data-el="text">EN</a>
+      <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    </div>
+  </div>
+  <div class="site-header__actions" data-el="container">
+      <a class="t-nav site-nav__link" href="#" data-el="text">EN</a>
+    <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    <button class="site-header__burger" type="button" data-el="button"
+            aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <svg class="burger-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect class="burger-icon__bar burger-icon__bar--top" x="0" y="5"  width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--mid" x="0" y="11" width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--bot" x="0" y="17" width="24" height="2"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- затемнение под мобильным меню: сосед хедера, иначе
+     оказывается внутри его stacking context и накрывает логотип -->
+<div class="site-menu-backdrop" hidden></div>
+
+<main>
+  <!-- ══ 1 · HERO — блок 10 «hero подстраницы» + схема экрана (блок 35) ══ -->
+  <section class="section n-hero" data-el="container" data-name="hero">
+    <div class="section__inner" data-el="container">
+      <div class="hero-split" data-el="container">
+        <div class="hero-split__content" data-el="container">
+          <div class="hero-split__stack" data-el="container">
+            <span class="badge" data-el="text">Our product</span>
+            <div class="hero-split__body" data-el="container">
+              <h1 class="t-display" data-el="heading">NOVA for Salesforce</h1>
+              <p class="t-h1 t-h1--normal hero-split__sub" data-el="text">Salesforce. Without the waiting.</p>
+              <p class="t-lead hero-split__lead" data-el="text">Salesforce is incredibly powerful. But getting something changed inside Salesforce can still mean specifications, consultants, development queues, configuration cycles and invoices. NOVA changes that.</p>
+              <div class="hero__actions" data-el="container">
+                <a class="btn btn--primary" href="https://salesforce.novalab.build" data-el="button" rel="noopener">Try NOVA for Salesforce</a>
+                <a class="btn btn--outline" href="#contact" data-el="button">Talk to a Salesforce expert</a>
+              </div>
+            </div>
+          </div>
+          <hr class="divider divider--soft">
+          <p class="hero-split__note" data-el="text">Describe what you want in plain English. NOVA for Salesforce helps you design it, configure it, build it, automate it and deploy it.<br>No endless queue. No unnecessary complexity.</p>
+        </div>
+
+        <div class="hero-split__visual" data-el="container">
+          <!-- Схема экрана продукта. Настоящих скриншотов NOVA у нас пока
+               нет; когда придут — панель заменяется картинкой, раскладка
+               секции не меняется. Содержание взято из брифа клиента
+               (раздел «Hero visual»): запрос обычными словами слева,
+               сгенерированное решение и Review & Deploy — под ним. -->
+          <div class="ui-panel" data-el="container" data-name="nova-hero-panel">
+            <div class="ui-panel__bar" data-el="container">
+              <span class="ui-panel__dot" aria-hidden="true"></span>
+              <span class="ui-panel__name" data-el="text">NOVA</span>
+              <span class="ui-panel__status" data-el="text">salesforce · sandbox</span>
+            </div>
+            <div class="ui-panel__body" data-el="container">
+
+              <div class="ui-panel__prompt" data-el="container">
+                <span class="ui-panel__caret" aria-hidden="true">&rsaquo;</span>
+                <p data-el="text">Create a lead qualification flow that assigns enterprise leads to the Nordic sales team and notifies the account owner.</p>
+                <span class="ui-panel__run" data-el="text">RUN</span>
+              </div>
+
+              <div class="ui-panel__rows" data-el="container">
+                <div class="ui-panel__row" data-el="container">
+                  <span class="ui-panel__idx" data-el="text">01</span>
+                  <span class="ui-panel__key" data-el="text">Flow</span>
+                  <span class="ui-panel__meta" data-el="text">Lead_Qualification_Nordics</span>
+                  <span class="ui-panel__ok" data-el="text">built</span>
+                </div>
+                <div class="ui-panel__row" data-el="container">
+                  <span class="ui-panel__idx" data-el="text">02</span>
+                  <span class="ui-panel__key" data-el="text">Fields</span>
+                  <span class="ui-panel__meta" data-el="text">3 new fields on Lead</span>
+                  <span class="ui-panel__ok" data-el="text">built</span>
+                </div>
+                <div class="ui-panel__row" data-el="container">
+                  <span class="ui-panel__idx" data-el="text">03</span>
+                  <span class="ui-panel__key" data-el="text">Validation</span>
+                  <span class="ui-panel__meta" data-el="text">1 rule · region required</span>
+                  <span class="ui-panel__ok" data-el="text">built</span>
+                </div>
+                <div class="ui-panel__row" data-el="container">
+                  <span class="ui-panel__idx" data-el="text">04</span>
+                  <span class="ui-panel__key" data-el="text">Automation</span>
+                  <span class="ui-panel__meta" data-el="text">record-triggered · notify owner</span>
+                  <span class="ui-panel__ok" data-el="text">built</span>
+                </div>
+                <div class="ui-panel__row" data-el="container">
+                  <span class="ui-panel__idx" data-el="text">05</span>
+                  <span class="ui-panel__key" data-el="text">Deployment package</span>
+                  <span class="ui-panel__meta" data-el="text">9 components</span>
+                  <span class="ui-panel__ok" data-el="text">ready</span>
+                </div>
+              </div>
+
+              <div class="ui-panel__result" data-el="container">
+                <strong data-el="text">Review &amp; Deploy</strong>
+                <span data-el="text">YOU STAY IN CONTROL</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2 · ПРОБЛЕМА — section-head + теги + versus (блок 37) ═══════ -->
+  <section class="section n-problem" data-el="container" data-name="problem">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">The problem</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Salesforce shouldn't require a consultant every time you want to change something.</h2>
+      </div>
+
+      <div class="n-problem__lead" data-el="container">
+        <p class="t-lead" data-el="text">Traditionally, even relatively straightforward changes can end up in a development backlog.</p>
+
+        <div class="tag-row n-problem__asks" data-el="container">
+          <span class="tag" data-el="text">A new object</span>
+          <span class="tag" data-el="text">A Flow</span>
+          <span class="tag" data-el="text">A validation rule</span>
+          <span class="tag" data-el="text">A field</span>
+          <span class="tag" data-el="text">An Apex class</span>
+          <span class="tag" data-el="text">An automation</span>
+          <span class="tag" data-el="text">A new business process</span>
+        </div>
+
+        <p class="t-lead" data-el="text">With NOVA for Salesforce, you describe what you need. The platform translates that intent into Salesforce configuration, automation or code. You review it. You stay in control. Then you deploy.</p>
+      </div>
+
+      <!-- Сравнение из брифа: «уверенно и провокационно, но без логотипов
+           конкурентов» — поэтому противопоставлен порядок работы,
+           а не вендор. -->
+      <div class="versus" data-el="container" data-name="old-vs-nova">
+        <div class="versus__panel" data-el="container">
+          <div class="t-overline versus__label" data-el="text">The old way</div>
+          <div class="chain chain--muted" data-el="container">
+            <span class="chain__step" data-el="text">Business request</span>
+            <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step" data-el="text">Consultant</span>
+            <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step" data-el="text">Specification</span>
+            <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step" data-el="text">Developer queue</span>
+            <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step" data-el="text">Configuration</span>
+            <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step" data-el="text">Testing</span>
+            <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step" data-el="text">Deployment</span>
+          </div>
+          <p class="t-body versus__note" data-el="text">Seven handovers before anything reaches a user.</p>
+        </div>
+
+        <div class="versus__panel versus__panel--now on-dark" data-el="container">
+          <div class="t-overline versus__label" data-el="text">With NOVA for Salesforce</div>
+          <div class="chain chain--accent" data-el="container">
+            <span class="chain__step" data-el="text">Describe</span>
+            <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step" data-el="text">Review</span>
+            <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step" data-el="text">Deploy</span>
+          </div>
+          <p class="t-body versus__note" data-el="text">And far fewer reasons to pay someone by the hour for work you can increasingly do yourself.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 3 · КАК ЭТО РАБОТАЕТ — process 5 шагов + плитка ════════════ -->
+  <section class="section section--dark n-how on-dark" data-el="container" data-name="how-it-works">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">How it works</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Tell Salesforce what you want. In plain English.</h2>
+      </div>
+
+      <div class="n-how__lead" data-el="container">
+        <p class="t-lead" data-el="text">You should not need to speak Apex to improve your CRM. NOVA for Salesforce gives your team a natural-language layer for Salesforce development and configuration.</p>
+
+        <div class="chain chain--accent n-how__chain" data-el="container">
+          <span class="chain__step" data-el="text">Describe</span>
+          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+          <span class="chain__step" data-el="text">NOVA builds</span>
+          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+          <span class="chain__step" data-el="text">Review</span>
+          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+          <span class="chain__step" data-el="text">Deploy</span>
+        </div>
+      </div>
+
+      <div class="how-row" data-el="container">
+
+        <div class="process" data-el="container" data-name="capability-steps">
+          <div class="process__item process__item--open" data-el="container" tabindex="0">
+            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">01</span> Design</h3>
+            <div class="process__text" data-el="container">
+              <p class="t-body" data-el="text">Describe the business process you want Salesforce to support.</p>
+            </div>
+          </div>
+          <div class="process__item" data-el="container" tabindex="0">
+            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">02</span> Configure</h3>
+            <div class="process__text" data-el="container">
+              <p class="t-body" data-el="text">Create and modify Salesforce configuration without navigating endless setup menus.</p>
+            </div>
+          </div>
+          <div class="process__item" data-el="container" tabindex="0">
+            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">03</span> Automate</h3>
+            <div class="process__text" data-el="container">
+              <p class="t-body" data-el="text">Turn business requirements into Salesforce automation and Flows.</p>
+            </div>
+          </div>
+          <div class="process__item" data-el="container" tabindex="0">
+            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">04</span> Code</h3>
+            <div class="process__text" data-el="container">
+              <p class="t-body" data-el="text">Generate Apex, metadata and other technical components when configuration alone is not enough.</p>
+            </div>
+          </div>
+          <div class="process__item" data-el="container" tabindex="0">
+            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">05</span> Deploy</h3>
+            <div class="process__text" data-el="container">
+              <p class="t-body" data-el="text">Move approved changes into your Salesforce environment without turning every request into a mini implementation project.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="graphic-plate graphic-plate--dark" data-el="container">
+          <img src="../assets/art-semicircles-process.svg" width="432" height="384" alt="" role="presentation">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 4 · ДОКАЗАТЕЛЬСТВО ПРОДУКТА — 4 микро-примера из брифа ═════ -->
+  <section class="section n-proof" data-el="container" data-name="product-proof">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Product proof</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Four everyday requests, start to finish.</h2>
+      </div>
+
+      <div class="proof-grid" data-el="container" data-name="proof-grid">
+
+        <div class="ui-panel ui-panel--light" data-el="container">
+          <div class="ui-panel__bar" data-el="container">
+            <span class="ui-panel__dot" aria-hidden="true"></span>
+            <span class="ui-panel__name" data-el="text">Build a Flow</span>
+            <span class="ui-panel__status" data-el="text">automation</span>
+          </div>
+          <div class="ui-panel__body" data-el="container">
+            <div class="ui-panel__prompt" data-el="container">
+              <span class="ui-panel__caret" aria-hidden="true">&rsaquo;</span>
+              <p data-el="text">When a renewal opportunity slips twice, alert the account owner and the regional manager.</p>
+            </div>
+            <div class="ui-panel__rows" data-el="container">
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Trigger</span>
+                <span class="ui-panel__meta" data-el="text">Opportunity · Close Date changed</span>
+                <span class="ui-panel__ok" data-el="text">built</span>
+              </div>
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Actions</span>
+                <span class="ui-panel__meta" data-el="text">2 notifications · 1 task</span>
+                <span class="ui-panel__ok" data-el="text">built</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-panel ui-panel--light" data-el="container">
+          <div class="ui-panel__bar" data-el="container">
+            <span class="ui-panel__dot" aria-hidden="true"></span>
+            <span class="ui-panel__name" data-el="text">Create an Apex class</span>
+            <span class="ui-panel__status" data-el="text">code</span>
+          </div>
+          <div class="ui-panel__body" data-el="container">
+            <div class="ui-panel__prompt" data-el="container">
+              <span class="ui-panel__caret" aria-hidden="true">&rsaquo;</span>
+              <p data-el="text">Recalculate account health when a support case is closed.</p>
+            </div>
+            <div class="ui-panel__rows" data-el="container">
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Class</span>
+                <span class="ui-panel__meta" data-el="text">AccountHealthHandler</span>
+                <span class="ui-panel__ok" data-el="text">written</span>
+              </div>
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Test class</span>
+                <span class="ui-panel__meta" data-el="text">coverage 96%</span>
+                <span class="ui-panel__ok" data-el="text">passed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-panel ui-panel--light" data-el="container">
+          <div class="ui-panel__bar" data-el="container">
+            <span class="ui-panel__dot" aria-hidden="true"></span>
+            <span class="ui-panel__name" data-el="text">Add a custom object</span>
+            <span class="ui-panel__status" data-el="text">configuration</span>
+          </div>
+          <div class="ui-panel__body" data-el="container">
+            <div class="ui-panel__prompt" data-el="container">
+              <span class="ui-panel__caret" aria-hidden="true">&rsaquo;</span>
+              <p data-el="text">We need to track service agreements against accounts, with start and end dates.</p>
+            </div>
+            <div class="ui-panel__rows" data-el="container">
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Object</span>
+                <span class="ui-panel__meta" data-el="text">Service_Agreement__c</span>
+                <span class="ui-panel__ok" data-el="text">created</span>
+              </div>
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Layout</span>
+                <span class="ui-panel__meta" data-el="text">page layout · list view · tab</span>
+                <span class="ui-panel__ok" data-el="text">created</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-panel ui-panel--light" data-el="container">
+          <div class="ui-panel__bar" data-el="container">
+            <span class="ui-panel__dot" aria-hidden="true"></span>
+            <span class="ui-panel__name" data-el="text">Generate documentation</span>
+            <span class="ui-panel__status" data-el="text">admin</span>
+          </div>
+          <div class="ui-panel__body" data-el="container">
+            <div class="ui-panel__prompt" data-el="container">
+              <span class="ui-panel__caret" aria-hidden="true">&rsaquo;</span>
+              <p data-el="text">Document every automation that touches the Opportunity object.</p>
+            </div>
+            <div class="ui-panel__rows" data-el="container">
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Scanned</span>
+                <span class="ui-panel__meta" data-el="text">14 flows · 6 Apex triggers</span>
+                <span class="ui-panel__ok" data-el="text">done</span>
+              </div>
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Output</span>
+                <span class="ui-panel__meta" data-el="text">handover document</span>
+                <span class="ui-panel__ok" data-el="text">ready</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 5 · ОПЕРАЦИОННАЯ МОДЕЛЬ — тёмная секция + лок-ап ═══════════ -->
+  <section class="section section--dark n-model on-dark" data-el="container" data-name="operating-model">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Operating model</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Your consultants should solve difficult problems. Not charge you for easy ones.</h2>
+      </div>
+
+      <div class="n-model__cols" data-el="container">
+        <div data-el="container">
+          <p class="t-lead" data-el="text">We are a Salesforce implementation company. So why would we build a product that lets customers do more themselves? Because that is exactly how we believe Salesforce should work.</p>
+        </div>
+        <div data-el="container">
+          <p class="t-lead" data-el="text">You should use experienced consultants when architecture, integrations, strategy and complex business transformation require them. You should not need a senior Salesforce consultant every time somebody wants a new field, Flow, report, object or automation.</p>
+        </div>
+      </div>
+
+      <div class="n-model__close" data-el="container">
+        <p class="t-lead" data-el="text">NOVA for Salesforce gives more power back to your own team. And when you do need us, Red Orange Technologies is there.</p>
+
+        <div class="lockup" data-el="container" data-name="operating-lockup">
+          <div class="lockup__side" data-el="container">
+            <div class="lockup__logo" data-el="image">
+              <img src="../assets/logo-redorange-white.webp" width="338" height="59" alt="Red Orange Technologies">
+            </div>
+            <span class="t-overline lockup__label" data-el="text">Use us when you need us</span>
+          </div>
+          <span class="lockup__arrow" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 9"><path fill="currentColor" d="M18.7528 0C19.8793 1.21001 20.8534 2.13213 21.675 2.76634C22.4966 3.39221 23.2716 3.85953 24 4.16829V4.73157C23.1615 5.13213 22.3483 5.64534 21.5606 6.27121C20.7729 6.88873 19.8327 7.79833 18.7401 9H17.7618C18.558 7.32267 19.3923 6.03338 20.2647 5.13213H0V3.86787H20.2647C19.621 3.05841 19.172 2.45758 18.9179 2.06537C18.6638 1.67316 18.2869 0.984701 17.7872 0H18.7528Z"/></svg></span>
+          <div class="lockup__center" data-el="container">
+            <span class="t-h2" data-el="text">A SMARTER OPERATING MODEL</span>
+          </div>
+          <span class="lockup__arrow lockup__arrow--back" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 9"><path fill="currentColor" d="M18.7528 0C19.8793 1.21001 20.8534 2.13213 21.675 2.76634C22.4966 3.39221 23.2716 3.85953 24 4.16829V4.73157C23.1615 5.13213 22.3483 5.64534 21.5606 6.27121C20.7729 6.88873 19.8327 7.79833 18.7401 9H17.7618C18.558 7.32267 19.3923 6.03338 20.2647 5.13213H0V3.86787H20.2647C19.621 3.05841 19.172 2.45758 18.9179 2.06537C18.6638 1.67316 18.2869 0.984701 17.7872 0H18.7528Z"/></svg></span>
+          <div class="lockup__side" data-el="container">
+            <div class="lockup__logo lockup__mark" data-el="image">
+              <img src="../assets/logos/salesforce.svg" width="104" height="104" alt="Salesforce">
+            </div>
+            <span class="t-overline lockup__label" data-el="text">Use NOVA yourself</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 6 · ДЛЯ КОГО — блок 33 role-grid, 4 роли ═══════════════════ -->
+  <section class="section n-team" data-el="container" data-name="audience">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Who it is for</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Built for your entire Salesforce team</h2>
+      </div>
+
+      <div class="icon-grid" data-el="container" data-name="audience-grid">
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9A3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42c-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3a3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3a3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9c-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65c2.56.34 4.45 1.51 4.45 2.9z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Business users</h3>
+            <p class="t-body icon-card__text" data-el="text">Describe what the business needs without translating every request into Salesforce terminology.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Salesforce administrators</h3>
+            <p class="t-body icon-card__text" data-el="text">Move faster through configuration, documentation and repetitive administration.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M14.6 16.6l4.6-4.6l-4.6-4.6L16 6l6 6l-6 6zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6l6 6z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Developers</h3>
+            <p class="t-body icon-card__text" data-el="text">Generate code, metadata and automation faster and spend more time solving the problems that actually require engineering.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5zm-2 16l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Salesforce consultants</h3>
+            <p class="t-body icon-card__text" data-el="text">Deliver more in less time and use AI to accelerate repetitive configuration and development work.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 7 · ЧТО ОСТАЁТСЯ ЛЮДЯМ — текст + теги ═════════════════════ -->
+  <section class="section n-scope" data-el="container" data-name="expertise">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Expertise</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">AI doesn't replace Salesforce expertise. It removes the bottleneck around it.</h2>
+      </div>
+
+      <div class="n-scope__row" data-el="container">
+        <div class="n-scope__lead" data-el="container">
+          <p class="t-lead" data-el="text">There will always be complex Salesforce projects. That work requires experience.</p>
+          <p class="t-lead" data-el="text">But much of the everyday work around Salesforce is structured, repetitive and increasingly suitable for AI-assisted development. NOVA handles more of that work so your specialists can focus on the decisions where specialists actually add value.</p>
+        </div>
+
+        <div class="n-scope__aside" data-el="container">
+          <div class="t-overline n-scope__aside-label" data-el="text">Where experience still decides</div>
+          <div class="tag-row" data-el="container">
+          <span class="tag" data-el="text">Enterprise architecture</span>
+          <span class="tag" data-el="text">Integrations</span>
+          <span class="tag" data-el="text">Data migration</span>
+          <span class="tag" data-el="text">Security</span>
+          <span class="tag" data-el="text">Governance</span>
+          <span class="tag" data-el="text">Business transformation</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 8 · ФИНАЛЬНЫЙ CTA — блок 11 split 720 / 720 ════════════════ -->
+  <section class="section n-cta" data-el="container" data-name="closing">
+    <div class="section__inner" data-el="container">
+      <div class="split split--in-grid split--sticky" data-el="container">
+        <div class="split__panel split__panel--warm" data-el="container">
+          <h2 class="t-h1 t-h1--normal split__title" data-el="heading">From backlog to built.</h2>
+          <div class="split__body" data-el="container">
+            <p class="t-lead" data-el="text">A CRM should evolve as quickly as the business using it. With NOVA for Salesforce, your Salesforce environment no longer has to move at the speed of your development queue.</p>
+            <p class="t-lead" data-el="text">Make the change. Test the idea. Build the automation. Improve the process. Then move on to the next one.</p>
+            <p class="t-lead" data-el="text"><strong>Your Salesforce. Your team. More control.</strong></p>
+            <div class="split__actions" data-el="container">
+              <a class="btn btn--primary" href="https://salesforce.novalab.build" data-el="button" rel="noopener">Try NOVA for Salesforce</a>
+              <a class="btn btn--outline" href="#contact" data-el="button">Talk to a Salesforce expert</a>
+            </div>
+          </div>
+        </div>
+        <div class="split__media" data-el="image">
+          <img src="../assets/hero-mountains.webp" width="1360" height="504"
+               alt="" role="presentation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+
+
+<!-- ══ 10 · FOOTER — 152:131 → Theme Builder → Footer ═════════════ -->
+<footer class="site-footer" id="contact" data-el="container" data-name="footer">
+  <div class="site-footer__photo" aria-hidden="true"></div>
+  <div class="site-footer__wash" aria-hidden="true"></div>
+  <div class="site-footer__glow" aria-hidden="true"></div>
+
+  <div class="site-footer__inner" data-el="container">
+
+    <div class="footer-top" data-el="container">
+
+      <div class="footer-contact" data-el="container">
+        <div class="t-overline footer-contact__label" data-el="text">Get in touch</div>
+        <h2 class="t-h1 t-h1--normal" data-el="heading">Collaborate with us for complete IT solutions</h2>
+        <p class="t-lead footer-contact__lead" data-el="text">We're happy to answer any questions and help determine which of our services best fit your needs.</p>
+
+        <div class="check-list" data-el="container">
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Client-oriented</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Independent</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Competent</span>
+            </div>
+          </div>
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Results-driven</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Problem-solving</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Transparent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-form" data-el="container">
+        <h2 class="t-h2 footer-form__title" data-el="heading">Let us talk about your next solution</h2>
+        <form class="form" data-el="form" action="#" method="post">
+          <div class="form__row" data-el="container">
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-first" data-el="text">First name</label>
+              <input class="field__control" id="f-first" name="first-name" type="text" autocomplete="given-name">
+            </div>
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-last" data-el="text">Last name</label>
+              <input class="field__control" id="f-last" name="last-name" type="text" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-email" data-el="text">Email</label>
+            <input class="field__control" id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-company" data-el="text">Company</label>
+            <input class="field__control" id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field field--last" data-el="container">
+            <label class="t-body" for="f-message" data-el="text">Message</label>
+            <textarea class="field__control" id="f-message" name="message" rows="5"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit" data-el="button">Send message</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-nav" data-el="container">
+      <div class="footer-nav__cols" data-el="container">
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Solutions</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+            <a class="footer-nav__link" href="#" data-wp="/salesforce-services/">Salesforce Services</a>
+            <a class="footer-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+            <a class="footer-nav__link" href="#" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Products</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+            <a class="footer-nav__link" href="#" data-wp="/products/workhub/">WorkHub</a>
+            <a class="footer-nav__link" href="#" data-wp="/products/novalab/">NOVAlab</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Company</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/">About us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/why-us/">Why us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/team/">Team</a>
+            <a class="footer-nav__link" href="#" data-wp="/cases/">Case studies</a>
+            <a class="footer-nav__link" href="#" data-wp="/insights/">Blog</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/careers/">Careers</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Contact</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Asker, Norway</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Pune, India</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Mohali, India</a>
+            <a class="footer-nav__link" href="mailto:contact@redorangetechnologies.com">contact@redorangetechnologies.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider divider--ondark-soft" data-el="divider">
+
+      <div class="footer-bottom" data-el="container">
+        <span class="footer-bottom__copy" data-el="text">© 2026 Red Orange Technologies</span>
+        <a href="#" data-wp="/terms/" data-el="text">Terms &amp; Conditions</a>
+        <a href="#" data-wp="/privacy/" data-el="text">Privacy Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

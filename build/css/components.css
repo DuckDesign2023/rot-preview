@@ -2412,3 +2412,441 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   .problem-row { flex-direction: column; }
   .how-row     { flex-direction: column; gap: var(--space-lg); }
 }
+
+/* ══ 35. UI PANEL — схема продуктового экрана ══════════════════
+   Клиент требует на страницах продуктов реальный интерфейс (NOVA 60 %,
+   WorkHub 80 %, NOVAlab 40 %) и прямо запрещает типовую AI-образность:
+   ни роботов, ни мозгов из микросхем, ни светящихся людей у экранов.
+   Скриншотов продуктов у нас пока нет, поэтому вместо них — **схема**
+   экрана средствами дизайн-системы: та же палитра, та же типографика,
+   моноширинный стек только внутри панели. Это не имитация скриншота,
+   а честная схема; когда придут настоящие кадры, панель заменяется
+   картинкой без правок раскладки секции.
+
+   Собрано на контейнерах и тексте, без картинок: в Elementor это
+   вложенные контейнеры + Text Editor, а не HTML-виджет, и клиент
+   правит подписи сам. Прецедент — тёмная плитка NOVA на главной.
+
+   Elementor: контейнер (фон Near Black, Border 1 px) → строка-бар →
+   контейнер-тело. Строки — контейнеры row из трёх текстов. */
+
+.ui-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--bg-near-black);
+  border: var(--border-width) solid var(--ui-line);
+  color: var(--color-white);
+  font-family: var(--font-mono);
+  overflow: hidden;
+}
+
+.ui-panel--light {
+  background: var(--color-white);
+  border-color: var(--ui-line-d);
+  color: var(--color-dark);
+}
+
+/* Шапка панели: точка состояния, имя экрана, статус справа */
+.ui-panel__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: var(--space-xs) var(--space-md);
+  border-bottom: var(--border-width) solid var(--ui-line);
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.ui-panel--light .ui-panel__bar { border-bottom-color: var(--ui-line-d); }
+
+.ui-panel__dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  background: var(--color-accent);
+  border-radius: 50%;
+}
+
+.ui-panel__name   { font-weight: 600; }
+.ui-panel__status { margin-left: auto; color: var(--ui-dim); }
+.ui-panel--light .ui-panel__status { color: var(--gray-500); }
+
+.ui-panel__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  flex: 1 1 auto;
+}
+
+/* Ввод пользователя: то, что он написал обычными словами */
+.ui-panel__prompt {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  border: var(--border-width) solid var(--ui-line);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.ui-panel--light .ui-panel__prompt { border-color: var(--ui-line-d); }
+
+.ui-panel__caret { color: var(--color-accent); flex: 0 0 auto; }
+.ui-panel__prompt p { margin: 0; flex: 1 1 auto; min-width: 0; overflow-wrap: break-word; }
+
+.ui-panel__run {
+  flex: 0 0 auto;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-xs);
+  border: var(--border-width) solid var(--ui-line);
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--ui-dim);
+}
+
+.ui-panel--light .ui-panel__run { border-color: var(--ui-line-d); color: var(--gray-500); }
+
+/* Строка вывода: номер, действие, уточнение, статус */
+.ui-panel__rows { display: flex; flex-direction: column; }
+
+.ui-panel__row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  padding: 10px 0;
+  border-top: var(--border-width) solid var(--ui-line);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.ui-panel--light .ui-panel__row { border-top-color: var(--ui-line-d); }
+.ui-panel__row:first-child { border-top: 0; }
+
+.ui-panel__idx  { color: var(--ui-dim); flex: 0 0 auto; }
+.ui-panel__key  { font-weight: 600; flex: 0 0 auto; }
+/* Технические имена (Service_Agreement__c) не имеют мест переноса —
+   на мобильном без anywhere они распирают строку. */
+.ui-panel__meta { color: var(--ui-dim); flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.ui-panel__ok   { color: var(--color-accent); flex: 0 0 auto; }
+
+.ui-panel--light .ui-panel__idx,
+.ui-panel--light .ui-panel__meta { color: var(--gray-500); }
+
+/* На белом акцент даёт 4.01 при пороге AA 4.5 — это уже не палитра
+   дизайнера, а наш выбор, поэтому статус на светлой панели идёт
+   Primary Dark полужирным (16 : 1). Акцент на светлой панели остаётся
+   у точки и рамки итога — они не текст, к ним порог 4.5 не применяется.
+   На тёмной панели акцент проходит, там оставлен как есть. */
+.ui-panel--light .ui-panel__ok { color: var(--color-dark); font-weight: 600; }
+
+/* Итог: акцентная рамка, потому что это то самое действие,
+   ради которого экран и показан */
+.ui-panel__result {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: auto;
+  padding: var(--space-sm) var(--space-md);
+  border: var(--border-width) solid var(--color-accent);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.ui-panel__result strong { font-weight: 600; }
+.ui-panel__result span   { margin-left: auto; color: var(--color-accent); letter-spacing: .08em; flex: 0 0 auto; }
+
+/* Плитки метрик — для дашборда WorkHub */
+.ui-panel__tiles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--border-width);
+  background: var(--ui-line);
+  border: var(--border-width) solid var(--ui-line);
+}
+
+.ui-panel--light .ui-panel__tiles { background: var(--ui-line-d); border-color: var(--ui-line-d); }
+
+.ui-panel__tile {
+  background: var(--bg-near-black);
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ui-panel--light .ui-panel__tile { background: var(--color-white); }
+
+.ui-panel__tile-label { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ui-dim); }
+.ui-panel--light .ui-panel__tile-label { color: var(--gray-500); }
+.ui-panel__tile-value { font-size: 18px; font-weight: 600; line-height: 1.1; }
+.ui-panel__tile--alert .ui-panel__tile-value { color: var(--color-accent); }
+
+/* Полоса заполнения — прогресс проекта, бюджет, загрузка */
+.ui-panel__track { height: 4px; background: var(--ui-line); }
+.ui-panel--light .ui-panel__track { background: var(--gray-100); }
+.ui-panel__fill  { height: 100%; background: var(--color-accent); }
+
+/* ══ 36. CHAIN — цепочка шагов со стрелками ════════════════════
+   «Describe > Review > Deploy» и «старый путь» из брифа клиента.
+   Стрелка — отдельный span, а не псевдоэлемент: в Elementor это
+   Icon в строке, а псевдоэлементы туда не переносятся.
+   Цепочка переносится по строкам — длинный «старый путь» из семи
+   звеньев в одну строку не влезает ниже 1200. */
+
+.chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.chain__step {
+  padding: 10px var(--space-sm);
+  border: var(--border-width) solid var(--hairline);
+  font-size: 14px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.chain__arrow { color: var(--gray-500); flex: 0 0 auto; font-size: 14px; }
+
+/* Короткая цепочка — путь с продуктом: акцентная и плотная */
+.chain--accent .chain__step {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.chain--accent .chain__arrow { color: var(--color-accent); }
+
+/* Длинная цепочка — как было раньше: приглушённая */
+.chain--muted .chain__step { color: var(--gray-500); border-color: var(--gray-200); }
+
+/* На тёмном обычная цепочка идёт белым, но акцентную не трогаем:
+   иначе «Describe → Review → Deploy» теряет акцент и перестаёт
+   отличаться от «старого пути», ради чего цепочка и нужна. */
+.on-dark .chain:not(.chain--accent) .chain__step  { border-color: var(--ui-line); color: var(--color-white); }
+.on-dark .chain:not(.chain--accent) .chain__arrow { color: var(--ui-dim); }
+.on-dark .chain--muted .chain__step { color: var(--ui-dim); border-color: var(--ui-line); }
+
+/* ══ 37. VERSUS — «как было» против «как стало» ════════════════
+   Две панели рядом. Клиент просил, чтобы сравнение звучало уверенно
+   и без логотипов конкурентов — поэтому противопоставляется не вендор,
+   а сам порядок работы. Правая панель тёмная: она и есть вывод. */
+
+.versus {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--col-gap);
+  align-items: stretch;
+}
+
+.versus__panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--bg-warm);
+}
+
+.versus__panel--now {
+  background: var(--bg-near-black);
+  color: var(--color-white);
+}
+
+.versus__label { color: var(--gray-500); }
+.versus__panel--now .versus__label { color: var(--ui-dim); }
+.versus__note  { color: var(--gray-500); margin-top: auto; }
+.versus__panel--now .versus__note { color: var(--ui-dim); }
+.versus__panel--now .t-h3 { color: var(--color-white); }
+
+/* ══ 38. HUB — центр и системы вокруг ══════════════════════════
+   Диаграмма интеграций: продукт в центре, вокруг — системы, которыми
+   компания уже пользуется. Клиент просил «сдержанно и легко читать,
+   не плотный IT-чертёж», поэтому связи показаны не линиями-паутиной,
+   а общей сеткой: волосяная линия одна на две соседние ячейки
+   (тот же приём, что в icon-grid, — зазор 1 px и фон контейнера).
+
+   Сетка 3 × 3, центр занят продуктом. На планшете центр уходит
+   в первую строку во всю ширину, дальше — простая сетка систем:
+   «крест» из линий на узком экране читается хуже, чем список. */
+
+.hub {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--border-width);
+  background: var(--hairline);
+  border: var(--border-width) solid var(--hairline);
+}
+
+.hub__cell {
+  background: var(--color-white);
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  padding: var(--space-sm);
+  text-align: center;
+}
+
+.hub__cell img { height: 28px; width: auto; max-width: 100%; object-fit: contain; }
+.hub__name { font-size: 13px; line-height: 1.3; color: var(--gray-500); }
+
+.hub__cell--core {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.hub__cell--core .hub__name { color: var(--color-white); }
+.hub__core-title { font-size: 24px; font-weight: 600; line-height: 1; letter-spacing: -.02em; }
+
+/* ══ 39. ZONES — «ваши системы → платформа → модели» ═══════════
+   Схема NOVAlab из брифа. Жёсткое правило клиента: **между данными
+   компании и моделями не должно быть прямой линии** — всё проходит
+   через платформу. Поэтому средняя колонка не просто выделена, а
+   физически разрывает путь: стрелки ведут только к ней и от неё. */
+
+.zones {
+  display: grid;
+  grid-template-columns: 1fr auto 1.15fr auto 1fr;
+  gap: var(--space-sm);
+  align-items: stretch;
+}
+
+.zone {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border: var(--border-width) solid var(--hairline);
+  background: var(--color-white);
+}
+
+.zone--core {
+  background: var(--bg-near-black);
+  border-color: var(--bg-near-black);
+  color: var(--color-white);
+}
+
+.zone__label { color: var(--gray-500); }
+.zone--core .zone__label { color: var(--ui-dim); }
+.zone--core .t-h3 { color: var(--color-white); }
+
+.zone__items { display: flex; flex-direction: column; gap: 6px; }
+
+.zone__item {
+  padding: 8px var(--space-xs);
+  border: var(--border-width) solid var(--hairline);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.zone--core .zone__item { border-color: var(--color-accent); color: var(--color-white); }
+
+.zones__link {
+  align-self: center;
+  color: var(--color-accent);
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ══ Адаптив блоков 35–39 ══════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+
+  /* Сравнение «как было / как стало» — друг под другом: рядом
+     два столбца текста по 300 px читаются хуже, чем последовательно */
+  .versus { grid-template-columns: 1fr; }
+
+  /* Центр диаграммы уходит в первую строку во всю ширину: «крест»
+     из линий на узком экране читается хуже, чем список систем */
+  .hub { grid-template-columns: repeat(3, 1fr); }
+  .hub__cell--core { grid-column: 1 / -1; min-height: 96px; }
+
+  /* Три зоны встают колонкой, стрелки разворачиваются вниз */
+  .zones { grid-template-columns: 1fr; gap: var(--space-xs); }
+  .zones__link { transform: rotate(90deg); }
+}
+
+@media (max-width: 767px) {
+
+  .ui-panel__body { padding: var(--space-sm); gap: var(--space-sm); }
+  .ui-panel__bar  { padding: var(--space-2xs) var(--space-sm); }
+
+  /* На 375 запрос занимает семь строк, и RUN, растянутый по высоте
+     строки ввода, превращается в высокий пустой столбик. Прижимаем чип
+     к низу — он остаётся в конце строки ввода и не тянется. */
+  .ui-panel__run { align-self: flex-end; padding: 4px var(--space-2xs); }
+
+  /* Плитки метрик в одну колонку: две по 150 px обрезают значения */
+  .ui-panel__tiles { grid-template-columns: 1fr; }
+
+  /* Итог переносится в колонку — «VERIFIED» справа не помещается */
+  .ui-panel__result { flex-direction: column; align-items: flex-start; gap: var(--space-2xs); }
+  .ui-panel__result span { margin-left: 0; }
+
+  /* Звено цепочки перестаёт быть неразрывным: длинные подписи
+     («Deployment package») шире рабочих 335 */
+  .chain__step { white-space: normal; }
+
+  .hub { grid-template-columns: repeat(2, 1fr); }
+  .hub__cell { min-height: 96px; }
+
+  .versus__panel { padding: var(--space-md); }
+}
+
+/* Вариант панели «два поля»: слева запрос обычными словами, справа —
+   что из него собралось. Это буквальное прочтение брифа («Left side:
+   natural-language request / Right side: generated Salesforce solution»).
+   Разделитель — зазор 1 px на фоне линии, как в icon-grid: одна линия
+   и при двух колонках, и при одной. */
+.ui-panel__split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--border-width);
+  background: var(--ui-line);
+  margin: calc(var(--space-md) * -1) calc(var(--space-md) * -1) 0;
+  border-bottom: var(--border-width) solid var(--ui-line);
+}
+
+.ui-panel--light .ui-panel__split { background: var(--ui-line-d); border-bottom-color: var(--ui-line-d); }
+
+/* min-width: 0 обязателен: ячейка грида по умолчанию не уже своего
+   min-content, а моноширинный запрос и идентификаторы вроде
+   Lead_Qualification_Nordics его раздувают — на 320 зона вылезала
+   за панель на 82 px и обрезалась её overflow. */
+.ui-panel__zone {
+  background: var(--bg-near-black);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  min-width: 0;
+}
+
+.ui-panel--light .ui-panel__zone { background: var(--color-white); }
+
+.ui-panel__zone-label {
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ui-dim);
+}
+
+.ui-panel--light .ui-panel__zone-label { color: var(--gray-500); }
+
+@media (max-width: 767px) {
+  .ui-panel__split {
+    grid-template-columns: 1fr;
+    margin: calc(var(--space-sm) * -1) calc(var(--space-sm) * -1) 0;
+  }
+  .ui-panel__zone { padding: var(--space-sm); }
+}

@@ -1,0 +1,160 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — NOVA for Salesforce (/products/nova-for-salesforce/).
+   Макета в Figma нет: страница собрана из библиотеки блоков по разделу 2
+   `Red_Orange_Technologies_Landing_Pages_and_Visual_Direction.docx`
+   (копия, SEO и бриф на визуал). Тексты дословные.
+
+   Здесь только вертикальный ритм и раскладки, которых нет
+   в components.css.
+   ══════════════════════════════════════════════════════════════ */
+
+/* Зазор между секциями (20 в макете) сложен в паддинги: обычно
+   в верхний следующей, а перед тонированными — в нижний предыдущей,
+   иначе белый зазор окрасился бы фоном тёмной секции. */
+.n-hero     { padding-top:  84px; padding-bottom:  40px; }
+.n-problem  { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тёмной */
+.n-how      { padding-top: 100px; padding-bottom: 100px; } /* тёмная */
+.n-proof    { padding-top: 120px; padding-bottom: 140px; } /* +20 перед тёмной */
+.n-model    { padding-top: 100px; padding-bottom: 100px; } /* тёмная */
+.n-team     { padding-top: 120px; padding-bottom: 120px; }
+.n-scope    { padding-top: 120px; padding-bottom: 140px; }
+.n-cta      { padding-top: 140px; padding-bottom: 140px; }
+
+/* ── 1 · Hero ──────────────────────────────────────────────────
+   Визуал героя — не иллюстрация, а схема экрана (блок 35). Колонка
+   визуала в hero-split по умолчанию держит пропорцию картинки;
+   здесь высоту задаёт содержимое панели, поэтому пропорция снята. */
+
+.n-hero .hero-split__visual {
+  background: transparent;
+  align-items: stretch;
+  padding: 0;
+  min-height: 0;
+}
+
+/* Панель тянется на всю высоту колонки: иначе под ней остаётся пустое
+   поле в 160 px, и герой выглядит недособранным. Итог («Review & Deploy»)
+   прижат к низу через margin-top: auto — так он и оказывается на одной
+   линии с кнопками слева. */
+.n-hero .ui-panel { height: 100%; }
+
+/* ── 2 · Проблема ──────────────────────────────────────────────
+   Список того, что обычно уходит в бэклог, — тегами: в копии это
+   короткие вопросы («Need a new object? A Flow?»), а не абзац. */
+
+.n-problem__lead,
+.n-how__lead,
+.n-scope__lead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 940px;
+}
+
+.n-problem__asks { margin-top: var(--space-xs); }
+
+.n-problem .versus { margin-top: var(--space-xl); }
+
+/* ── 3 · Как это работает ──────────────────────────────────────
+   Цепочка «Describe → Review → Deploy» стоит сразу под заголовком:
+   в брифе она названа «fast product summary», то есть должна
+   читаться раньше подробностей. */
+
+.n-how__chain { margin-top: var(--space-xs); }
+
+/* ── 4 · Доказательство продукта ───────────────────────────────
+   Четыре микро-примера из брифа (Build a Flow, Create an Apex class,
+   Add a custom object, Generate documentation) — сеткой 2 × 2.
+   Панели тянутся на всю высоту ячейки, чтобы низ у пары совпадал. */
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--col-gap);
+}
+
+.proof-grid .ui-panel { height: 100%; }
+
+/* ── 5 · Операционная модель ───────────────────────────────────
+   Тёмная секция: два столбца текста, под ними лок-ап. */
+
+.n-model__cols {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-start;
+}
+
+.n-model__cols > * { flex: 1 1 0; min-width: 0; }
+
+.n-model__close {
+  margin-top: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ── 6 · Для кого ──────────────────────────────────────────────
+   Аудиторий четыре, а icon-grid по умолчанию трёхколоночный: при
+   четырёх карточках последняя ячейка осталась бы пустой и превратилась
+   бы в серый прямоугольник (сетка собрана зазором на фоне Gray 200 —
+   находка с Salesforce). Две колонки закрывают ряд ровно. */
+
+.n-team .icon-grid { grid-template-columns: repeat(2, 1fr); }
+
+@media (max-width: 767px) {
+  .n-team .icon-grid { grid-template-columns: 1fr; }
+}
+
+/* ── 7 · Что остаётся людям ────────────────────────────────────
+   Ряд «текст слева / теги справа»: перечень сложных работ из копии
+   не абзац, а список — тегами он читается как область, а не как речь. */
+
+.n-scope__row {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-start;
+  margin-top: var(--space-xl);
+}
+
+.n-scope__row > * { flex: 1 1 0; min-width: 0; }
+
+.n-scope__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.n-scope__aside-label { color: var(--gray-500); }
+
+/* ── Планшет ≤ 1024 ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  .n-hero     { padding-top: 64px; padding-bottom: 32px; }
+  .n-problem,
+  .n-how,
+  .n-team     { padding-top: 112px; padding-bottom: 96px; }
+  .n-proof,
+  .n-scope    { padding-top: 96px;  padding-bottom: 112px; }
+  .n-model    { padding-top: 80px;  padding-bottom: 80px; }
+  .n-cta      { padding-top: 112px; padding-bottom: 112px; }
+
+  .proof-grid { grid-template-columns: 1fr; }
+
+  .n-model__cols,
+  .n-scope__row { flex-direction: column; }
+}
+
+/* ── Мобильный ≤ 767 ───────────────────────────────────────── */
+@media (max-width: 767px) {
+
+  .n-hero     { padding-top: 48px; padding-bottom: 24px; }
+  .n-problem,
+  .n-how,
+  .n-proof,
+  .n-team,
+  .n-scope,
+  .n-cta      { padding-top: 72px; padding-bottom: 72px; }
+  .n-model    { padding-top: 64px; padding-bottom: 64px; }
+
+  .n-cta .btn { width: 100%; text-align: center; }
+}

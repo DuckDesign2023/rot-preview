@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Схемы продуктового интерфейса — варианты | Red Orange Technologies</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* Служебная страница выбора — в перенос не идёт */
+    .board { padding: 64px 40px 120px; max-width: 1440px; margin: 0 auto; }
+    .board__intro { max-width: 820px; display: flex; flex-direction: column; gap: 16px; margin-bottom: 64px; }
+    .board__item { padding-top: 64px; border-top: 1px solid var(--hairline); margin-top: 64px; }
+    .board__item:first-of-type { border-top: 0; margin-top: 0; padding-top: 0; }
+    .board__head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    .board__why { color: var(--gray-500); max-width: 820px; }
+    .board__stage { margin-top: 24px; padding: 32px; background: var(--bg-warm); }
+    .board__stage--dark { background: var(--bg-dark); }
+    .board__frame { max-width: 620px; }
+    .board__frame--wide { max-width: 100%; }
+    @media (max-width: 767px) {
+      .board { padding: 40px 20px 72px; }
+      .board__stage { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="board">
+
+  <div class="board__intro">
+    <span class="badge">Выбор варианта</span>
+    <h1 class="t-h1">Схемы продуктового интерфейса</h1>
+    <p class="t-lead">Скриншотов NOVA, WorkHub и NOVAlab у нас пока нет, а клиент требует на страницах продуктов реальный интерфейс и прямо запрещает типовую AI-образность. Вместо имитации скриншота — схема экрана средствами дизайн-системы: та же палитра, та же типографика, моноширинный стек только внутри панели.</p>
+    <p class="t-body">Собрано на контейнерах и тексте, без картинок: в Elementor это вложенные контейнеры и Text Editor, подписи правятся руками. Когда придут настоящие кадры, панель заменяется картинкой — раскладка секции не меняется.</p>
+    <p class="t-body">Ниже — три варианта героя NOVA for Salesforce. На странице сейчас стоит <strong>вариант A</strong>.</p>
+  </div>
+
+  <!-- ── A ─────────────────────────────────────────────────────── -->
+  <section class="board__item">
+    <div class="board__head">
+      <div class="t-overline">Вариант A · стоит на странице</div>
+      <h2 class="t-h2">Журнал сборки</h2>
+    </div>
+    <p class="t-body board__why">Запрос сверху, под ним — что NOVA собрала, строка за строкой, и внизу то самое действие, ради которого экран показан. Читается как лог: видно не только результат, но и что продукт реально сделал. Ближе всего к тёмной плитке NOVA, которая уже стоит на главной.</p>
+
+    <div class="board__stage">
+      <div class="board__frame">
+        <div class="ui-panel">
+          <div class="ui-panel__bar">
+            <span class="ui-panel__dot" aria-hidden="true"></span>
+            <span class="ui-panel__name">NOVA</span>
+            <span class="ui-panel__status">salesforce · sandbox</span>
+          </div>
+          <div class="ui-panel__body">
+            <div class="ui-panel__prompt">
+              <span class="ui-panel__caret" aria-hidden="true">&rsaquo;</span>
+              <p>Create a lead qualification flow that assigns enterprise leads to the Nordic sales team and notifies the account owner.</p>
+              <span class="ui-panel__run">RUN</span>
+            </div>
+            <div class="ui-panel__rows">
+              <div class="ui-panel__row"><span class="ui-panel__idx">01</span><span class="ui-panel__key">Flow</span><span class="ui-panel__meta">Lead_Qualification_Nordics</span><span class="ui-panel__ok">built</span></div>
+              <div class="ui-panel__row"><span class="ui-panel__idx">02</span><span class="ui-panel__key">Fields</span><span class="ui-panel__meta">3 new fields on Lead</span><span class="ui-panel__ok">built</span></div>
+              <div class="ui-panel__row"><span class="ui-panel__idx">03</span><span class="ui-panel__key">Validation</span><span class="ui-panel__meta">1 rule · region required</span><span class="ui-panel__ok">built</span></div>
+              <div class="ui-panel__row"><span class="ui-panel__idx">04</span><span class="ui-panel__key">Automation</span><span class="ui-panel__meta">record-triggered · notify owner</span><span class="ui-panel__ok">built</span></div>
+              <div class="ui-panel__row"><span class="ui-panel__idx">05</span><span class="ui-panel__key">Deployment package</span><span class="ui-panel__meta">9 components</span><span class="ui-panel__ok">ready</span></div>
+            </div>
+            <div class="ui-panel__result">
+              <strong>Review &amp; Deploy</strong>
+              <span>YOU STAY IN CONTROL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── B ─────────────────────────────────────────────────────── -->
+  <section class="board__item">
+    <div class="board__head">
+      <div class="t-overline">Вариант B</div>
+      <h2 class="t-h2">Два поля: запрос и решение</h2>
+    </div>
+    <p class="t-body board__why">Буквальное прочтение брифа: слева запрос обычными словами, справа — что из него собралось в Salesforce, кнопка под обоими полями. Противопоставление «сказал / получил» читается за секунду, но панель шире и в узкую колонку героя не помещается — под неё нужен ряд во всю ширину.</p>
+
+    <div class="board__stage">
+      <div class="board__frame board__frame--wide">
+        <div class="ui-panel">
+          <div class="ui-panel__bar">
+            <span class="ui-panel__dot" aria-hidden="true"></span>
+            <span class="ui-panel__name">NOVA</span>
+            <span class="ui-panel__status">salesforce · sandbox</span>
+          </div>
+          <div class="ui-panel__body">
+            <div class="ui-panel__split">
+              <div class="ui-panel__zone">
+                <div class="ui-panel__zone-label">You describe</div>
+                <div class="ui-panel__prompt">
+                  <span class="ui-panel__caret" aria-hidden="true">&rsaquo;</span>
+                  <p>Create a lead qualification flow that assigns enterprise leads to the Nordic sales team and notifies the account owner.</p>
+                </div>
+              </div>
+              <div class="ui-panel__zone">
+                <div class="ui-panel__zone-label">NOVA builds</div>
+                <div class="ui-panel__rows">
+                  <div class="ui-panel__row"><span class="ui-panel__key">Flow</span><span class="ui-panel__meta">Lead_Qualification_Nordics</span><span class="ui-panel__ok">built</span></div>
+                  <div class="ui-panel__row"><span class="ui-panel__key">Fields</span><span class="ui-panel__meta">3 on Lead</span><span class="ui-panel__ok">built</span></div>
+                  <div class="ui-panel__row"><span class="ui-panel__key">Validation</span><span class="ui-panel__meta">1 rule</span><span class="ui-panel__ok">built</span></div>
+                  <div class="ui-panel__row"><span class="ui-panel__key">Automation</span><span class="ui-panel__meta">record-triggered</span><span class="ui-panel__ok">built</span></div>
+                  <div class="ui-panel__row"><span class="ui-panel__key">Deployment package</span><span class="ui-panel__meta">9 components</span><span class="ui-panel__ok">ready</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="ui-panel__result">
+              <strong>Review &amp; Deploy</strong>
+              <span>YOU STAY IN CONTROL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── C ─────────────────────────────────────────────────────── -->
+  <section class="board__item">
+    <div class="board__head">
+      <div class="t-overline">Вариант C</div>
+      <h2 class="t-h2">Светлая панель</h2>
+    </div>
+    <p class="t-body board__why">Та же схема, но на белом: панель перестаёт быть тёмным пятном в верху страницы и ведёт себя как остальные плитки сайта. Тише и спокойнее — но «продуктовость» и характер «fast, precise, technical», которого просит бриф NOVA, слабее. Пригодится для WorkHub, где бриф просит «control, overview, structure and calm».</p>
+
+    <div class="board__stage">
+      <div class="board__frame">
+        <div class="ui-panel ui-panel--light">
+          <div class="ui-panel__bar">
+            <span class="ui-panel__dot" aria-hidden="true"></span>
+            <span class="ui-panel__name">NOVA</span>
+            <span class="ui-panel__status">salesforce · sandbox</span>
+          </div>
+          <div class="ui-panel__body">
+            <div class="ui-panel__prompt">
+              <span class="ui-panel__caret" aria-hidden="true">&rsaquo;</span>
+              <p>Create a lead qualification flow that assigns enterprise leads to the Nordic sales team and notifies the account owner.</p>
+              <span class="ui-panel__run">RUN</span>
+            </div>
+            <div class="ui-panel__rows">
+              <div class="ui-panel__row"><span class="ui-panel__idx">01</span><span class="ui-panel__key">Flow</span><span class="ui-panel__meta">Lead_Qualification_Nordics</span><span class="ui-panel__ok">built</span></div>
+              <div class="ui-panel__row"><span class="ui-panel__idx">02</span><span class="ui-panel__key">Fields</span><span class="ui-panel__meta">3 new fields on Lead</span><span class="ui-panel__ok">built</span></div>
+              <div class="ui-panel__row"><span class="ui-panel__idx">03</span><span class="ui-panel__key">Validation</span><span class="ui-panel__meta">1 rule · region required</span><span class="ui-panel__ok">built</span></div>
+              <div class="ui-panel__row"><span class="ui-panel__idx">04</span><span class="ui-panel__key">Automation</span><span class="ui-panel__meta">record-triggered · notify owner</span><span class="ui-panel__ok">built</span></div>
+              <div class="ui-panel__row"><span class="ui-panel__idx">05</span><span class="ui-panel__key">Deployment package</span><span class="ui-panel__meta">9 components</span><span class="ui-panel__ok">ready</span></div>
+            </div>
+            <div class="ui-panel__result">
+              <strong>Review &amp; Deploy</strong>
+              <span>YOU STAY IN CONTROL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Сравнение путей ───────────────────────────────────────── -->
+  <section class="board__item">
+    <div class="board__head">
+      <div class="t-overline">Второй визуал · стоит на странице</div>
+      <h2 class="t-h2">Старый путь против NOVA</h2>
+    </div>
+    <p class="t-body board__why">Бриф просит, чтобы сравнение звучало уверенно и провокационно, но без логотипов конкурентов. Поэтому противопоставлен не вендор, а сам порядок работы: семь передач против трёх шагов.</p>
+
+    <div class="board__stage">
+      <div class="versus">
+        <div class="versus__panel">
+          <div class="t-overline versus__label">The old way</div>
+          <div class="chain chain--muted">
+            <span class="chain__step">Business request</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step">Consultant</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step">Specification</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step">Developer queue</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step">Configuration</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step">Testing</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step">Deployment</span>
+          </div>
+          <p class="t-body versus__note">Seven handovers before anything reaches a user.</p>
+        </div>
+        <div class="versus__panel versus__panel--now on-dark">
+          <div class="t-overline versus__label">With NOVA for Salesforce</div>
+          <div class="chain chain--accent">
+            <span class="chain__step">Describe</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step">Review</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+            <span class="chain__step">Deploy</span>
+          </div>
+          <p class="t-body versus__note">And far fewer reasons to pay someone by the hour for work you can increasingly do yourself.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="t-body board__why" style="margin-top: 64px;">Страница NOVA for Salesforce: <a href="nova-for-salesforce.html">nova-for-salesforce.html</a></p>
+
+</div>
+
+</body>
+</html>
