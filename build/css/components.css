@@ -352,10 +352,15 @@ ul { margin: 0; padding: 0; list-style: none; }
 .ledger__row:last-child  { padding-bottom: 0; }
 .ledger__row + .ledger__row { border-top: var(--border-width) solid var(--hairline); }
 
+/* Строка фокусируется с клавиатуры (tabindex 0) — значит обязана иметь
+   видимый индикатор, как шаг process. Раскрытие плитки индикатором не
+   считается: оно читается как оформление, а не как «курсор здесь». */
+.ledger__row:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
 .ledger__media {
   width: var(--ledger-media);
   flex: 0 0 var(--ledger-media);
-  min-height: 140px;
+  min-height: var(--ledger-h);
   background: var(--gray-100);
   overflow: hidden;
   position: relative;
@@ -368,17 +373,27 @@ ul { margin: 0; padding: 0; list-style: none; }
    По умолчанию раскрыта первая (83:561), при наведении раскрывается та,
    на которую навели, а дефолтная схлопывается (2021:44).
    CUSTOM-CSS: связка «сосед по родителю» через :has() — нативного контрола
-   в Elementor нет, идёт в Custom CSS секции Our Products. */
-.ledger__row--open .ledger__media { min-height: 424px; }
+   в Elementor нет, идёт в Custom CSS секции Our Products.
+
+   Высоты берутся ТОЛЬКО из --ledger-h / --ledger-h-open. Числами их писать
+   нельзя: на мобильном схлопнутая плитка выше (200), и захардкоженные 140
+   в правиле «схлопни дефолтную» роняли высоту блока на 60 px при каждом
+   наведении (найдено 2026-09-09 на всех трёх страницах с леджером). */
+.ledger__row--open .ledger__media { min-height: var(--ledger-h-open); }
 
 .ledger:has(.ledger__row:hover) .ledger__row--open:not(:hover) .ledger__media,
-.ledger:has(.ledger__row:focus-within) .ledger__row--open:not(:focus-within) .ledger__media { min-height: 140px; }
+.ledger:has(.ledger__row:focus-within) .ledger__row--open:not(:focus-within) .ledger__media { min-height: var(--ledger-h); }
 
 .ledger__row:hover .ledger__media,
-.ledger__row:focus-within .ledger__media { min-height: 424px; }
+.ledger__row:focus-within .ledger__media { min-height: var(--ledger-h-open); }
 
+/* Текст держит ширину макета (1360 − плитка 432 − два зазора = 864 на две
+   колонки, то есть 432), а номер занимает ровно свою ширину и прижат
+   к правому краю. Раньше обе колонки были `flex: 1 1 0` и делили место
+   поровну: на 1440 это те же 432, но на 1025 тексту доставалось 217 —
+   описание разбухало вдвое и хвост уходил под растворение. */
 .ledger__body {
-  flex: 1 1 0;
+  flex: 0 1 var(--ledger-body);
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -386,7 +401,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 .ledger__num {
-  flex: 1 1 0;
+  flex: 0 0 auto;
+  margin-left: auto;
   min-width: 0;
   text-align: right;
 }
@@ -402,6 +418,39 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .ledger__row:hover .ledger__num,
 .ledger__row:focus-within .ledger__num { color: var(--color-dark); }
+
+/* Высота блока не должна зависеть от того, какая строка раскрыта.
+   В строчной раскладке высота строки = max(плитка, текст). Пока текст
+   короче схлопнутой плитки, все схлопнутые строки одинаковы и блок стоит
+   на месте. Как только описание длиннее (узкий десктоп 1025–1360 или
+   просто длинный текст), схлопнутые строки становятся разной высоты —
+   и при наведении всё, что ниже секции, прыгает на 20–70 px.
+   Замер 2026-09-09: Home 67 px на 1025, Salesforce 22 px даже на 1440.
+
+   Лечится тем, что тело строки живёт в коробке ровно той же высоты, что
+   и плитка: схлопнутая — --ledger-h, раскрытая — --ledger-h-open. Тогда
+   высота строки задана только плиткой и одинакова у всех схлопнутых.
+   Хвост длинного текста уходит в растворение — обрез читается намеренным.
+   В колоночной раскладке (≤767) плитка и текст складываются, а не спорят,
+   поэтому там кламп не нужен и текст показан целиком.
+   CUSTOM-CSS: идёт в тот же Custom CSS секции, что и раскрытие плитки. */
+@media (min-width: 768px) {
+  .ledger__body {
+    height: var(--ledger-h);
+    overflow: hidden;
+    transition: height .35s ease;
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 28px), transparent);
+            mask-image: linear-gradient(to bottom, #000 calc(100% - 28px), transparent);
+  }
+
+  .ledger__row--open .ledger__body { height: var(--ledger-h-open); }
+
+  .ledger:has(.ledger__row:hover) .ledger__row--open:not(:hover) .ledger__body,
+  .ledger:has(.ledger__row:focus-within) .ledger__row--open:not(:focus-within) .ledger__body { height: var(--ledger-h); }
+
+  .ledger__row:hover .ledger__body,
+  .ledger__row:focus-within .ledger__body { height: var(--ledger-h-open); }
+}
 
 /* ══ 4. STAT GRID 2 × 2 ════════════════════════════════════════
    83:622 / 83:629 · внутренний крест из линий 1px чёрный 5%,
@@ -1920,7 +1969,7 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
     width: 100%;
     flex: none;
     order: 2;
-    min-height: 200px;
+    min-height: var(--ledger-h);   /* 200 — задано токеном, см. tokens.css */
   }
   .ledger__media--feature { min-height: 260px; }
   /* номер уходит наверх и читается как маркер пункта — поэтому по левому краю */
