@@ -108,10 +108,6 @@
 
 .s-roles__lead { max-width: 60ch; margin-bottom: var(--space-lg); }
 
-/* Лид идёт сразу под центрированной шапкой — по той же оси, иначе
-   текст возвращает взгляд к левому краю сразу после центра. */
-.s-roles__lead--center,
-.s-delivery__lead--center { margin-inline: auto; text-align: center; }
 
 /* ── 10 · 3-step delivery model ────────────────────────────────
    Аккордеон шагов и плитка с фотографией — та же пара, что в
