@@ -1,0 +1,120 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — WorkHub (/products/workhub/).
+   Макета в Figma нет: страница собрана из библиотеки блоков по разделу 3
+   `Red_Orange_Technologies_Landing_Pages_and_Visual_Direction.docx`
+   (копия, SEO и бриф на визуал). Тексты дословные.
+
+   Характер по брифу — «control, overview, structure and calm»:
+   в отличие от NOVA тёмная секция здесь одна, и стоит она там, где
+   разговор про безопасность. Схемы экрана светлые.
+
+   Здесь только вертикальный ритм и раскладки, которых нет
+   в components.css.
+   ══════════════════════════════════════════════════════════════ */
+
+/* Зазор между секциями (20 в макете) сложен в паддинги: обычно
+   в верхний следующей, а перед тонированными — в нижний предыдущей. */
+.w-hero         { padding-top:  84px; padding-bottom:  40px; }
+.w-problem      { padding-top: 140px; padding-bottom: 120px; }
+.w-capabilities { padding-top: 140px; padding-bottom: 120px; }
+.w-proof        { padding-top: 140px; padding-bottom: 120px; }
+.w-integrations { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тёмной */
+.w-access       { padding-top: 100px; padding-bottom: 100px; } /* тёмная */
+.w-industries   { padding-top: 120px; padding-bottom: 120px; }
+.w-gains        { padding-top: 120px; padding-bottom: 140px; }
+.w-cta          { padding-top: 140px; padding-bottom: 140px; }
+
+/* ── 1 · Hero ──────────────────────────────────────────────────
+   Визуал героя — схема дашборда (блок 35). Колонка визуала в
+   hero-split по умолчанию держит пропорцию картинки; здесь высоту
+   задаёт содержимое панели, поэтому пропорция снята. */
+
+/* Панель НЕ растягивается на высоту колонки, в отличие от NOVA.
+   Там пять строк вывода заполняли её целиком, здесь содержимого
+   меньше: при растяжении перед итогом оставалось 180 px пустоты.
+   Тот же случай, что с плиткой визуала на AI & Product Development,
+   где растяжение давало половину полосы пустой заливки. */
+.w-hero .hero-split__visual {
+  background: transparent;
+  align-items: flex-start;
+  padding: 0;
+  min-height: 0;
+}
+
+/* Шесть плиток дашборда: три ряда по две. Клиент перечислил
+   шесть показателей, и в два столбца они читаются как сводка,
+   а не как длинный список. */
+.w-hero .ui-panel__tiles { grid-template-columns: repeat(2, 1fr); }
+
+/* ── Общий лид секции ──────────────────────────────────────────
+   Ширина ограничена: строка длиннее ~90 символов теряет строку
+   при возврате взгляда (ui-text-measure). */
+
+.w-lead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 940px;
+}
+
+.w-lead .tag-row { margin-top: var(--space-2xs); }
+
+/* ── 4 · Доказательство продукта ───────────────────────────────
+   Четыре экрана из брифа — сеткой 2 × 2. Панели тянутся на всю
+   высоту ячейки, чтобы низ у пары совпадал. */
+
+.proof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--col-gap); }
+.proof-grid .ui-panel { height: 100%; }
+
+/* ── 5 · Интеграции ────────────────────────────────────────────
+   Диаграмма «центр и системы вокруг» (блок 38) и пример под ней. */
+
+.w-integrations .hub { margin-top: var(--space-xl); }
+.w-integrations__note { max-width: 940px; margin-top: var(--space-xl); }
+
+/* ── 6 · Доступ подрядчиков ────────────────────────────────────
+   Тёмная секция: два столбца текста и вывод под ними. */
+
+.w-access__cols { display: flex; gap: var(--col-gap); align-items: flex-start; }
+.w-access__cols > * { flex: 1 1 0; min-width: 0; }
+.w-access__close { margin-top: var(--space-2xl); max-width: 940px; }
+
+/* ── 8 · Что даёт объединение ──────────────────────────────────
+   Сравнение «до / после» и список выигрышей под ним. */
+
+.w-gains .versus { margin-top: var(--space-xl); }
+.w-gains__close  { margin-top: var(--space-xl); max-width: 940px; display: flex; flex-direction: column; gap: var(--space-md); }
+
+/* ── Планшет ≤ 1024 ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  .w-hero         { padding-top: 64px; padding-bottom: 32px; }
+  .w-problem,
+  .w-capabilities,
+  .w-proof,
+  .w-industries   { padding-top: 112px; padding-bottom: 96px; }
+  .w-integrations { padding-top: 112px; padding-bottom: 112px; }
+  .w-access       { padding-top: 80px;  padding-bottom: 80px; }
+  .w-gains        { padding-top: 96px;  padding-bottom: 112px; }
+  .w-cta          { padding-top: 112px; padding-bottom: 112px; }
+
+  .proof-grid { grid-template-columns: 1fr; }
+
+  .w-access__cols { flex-direction: column; }
+}
+
+/* ── Мобильный ≤ 767 ───────────────────────────────────────── */
+@media (max-width: 767px) {
+
+  .w-hero { padding-top: 48px; padding-bottom: 24px; }
+  .w-problem,
+  .w-capabilities,
+  .w-proof,
+  .w-integrations,
+  .w-industries,
+  .w-gains,
+  .w-cta  { padding-top: 72px; padding-bottom: 72px; }
+  .w-access { padding-top: 64px; padding-bottom: 64px; }
+
+  .w-cta .btn { width: 100%; text-align: center; }
+}

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorkHub | One Workspace for Project-Driven Teams | Red Orange Technologies</title>
+  <meta name="description" content="Manage projects, teams, documents, compliance, finance and external partners in one connected workspace built for project-driven organisations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/workhub.css">
+</head>
+<body>
+
+<!-- ══ HEADER — 152:1823 → Theme Builder → Header (общий с главной) ══ -->
+<header class="site-header" data-el="container" data-name="header">
+  <a class="site-header__logo" href="index.html" data-wp="/" data-el="image" aria-label="Red Orange Technologies — home">
+    <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
+  </a>
+  <!-- Панель меню: внутри только виджет Nav Menu (пункты берутся из меню
+       WordPress) и отдельный блок с языком и CTA — ссылки правятся
+       в «Внешний вид → Меню», не трогая Elementor -->
+  <div class="site-menu" id="site-menu" data-el="container">
+    <nav class="site-nav" data-el="nav-menu" aria-label="Main">
+      <a class="t-nav site-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+      <a class="t-nav site-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+      <a class="t-nav site-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce</a>
+      <a class="t-nav site-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/products/" aria-current="page">Products</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/company/">Company</a>
+    </nav>
+
+    <div class="site-menu__cta" data-el="container">
+      <a class="t-nav site-menu__lang" href="#" data-el="text">EN</a>
+      <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    </div>
+  </div>
+  <div class="site-header__actions" data-el="container">
+      <a class="t-nav site-nav__link" href="#" data-el="text">EN</a>
+    <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    <button class="site-header__burger" type="button" data-el="button"
+            aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <svg class="burger-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect class="burger-icon__bar burger-icon__bar--top" x="0" y="5"  width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--mid" x="0" y="11" width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--bot" x="0" y="17" width="24" height="2"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- затемнение под мобильным меню: сосед хедера, иначе
+     оказывается внутри его stacking context и накрывает логотип -->
+<div class="site-menu-backdrop" hidden></div>
+
+<main>
+  <!-- ══ 1 · HERO — блок 10 + схема дашборда (блок 35) ═══════════════ -->
+  <section class="section w-hero" data-el="container" data-name="hero">
+    <div class="section__inner" data-el="container">
+      <div class="hero-split" data-el="container">
+        <div class="hero-split__content" data-el="container">
+          <div class="hero-split__stack" data-el="container">
+            <span class="badge" data-el="text">Our product</span>
+            <div class="hero-split__body" data-el="container">
+              <h1 class="t-display" data-el="heading">WorkHub</h1>
+              <p class="t-h1 t-h1--normal hero-split__sub" data-el="text">One workspace for project-driven teams.</p>
+              <p class="t-lead hero-split__lead" data-el="text">Your projects should not live across ten different systems. Tasks in one tool. Files somewhere else. HSE in a binder. Budgets in spreadsheets. And somebody trying to keep the whole thing connected.</p>
+              <div class="hero__actions" data-el="container">
+                <a class="btn btn--primary" href="https://workhub.build" data-el="button" rel="noopener">Book a WorkHub demo</a>
+                <a class="btn btn--outline" href="#contact" data-el="button">Talk to our team</a>
+              </div>
+            </div>
+          </div>
+          <hr class="divider divider--soft">
+          <p class="hero-split__note" data-el="text">WorkHub brings it together.<br>Project management, people, documents, compliance, sales, finance and business operations in one connected workspace.</p>
+        </div>
+
+        <div class="hero-split__visual" data-el="container">
+          <!-- Схема дашборда. Настоящих скриншотов WorkHub у нас пока нет;
+               когда придут — панель заменяется картинкой, раскладка секции
+               не меняется. Показатели взяты из брифа клиента, раздел
+               «Hero visual»: активные проекты, прогресс, задачи, загрузка
+               команды, финансы, оповещения по HSE. -->
+          <div class="ui-panel ui-panel--light" data-el="container" data-name="workhub-hero-panel">
+            <div class="ui-panel__bar" data-el="container">
+              <span class="ui-panel__dot" aria-hidden="true"></span>
+              <span class="ui-panel__name" data-el="text">WorkHub</span>
+              <span class="ui-panel__status" data-el="text">portfolio · this week</span>
+            </div>
+            <div class="ui-panel__body" data-el="container">
+
+              <div class="ui-panel__tiles" data-el="container">
+                <div class="ui-panel__tile" data-el="container">
+                  <span class="ui-panel__tile-label" data-el="text">Active projects</span>
+                  <span class="ui-panel__tile-value" data-el="text">24</span>
+                </div>
+                <div class="ui-panel__tile" data-el="container">
+                  <span class="ui-panel__tile-label" data-el="text">Project progress</span>
+                  <span class="ui-panel__tile-value" data-el="text">82%</span>
+                  <div class="ui-panel__track" aria-hidden="true"><div class="ui-panel__fill" style="width: 82%"></div></div>
+                </div>
+                <div class="ui-panel__tile" data-el="container">
+                  <span class="ui-panel__tile-label" data-el="text">Upcoming tasks</span>
+                  <span class="ui-panel__tile-value" data-el="text">17</span>
+                </div>
+                <div class="ui-panel__tile" data-el="container">
+                  <span class="ui-panel__tile-label" data-el="text">Team capacity</span>
+                  <span class="ui-panel__tile-value" data-el="text">86%</span>
+                  <div class="ui-panel__track" aria-hidden="true"><div class="ui-panel__fill" style="width: 86%"></div></div>
+                </div>
+                <div class="ui-panel__tile" data-el="container">
+                  <span class="ui-panel__tile-label" data-el="text">Budget</span>
+                  <span class="ui-panel__tile-value" data-el="text">NOK 1.84M / 2.1M</span>
+                  <div class="ui-panel__track" aria-hidden="true"><div class="ui-panel__fill" style="width: 88%"></div></div>
+                </div>
+                <div class="ui-panel__tile ui-panel__tile--alert" data-el="container">
+                  <span class="ui-panel__tile-label" data-el="text">HSE</span>
+                  <span class="ui-panel__tile-value" data-el="text">2 actions required</span>
+                </div>
+              </div>
+
+              <div class="ui-panel__rows" data-el="container">
+                <div class="ui-panel__row" data-el="container">
+                  <span class="ui-panel__key" data-el="text">Deviation</span>
+                  <span class="ui-panel__meta" data-el="text">scaffolding · assigned to site lead</span>
+                  <span class="ui-panel__ok" data-el="text">open</span>
+                </div>
+                <div class="ui-panel__row" data-el="container">
+                  <span class="ui-panel__key" data-el="text">Timesheets</span>
+                  <span class="ui-panel__meta" data-el="text">week 24 · 38 entries</span>
+                  <span class="ui-panel__ok" data-el="text">synced</span>
+                </div>
+                <div class="ui-panel__row" data-el="container">
+                  <span class="ui-panel__key" data-el="text">Documents</span>
+                  <span class="ui-panel__meta" data-el="text">HSE plan v4 · SharePoint</span>
+                  <span class="ui-panel__ok" data-el="text">approved</span>
+                </div>
+              </div>
+
+              <div class="ui-panel__result" data-el="container">
+                <strong data-el="text">Everything connected</strong>
+                <span data-el="text">ONE WORKSPACE</span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2 · ПРОБЛЕМА — section-head + лид + теги ════════════════════ -->
+  <section class="section w-problem" data-el="container" data-name="problem">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">The problem</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Stop managing the gaps between systems.</h2>
+      </div>
+
+      <div class="w-lead" data-el="container">
+        <p class="t-lead" data-el="text">Most project platforms manage tasks. But project-driven companies manage much more than tasks.</p>
+
+        <div class="tag-row" data-el="container">
+          <span class="tag" data-el="text">People</span>
+          <span class="tag" data-el="text">Qualifications</span>
+          <span class="tag" data-el="text">Subcontractors</span>
+          <span class="tag" data-el="text">Documentation</span>
+          <span class="tag" data-el="text">Safety</span>
+          <span class="tag" data-el="text">Quality</span>
+          <span class="tag" data-el="text">Budgets</span>
+          <span class="tag" data-el="text">Capacity</span>
+          <span class="tag" data-el="text">Customers</span>
+          <span class="tag" data-el="text">Suppliers</span>
+          <span class="tag" data-el="text">Compliance</span>
+        </div>
+
+        <p class="t-lead" data-el="text">WorkHub was built around that reality. Instead of forcing the organisation to stitch together multiple specialised tools, WorkHub connects the operational parts of a project in one environment.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 3 · ВОЗМОЖНОСТИ — блок 22 icon grid 3 × 2 ══════════════════ -->
+  <section class="section w-capabilities" data-el="container" data-name="capabilities">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">What it covers</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Run the entire project from one place.</h2>
+      </div>
+
+      <div class="icon-grid" data-el="container" data-name="capability-grid">
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m3 14l.5.07L8.07 9.5a1.95 1.95 0 0 1 .52-1.91c.78-.79 2.04-.79 2.82 0c.53.52.7 1.26.52 1.91l2.57 2.57l.5-.07c.18 0 .35 0 .5.07l3.57-3.57C19 8.35 19 8.18 19 8a2 2 0 0 1 2-2a2 2 0 0 1 2 2a2 2 0 0 1-2 2c-.18 0-.35 0-.5-.07l-3.57 3.57c.07.15.07.32.07.5a2 2 0 0 1-2 2a2 2 0 0 1-2-2l.07-.5l-2.57-2.57c-.32.07-.68.07-1 0L4.93 15.5L5 16a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Project management</h3>
+            <p class="t-body icon-card__text" data-el="text">Manage projects using dashboards, task lists, Kanban boards, Gantt timelines and calendars. Work through structured project stages rather than disconnected task lists. AI assistance can help monitor project health, allocate work and generate summaries.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9A3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42c-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3a3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3a3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9c-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65c2.56.34 4.45 1.51 4.45 2.9z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Teams &amp; capacity</h3>
+            <p class="t-body icon-card__text" data-el="text">See who is working on what. Track roles, skills, certificates and capacity. Plan workloads before key employees become the bottleneck.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M4 4v18h16v2H4c-1.1 0-2-.9-2-2V4zm11 3h5.5L15 1.5zM8 0h8l6 6v12c0 1.11-.89 2-2 2H8a2 2 0 0 1-2-2V2c0-1.11.89-2 2-2m9 16v-2H8v2zm3-4v-2H8v2z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Documents</h3>
+            <p class="t-body icon-card__text" data-el="text">Keep files connected to the project and work they belong to. Synchronise with SharePoint and OneDrive and collaborate without creating yet another isolated document archive.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m10 17l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9m-6-8L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Compliance &amp; HSE</h3>
+            <p class="t-body icon-card__text" data-el="text">Turn HMS, SJA, deviations, incident reporting and quality assurance into active workflows with timestamped audit trails. Not PDFs forgotten in a folder. Not paperwork completed the night before an audit. Real operational processes.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M6 13h12v-2H6M3 6v2h18V6M10 18h4v-2h-4z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Pipeline &amp; sales</h3>
+            <p class="t-body icon-card__text" data-el="text">Connect what sales is promising with what the organisation actually has capacity to deliver. Track opportunities, weighted pipeline and projected resource requirements before the project even starts.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M5 6h18v12H5zm9 3a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3M9 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2zm-8 2h2v10h16v2H1z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Finance &amp; reporting</h3>
+            <p class="t-body icon-card__text" data-el="text">Keep project budgets and expenditure connected to project delivery. Bring financial and ESG reporting closer to the work that creates the numbers.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 4 · ДОКАЗАТЕЛЬСТВО ПРОДУКТА — четыре экрана из брифа ═══════ -->
+  <section class="section w-proof" data-el="container" data-name="product-proof">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Product proof</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Four views your project managers live in.</h2>
+      </div>
+
+      <div class="proof-grid" data-el="container" data-name="proof-grid">
+
+        <div class="ui-panel ui-panel--light" data-el="container">
+          <div class="ui-panel__bar" data-el="container">
+            <span class="ui-panel__dot" aria-hidden="true"></span>
+            <span class="ui-panel__name" data-el="text">Project management</span>
+            <span class="ui-panel__status" data-el="text">gantt</span>
+          </div>
+          <div class="ui-panel__body" data-el="container">
+            <div class="ui-panel__rows" data-el="container">
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Design</span>
+                <span class="ui-panel__meta" data-el="text">wk 12–18 · 4 people</span>
+                <span class="ui-panel__ok" data-el="text">done</span>
+              </div>
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Groundwork</span>
+                <span class="ui-panel__meta" data-el="text">wk 19–27 · 11 people</span>
+                <span class="ui-panel__ok" data-el="text">running</span>
+              </div>
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Installation</span>
+                <span class="ui-panel__meta" data-el="text">wk 26–34 · 8 people</span>
+                <span class="ui-panel__ok" data-el="text">planned</span>
+              </div>
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Handover</span>
+                <span class="ui-panel__meta" data-el="text">wk 35 · documentation</span>
+                <span class="ui-panel__ok" data-el="text">planned</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-panel ui-panel--light" data-el="container">
+          <div class="ui-panel__bar" data-el="container">
+            <span class="ui-panel__dot" aria-hidden="true"></span>
+            <span class="ui-panel__name" data-el="text">People &amp; capacity</span>
+            <span class="ui-panel__status" data-el="text">next 6 weeks</span>
+          </div>
+          <div class="ui-panel__body" data-el="container">
+            <div class="ui-panel__tiles" data-el="container">
+              <div class="ui-panel__tile" data-el="container">
+                <span class="ui-panel__tile-label" data-el="text">Site engineers</span>
+                <span class="ui-panel__tile-value" data-el="text">92%</span>
+                <div class="ui-panel__track" aria-hidden="true"><div class="ui-panel__fill" style="width: 92%"></div></div>
+              </div>
+              <div class="ui-panel__tile" data-el="container">
+                <span class="ui-panel__tile-label" data-el="text">Electricians</span>
+                <span class="ui-panel__tile-value" data-el="text">64%</span>
+                <div class="ui-panel__track" aria-hidden="true"><div class="ui-panel__fill" style="width: 64%"></div></div>
+              </div>
+            </div>
+            <div class="ui-panel__rows" data-el="container">
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Certificates</span>
+                <span class="ui-panel__meta" data-el="text">3 expire within 60 days</span>
+                <span class="ui-panel__ok" data-el="text">flagged</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-panel ui-panel--light" data-el="container">
+          <div class="ui-panel__bar" data-el="container">
+            <span class="ui-panel__dot" aria-hidden="true"></span>
+            <span class="ui-panel__name" data-el="text">Compliance &amp; HSE</span>
+            <span class="ui-panel__status" data-el="text">annual wheel</span>
+          </div>
+          <div class="ui-panel__body" data-el="container">
+            <div class="ui-panel__rows" data-el="container">
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">SJA</span>
+                <span class="ui-panel__meta" data-el="text">lifting operation · 6 signatures</span>
+                <span class="ui-panel__ok" data-el="text">signed</span>
+              </div>
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Deviation</span>
+                <span class="ui-panel__meta" data-el="text">scaffolding · assigned to site lead</span>
+                <span class="ui-panel__ok" data-el="text">open</span>
+              </div>
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Inspection</span>
+                <span class="ui-panel__meta" data-el="text">quarterly · audit trail complete</span>
+                <span class="ui-panel__ok" data-el="text">logged</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-panel ui-panel--light" data-el="container">
+          <div class="ui-panel__bar" data-el="container">
+            <span class="ui-panel__dot" aria-hidden="true"></span>
+            <span class="ui-panel__name" data-el="text">Finance</span>
+            <span class="ui-panel__status" data-el="text">budget vs actual</span>
+          </div>
+          <div class="ui-panel__body" data-el="container">
+            <div class="ui-panel__tiles" data-el="container">
+              <div class="ui-panel__tile" data-el="container">
+                <span class="ui-panel__tile-label" data-el="text">Budget</span>
+                <span class="ui-panel__tile-value" data-el="text">NOK 2.10M</span>
+              </div>
+              <div class="ui-panel__tile" data-el="container">
+                <span class="ui-panel__tile-label" data-el="text">Spent</span>
+                <span class="ui-panel__tile-value" data-el="text">NOK 1.84M</span>
+                <div class="ui-panel__track" aria-hidden="true"><div class="ui-panel__fill" style="width: 88%"></div></div>
+              </div>
+            </div>
+            <div class="ui-panel__rows" data-el="container">
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Hours</span>
+                <span class="ui-panel__meta" data-el="text">synced from Tripletex</span>
+                <span class="ui-panel__ok" data-el="text">today</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 5 · ИНТЕГРАЦИИ — блок 38 hub ═══════════════════════════════ -->
+  <section class="section w-integrations" data-el="container" data-name="integrations">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Integrations</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Built to work with the tools you already use.</h2>
+      </div>
+
+      <div class="w-lead" data-el="container">
+        <p class="t-lead" data-el="text">WorkHub is not designed to create another technology island. It connects to the systems many organisations already depend on.</p>
+      </div>
+
+      <!-- Диаграмма из брифа: продукт в центре, системы вокруг.
+           Клиент просил «сдержанно и легко читать, не плотный
+           IT-чертёж» — поэтому связи показаны общей сеткой,
+           а не линиями-паутиной. -->
+      <div class="hub" data-el="container" data-name="integration-hub">
+        <div class="hub__cell" data-el="container">
+          <span class="hub__logo" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M7.88 12.04q0 .45-.11.87q-.1.41-.33.74q-.22.33-.58.52q-.37.2-.87.2t-.85-.2q-.35-.21-.57-.55q-.22-.33-.33-.75q-.1-.42-.1-.86t.1-.87t.34-.76q.22-.34.59-.54q.36-.2.87-.2t.86.2q.35.21.57.55t.31.77q.1.43.1.88M24 12v9.38q0 .46-.33.8q-.33.32-.8.32H7.13q-.46 0-.8-.33q-.32-.33-.32-.8V18H1q-.41 0-.7-.3q-.3-.29-.3-.7V7q0-.41.3-.7Q.58 6 1 6h6.5V2.55q0-.44.3-.75q.3-.3.75-.3h12.9q.44 0 .75.3q.3.3.3.75v8.3l1.24.72h.01q.1.07.18.18q.07.12.07.25m-6-8.25v3h3v-3zm0 4.5v3h3v-3zm0 4.5v1.83l3.05-1.83zm-5.25-9v3h3.75v-3zm0 4.5v3h3.75v-3zm0 4.5v2.03l2.41 1.5l1.34-.8v-2.73zM9 3.75V6h2l.13.01l.12.04v-2.3zM5.98 15.98q.9 0 1.6-.3q.7-.32 1.19-.86q.48-.55.73-1.28q.25-.74.25-1.61q0-.83-.25-1.55q-.24-.71-.71-1.24t-1.15-.83t-1.55-.3q-.92 0-1.64.3q-.71.3-1.2.85q-.5.54-.75 1.3q-.25.74-.25 1.63q0 .85.26 1.56q.26.72.74 1.23q.48.52 1.17.81q.69.3 1.56.3zM7.5 21h12.39L12 16.08V17q0 .41-.3.7q-.29.3-.7.3H7.5zm15-.13v-7.24l-5.9 3.54Z"/></svg></span>
+          <span class="hub__name" data-el="text">Outlook</span>
+        </div>
+        <div class="hub__cell" data-el="container">
+          <span class="hub__logo" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M20.625 8.127q-.55 0-1.025-.205t-.832-.563t-.563-.832T18 5.502q0-.54.205-1.02t.563-.837q.357-.358.832-.563q.474-.205 1.025-.205q.54 0 1.02.205t.837.563q.358.357.563.837t.205 1.02q0 .55-.205 1.025t-.563.832q-.357.358-.837.563t-1.02.205m0-3.75q-.469 0-.797.328t-.328.797t.328.797t.797.328t.797-.328t.328-.797t-.328-.797t-.797-.328M24 10.002v5.578q0 .774-.293 1.46t-.803 1.194q-.51.51-1.195.803q-.686.293-1.459.293q-.445 0-.908-.105q-.463-.106-.85-.329q-.293.95-.855 1.729t-1.319 1.336t-1.67.861t-1.898.305q-1.148 0-2.162-.398q-1.014-.399-1.805-1.102t-1.312-1.664t-.674-2.086h-5.8q-.411 0-.704-.293T0 16.881V6.873q0-.41.293-.703t.703-.293h8.59q-.34-.715-.34-1.5q0-.727.275-1.365q.276-.639.75-1.114q.475-.474 1.114-.75q.638-.275 1.365-.275t1.365.275t1.114.75q.474.475.75 1.114q.275.638.275 1.365t-.275 1.365q-.276.639-.75 1.113q-.475.475-1.114.75q-.638.276-1.365.276q-.188 0-.375-.024q-.188-.023-.375-.058v1.078h10.875q.469 0 .797.328t.328.797M12.75 2.373q-.41 0-.78.158q-.368.158-.638.434q-.27.275-.428.639q-.158.363-.158.773t.158.78q.159.368.428.638q.27.27.639.428t.779.158t.773-.158q.364-.159.64-.428q.274-.27.433-.639t.158-.779t-.158-.773q-.159-.364-.434-.64q-.275-.275-.639-.433q-.363-.158-.773-.158M6.937 9.814h2.25V7.94H2.814v1.875h2.25v6h1.875zm10.313 7.313v-6.75H12v6.504q0 .41-.293.703t-.703.293H8.309q.152.809.556 1.5q.405.691.985 1.19q.58.497 1.318.779q.738.281 1.582.281q.926 0 1.746-.352q.82-.351 1.436-.966q.615-.616.966-1.43q.352-.815.352-1.752m5.25-1.547v-5.203h-3.75v6.855q.305.305.691.452q.387.146.809.146q.469 0 .879-.176q.41-.175.715-.48q.304-.305.48-.715t.176-.879"/></svg></span>
+          <span class="hub__name" data-el="text">Teams</span>
+        </div>
+
+        <div class="hub__cell" data-el="container">
+          <span class="hub__logo" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M30.2 29.5h10.3c1.1 0 2-.9 2-2v-20c0-1.1-.9-2-2-2H30.2V34c0 1.1-.9 2-2 2H17.8"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M5.5 23.8h12.3v16.7c0 1.1-.9 2-2 2H7.5c-1.1 0-2-.9-2-2v-33c0-1.1.9-2 2-2h22.9"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M17.8 5.5v13.2h12.35"/></svg></span>
+          <span class="hub__name" data-el="text">Planner</span>
+        </div>
+
+        <div class="hub__cell" data-el="container">
+          <span class="hub__logo" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M24 13.5q0 1.242-.475 2.332q-.474 1.09-1.289 1.904q-.814.815-1.904 1.29q-1.09.474-2.332.474q-.762 0-1.523-.2q-.106.997-.557 1.858t-1.154 1.494t-1.606.99q-.902.358-1.91.358q-1.09 0-2.045-.416t-1.664-1.125t-1.125-1.664T6 18.75q0-.188.018-.375q.017-.188.04-.375H.997q-.41 0-.703-.293T0 17.004V6.996q0-.41.293-.703T.996 6h3.54q.14-1.277.726-2.373T6.75 1.723Q7.652.914 8.807.457Q9.96 0 11.25 0q1.395 0 2.625.533T16.02 1.98t1.447 2.145T18 6.75q0 .188-.012.375q-.011.188-.035.375q1.242 0 2.344.469t1.928 1.277t1.3 1.904Q24 12.246 24 13.5m-12.75-12q-.973 0-1.857.34q-.885.34-1.577.943q-.691.604-1.154 1.43T6.06 6h4.945q.41 0 .703.293t.293.703v4.945l.21-.035q.212-.75.61-1.424q.399-.673.944-1.218t1.213-.944q.668-.398 1.43-.61q.093-.503.093-.96q0-1.09-.416-2.045T14.96 3.041t-1.664-1.125T11.25 1.5M6.117 15.902q.54 0 1.06-.111q.522-.111.932-.37q.41-.257.662-.679t.252-1.055t-.263-1.054t-.662-.703t-.856-.463l-.855-.34q-.399-.158-.662-.334q-.264-.176-.264-.445q0-.2.14-.323t.335-.193q.193-.07.404-.094q.21-.023.351-.023q.598 0 1.055.152q.457.153.95.457V8.543q-.282-.082-.522-.14q-.24-.06-.475-.1t-.486-.059q-.252-.017-.557-.017q-.515 0-1.054.117q-.54.117-.979.375q-.44.258-.715.68q-.275.421-.275 1.03q0 .598.263.997q.264.398.663.68q.398.28.855.474l.856.363q.398.17.662.358q.263.187.263.457q0 .222-.123.351q-.123.13-.31.2q-.188.07-.393.087q-.205.018-.369.018q-.703 0-1.248-.234t-1.107-.621v1.875q1.195.468 2.472.468M11.25 22.5q.773 0 1.453-.293t1.19-.803t.808-1.195Q15 19.523 15 18.75q0-.668-.223-1.277q-.222-.61-.62-1.096q-.4-.486-.95-.826T12 15.071v1.933q0 .41-.293.703t-.703.293H7.57q-.07.375-.07.75q0 .773.293 1.459t.803 1.195q.51.51 1.195.803q.686.293 1.459.293M18 18q.926 0 1.746-.352q.82-.351 1.436-.966q.615-.616.966-1.43q.352-.815.352-1.752q0-.926-.352-1.746q-.351-.82-.966-1.436q-.616-.615-1.436-.966Q18.926 9 18 9t-1.74.357q-.815.358-1.43.973t-.973 1.43q-.357.814-.357 1.74q0 .129.006.258t.017.258q.551.27 1.02.65t.838.855t.627 1.026q.258.55.387 1.148Q17.18 18 18 18"/></svg></span>
+          <span class="hub__name" data-el="text">SharePoint</span>
+        </div>
+
+        <!-- Центр диаграммы -->
+        <div class="hub__cell hub__cell--core" data-el="container">
+          <span class="hub__core-title" data-el="text">WorkHub</span>
+          <span class="hub__name" data-el="text">One connected workspace</span>
+        </div>
+
+        <div class="hub__cell" data-el="container">
+          <span class="hub__logo" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M19.453 9.95q.961.058 1.787.468t1.442 1.066q.615.657.966 1.512q.352.856.352 1.816q0 1.008-.387 1.893q-.386.885-1.049 1.547t-1.546 1.049q-.885.387-1.893.387H6q-1.242 0-2.332-.475t-1.904-1.29t-1.29-1.903Q0 14.93 0 13.688q0-.985.31-1.887q.311-.903.862-1.658q.55-.756 1.324-1.325q.774-.568 1.711-.861q.434-.129.85-.187q.416-.06.861-.082h.012q.515-.786 1.207-1.413q.691-.627 1.5-1.066q.808-.44 1.705-.668q.896-.229 1.845-.229q1.278 0 2.456.417q1.177.416 2.144 1.16t1.658 1.78q.692 1.038 1.008 2.28zm-7.265-4.137q-1.325 0-2.52.544q-1.195.545-2.04 1.565q.446.117.85.299q.405.181.792.416l4.78 2.86l2.731-1.15q.27-.117.545-.204q.276-.088.58-.147q-.293-.937-.855-1.705t-1.319-1.318q-.755-.551-1.658-.856t-1.886-.304M2.414 16.395l9.914-4.184l-3.832-2.297q-.586-.351-1.23-.539q-.645-.188-1.325-.188q-.914 0-1.722.364q-.809.363-1.412.978q-.604.616-.955 1.436q-.352.82-.352 1.723q0 .703.234 1.423t.68 1.284m16.711 1.793q.563 0 1.078-.176t.961-.516l-7.23-4.324l-10.301 4.336q.527.328 1.13.504q.604.175 1.237.175zm3.012-1.852q.363-.727.363-1.523q0-.774-.293-1.407t-.791-1.072t-1.166-.68t-1.406-.24q-.422 0-.838.1t-.815.252q-.398.152-.785.334q-.386.181-.761.345Z"/></svg></span>
+          <span class="hub__name" data-el="text">OneDrive</span>
+        </div>
+        <div class="hub__cell" data-el="container">
+          <span class="hub__logo" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><circle cx="30.349" cy="24" r="6.729" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M30.349 24h6.73"/><circle cx="17.651" cy="11.229" r="6.729" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m17.651 11.229l4.758-4.758"/><circle cx="17.651" cy="36.771" r="6.729" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M17.651 36.771V43.5"/></svg></span>
+          <span class="hub__name" data-el="text">Tripletex</span>
+        </div>
+        <div class="hub__cell" data-el="container">
+          <span class="hub__logo" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.805 11.322v4.889a2.54 2.54 0 0 1-1.643 2.374l-1.732.652a.507.507 0 0 1-.686-.475v-5.956l-3.392 1.239a1.015 1.015 0 0 0-.664.953v7.986c0 .705.7 1.195 1.363.953l10.161-3.713a2.535 2.535 0 0 0 1.666-2.382V7.696a2.54 2.54 0 0 1-1.666 2.381zm0-.532V9.323a2.54 2.54 0 0 0-1.645-2.375l-1.728-.65a.508.508 0 0 0-.686.475v4.59c0 .701-.695 1.191-1.355.956L3.795 9.963a1.015 1.015 0 0 1-.674-.956V1.015c0-.701.695-1.191 1.356-.955l14.718 5.256A2.54 2.54 0 0 1 20.83 7.21c-.136.861-1.05 2.128-1.79 2.398z"/></svg></span>
+          <span class="hub__name" data-el="text">Business Central</span>
+        </div>
+        <div class="hub__cell" data-el="container">
+          <span class="hub__logo" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M10 12a1 1 0 0 1 1 1v11H4a1 1 0 0 1-1-1V13a1 1 0 0 1 1-1zm-2-.5V7a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v17h-4.5V13a1.5 1.5 0 0 0-1.5-1.5zm5-6V1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1h-3.5V7A1.5 1.5 0 0 0 15 5.5z"/></svg></span>
+          <span class="hub__name" data-el="text">Power BI</span>
+        </div>
+      </div>
+
+      <p class="t-lead w-integrations__note" data-el="text">For example, Outlook emails can become WorkHub tasks while retaining their project context, and WorkHub's Tripletex integration can synchronise customers, projects, hours and costs between project delivery and ERP.</p>
+
+    </div>
+  </section>
+
+  <!-- ══ 6 · ДОСТУП ПОДРЯДЧИКОВ — тёмная секция ═════════════════════ -->
+  <section class="section section--dark w-access on-dark" data-el="container" data-name="access">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">External access</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Give suppliers access. Without giving them access to everything.</h2>
+      </div>
+
+      <div class="w-access__cols" data-el="container">
+        <div data-el="container">
+          <p class="t-lead" data-el="text">External collaboration is essential to many projects. It is also one of the easiest ways to lose control of information.</p>
+        </div>
+        <div data-el="container">
+          <p class="t-lead" data-el="text">WorkHub includes scoped access for subcontractors and suppliers so external participants can work directly with the information relevant to them without getting unnecessary access to the wider organisation.</p>
+        </div>
+      </div>
+
+      <div class="w-access__close" data-el="container">
+        <div class="chain" data-el="container">
+          <span class="chain__step" data-el="text">Tenant isolation</span>
+          <span class="chain__arrow" aria-hidden="true">&middot;</span>
+          <span class="chain__step" data-el="text">Row-level security in the database</span>
+          <span class="chain__arrow" aria-hidden="true">&middot;</span>
+          <span class="chain__step" data-el="text">Role-based permissions</span>
+          <span class="chain__arrow" aria-hidden="true">&middot;</span>
+          <span class="chain__step" data-el="text">External users see only shared records</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 7 · ДЛЯ КОГО — блок 22 icon grid, три отрасли ══════════════ -->
+  <section class="section w-industries" data-el="container" data-name="industries">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Who it is for</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Built for project businesses.</h2>
+      </div>
+
+      <div class="icon-grid" data-el="container" data-name="industry-grid">
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M9.87 12.15L9 6.46a9.9 9.9 0 0 1 6 0l-.87 5.69c-.07.49-.5.85-1 .85h-2.27a1 1 0 0 1-.99-.85M22 16c0-.79-.47-1.5-1.2-1.83A9.08 9.08 0 0 0 17 8.5l-1.76 4.84c-.14.4-.52.66-.94.66H9.7c-.42 0-.8-.26-.94-.66L7 8.5a9.1 9.1 0 0 0-3.8 5.66C2.47 14.5 2 15.2 2 16l6.45 1.84c.36.1.73.16 1.1.16h4.88c.37 0 .74-.06 1.1-.16z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Construction &amp; contracting</h3>
+            <p class="t-body icon-card__text" data-el="text">Coordinate sites, teams, subcontractors, HSE documentation, project stages and financial performance.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m22.61 19l-9.08-9.09c.93-2.34.47-5.1-1.44-7C9.79.61 6.21.4 3.66 2.26L7.5 6.11L6.08 7.5L2.25 3.69C.39 6.23.6 9.82 2.9 12.11c1.86 1.86 4.57 2.35 6.89 1.48l9.11 9.11c.39.39 1.02.39 1.41 0l2.3-2.3c.39-.4.39-1.01 0-1.4m-3 1.59l-9.46-9.46c-.61.45-1.29.72-2 .82c-1.36.2-2.79-.21-3.83-1.25C3.37 9.76 2.93 8.5 3 7.26l3.09 3.09l4.24-4.24L7.24 3c1.26-.05 2.49.39 3.44 1.33a4.47 4.47 0 0 1 1.24 3.96a4.35 4.35 0 0 1-.88 1.96l9.46 9.45z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Industrial services</h3>
+            <p class="t-body icon-card__text" data-el="text">Manage field work, maintenance, installations, quality processes, incidents and structured project delivery.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M3 5v16h6v-1.5H7V18h2v-1.5H5V15h4v-1.5H7V12h2v-1.5H5V9h4V5h1.5v4H12V7h1.5v2H15V5h1.5v4H18V7h1.5v2H21V3H5a2 2 0 0 0-2 2m3 2a1 1 0 0 1-1-1a1 1 0 0 1 1-1a1 1 0 0 1 1 1a1 1 0 0 1-1 1"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Engineering &amp; professional services</h3>
+            <p class="t-body icon-card__text" data-el="text">Connect customer projects, deliverables, employee capacity, documentation and project profitability.</p>
+          </div>
+        </div>
+        <!-- Добивка ряда: отраслей три, на планшете колонок две —
+             без неё третья ячейка оставляет серое пятно (блок 40) -->
+        <div class="grid-filler grid-filler--tablet" aria-hidden="true"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 8 · ЧТО ДАЁТ ОБЪЕДИНЕНИЕ — блок 37 versus ══════════════════ -->
+  <section class="section w-gains" data-el="container" data-name="gains">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">The payoff</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Fewer tools. Fewer handovers. More control.</h2>
+      </div>
+
+      <div class="w-lead" data-el="container">
+        <p class="t-lead" data-el="text">The biggest WorkHub advantage is not one individual feature. It is what happens when information no longer has to jump continuously between disconnected applications.</p>
+      </div>
+
+      <!-- Сравнение «до / после» из брифа. Клиент просил, чтобы контраст
+           читался как «меньше раздробленности», а не как визуальный хаос,
+           поэтому слева не паутина линий, а просто длинный ряд систем. -->
+      <div class="versus" data-el="container" data-name="before-after">
+        <div class="versus__panel" data-el="container">
+          <div class="t-overline versus__label" data-el="text">Before WorkHub</div>
+          <div class="chain chain--muted" data-el="container">
+            <span class="chain__step" data-el="text">Project tool</span>
+            <span class="chain__arrow" aria-hidden="true">&middot;</span>
+            <span class="chain__step" data-el="text">Excel</span>
+            <span class="chain__arrow" aria-hidden="true">&middot;</span>
+            <span class="chain__step" data-el="text">HSE binder</span>
+            <span class="chain__arrow" aria-hidden="true">&middot;</span>
+            <span class="chain__step" data-el="text">SharePoint</span>
+            <span class="chain__arrow" aria-hidden="true">&middot;</span>
+            <span class="chain__step" data-el="text">Outlook</span>
+            <span class="chain__arrow" aria-hidden="true">&middot;</span>
+            <span class="chain__step" data-el="text">Teams</span>
+            <span class="chain__arrow" aria-hidden="true">&middot;</span>
+            <span class="chain__step" data-el="text">ERP</span>
+            <span class="chain__arrow" aria-hidden="true">&middot;</span>
+            <span class="chain__step" data-el="text">Power BI</span>
+          </div>
+          <p class="t-body versus__note" data-el="text">Eight places to look, and somebody keeping them in step by hand.</p>
+        </div>
+
+        <div class="versus__panel versus__panel--now on-dark" data-el="container">
+          <div class="t-overline versus__label" data-el="text">With WorkHub</div>
+          <div class="chain chain--accent" data-el="container">
+            <span class="chain__step" data-el="text">One connected workspace</span>
+          </div>
+          <p class="t-body versus__note" data-el="text">The same operational areas, connected around one centre. That consolidation is also the core return-on-investment argument for WorkHub.</p>
+        </div>
+      </div>
+
+      <div class="w-gains__close" data-el="container">
+        <div class="tag-row" data-el="container">
+          <span class="tag" data-el="text">Less duplicate data</span>
+          <span class="tag" data-el="text">Less manual coordination</span>
+          <span class="tag" data-el="text">Less searching</span>
+          <span class="tag" data-el="text">Less reconciliation</span>
+          <span class="tag" data-el="text">Better accountability</span>
+          <span class="tag" data-el="text">Better audit readiness</span>
+        </div>
+        <p class="t-lead" data-el="text">And a much clearer picture of what is actually happening across your projects.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 9 · ФИНАЛЬНЫЙ CTA — блок 11 split 720 / 720 ════════════════ -->
+  <section class="section w-cta" data-el="container" data-name="closing">
+    <div class="section__inner" data-el="container">
+      <div class="split split--in-grid split--sticky" data-el="container">
+        <div class="split__panel split__panel--warm" data-el="container">
+          <h2 class="t-h1 t-h1--normal split__title" data-el="heading">Your projects already have enough complexity. Your software shouldn't add more.</h2>
+          <div class="split__body" data-el="container">
+            <p class="t-lead" data-el="text">Bring projects, teams, compliance, documentation and business operations into one workspace.</p>
+            <p class="t-lead" data-el="text"><strong>See what WorkHub could replace in your organisation.</strong></p>
+            <div class="split__actions" data-el="container">
+              <a class="btn btn--primary" href="https://workhub.build" data-el="button" rel="noopener">Book a WorkHub demo</a>
+              <a class="btn btn--outline" href="#contact" data-el="button">Talk to our team</a>
+            </div>
+          </div>
+        </div>
+        <div class="split__media" data-el="image">
+          <img src="../assets/hero-mountains.webp" width="1360" height="504"
+               alt="" role="presentation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+
+
+<!-- ══ 10 · FOOTER — 152:131 → Theme Builder → Footer ═════════════ -->
+<footer class="site-footer" id="contact" data-el="container" data-name="footer">
+  <div class="site-footer__photo" aria-hidden="true"></div>
+  <div class="site-footer__wash" aria-hidden="true"></div>
+  <div class="site-footer__glow" aria-hidden="true"></div>
+
+  <div class="site-footer__inner" data-el="container">
+
+    <div class="footer-top" data-el="container">
+
+      <div class="footer-contact" data-el="container">
+        <div class="t-overline footer-contact__label" data-el="text">Get in touch</div>
+        <h2 class="t-h1 t-h1--normal" data-el="heading">Collaborate with us for complete IT solutions</h2>
+        <p class="t-lead footer-contact__lead" data-el="text">We're happy to answer any questions and help determine which of our services best fit your needs.</p>
+
+        <div class="check-list" data-el="container">
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Client-oriented</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Independent</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Competent</span>
+            </div>
+          </div>
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Results-driven</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Problem-solving</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Transparent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-form" data-el="container">
+        <h2 class="t-h2 footer-form__title" data-el="heading">Let us talk about your next solution</h2>
+        <form class="form" data-el="form" action="#" method="post">
+          <div class="form__row" data-el="container">
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-first" data-el="text">First name</label>
+              <input class="field__control" id="f-first" name="first-name" type="text" autocomplete="given-name">
+            </div>
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-last" data-el="text">Last name</label>
+              <input class="field__control" id="f-last" name="last-name" type="text" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-email" data-el="text">Email</label>
+            <input class="field__control" id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-company" data-el="text">Company</label>
+            <input class="field__control" id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field field--last" data-el="container">
+            <label class="t-body" for="f-message" data-el="text">Message</label>
+            <textarea class="field__control" id="f-message" name="message" rows="5"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit" data-el="button">Send message</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-nav" data-el="container">
+      <div class="footer-nav__cols" data-el="container">
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Solutions</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+            <a class="footer-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce Services</a>
+            <a class="footer-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+            <a class="footer-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Products</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+            <a class="footer-nav__link" href="#" data-wp="/products/workhub/">WorkHub</a>
+            <a class="footer-nav__link" href="#" data-wp="/products/novalab/">NOVAlab</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Company</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/">About us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/why-us/">Why us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/team/">Team</a>
+            <a class="footer-nav__link" href="#" data-wp="/cases/">Case studies</a>
+            <a class="footer-nav__link" href="#" data-wp="/insights/">Blog</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/careers/">Careers</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Contact</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Asker, Norway</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Pune, India</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Mohali, India</a>
+            <a class="footer-nav__link" href="mailto:contact@redorangetechnologies.com">contact@redorangetechnologies.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider divider--ondark-soft" data-el="divider">
+
+      <div class="footer-bottom" data-el="container">
+        <span class="footer-bottom__copy" data-el="text">© 2026 Red Orange Technologies</span>
+        <a href="#" data-wp="/terms/" data-el="text">Terms &amp; Conditions</a>
+        <a href="#" data-wp="/privacy/" data-el="text">Privacy Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
