@@ -2850,3 +2850,40 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   }
   .ui-panel__zone { padding: var(--space-sm); }
 }
+
+/* ══ 40. GRID FILLER — добивка ряда в сетках с линиями ═════════
+   В icon-grid и role-grid линии рисуются зазором 1 px на фоне
+   контейнера. Значит **пустое место в последнем ряду — это фон,
+   то есть серый прямоугольник**, а не пустота.
+
+   Раньше это лечили растягиванием последней ячейки на всю строку
+   (`grid-column: 1 / -1`), но тогда ячейки в ряду разного размера.
+   Пользователь попросил (2026-09-10) ячейки одного размера, а пустое
+   место — белым. Поэтому ряд добивается пустыми белыми ячейками.
+
+   Сколько добивок нужно, зависит от числа колонок, а оно меняется
+   на брейкпоинтах (3 → 2 → 1). На одной колонке дыр не бывает
+   никогда, поэтому все добивки на мобильном скрыты.
+
+   | Класс | 3 колонки | 2 колонки | 1 колонка |
+   |---|---|---|---|
+   | `grid-filler`           | видна | видна | скрыта |
+   | `grid-filler--desktop`  | видна | скрыта | скрыта |
+   | `grid-filler--tablet`   | скрыта | видна | скрыта |
+
+   Elementor: пустой контейнер с Background White и
+   Responsive → Hide on Mobile (и Tablet, где нужно). */
+
+.grid-filler { background: var(--color-white); }
+
+.grid-filler--tablet { display: none; }
+
+@media (max-width: 1024px) {
+  .grid-filler--desktop { display: none; }
+  .grid-filler--tablet  { display: block; }
+}
+
+@media (max-width: 767px) {
+  .grid-filler,
+  .grid-filler--tablet { display: none; }
+}
