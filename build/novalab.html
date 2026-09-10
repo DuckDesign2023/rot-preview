@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVAlab | Governed Enterprise AI &amp; Multi-Model Orchestration | Red Orange Technologies</title>
+  <meta name="description" content="Build, deploy and operate AI securely with NOVAlab. Multi-model orchestration, AI agents, enterprise integrations and governed EU-resident AI in one platform.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/novalab.css">
+</head>
+<body>
+
+<!-- ══ HEADER — 152:1823 → Theme Builder → Header (общий с главной) ══ -->
+<header class="site-header" data-el="container" data-name="header">
+  <a class="site-header__logo" href="index.html" data-wp="/" data-el="image" aria-label="Red Orange Technologies — home">
+    <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
+  </a>
+  <!-- Панель меню: внутри только виджет Nav Menu (пункты берутся из меню
+       WordPress) и отдельный блок с языком и CTA — ссылки правятся
+       в «Внешний вид → Меню», не трогая Elementor -->
+  <div class="site-menu" id="site-menu" data-el="container">
+    <nav class="site-nav" data-el="nav-menu" aria-label="Main">
+      <a class="t-nav site-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+      <a class="t-nav site-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+      <a class="t-nav site-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce</a>
+      <a class="t-nav site-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/products/" aria-current="page">Products</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/company/">Company</a>
+    </nav>
+
+    <div class="site-menu__cta" data-el="container">
+      <a class="t-nav site-menu__lang" href="#" data-el="text">EN</a>
+      <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    </div>
+  </div>
+  <div class="site-header__actions" data-el="container">
+      <a class="t-nav site-nav__link" href="#" data-el="text">EN</a>
+    <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    <button class="site-header__burger" type="button" data-el="button"
+            aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <svg class="burger-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect class="burger-icon__bar burger-icon__bar--top" x="0" y="5"  width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--mid" x="0" y="11" width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--bot" x="0" y="17" width="24" height="2"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- затемнение под мобильным меню: сосед хедера, иначе
+     оказывается внутри его stacking context и накрывает логотип -->
+<div class="site-menu-backdrop" hidden></div>
+
+<main>
+  <!-- ══ 1 · HERO — блок 9 (широкий) + схема трёх зон (блок 39) ═════ -->
+  <section class="section l-hero" data-el="container" data-name="hero">
+    <div class="section__inner" data-el="container">
+      <div class="hero" data-el="container">
+        <div class="hero__top" data-el="container">
+          <div class="l-hero__headline" data-el="container">
+            <span class="badge" data-el="text">Our product</span>
+            <h1 class="t-display hero__title" data-el="heading">NOVAlab</h1>
+          </div>
+          <div class="hero__aside" data-el="container">
+            <p class="t-h1 t-h1--normal" data-el="text">Use the world's best AI. Without giving away control of your business.</p>
+            <p class="t-lead hero__lead" data-el="text">Companies want AI. But they also have something consumer AI products were never designed around: business-critical data.</p>
+            <div class="hero__actions" data-el="container">
+              <a class="btn btn--primary" href="https://novalab.build" data-el="button" rel="noopener">Explore NOVAlab</a>
+              <a class="btn btn--outline" href="#contact" data-el="button">Talk to our AI team</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Схема из брифа, раздел «Hero visual»: слева системы компании,
+             в центре NOVAlab, справа модели и возможности. Жёсткое правило
+             клиента: прямой линии между данными компании и моделями быть
+             не должно — всё проходит через платформу, поэтому стрелки
+             ведут только к центру и от центра. -->
+        <div class="hero__visual hero__visual--diagram" data-el="container" data-name="zones-diagram">
+          <div class="zones" data-el="container">
+
+            <div class="zone" data-el="container">
+              <div class="t-overline zone__label" data-el="text">Your business</div>
+              <h3 class="t-h3" data-el="heading">Systems and data you already run</h3>
+              <div class="zone__items" data-el="container">
+                <span class="zone__item" data-el="text">CRM</span>
+                <span class="zone__item" data-el="text">Documents</span>
+                <span class="zone__item" data-el="text">ERP</span>
+                <span class="zone__item" data-el="text">Email</span>
+                <span class="zone__item" data-el="text">Internal data</span>
+              </div>
+            </div>
+
+            <span class="zones__link" aria-hidden="true">&rarr;</span>
+
+            <div class="zone zone--core on-dark" data-el="container">
+              <div class="t-overline zone__label" data-el="text">NOVAlab</div>
+              <h3 class="t-h3" data-el="heading">A governed intelligence layer</h3>
+              <div class="zone__items" data-el="container">
+                <span class="zone__item" data-el="text">Orchestration</span>
+                <span class="zone__item" data-el="text">Security</span>
+                <span class="zone__item" data-el="text">Governance</span>
+                <span class="zone__item" data-el="text">Agents</span>
+              </div>
+            </div>
+
+            <span class="zones__link" aria-hidden="true">&rarr;</span>
+
+            <div class="zone" data-el="container">
+              <div class="t-overline zone__label" data-el="text">AI capabilities and models</div>
+              <h3 class="t-h3" data-el="heading">Selected and controlled by NOVAlab</h3>
+              <div class="zone__items" data-el="container">
+                <span class="zone__item" data-el="text">Frontier models</span>
+                <span class="zone__item" data-el="text">Reasoning models</span>
+                <span class="zone__item" data-el="text">Self-hosted inference</span>
+                <span class="zone__item" data-el="text">Vision</span>
+                <span class="zone__item" data-el="text">Governed agents</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2 · ОРКЕСТРАЦИЯ — section-head + лид + теги ════════════════ -->
+  <section class="section l-orchestr" data-el="container" data-name="orchestration">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Orchestration</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">One AI platform. Multiple models. One governed layer.</h2>
+      </div>
+
+      <div class="l-lead" data-el="container">
+        <p class="t-lead" data-el="text">No single AI model is best at everything.</p>
+
+        <div class="tag-row" data-el="container">
+          <span class="tag" data-el="text">Some are faster</span>
+          <span class="tag" data-el="text">Some reason better</span>
+          <span class="tag" data-el="text">Some write better</span>
+          <span class="tag" data-el="text">Some are cheaper</span>
+          <span class="tag" data-el="text">Some are better suited to sensitive workloads</span>
+        </div>
+
+        <p class="t-lead" data-el="text">NOVAlab is built as an orchestration platform rather than around dependency on one model vendor. Your applications and employees interact with NOVAlab. NOVAlab determines how the request should be handled, which capability is required and how it can be executed within the organisation's security and governance requirements.</p>
+
+        <p class="t-lead" data-el="text">The architecture uses intent classification and orchestration to route work to real capabilities, including research, document generation, structured extraction, vision and governed agents.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 3 · ДАННЫЕ — тёмная секция ═════════════════════════════════ -->
+  <section class="section section--dark l-data on-dark" data-el="container" data-name="data">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Data control</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Your business data should not become somebody else's AI data.</h2>
+      </div>
+
+      <div class="l-data__cols" data-el="container">
+        <div data-el="container">
+          <p class="t-lead" data-el="text">NOVAlab puts a security and governance layer between your organisation and the underlying AI infrastructure. Instead of allowing individual features or applications to decide where data goes, model traffic is governed centrally.</p>
+        </div>
+        <div data-el="container">
+          <p class="t-lead" data-el="text">For particularly sensitive workloads, self-hosted inference means prompts and responses remain within NOVAlab's own infrastructure, with no external AI provider in the model path.</p>
+        </div>
+      </div>
+
+      <div class="l-data__close" data-el="container">
+        <div class="chain" data-el="container">
+          <span class="chain__step" data-el="text">Processing and storage in the EU</span>
+          <span class="chain__arrow" aria-hidden="true">&middot;</span>
+          <span class="chain__step" data-el="text">Residency control on model traffic</span>
+          <span class="chain__arrow" aria-hidden="true">&middot;</span>
+          <span class="chain__step" data-el="text">Self-hosted inference</span>
+          <span class="chain__arrow" aria-hidden="true">&middot;</span>
+          <span class="chain__step" data-el="text">Isolated by tenant</span>
+          <span class="chain__arrow" aria-hidden="true">&middot;</span>
+          <span class="chain__step" data-el="text">Not used to train shared models</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 4 · ВОЗМОЖНОСТИ — блок 22 icon grid 3 × 2 ══════════════════ -->
+  <section class="section l-capabilities" data-el="container" data-name="capabilities">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Capabilities</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">AI that can do more than chat.</h2>
+      </div>
+
+      <div class="l-lead" data-el="container">
+        <p class="t-lead" data-el="text">Generative AI became popular because it could answer questions. The next generation of enterprise AI will be valuable because it can do work. NOVAlab supports governed agents and multi-step workflows capable of using actual tools and capabilities rather than simply generating another response.</p>
+      </div>
+
+      <div class="icon-grid" data-el="container" data-name="capability-grid">
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m19.31 18.9l3.08 3.1L21 23.39l-3.12-3.07c-.69.43-1.51.68-2.38.68c-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5s4.5 2 4.5 4.5c0 .88-.25 1.71-.69 2.4m-3.81.1a2.5 2.5 0 0 0 0-5a2.5 2.5 0 0 0 0 5M21 4v2H3V4zM3 16v-2h6v2zm0-5V9h18v2h-2.03c-1.01-.63-2.2-1-3.47-1s-2.46.37-3.47 1z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Research</h3>
+            <p class="t-body icon-card__text" data-el="text">Retrieve and analyse live information from multiple sources.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M4 4v18h16v2H4c-1.1 0-2-.9-2-2V4zm11 3h5.5L15 1.5zM8 0h8l6 6v12c0 1.11-.89 2-2 2H8a2 2 0 0 1-2-2V2c0-1.11.89-2 2-2m9 16v-2H8v2zm3-4v-2H8v2z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Documents</h3>
+            <p class="t-body icon-card__text" data-el="text">Generate documents, presentations and spreadsheets as actual files.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5c-1.65 0-3.35.3-4.75 1.05c-.1.05-.15.05-.25.05c-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1c1.11-.35 2.33-.5 3.5-.5c1.95 0 4.05.4 5.5 1.5c1.45-1.1 3.55-1.5 5.5-1.5c1.17 0 2.39.15 3.5.5c.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5c-.1 0-.15 0-.25-.05c-1.4-.75-3.1-1.05-4.75-1.05c-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5c1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5c-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1c.91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99c1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24c-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99c1.04 0 1.88.08 2.5.24z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Knowledge &amp; RAG</h3>
+            <p class="t-body icon-card__text" data-el="text">Ground AI in company documents and information rather than relying only on the underlying model.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 9a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5c-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0a9.821 9.821 0 0 0-17.64 0"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Vision &amp; files</h3>
+            <p class="t-body icon-card__text" data-el="text">Understand images, documents and uploaded files.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M4 3h14a2 2 0 0 1 2 2v7.08a6 6 0 0 0-4.32.92H12v4h1.08c-.11.68-.11 1.35 0 2H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2m0 4v4h6V7zm8 0v4h6V7zm-8 6v4h6v-4zm15.44 8v-2h-4v-2h4v-2l3 3z"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">Structured extraction</h3>
+            <p class="t-body icon-card__text" data-el="text">Turn unstructured information into validated structured data.</p>
+          </div>
+        </div>
+        <div class="icon-card" data-el="container">
+          <span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M10 4a4 4 0 0 0-4 4a4 4 0 0 0 4 4a4 4 0 0 0 4-4a4 4 0 0 0-4-4m7 8a.26.26 0 0 0-.26.21l-.19 1.32c-.3.13-.59.29-.85.47l-1.24-.5c-.11 0-.24 0-.31.13l-1 1.73c-.06.11-.04.24.06.32l1.06.82a4.2 4.2 0 0 0 0 1l-1.06.82a.26.26 0 0 0-.06.32l1 1.73c.06.13.19.13.31.13l1.24-.5c.26.18.54.35.85.47l.19 1.32c.02.12.12.21.26.21h2c.11 0 .22-.09.24-.21l.19-1.32c.3-.13.57-.29.84-.47l1.23.5c.13 0 .26 0 .33-.13l1-1.73a.26.26 0 0 0-.06-.32l-1.07-.82c.02-.17.04-.33.04-.5s-.01-.33-.04-.5l1.06-.82a.26.26 0 0 0 .06-.32l-1-1.73c-.06-.13-.19-.13-.32-.13l-1.23.5c-.27-.18-.54-.35-.85-.47l-.19-1.32A.236.236 0 0 0 19 12zm-7 2c-4.42 0-8 1.79-8 4v2h9.68a7 7 0 0 1-.68-3a7 7 0 0 1 .64-2.91c-.53-.06-1.08-.09-1.64-.09m8 1.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5c-.84 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5"/></svg></span>
+          <div class="icon-card__body" data-el="container">
+            <h3 class="t-h3 icon-card__title" data-el="heading">AI agents</h3>
+            <p class="t-body icon-card__text" data-el="text">Create agents with defined responsibilities, memory, tools and guardrails.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="t-lead l-pipeline__note" data-el="text">NOVAlab exposes these capabilities through the same governed pipeline rather than allowing separate tools to bypass the security model.</p>
+
+    </div>
+  </section>
+
+  <!-- ══ 5 · КОНВЕЙЕР — восемь ступеней из брифа ════════════════════ -->
+  <section class="section l-pipeline" data-el="container" data-name="pipeline">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Governance</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">AI needs governance before it needs autonomy.</h2>
+      </div>
+
+      <div class="l-lead" data-el="container">
+        <p class="t-lead" data-el="text">Giving AI access to business systems changes the risk equation. A chatbot producing the wrong answer is inconvenient. An autonomous system performing the wrong action can be expensive.</p>
+        <p class="t-lead" data-el="text">NOVAlab therefore evaluates requests before allowing consequential actions. The current architecture uses an eight-stage governed pipeline.</p>
+      </div>
+
+      <!-- Бриф просит перевести технический конвейер в коммерческую,
+           легко читаемую иллюстрацию: это доказательство, что NOVAlab —
+           не обёртка вокруг языковой модели. Начало и конец помечены
+           акцентом, иначе десять одинаковых пилюль читаются как россыпь
+           тегов, а не как путь. -->
+      <div class="l-pipeline__plate" data-el="container" data-name="pipeline-chain">
+        <div class="chain" data-el="container">
+          <span class="chain__step chain__step--mark" data-el="text">Request</span>
+          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+          <span class="chain__step" data-el="text">Guardian</span>
+          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+          <span class="chain__step" data-el="text">Intent</span>
+          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+          <span class="chain__step" data-el="text">Risk</span>
+          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+          <span class="chain__step" data-el="text">AI Engine</span>
+          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+          <span class="chain__step" data-el="text">Trust</span>
+          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+          <span class="chain__step" data-el="text">Confidence</span>
+          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+          <span class="chain__step" data-el="text">Memory</span>
+          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+          <span class="chain__step" data-el="text">Audit</span>
+          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
+          <span class="chain__step chain__step--mark" data-el="text">Trusted result / approved action</span>
+        </div>
+      </div>
+
+      <p class="t-lead l-pipeline__note" data-el="text">High-risk or low-confidence actions can be escalated for human approval rather than executed automatically. This makes autonomy something that can be controlled, rather than simply switched on.</p>
+
+    </div>
+  </section>
+
+  <!-- ══ 6 · СВЯЗЬ С БИЗНЕСОМ — icon-list + statement ═══════════════ -->
+  <section class="section l-connect" data-el="container" data-name="connect">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Integrations</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Connect AI to the business.</h2>
+      </div>
+
+      <div class="l-lead" data-el="container">
+        <p class="t-lead" data-el="text">AI becomes dramatically more useful when it understands the systems your organisation already uses. NOVAlab is designed to sit alongside existing enterprise applications and access information through controlled connectors rather than attempting to replace the company's technology stack.</p>
+      </div>
+
+      <div class="problem-row" data-el="container">
+
+        <div class="icon-list" data-el="container">
+          <div class="icon-list__row" data-el="container">
+            <span class="icon-list__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 9a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5c-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0a9.821 9.821 0 0 0-17.64 0"/></svg></span>
+            <p class="t-body icon-list__text" data-el="text">What it can read.</p>
+          </div>
+          <div class="icon-list__row" data-el="container">
+            <span class="icon-list__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m14.06 9l.94.94L5.92 19H5v-.92zm3.6-6c-.25 0-.51.1-.7.29l-1.83 1.83l3.75 3.75l1.83-1.83c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"/></svg></span>
+            <p class="t-body icon-list__text" data-el="text">What it can create.</p>
+          </div>
+          <div class="icon-list__row" data-el="container">
+            <span class="icon-list__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m21 9l-4-4v3h-7v2h7v3M7 11l-4 4l4 4v-3h7v-2H7z"/></svg></span>
+            <p class="t-body icon-list__text" data-el="text">What it can change.</p>
+          </div>
+          <div class="icon-list__row" data-el="container">
+            <span class="icon-list__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M19 13c.34 0 .67.04 1 .09V10a2 2 0 0 0-2-2h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6a2 2 0 0 0-2 2v10c0 1.11.89 2 2 2h7.81c-.51-.88-.81-1.9-.81-3c0-3.31 2.69-6 6-6M9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9zm3 11a2 2 0 1 1 2-2c0 1.11-.89 2-2 2m10.5.25L17.75 22L15 19l1.16-1.16l1.59 1.59l3.59-3.59z"/></svg></span>
+            <p class="t-body icon-list__text" data-el="text">And which actions require approval.</p>
+          </div>
+        </div>
+
+        <div class="statement" data-el="container">
+          <span class="statement__mark" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m7 17l3.2-6.8L17 7l-3.2 6.8zm5-5.9a.9.9 0 0 0-.9.9a.9.9 0 0 0 .9.9a.9.9 0 0 0 .9-.9a.9.9 0 0 0-.9-.9M12 2a10 10 0 0 1 10 10a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8a8 8 0 0 0 8 8a8 8 0 0 0 8-8a8 8 0 0 0-8-8"/></svg></span>
+          <div class="statement__body" data-el="container">
+            <h3 class="t-h3 statement__title" data-el="heading">Connect AI to the systems, data and workflows required for a specific task.</h3>
+            <hr class="statement__rule">
+            <p class="t-body statement__note" data-el="text">Then control what it can do with them.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 7 · АГЕНТЫ — теги + схема Agent Studio ═════════════════════ -->
+  <section class="section l-agents" data-el="container" data-name="agents">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Agent Studio</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Build your own AI agents. Not generic assistants.</h2>
+      </div>
+
+      <div class="l-agents__row" data-el="container">
+
+        <div class="l-agents__text" data-el="container">
+          <p class="t-lead" data-el="text">Agents designed around how your business works.</p>
+
+          <div class="tag-row" data-el="container">
+            <span class="tag" data-el="text">A sales agent</span>
+            <span class="tag" data-el="text">A research agent</span>
+            <span class="tag" data-el="text">A document agent</span>
+            <span class="tag" data-el="text">A compliance agent</span>
+            <span class="tag" data-el="text">A customer-service agent</span>
+            <span class="tag" data-el="text">A project agent</span>
+            <span class="tag" data-el="text">An internal knowledge agent</span>
+          </div>
+
+          <p class="t-lead" data-el="text">Or an agent designed for a process unique to your organisation. Each can have its own responsibilities, memory, permissions, tools and level of autonomy.</p>
+          <p class="t-lead" data-el="text">And because they operate on the NOVAlab platform, they inherit the same governance and security architecture.</p>
+        </div>
+
+        <!-- Схема Agent Studio. Бриф просит здесь настоящий скриншот —
+             его у нас пока нет, поэтому стоит схема экрана в языке
+             дизайн-системы; замена на картинку раскладку не меняет. -->
+        <div class="ui-panel ui-panel--light" data-el="container" data-name="agent-studio-panel">
+          <div class="ui-panel__bar" data-el="container">
+            <span class="ui-panel__dot" aria-hidden="true"></span>
+            <span class="ui-panel__name" data-el="text">Agent Studio</span>
+            <span class="ui-panel__status" data-el="text">draft · not deployed</span>
+          </div>
+          <div class="ui-panel__body" data-el="container">
+
+            <div class="ui-panel__prompt" data-el="container">
+              <span class="ui-panel__caret" aria-hidden="true">&rsaquo;</span>
+              <p data-el="text">A compliance agent that reviews supplier documents, flags missing certificates and asks a human before rejecting anything.</p>
+            </div>
+
+            <div class="ui-panel__rows" data-el="container">
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Tools</span>
+                <span class="ui-panel__meta" data-el="text">document store · knowledge base · email</span>
+                <span class="ui-panel__ok" data-el="text">4 granted</span>
+              </div>
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Memory</span>
+                <span class="ui-panel__meta" data-el="text">supplier history · scoped to tenant</span>
+                <span class="ui-panel__ok" data-el="text">on</span>
+              </div>
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Permissions</span>
+                <span class="ui-panel__meta" data-el="text">read · create · no delete</span>
+                <span class="ui-panel__ok" data-el="text">set</span>
+              </div>
+              <div class="ui-panel__row" data-el="container">
+                <span class="ui-panel__key" data-el="text">Autonomy</span>
+                <span class="ui-panel__meta" data-el="text">rejection requires human approval</span>
+                <span class="ui-panel__ok" data-el="text">guarded</span>
+              </div>
+            </div>
+
+            <div class="ui-panel__result" data-el="container">
+              <strong data-el="text">Review &amp; deploy agent</strong>
+              <span data-el="text">GOVERNED BY NOVALAB</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 8 · НЕЗАВИСИМОСТЬ ОТ ВЕНДОРА — блок 18 dark split ══════════ -->
+  <section class="section section--darker l-vendor on-dark" data-el="container" data-name="vendor">
+    <div class="section__inner" data-el="container">
+      <div class="dark-split" data-el="container">
+        <div class="dark-split__text" data-el="container">
+          <h2 class="t-h1 t-h1--normal" data-el="heading">Don't build your AI strategy around one model vendor.</h2>
+          <p class="t-lead dark-split__lead" data-el="text">Models will change. Prices will change. Capabilities will change. Today's leading model may not be tomorrow's. Your AI architecture should survive that.</p>
+          <p class="t-lead dark-split__lead" data-el="text">NOVAlab abstracts the model layer behind its own governed platform, allowing routing and model tiers to evolve without forcing the organisation to rebuild everything around a different AI provider.</p>
+          <p class="t-lead dark-split__lead" data-el="text"><strong>Build around your business. Not around a model logo.</strong></p>
+        </div>
+        <div class="dark-split__graphic" data-el="image">
+          <img src="../assets/art-semicircles-positioning.svg" width="432" height="384" alt="" role="presentation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 9 · ФИНАЛЬНЫЙ CTA — блок 11 split 720 / 720 ════════════════ -->
+  <section class="section l-cta" data-el="container" data-name="closing">
+    <div class="section__inner" data-el="container">
+      <div class="split split--in-grid split--sticky" data-el="container">
+        <div class="split__panel split__panel--warm" data-el="container">
+          <h2 class="t-h1 t-h1--normal split__title" data-el="heading">Enterprise AI without enterprise paralysis.</h2>
+          <div class="split__body" data-el="container">
+            <p class="t-lead" data-el="text">Security cannot mean innovation stops. Innovation cannot mean security disappears.</p>
+            <p class="t-lead" data-el="text">NOVAlab is built around a different idea: give organisations access to powerful AI while retaining control over data, access, decisions and autonomy. Move from isolated AI experiments to AI that can become part of the organisation. Safely. Governed. And built for real work.</p>
+            <p class="t-lead" data-el="text"><strong>Ready to build AI into your business?</strong></p>
+            <div class="split__actions" data-el="container">
+              <a class="btn btn--primary" href="https://novalab.build" data-el="button" rel="noopener">Book a NOVAlab demo</a>
+              <a class="btn btn--outline" href="#contact" data-el="button">Talk to our AI team</a>
+            </div>
+          </div>
+        </div>
+        <div class="split__media" data-el="image">
+          <img src="../assets/hero-mountains.webp" width="1360" height="504"
+               alt="" role="presentation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+
+
+<!-- ══ 10 · FOOTER — 152:131 → Theme Builder → Footer ═════════════ -->
+<footer class="site-footer" id="contact" data-el="container" data-name="footer">
+  <div class="site-footer__photo" aria-hidden="true"></div>
+  <div class="site-footer__wash" aria-hidden="true"></div>
+  <div class="site-footer__glow" aria-hidden="true"></div>
+
+  <div class="site-footer__inner" data-el="container">
+
+    <div class="footer-top" data-el="container">
+
+      <div class="footer-contact" data-el="container">
+        <div class="t-overline footer-contact__label" data-el="text">Get in touch</div>
+        <h2 class="t-h1 t-h1--normal" data-el="heading">Collaborate with us for complete IT solutions</h2>
+        <p class="t-lead footer-contact__lead" data-el="text">We're happy to answer any questions and help determine which of our services best fit your needs.</p>
+
+        <div class="check-list" data-el="container">
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Client-oriented</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Independent</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Competent</span>
+            </div>
+          </div>
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Results-driven</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Problem-solving</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Transparent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-form" data-el="container">
+        <h2 class="t-h2 footer-form__title" data-el="heading">Let us talk about your next solution</h2>
+        <form class="form" data-el="form" action="#" method="post">
+          <div class="form__row" data-el="container">
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-first" data-el="text">First name</label>
+              <input class="field__control" id="f-first" name="first-name" type="text" autocomplete="given-name">
+            </div>
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-last" data-el="text">Last name</label>
+              <input class="field__control" id="f-last" name="last-name" type="text" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-email" data-el="text">Email</label>
+            <input class="field__control" id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-company" data-el="text">Company</label>
+            <input class="field__control" id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field field--last" data-el="container">
+            <label class="t-body" for="f-message" data-el="text">Message</label>
+            <textarea class="field__control" id="f-message" name="message" rows="5"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit" data-el="button">Send message</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-nav" data-el="container">
+      <div class="footer-nav__cols" data-el="container">
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Solutions</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+            <a class="footer-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce Services</a>
+            <a class="footer-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+            <a class="footer-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Products</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+            <a class="footer-nav__link" href="#" data-wp="/products/workhub/">WorkHub</a>
+            <a class="footer-nav__link" href="#" data-wp="/products/novalab/">NOVAlab</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Company</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/">About us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/why-us/">Why us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/team/">Team</a>
+            <a class="footer-nav__link" href="#" data-wp="/cases/">Case studies</a>
+            <a class="footer-nav__link" href="#" data-wp="/insights/">Blog</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/careers/">Careers</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Contact</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Asker, Norway</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Pune, India</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Mohali, India</a>
+            <a class="footer-nav__link" href="mailto:contact@redorangetechnologies.com">contact@redorangetechnologies.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider divider--ondark-soft" data-el="divider">
+
+      <div class="footer-bottom" data-el="container">
+        <span class="footer-bottom__copy" data-el="text">© 2026 Red Orange Technologies</span>
+        <a href="#" data-wp="/terms/" data-el="text">Terms &amp; Conditions</a>
+        <a href="#" data-wp="/privacy/" data-el="text">Privacy Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

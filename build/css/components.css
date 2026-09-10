@@ -2645,6 +2645,21 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 /* Длинная цепочка — как было раньше: приглушённая */
 .chain--muted .chain__step { color: var(--gray-500); border-color: var(--gray-200); }
 
+/* Отдельное звено внутри нейтральной цепочки: начало и конец конвейера
+   NOVAlab («Request» и «Trusted result»). Десять одинаковых пилюль подряд
+   не читаются как путь — нужны видимые концы.
+
+   Помечается ТОЛЬКО рамкой: акцентный текст 14 px на тёплом белом даёт
+   3.83 при пороге AA 4.5, а рамка — не текст, к ней порог не применяется.
+   То же правило, что в схемах экрана (блок 35). */
+.chain__step--mark {
+  border-color: var(--color-accent);
+  color: var(--color-dark);
+  font-weight: 500;
+}
+
+.on-dark .chain__step--mark { border-color: var(--color-accent); color: var(--color-white); }
+
 /* На тёмном обычная цепочка идёт белым, но акцентную не трогаем:
    иначе «Describe → Review → Deploy» теряет акцент и перестаёт
    отличаться от «старого пути», ради чего цепочка и нужна. */

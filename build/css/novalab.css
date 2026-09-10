@@ -1,0 +1,139 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — NOVAlab (/products/novalab/).
+   Макета в Figma нет: страница собрана из библиотеки блоков по разделу 4
+   `Red_Orange_Technologies_Landing_Pages_and_Visual_Direction.docx`
+   (копия, SEO и бриф на визуал). Тексты дословные.
+
+   Бриф: «NOVAlab is the page that should use the most custom illustration»
+   — 60 % иллюстраций, 40 % product UI, 0 % фотографии. Ценность продукта
+   в архитектуре, оркестрации и управлении, поэтому главный визуал —
+   схема трёх зон, а не экран.
+
+   Здесь только вертикальный ритм и раскладки, которых нет
+   в components.css.
+   ══════════════════════════════════════════════════════════════ */
+
+/* Зазор между секциями (20 в макете) сложен в паддинги: обычно
+   в верхний следующей, а перед тонированными — в нижний предыдущей. */
+.l-hero        { padding-top:  84px; padding-bottom:  40px; }
+.l-orchestr    { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тёмной */
+.l-data        { padding-top: 100px; padding-bottom: 100px; } /* тёмная */
+.l-capabilities{ padding-top: 120px; padding-bottom: 120px; }
+.l-pipeline    { padding-top: 120px; padding-bottom: 120px; }
+.l-connect     { padding-top: 120px; padding-bottom: 120px; }
+.l-agents      { padding-top: 120px; padding-bottom: 140px; } /* +20 перед тёмной */
+.l-vendor      { padding-top: 100px; padding-bottom: 100px; } /* тёмная */
+.l-cta         { padding-top: 140px; padding-bottom: 140px; }
+
+/* ── 1 · Hero ──────────────────────────────────────────────────
+   Взят блок 9 (широкий герой главной), а не блок 10: схема трёх зон
+   требует полной ширины 1360, в половинную колонку hero-split она
+   не помещается. Бейдж добавлен над заголовком — в блоке 9 его нет,
+   потому что на главной заголовок первый на странице. */
+
+/* Заголовок прижат к верху, а не к низу, как в блоке 9 на главной.
+   Там заголовок в три строки и выравнивание по нижнему краю ставит
+   его на одну линию с кнопками. Здесь имя продукта — одно слово,
+   и от выравнивания по низу над ним оставалось 270 px пустоты. */
+.l-hero .hero__top { align-items: flex-start; }
+
+.l-hero__headline {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+/* Плитка визуала под схему: без серой заливки и фиксированной высоты
+   фотографии — высоту задаёт сама схема. */
+.hero__visual--diagram {
+  min-height: 0;
+  background: var(--bg-warm);
+  padding: var(--space-lg);
+}
+
+/* ── Общий лид секции ──────────────────────────────────────────
+   Строка длиннее ~90 символов теряется при возврате взгляда. */
+
+.l-lead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 940px;
+}
+
+.l-lead .tag-row { margin-top: var(--space-2xs); }
+
+/* ── 3 · Данные ────────────────────────────────────────────────
+   Тёмная секция: два столбца текста и факты цепочкой под ними. */
+
+.l-data__cols { display: flex; gap: var(--col-gap); align-items: flex-start; }
+.l-data__cols > * { flex: 1 1 0; min-width: 0; }
+.l-data__close { margin-top: var(--space-2xl); }
+
+/* ── 5 · Конвейер ──────────────────────────────────────────────
+   Восемь ступеней из брифа. Цепочка стоит в тёплой плитке: десять
+   пилюль на голом белом читаются как россыпь тегов, а не как путь. */
+
+.l-pipeline__plate {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  background: var(--bg-warm);
+}
+
+.l-pipeline__note { margin-top: var(--space-md); max-width: 940px; }
+
+/* ── 7 · Агенты ────────────────────────────────────────────────
+   Ряд «текст и типы агентов слева / схема Agent Studio справа».
+   Пропорция 1 : 1, как в паре how-row. */
+
+.l-agents__row {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-start;
+  margin-top: var(--space-xl);
+}
+
+.l-agents__row > * { flex: 1 1 0; min-width: 0; }
+
+.l-agents__text { display: flex; flex-direction: column; gap: var(--space-md); }
+
+/* ── Планшет ≤ 1024 ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  .l-hero        { padding-top: 64px; padding-bottom: 32px; }
+  .l-orchestr    { padding-top: 112px; padding-bottom: 112px; }
+  .l-data,
+  .l-vendor      { padding-top: 80px;  padding-bottom: 80px; }
+  .l-capabilities,
+  .l-pipeline,
+  .l-connect     { padding-top: 96px;  padding-bottom: 96px; }
+  .l-agents      { padding-top: 96px;  padding-bottom: 112px; }
+  .l-cta         { padding-top: 112px; padding-bottom: 112px; }
+
+  .hero__visual--diagram { padding: var(--space-md); }
+
+  .l-data__cols,
+  .l-agents__row { flex-direction: column; }
+}
+
+/* ── Мобильный ≤ 767 ───────────────────────────────────────── */
+@media (max-width: 767px) {
+
+  .l-hero { padding-top: 48px; padding-bottom: 24px; }
+  .l-orchestr,
+  .l-capabilities,
+  .l-pipeline,
+  .l-connect,
+  .l-agents,
+  .l-cta  { padding-top: 72px; padding-bottom: 72px; }
+  .l-data,
+  .l-vendor { padding-top: 64px; padding-bottom: 64px; }
+
+  .hero__visual--diagram { padding: var(--space-sm); }
+  .l-pipeline__plate     { padding: var(--space-md); }
+
+  .l-cta .btn { width: 100%; text-align: center; }
+}
