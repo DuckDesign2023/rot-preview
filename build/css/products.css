@@ -1,0 +1,79 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — Products, обзор (/products/).
+   Макета в Figma нет. Страница собрана из библиотеки блоков и сводит
+   три продуктовые страницы: NOVA for Salesforce, WorkHub, NOVAlab.
+   Тексты — из тех же разделов docx, что и на самих страницах,
+   плюс раздел «Our Products» из брифа структуры сайта.
+
+   Здесь только вертикальный ритм и раскладки, которых нет
+   в components.css.
+   ══════════════════════════════════════════════════════════════ */
+
+.p-hero    { padding-top:  84px; padding-bottom:  40px; }
+.p-lineup  { padding-top: 120px; padding-bottom: 120px; }
+.p-own     { padding-top: 120px; padding-bottom: 140px; } /* +20 перед тёмной */
+.p-cta     { padding-top: 140px; padding-bottom: 140px; }
+
+/* ── 1 · Hero ──────────────────────────────────────────────────
+   Блок 9 без плитки визуала: обзорной странице своя иллюстрация
+   не нужна — визуальный якорь ниже дают сами полосы продуктов,
+   каждая со схемой своего экрана. Заголовок прижат к верху
+   по той же причине, что на NOVAlab: имя в одно слово. */
+
+.p-hero .hero__top { align-items: flex-start; }
+
+.p-hero__headline {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+/* ── 2 · Полосы продуктов ──────────────────────────────────────
+   Три полосы `split--in-grid`, вторая зеркальная. Между полосами
+   зазор больше обычного: иначе три ряда сливаются в один блок. */
+
+.p-lineup__rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  margin-top: var(--space-xl);
+}
+
+.p-product__name { display: flex; flex-direction: column; gap: var(--space-2xs); }
+
+/* ── 3 · Почему свои продукты ──────────────────────────────────
+   Лид и теги решений, которые приходят после прототипа. */
+
+.p-own__lead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 940px;
+}
+
+.p-own__lead .tag-row { margin-top: var(--space-2xs); }
+
+/* ── Планшет ≤ 1024 ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  .p-hero   { padding-top: 64px; padding-bottom: 32px; }
+  .p-lineup { padding-top: 96px; padding-bottom: 96px; }
+  .p-own    { padding-top: 96px; padding-bottom: 112px; }
+  .p-cta    { padding-top: 112px; padding-bottom: 112px; }
+
+  .p-lineup__rows { gap: var(--space-xl); }
+}
+
+/* ── Мобильный ≤ 767 ───────────────────────────────────────── */
+@media (max-width: 767px) {
+
+  .p-hero { padding-top: 48px; padding-bottom: 24px; }
+  .p-lineup,
+  .p-own,
+  .p-cta  { padding-top: 72px; padding-bottom: 72px; }
+
+  .p-cta .btn { width: 100%; text-align: center; }
+}

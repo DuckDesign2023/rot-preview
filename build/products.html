@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our products | NOVA for Salesforce, WorkHub and NOVAlab | Red Orange Technologies</title>
+  <meta name="description" content="NOVA for Salesforce, WorkHub and NOVAlab — three platforms designed, built and operated by Red Orange Technologies. We don't just implement technology. We build it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+
+<!-- ══ HEADER — 152:1823 → Theme Builder → Header (общий с главной) ══ -->
+<header class="site-header" data-el="container" data-name="header">
+  <a class="site-header__logo" href="index.html" data-wp="/" data-el="image" aria-label="Red Orange Technologies — home">
+    <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
+  </a>
+  <!-- Панель меню: внутри только виджет Nav Menu (пункты берутся из меню
+       WordPress) и отдельный блок с языком и CTA — ссылки правятся
+       в «Внешний вид → Меню», не трогая Elementor -->
+  <div class="site-menu" id="site-menu" data-el="container">
+    <nav class="site-nav" data-el="nav-menu" aria-label="Main">
+      <a class="t-nav site-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+      <a class="t-nav site-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+      <a class="t-nav site-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce</a>
+      <a class="t-nav site-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/products/" aria-current="page">Products</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/company/">Company</a>
+    </nav>
+
+    <div class="site-menu__cta" data-el="container">
+      <a class="t-nav site-menu__lang" href="#" data-el="text">EN</a>
+      <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    </div>
+  </div>
+  <div class="site-header__actions" data-el="container">
+      <a class="t-nav site-nav__link" href="#" data-el="text">EN</a>
+    <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    <button class="site-header__burger" type="button" data-el="button"
+            aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <svg class="burger-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect class="burger-icon__bar burger-icon__bar--top" x="0" y="5"  width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--mid" x="0" y="11" width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--bot" x="0" y="17" width="24" height="2"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- затемнение под мобильным меню: сосед хедера, иначе
+     оказывается внутри его stacking context и накрывает логотип -->
+<div class="site-menu-backdrop" hidden></div>
+
+<main>
+  <!-- ══ 1 · HERO — блок 9 без плитки визуала ═══════════════════════ -->
+  <section class="section p-hero" data-el="container" data-name="hero">
+    <div class="section__inner" data-el="container">
+      <div class="hero" data-el="container">
+        <div class="hero__top" data-el="container">
+          <div class="p-hero__headline" data-el="container">
+            <span class="badge" data-el="text">Products</span>
+            <h1 class="t-display hero__title" data-el="heading">Our products</h1>
+          </div>
+          <div class="hero__aside" data-el="container">
+            <p class="t-h1 t-h1--normal" data-el="text">We don't just implement technology. We build it.</p>
+            <p class="t-lead hero__lead" data-el="text">Product development changes when the people advising you are also building and launching technology themselves.</p>
+            <div class="hero__actions" data-el="container">
+              <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+              <a class="btn btn--outline" href="#lineup" data-el="button">See the three products</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2 · ТРИ ПРОДУКТА — полосы split--in-grid со схемами ════════ -->
+  <section class="section p-lineup" id="lineup" data-el="container" data-name="lineup">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">What we have built</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Three products our own teams designed, built and now run.</h2>
+      </div>
+
+      <div class="p-lineup__rows" data-el="container">
+
+        <!-- 01 · NOVA for Salesforce -->
+        <div class="split split--in-grid" data-el="container" data-name="product-nova">
+          <div class="split__panel split__panel--warm" data-el="container">
+            <div class="p-product__name" data-el="container">
+              <div class="t-overline" data-el="text">01 — Salesforce</div>
+              <h3 class="t-h1 t-h1--normal split__title" data-el="heading">NOVA for Salesforce</h3>
+            </div>
+            <div class="split__body" data-el="container">
+              <p class="t-lead" data-el="text">Salesforce. Without the waiting. Describe what you need in plain English — NOVA designs, configures, builds and deploys it inside Salesforce.</p>
+              <div class="tag-row" data-el="container">
+                <span class="tag" data-el="text">Describe</span>
+                <span class="tag" data-el="text">Review</span>
+                <span class="tag" data-el="text">Deploy</span>
+              </div>
+              <div class="split__actions" data-el="container">
+                <a class="btn btn--outline" href="#" data-wp="/products/nova-for-salesforce/" data-el="button">Explore NOVA for Salesforce</a>
+              </div>
+            </div>
+          </div>
+          <div class="split__media split__media--panel" data-el="container">
+            <div class="ui-panel" data-el="container">
+              <div class="ui-panel__bar" data-el="container">
+                <span class="ui-panel__dot" aria-hidden="true"></span>
+                <span class="ui-panel__name" data-el="text">NOVA</span>
+                <span class="ui-panel__status" data-el="text">salesforce · sandbox</span>
+              </div>
+              <div class="ui-panel__body" data-el="container">
+                <div class="ui-panel__prompt" data-el="container">
+                  <span class="ui-panel__caret" aria-hidden="true">&rsaquo;</span>
+                  <p data-el="text">Create a lead qualification flow for Nordic enterprise leads.</p>
+                </div>
+                <div class="ui-panel__rows" data-el="container">
+                  <div class="ui-panel__row" data-el="container">
+                    <span class="ui-panel__key" data-el="text">Flow</span>
+                    <span class="ui-panel__meta" data-el="text">Lead_Qualification_Nordics</span>
+                    <span class="ui-panel__ok" data-el="text">built</span>
+                  </div>
+                  <div class="ui-panel__row" data-el="container">
+                    <span class="ui-panel__key" data-el="text">Fields</span>
+                    <span class="ui-panel__meta" data-el="text">3 new fields on Lead</span>
+                    <span class="ui-panel__ok" data-el="text">built</span>
+                  </div>
+                  <div class="ui-panel__row" data-el="container">
+                    <span class="ui-panel__key" data-el="text">Deployment package</span>
+                    <span class="ui-panel__meta" data-el="text">9 components</span>
+                    <span class="ui-panel__ok" data-el="text">ready</span>
+                  </div>
+                </div>
+                <div class="ui-panel__result" data-el="container">
+                  <strong data-el="text">Review &amp; Deploy</strong>
+                  <span data-el="text">YOU STAY IN CONTROL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 · WorkHub — зеркальная полоса -->
+        <div class="split split--in-grid split--flip" data-el="container" data-name="product-workhub">
+          <div class="split__panel split__panel--warm" data-el="container">
+            <div class="p-product__name" data-el="container">
+              <div class="t-overline" data-el="text">02 — Project delivery</div>
+              <h3 class="t-h1 t-h1--normal split__title" data-el="heading">WorkHub</h3>
+            </div>
+            <div class="split__body" data-el="container">
+              <p class="t-lead" data-el="text">One workspace for project-driven teams: projects, people, documents, compliance, sales and finance in one connected environment.</p>
+              <div class="tag-row" data-el="container">
+                <span class="tag" data-el="text">Projects</span>
+                <span class="tag" data-el="text">Capacity</span>
+                <span class="tag" data-el="text">Compliance</span>
+                <span class="tag" data-el="text">Finance</span>
+              </div>
+              <div class="split__actions" data-el="container">
+                <a class="btn btn--outline" href="#" data-wp="/products/workhub/" data-el="button">Explore WorkHub</a>
+              </div>
+            </div>
+          </div>
+          <div class="split__media split__media--panel" data-el="container">
+            <div class="ui-panel ui-panel--light" data-el="container">
+              <div class="ui-panel__bar" data-el="container">
+                <span class="ui-panel__dot" aria-hidden="true"></span>
+                <span class="ui-panel__name" data-el="text">WorkHub</span>
+                <span class="ui-panel__status" data-el="text">portfolio · this week</span>
+              </div>
+              <div class="ui-panel__body" data-el="container">
+                <div class="ui-panel__tiles" data-el="container">
+                  <div class="ui-panel__tile" data-el="container">
+                    <span class="ui-panel__tile-label" data-el="text">Active projects</span>
+                    <span class="ui-panel__tile-value" data-el="text">24</span>
+                  </div>
+                  <div class="ui-panel__tile" data-el="container">
+                    <span class="ui-panel__tile-label" data-el="text">Project progress</span>
+                    <span class="ui-panel__tile-value" data-el="text">82%</span>
+                    <div class="ui-panel__track" aria-hidden="true"><div class="ui-panel__fill" style="width: 82%"></div></div>
+                  </div>
+                  <div class="ui-panel__tile" data-el="container">
+                    <span class="ui-panel__tile-label" data-el="text">Team capacity</span>
+                    <span class="ui-panel__tile-value" data-el="text">86%</span>
+                    <div class="ui-panel__track" aria-hidden="true"><div class="ui-panel__fill" style="width: 86%"></div></div>
+                  </div>
+                  <div class="ui-panel__tile ui-panel__tile--alert" data-el="container">
+                    <span class="ui-panel__tile-label" data-el="text">HSE</span>
+                    <span class="ui-panel__tile-value" data-el="text">2 actions required</span>
+                  </div>
+                </div>
+                <div class="ui-panel__result" data-el="container">
+                  <strong data-el="text">Everything connected</strong>
+                  <span data-el="text">ONE WORKSPACE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 · NOVAlab -->
+        <div class="split split--in-grid" data-el="container" data-name="product-novalab">
+          <div class="split__panel split__panel--warm" data-el="container">
+            <div class="p-product__name" data-el="container">
+              <div class="t-overline" data-el="text">03 — Enterprise AI</div>
+              <h3 class="t-h1 t-h1--normal split__title" data-el="heading">NOVAlab</h3>
+            </div>
+            <div class="split__body" data-el="container">
+              <p class="t-lead" data-el="text">A governed environment for enterprise AI: multi-model orchestration, agents and integrations without handing over control of your data.</p>
+              <div class="tag-row" data-el="container">
+                <span class="tag" data-el="text">Orchestration</span>
+                <span class="tag" data-el="text">Governance</span>
+                <span class="tag" data-el="text">Agents</span>
+                <span class="tag" data-el="text">EU residency</span>
+              </div>
+              <div class="split__actions" data-el="container">
+                <a class="btn btn--outline" href="#" data-wp="/products/novalab/" data-el="button">Explore NOVAlab</a>
+              </div>
+            </div>
+          </div>
+          <div class="split__media split__media--panel" data-el="container">
+            <div class="ui-panel ui-panel--light" data-el="container">
+              <div class="ui-panel__bar" data-el="container">
+                <span class="ui-panel__dot" aria-hidden="true"></span>
+                <span class="ui-panel__name" data-el="text">NOVAlab</span>
+                <span class="ui-panel__status" data-el="text">governed pipeline</span>
+              </div>
+              <div class="ui-panel__body" data-el="container">
+                <div class="ui-panel__rows" data-el="container">
+                  <div class="ui-panel__row" data-el="container">
+                    <span class="ui-panel__idx" data-el="text">01</span>
+                    <span class="ui-panel__key" data-el="text">Guardian</span>
+                    <span class="ui-panel__meta" data-el="text">policy check</span>
+                    <span class="ui-panel__ok" data-el="text">passed</span>
+                  </div>
+                  <div class="ui-panel__row" data-el="container">
+                    <span class="ui-panel__idx" data-el="text">02</span>
+                    <span class="ui-panel__key" data-el="text">Intent</span>
+                    <span class="ui-panel__meta" data-el="text">document analysis</span>
+                    <span class="ui-panel__ok" data-el="text">routed</span>
+                  </div>
+                  <div class="ui-panel__row" data-el="container">
+                    <span class="ui-panel__idx" data-el="text">03</span>
+                    <span class="ui-panel__key" data-el="text">Risk</span>
+                    <span class="ui-panel__meta" data-el="text">consequential action</span>
+                    <span class="ui-panel__ok" data-el="text">escalated</span>
+                  </div>
+                  <div class="ui-panel__row" data-el="container">
+                    <span class="ui-panel__idx" data-el="text">04</span>
+                    <span class="ui-panel__key" data-el="text">Audit</span>
+                    <span class="ui-panel__meta" data-el="text">logged · EU region</span>
+                    <span class="ui-panel__ok" data-el="text">stored</span>
+                  </div>
+                </div>
+                <div class="ui-panel__result" data-el="container">
+                  <strong data-el="text">Awaiting human approval</strong>
+                  <span data-el="text">AUTONOMY CONTROLLED</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 3 · ПОЧЕМУ СВОИ ПРОДУКТЫ ═══════════════════════════════════ -->
+  <section class="section p-own" data-el="container" data-name="why-own">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Why it matters</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">We understand the decisions that come after the prototype.</h2>
+      </div>
+
+      <div class="p-own__lead" data-el="container">
+        <p class="t-lead" data-el="text">At Red Orange Technologies, our teams have developed products including NOVAlab, NOVA for Salesforce and WorkHub. Building and running our own platforms means we have already made — and lived with — the decisions that only appear once a product has real customers.</p>
+
+        <div class="tag-row" data-el="container">
+          <span class="tag" data-el="text">Architecture</span>
+          <span class="tag" data-el="text">Security</span>
+          <span class="tag" data-el="text">Integrations</span>
+          <span class="tag" data-el="text">User experience</span>
+          <span class="tag" data-el="text">Commercialisation</span>
+          <span class="tag" data-el="text">Scalability</span>
+          <span class="tag" data-el="text">AI governance</span>
+        </div>
+
+        <p class="t-lead" data-el="text">And the thousands of small product decisions between an idea and something customers will actually pay for. We bring the same thinking into the products we build with our customers.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 4 · ФИНАЛЬНЫЙ CTA — блок 11 split 720 / 720 ════════════════ -->
+  <section class="section p-cta" data-el="container" data-name="closing">
+    <div class="section__inner" data-el="container">
+      <div class="split split--in-grid split--sticky" data-el="container">
+        <div class="split__panel split__panel--warm" data-el="container">
+          <h2 class="t-h1 t-h1--normal split__title" data-el="heading">Use our products. Or let us build yours.</h2>
+          <div class="split__body" data-el="container">
+            <p class="t-lead" data-el="text">NOVA for Salesforce, WorkHub and NOVAlab are available today. If the product your business needs does not exist yet, that is what our AI and product-development team does.</p>
+            <div class="split__actions" data-el="container">
+              <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+              <a class="btn btn--outline" href="ai-product-development.html" data-wp="/ai-product-development/" data-el="button">AI &amp; Product Development</a>
+            </div>
+          </div>
+        </div>
+        <div class="split__media" data-el="image">
+          <img src="../assets/hero-mountains.webp" width="1360" height="504"
+               alt="" role="presentation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+
+
+<!-- ══ 10 · FOOTER — 152:131 → Theme Builder → Footer ═════════════ -->
+<footer class="site-footer" id="contact" data-el="container" data-name="footer">
+  <div class="site-footer__photo" aria-hidden="true"></div>
+  <div class="site-footer__wash" aria-hidden="true"></div>
+  <div class="site-footer__glow" aria-hidden="true"></div>
+
+  <div class="site-footer__inner" data-el="container">
+
+    <div class="footer-top" data-el="container">
+
+      <div class="footer-contact" data-el="container">
+        <div class="t-overline footer-contact__label" data-el="text">Get in touch</div>
+        <h2 class="t-h1 t-h1--normal" data-el="heading">Collaborate with us for complete IT solutions</h2>
+        <p class="t-lead footer-contact__lead" data-el="text">We're happy to answer any questions and help determine which of our services best fit your needs.</p>
+
+        <div class="check-list" data-el="container">
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Client-oriented</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Independent</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Competent</span>
+            </div>
+          </div>
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Results-driven</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Problem-solving</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Transparent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-form" data-el="container">
+        <h2 class="t-h2 footer-form__title" data-el="heading">Let us talk about your next solution</h2>
+        <form class="form" data-el="form" action="#" method="post">
+          <div class="form__row" data-el="container">
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-first" data-el="text">First name</label>
+              <input class="field__control" id="f-first" name="first-name" type="text" autocomplete="given-name">
+            </div>
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-last" data-el="text">Last name</label>
+              <input class="field__control" id="f-last" name="last-name" type="text" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-email" data-el="text">Email</label>
+            <input class="field__control" id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-company" data-el="text">Company</label>
+            <input class="field__control" id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field field--last" data-el="container">
+            <label class="t-body" for="f-message" data-el="text">Message</label>
+            <textarea class="field__control" id="f-message" name="message" rows="5"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit" data-el="button">Send message</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-nav" data-el="container">
+      <div class="footer-nav__cols" data-el="container">
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Solutions</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+            <a class="footer-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce Services</a>
+            <a class="footer-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+            <a class="footer-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Products</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+            <a class="footer-nav__link" href="#" data-wp="/products/workhub/">WorkHub</a>
+            <a class="footer-nav__link" href="#" data-wp="/products/novalab/">NOVAlab</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Company</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/">About us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/why-us/">Why us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/team/">Team</a>
+            <a class="footer-nav__link" href="#" data-wp="/cases/">Case studies</a>
+            <a class="footer-nav__link" href="#" data-wp="/insights/">Blog</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/careers/">Careers</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Contact</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Asker, Norway</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Pune, India</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Mohali, India</a>
+            <a class="footer-nav__link" href="mailto:contact@redorangetechnologies.com">contact@redorangetechnologies.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider divider--ondark-soft" data-el="divider">
+
+      <div class="footer-bottom" data-el="container">
+        <span class="footer-bottom__copy" data-el="text">© 2026 Red Orange Technologies</span>
+        <a href="#" data-wp="/terms/" data-el="text">Terms &amp; Conditions</a>
+        <a href="#" data-wp="/privacy/" data-el="text">Privacy Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

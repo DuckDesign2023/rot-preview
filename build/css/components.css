@@ -2931,3 +2931,29 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   .grid-filler,
   .grid-filler--tablet { display: none; }
 }
+
+/* Полоса продукта: панель текста и схема экрана рядом. Схема — не
+   фотография, поэтому колонка визуала перестаёт быть плиткой под кадр
+   (серый фон + object-fit: cover) и становится подложкой с полем. */
+.split__media--panel {
+  background: var(--bg-warm);
+  padding: var(--space-lg);
+  align-items: center;
+}
+
+/* Зеркальная полоса: визуал слева, текст справа. Нужна, чтобы три
+   продуктовые полосы подряд не читались как один длинный список
+   с одинаковым ритмом. Внешний паддинг панели переезжает на другую
+   сторону, иначе текст отрывается от поля страницы. */
+.split--flip { flex-direction: row-reverse; }
+
+.split--flip.split--in-grid .split__panel {
+  padding: var(--space-2xl) var(--space-lg) var(--space-2xl) var(--space-2xl);
+}
+
+@media (max-width: 1024px) {
+  /* На планшете полоса и так встаёт колонкой — зеркалить нечего,
+     и порядок должен остаться «текст, потом визуал» у всех трёх. */
+  .split--flip { flex-direction: column; }
+  .split__media--panel { padding: var(--space-md); }
+}
