@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Иллюстрации для полос Products — варианты | Red Orange Technologies</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* Служебная доска выбора — в перенос не идёт */
+    .board { padding: 64px 40px 120px; max-width: 1440px; margin: 0 auto; }
+    .board__intro { max-width: 860px; display: flex; flex-direction: column; gap: 16px; margin-bottom: 56px; }
+    .board__legend { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
+    .board__legend div { border-top: 1px solid var(--hairline); padding-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+    .board__product { border-top: 1px solid var(--hairline); padding-top: 56px; margin-top: 56px; }
+    .board__head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+    .board__now { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+    .board__now img { width: 100%; height: auto; border: 1px solid var(--hairline); }
+    .board__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .board__cell { display: flex; flex-direction: column; gap: 10px; }
+    /* Рамка как у колонки визуала в полосе: тёплая подложка */
+    .board__frame { background: var(--bg-warm); aspect-ratio: 4 / 3; overflow: hidden; }
+    .board__frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .board__cap { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+    .board__tag { font-family: var(--font-badge); font-size: 12px; font-weight: 600; line-height: 1; padding: 6px 10px; border-radius: 100px; background: var(--gray-100); }
+    .board__tag--best { background: var(--accent-tint); border: 1px solid var(--accent-tint-line); }
+    .board__note { color: var(--gray-500); font-size: 14px; }
+    .board__warn { color: var(--color-dark); font-size: 13px; border-left: 3px solid var(--color-accent); padding-left: 10px; }
+    @media (max-width: 1024px) {
+      .board__grid, .board__legend { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 767px) {
+      .board { padding: 40px 20px 72px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="board">
+
+  <div class="board__intro">
+    <span class="badge">Выбор варианта</span>
+    <h1 class="t-h1">Иллюстрации для полос Products</h1>
+    <p class="t-lead">Вместо схем-панелей справа в трёх продуктовых полосах — иллюстрации, сгенерированные через Freepik в палитре сайта. Три направления, каждое показано на всех трёх продуктах: так видно, держится ли один язык на всей странице.</p>
+    <p class="t-body">Для всех вариантов действуют запреты брифа: без роботов, мозгов, свечения и потоков данных. В NOVAlab нет прямой линии от данных компании к моделям, всё проходит через центр. Это черновые генерации для выбора направления. Выбранное дочищу: перегенерирую слабые кадры, уберу случайный текст, при необходимости переведу в вектор.</p>
+    <div class="board__legend">
+      <div><strong>A · Технический чертёж</strong><span class="board__note">Изометрия тонкой линией на тёплом белом, один элемент красным. Продолжает линейный стиль карточек главной.</span></div>
+      <div><strong>B · Матовый 3D</strong><span class="board__note">Мягкие матовые объекты, один модуль красный, студийный свет. Самый «дорогой», но выбивается из плоского языка сайта.</span></div>
+      <div><strong>C · Тёмная схема</strong><span class="board__note">Плоская архитектурная схема волосяными линиями на #121212. Контрастная, но в тёплой полосе нужна тёмная подложка.</span></div>
+    </div>
+  </div>
+
+  <!-- ── NOVA for Salesforce ─────────────────────────────────────── -->
+  <section class="board__product">
+    <div class="board__head">
+      <h2 class="t-h2">01 · NOVA for Salesforce</h2>
+      <p class="board__note">Сюжет: фраза превращается в собранные модули и готовый пакет к развёртыванию.</p>
+    </div>
+    <div class="board__now">
+      <div class="board__cap"><span class="board__tag">Сейчас</span></div>
+      <img src="../assets/board-illu/now-nova.webp" alt="Текущая полоса NOVA на странице Products">
+    </div>
+    <div class="board__grid">
+      <div class="board__cell">
+        <div class="board__frame"><img src="../assets/board-illu/A-nova.webp" alt="NOVA, вариант A — технический чертёж"></div>
+        <div class="board__cap"><span class="board__tag board__tag--best">A</span><span class="board__note">Лист → слои → готовый пакет красным. Читается сразу.</span></div>
+      </div>
+      <div class="board__cell">
+        <div class="board__frame"><img src="../assets/board-illu/B-nova.webp" alt="NOVA, вариант B — матовый 3D"></div>
+        <div class="board__cap"><span class="board__tag">B</span><span class="board__note">Слабый кадр: похоже на россыпь кубиков, сюжет теряется.</span></div>
+      </div>
+      <div class="board__cell">
+        <div class="board__frame"><img src="../assets/board-illu/C-nova.webp" alt="NOVA, вариант C — тёмная схема"></div>
+        <div class="board__cap"><span class="board__tag">C</span><span class="board__note">Мелко и пусто, нужна перегенерация крупнее.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WorkHub ─────────────────────────────────────────────────── -->
+  <section class="board__product">
+    <div class="board__head">
+      <h2 class="t-h2">02 · WorkHub</h2>
+      <p class="board__note">Сюжет: одна платформа, к которой пристыкованы документы, каска, календарь, бюджет, чек-лист и команда.</p>
+    </div>
+    <div class="board__now">
+      <div class="board__cap"><span class="board__tag">Сейчас</span></div>
+      <img src="../assets/board-illu/now-workhub.webp" alt="Текущая полоса WorkHub на странице Products">
+    </div>
+    <div class="board__grid">
+      <div class="board__cell">
+        <div class="board__frame"><img src="../assets/board-illu/A-workhub.webp" alt="WorkHub, вариант A — технический чертёж"></div>
+        <div class="board__cap"><span class="board__tag board__tag--best">A</span><span class="board__note">Центр красным, области вокруг линией.</span></div>
+        <p class="board__warn">Модель вписала слово «budget» — при выборе перегенерирую без текста.</p>
+      </div>
+      <div class="board__cell">
+        <div class="board__frame"><img src="../assets/board-illu/B-workhub.webp" alt="WorkHub, вариант B — матовый 3D"></div>
+        <div class="board__cap"><span class="board__tag">B</span><span class="board__note">Самый сильный кадр в 3D: плотно, дорого, сюжет ясен.</span></div>
+      </div>
+      <div class="board__cell">
+        <div class="board__frame"><img src="../assets/board-illu/C-workhub.webp" alt="WorkHub, вариант C — тёмная схема"></div>
+        <div class="board__cap"><span class="board__tag">C</span><span class="board__note">Чистая схема-хаб, хорошо читается на тёмном.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── NOVAlab ─────────────────────────────────────────────────── -->
+  <section class="board__product">
+    <div class="board__head">
+      <h2 class="t-h2">03 · NOVAlab</h2>
+      <p class="board__note">Сюжет: системы компании → защищённый слой NOVAlab → возможности и модели. Прямой связи в обход центра нет.</p>
+    </div>
+    <div class="board__now">
+      <div class="board__cap"><span class="board__tag">Сейчас</span></div>
+      <img src="../assets/board-illu/now-novalab.webp" alt="Текущая полоса NOVAlab на странице Products">
+    </div>
+    <div class="board__grid">
+      <div class="board__cell">
+        <div class="board__frame"><img src="../assets/board-illu/A-novalab.webp" alt="NOVAlab, вариант A — технический чертёж"></div>
+        <div class="board__cap"><span class="board__tag board__tag--best">A</span><span class="board__note">Лучший кадр серии: слой со щитом в центре, связи только через него.</span></div>
+      </div>
+      <div class="board__cell">
+        <div class="board__frame"><img src="../assets/board-illu/B-novalab.webp" alt="NOVAlab, вариант B — матовый 3D"></div>
+        <div class="board__cap"><span class="board__tag">B</span><span class="board__note">Красный «двор» с воротами — метафора контроля, читается.</span></div>
+      </div>
+      <div class="board__cell">
+        <div class="board__frame"><img src="../assets/board-illu/C-novalab.webp" alt="NOVAlab, вариант C — тёмная схема"></div>
+        <div class="board__cap"><span class="board__tag">C</span><span class="board__note">Шлюз посередине ясен, но правая зона — случайные фигуры.</span></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
