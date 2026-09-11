@@ -77,50 +77,11 @@
           <p class="hero-split__note" data-el="text">Describe what you want in plain English. NOVA for Salesforce helps you design it, configure it, build it, automate it and deploy it.<br>No endless queue. No unnecessary complexity.</p>
         </div>
 
-        <div class="hero-split__visual" data-el="container">
-          <!-- Схема экрана продукта. Настоящих скриншотов NOVA у нас пока
-               нет; когда придут — панель заменяется картинкой, раскладка
-               секции не меняется. Содержание взято из брифа клиента
-               (раздел «Hero visual»): запрос обычными словами слева,
-               сгенерированное решение и Review & Deploy — под ним. -->
-          <div class="ui-panel" data-el="container" data-name="nova-hero-panel">
-            <div class="ui-panel__bar" data-el="container">
-              <span class="ui-panel__dot" aria-hidden="true"></span>
-              <span class="ui-panel__name" data-el="text">NOVA</span>
-              <span class="ui-panel__status" data-el="text">Sandbox</span>
-            </div>
-            <div class="ui-panel__body" data-el="container">
-
-              <div class="ui-panel__prompt" data-el="container">
-                <span class="ui-panel__caret" aria-hidden="true">&rsaquo;</span>
-                <p data-el="text">Create a lead qualification flow that assigns enterprise leads to the Nordic sales team and notifies the account owner.</p>
-                <span class="ui-panel__run" data-el="text">RUN</span>
-              </div>
-
-              <div class="ui-panel__rows" data-el="container">
-                <div class="ui-panel__row" data-el="container">
-                  <span class="ui-panel__key" data-el="text">Flow</span>
-                  <span class="ui-panel__meta" data-el="text">Lead qualification, Nordics</span>
-                  <span class="ui-panel__ok" data-el="text">Built</span>
-                </div>
-                <div class="ui-panel__row" data-el="container">
-                  <span class="ui-panel__key" data-el="text">Fields and rules</span>
-                  <span class="ui-panel__meta" data-el="text">3 fields, 1 validation rule</span>
-                  <span class="ui-panel__ok" data-el="text">Built</span>
-                </div>
-                <div class="ui-panel__row ui-panel__row--flag" data-el="container">
-                  <span class="ui-panel__key" data-el="text">Deployment package</span>
-                  <span class="ui-panel__meta" data-el="text">9 components</span>
-                  <span class="ui-panel__ok" data-el="text">Ready</span>
-                </div>
-              </div>
-
-              <div class="ui-panel__result" data-el="container">
-                <strong data-el="text">Review &amp; Deploy</strong>
-              </div>
-
-            </div>
-          </div>
+        <!-- Иллюстрация вместо схемы экрана — решение пользователя 2026-09-11.
+             Бриф просил здесь экран продукта: схема панели описана в спеке
+             (блок 35); вернуть её, когда придут настоящие скриншоты NOVA. -->
+        <div class="hero-split__visual hero-split__visual--illu" data-el="image">
+          <img src="../assets/illu-nova.webp" width="1216" height="896" alt="Illustration: a plain request turns into assembled Salesforce components, ready to deploy">
         </div>
 
       </div>
@@ -196,7 +157,7 @@
       <div class="n-how__lead" data-el="container">
         <p class="t-lead" data-el="text">You should not need to speak Apex to improve your CRM. NOVA for Salesforce gives your team a natural-language layer for Salesforce development and configuration.</p>
 
-        <ol class="track track--compact track--accent n-how__chain" data-el="container">
+        <ol class="track track--compact track--accent track--start n-how__chain" data-el="container">
           <li class="track__node" data-el="container"><div class="track__rail" data-el="container"><i class="track__line"></i><span class="track__icon" data-el="icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2M6 9h12v2H6m8 3H6v-2h8m4-4H6V6h12"/></svg></span><i class="track__line"></i></div><span class="track__name" data-el="text">Describe</span></li>
           <li class="track__node" data-el="container"><div class="track__rail" data-el="container"><i class="track__line"></i><span class="track__icon" data-el="icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m13.78 15.3l6 6l2.11-2.16l-6-6zm3.72-5.2c-.39 0-.81-.05-1.14-.19L4.97 21.25l-2.11-2.11l7.41-7.4L8.5 9.96l-.72.7l-1.45-1.41v2.86l-.7.7l-3.52-3.56l.7-.7h2.81l-1.4-1.41l3.56-3.56a2.976 2.976 0 0 1 4.22 0L9.89 5.74l1.41 1.4l-.71.71l1.79 1.78l1.82-1.88c-.14-.33-.2-.75-.2-1.12a3.49 3.49 0 0 1 3.5-3.52c.59 0 1.11.14 1.58.42L16.41 6.2l1.5 1.5l2.67-2.67c.28.47.42.97.42 1.6c0 1.92-1.55 3.47-3.5 3.47"/></svg></span><i class="track__line"></i></div><span class="track__name" data-el="text">NOVA builds</span></li>
           <li class="track__node" data-el="container"><div class="track__rail" data-el="container"><i class="track__line"></i><span class="track__icon" data-el="icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg></span><i class="track__line"></i></div><span class="track__name" data-el="text">Review</span></li>

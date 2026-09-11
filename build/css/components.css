@@ -3261,3 +3261,16 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   .track__arc { display: none; }
   .track__box { grid-column: 1 !important; justify-self: stretch; max-width: none; }
 }
+
+/* Модификатор 43 --start: конвейер выровнен по левому краю текста над ним
+   (NOVA How it works, замечание пользователя 2026-09-11). Узел прижат
+   к началу колонки: у рельса нет входящего отрезка, первая иконка стоит
+   на одной вертикали с абзацем, подпись — слева под иконкой.
+   Elementor: у узла Align Items Start, в рельсе убран первый Divider. */
+.track--start .track__node { align-items: flex-start; text-align: left; }
+.track--start .track__line:first-child { display: none; }
+
+@media (max-width: 767px) {
+  /* в лесенке рельс должен тянуться на высоту узла, иначе отрезки не смыкаются */
+  .track--start .track__node { align-items: stretch; }
+}

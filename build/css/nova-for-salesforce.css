@@ -39,6 +39,19 @@
    к верху, высоту задаёт содержимое. */
 .n-hero .hero-split__visual { align-items: flex-start; }
 
+/* Иллюстрация вместо панели (решение пользователя 2026-09-11).
+   Кадр 4 : 3 в колонке 658 × 706 вписан целиком (contain): у него
+   тот же тёплый фон #FDF9F7, что у плитки, поэтому поля сверху и снизу
+   не видны как рамка. Elementor: контейнер Warm White → Image, Fit Contain. */
+.n-hero .hero-split__visual--illu {
+  background: var(--bg-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.n-hero .hero-split__visual--illu > img { width: 100%; height: 100%; object-fit: contain; }
+
 /* ── 2 · Проблема ──────────────────────────────────────────────
    Список того, что обычно уходит в бэклог, — тегами: в копии это
    короткие вопросы («Need a new object? A Flow?»), а не абзац. */

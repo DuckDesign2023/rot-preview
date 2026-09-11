@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVA — Product proof и Expertise, варианты | Red Orange Technologies</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* Служебная доска выбора — в перенос не идёт */
+    .board { padding-block: 64px 120px; }
+    .board__intro, .board__head, .board__label { max-width: 1440px; margin-inline: auto; padding-inline: 40px; }
+    .board__intro { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .board__intro > p { max-width: 860px; }
+    .board__block { border-top: 1px solid var(--hairline); padding-top: 56px; margin-top: 56px; }
+    .board__head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .board__why { color: var(--gray-500); max-width: 860px; }
+    .board__stage { margin-top: 28px; }
+    .board__label { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+    .board__tag { font-family: var(--font-badge); font-size: 12px; font-weight: 600; line-height: 1; padding: 6px 10px; border-radius: 100px; background: var(--gray-100); }
+    .board__tag--after { background: var(--accent-tint); border: 1px solid var(--accent-tint-line); }
+    .board__note { color: var(--gray-500); font-size: 14px; }
+    .board__stage .section { padding-block: 64px; outline: 1px solid var(--hairline); }
+    .board__now { max-width: 1440px; margin: 0 auto; padding-inline: 40px; }
+    .board__now img { width: 100%; height: auto; border: 1px solid var(--hairline); display: block; }
+    .board__path { font-size: 12px; color: var(--gray-500); word-break: break-all; }
+    @media (max-width: 767px) {
+      .board__intro, .board__head, .board__label, .board__now { padding-inline: 20px; }
+    }
+
+    /* ── Вариант A: инфографика «вы пишете → NOVA делает» ─────────
+       Одна таблица-лента: слева запрос обычными словами, в центре —
+       стрелка через NOVA, справа — что получилось одной фразой. Без
+       баров, статусов и технических строк: читается за 5 секунд. */
+    .pv-flow { border-top: 1px solid var(--hairline); }
+    .pv-flow__head, .pv-flow__row {
+      display: grid; grid-template-columns: minmax(0, 1fr) 120px minmax(0, 1fr);
+      align-items: center; gap: var(--col-gap);
+    }
+    .pv-flow__head { padding: 16px 0; color: var(--gray-500); font-size: 14px; font-weight: 500; }
+    .pv-flow__head span:nth-child(2) { text-align: center; }
+    .pv-flow__row { padding: 24px 0; border-top: 1px solid var(--hairline); }
+    .pv-say {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 16px 20px; background: var(--bg-warm);
+      font-size: 16px; line-height: 1.4; color: var(--color-dark);
+    }
+    .pv-say .ico { width: 20px; height: 20px; color: var(--gray-500); margin-top: 2px; }
+    .pv-mid { display: flex; align-items: center; }
+    .pv-mid__line { flex: 1 1 0; height: 1px; background: var(--gray-400); }
+    .pv-mid__mark { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--color-accent); color: var(--color-accent); flex: 0 0 40px; }
+    .pv-mid__mark .ico { width: 18px; height: 18px; }
+    .pv-get { display: flex; align-items: center; gap: 16px; }
+    .pv-get__icon { width: 48px; height: 48px; flex: 0 0 48px; display: grid; place-items: center; background: var(--color-dark); color: var(--color-white); }
+    .pv-get__icon .ico { width: 22px; height: 22px; }
+    .pv-get__txt { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .pv-get__kind { font-size: 13px; color: var(--gray-500); }
+    .pv-get__what { font-size: 16px; font-weight: 500; line-height: 1.35; }
+
+    /* ── Вариант B: четыре карточки «задача → результат» ──────────
+       Карточка = иконка задачи, тип, запрос в кавычках, результат
+       одной строкой с галочкой. Сетка с волосяными линиями, как icon-grid. */
+    .pv-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--gray-200); border: 1px solid var(--gray-200); }
+    .pv-card { background: var(--color-white); padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; }
+    .pv-card__icon { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--color-accent); color: var(--color-accent); }
+    .pv-card__icon .ico { width: 22px; height: 22px; }
+    .pv-card__kind { font-size: 13px; color: var(--gray-500); }
+    .pv-card__title { font-size: 18px; font-weight: 600; line-height: 1.2; letter-spacing: -.02em; }
+    .pv-card__say { font-size: 15px; line-height: 1.45; color: var(--text-lead); }
+    .pv-card__get { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--hairline); display: flex; align-items: flex-start; gap: 8px; font-size: 14px; font-weight: 500; line-height: 1.4; }
+    .pv-card__get .ico { color: var(--color-accent); margin-top: 2px; }
+
+    /* ── Expertise: новая раскладка ─────────────────────────────── */
+    .pv-exp { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--col-gap); align-items: center; }
+    .pv-exp__text { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+    .pv-exp__label { color: var(--gray-500); font-size: 14px; }
+    .pv-exp__media { background: var(--bg-warm); aspect-ratio: 1216 / 896; overflow: hidden; }
+    .pv-exp__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pv-exp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+    @media (max-width: 1024px) {
+      .pv-flow__head { display: none; }
+      .pv-flow__row { grid-template-columns: 1fr; gap: 12px; }
+      .pv-mid { width: 120px; }
+      .pv-cards { grid-template-columns: repeat(2, 1fr); }
+      .pv-exp, .pv-exp-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 767px) {
+      .pv-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="board">
+
+  <div class="board__intro">
+    <span class="badge">Выбор варианта</span>
+    <h1 class="t-h1">NOVA — Product proof и Expertise</h1>
+    <p class="t-lead">Две секции страницы NOVA for Salesforce. У каждой — как сейчас и варианты. <strong>На страницу ничего из этого не поставлено</strong> — жду выбора или комментариев.</p>
+    <p class="t-body">Уже сделано на странице по вашим правкам: герой — иллюстрация вместо схемы экрана; конвейер в How it works выровнен по левому краю абзаца.</p>
+  </div>
+
+  <!-- ════════════════ PRODUCT PROOF ════════════════ -->
+  <div class="board__block">
+    <div class="board__head">
+      <h2 class="t-h2">Product proof — «Four everyday requests, start to finish»</h2>
+      <p class="t-body board__why">Сейчас четыре панели-экрана: бар, поле ввода, строки с техническими именами и статусами. Чтобы понять смысл, их нужно читать. Суть секции проще — «вы пишете обычными словами → NOVA делает вот это». Оба варианта показывают ровно эту пару и больше ничего.</p>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag">Сейчас</span></div>
+      <div class="board__now"><img src="../assets/board-illu/now-nova-proof.webp" alt="Текущая секция Product proof"></div>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag board__tag--after">Вариант A</span><span class="board__note">инфографика-лента: слева запрос, по центру NOVA, справа результат одной фразой</span></div>
+      <section class="section">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">Product proof</div>
+            <h2 class="t-h1 section-head__lead">Four everyday requests, start to finish.</h2>
+          </div>
+          <div class="pv-flow">
+            <div class="pv-flow__head"><span>You write</span><span>NOVA</span><span>You get</span></div>
+            <div class="pv-flow__row">
+              <div class="pv-say"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2M6 9h12v2H6m8 3H6v-2h8m4-4H6V6h12"/></svg><span>When a renewal opportunity slips twice, alert the account owner and the regional manager.</span></div>
+              <div class="pv-mid"><i class="pv-mid__line"></i><span class="pv-mid__mark"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 11v2h12l-5.5 5.5l1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5L16 11z"/></svg></span><i class="pv-mid__line"></i></div>
+              <div class="pv-get"><span class="pv-get__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2v6h2v3H5c-1.11 0-2 .89-2 2v3H1v6h6v-6H5v-3h6v3H9v6h6v-6h-2v-3h6v3h-2v6h6v-6h-2v-3c0-1.11-.89-2-2-2h-6V8h2V2z"/></svg></span><span class="pv-get__txt"><span class="pv-get__kind">Automation</span><span class="pv-get__what">A Flow with two alerts and a follow-up task</span></span></div>
+            </div>
+            <div class="pv-flow__row">
+              <div class="pv-say"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2M6 9h12v2H6m8 3H6v-2h8m4-4H6V6h12"/></svg><span>Recalculate account health when a support case is closed.</span></div>
+              <div class="pv-mid"><i class="pv-mid__line"></i><span class="pv-mid__mark"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 11v2h12l-5.5 5.5l1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5L16 11z"/></svg></span><i class="pv-mid__line"></i></div>
+              <div class="pv-get"><span class="pv-get__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 3a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2H3v2h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h2v-2H8v-5a2 2 0 0 0-2-2a2 2 0 0 0 2-2V5h2V3m6 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2a2 2 0 0 1-2-2V5h-2V3z"/></svg></span><span class="pv-get__txt"><span class="pv-get__kind">Code</span><span class="pv-get__what">An Apex class with tests, 96% coverage</span></span></div>
+            </div>
+            <div class="pv-flow__row">
+              <div class="pv-say"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2M6 9h12v2H6m8 3H6v-2h8m4-4H6V6h12"/></svg><span>We need to track service agreements against accounts, with start and end dates.</span></div>
+              <div class="pv-mid"><i class="pv-mid__line"></i><span class="pv-mid__mark"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 11v2h12l-5.5 5.5l1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5L16 11z"/></svg></span><i class="pv-mid__line"></i></div>
+              <div class="pv-get"><span class="pv-get__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.99.99 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88zM12 4.15L6.04 7.5L12 10.85l5.96-3.35z"/></svg></span><span class="pv-get__txt"><span class="pv-get__kind">Configuration</span><span class="pv-get__what">A new object with its layout, list view and tab</span></span></div>
+            </div>
+            <div class="pv-flow__row">
+              <div class="pv-say"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2M6 9h12v2H6m8 3H6v-2h8m4-4H6V6h12"/></svg><span>Document every automation that touches the Opportunity object.</span></div>
+              <div class="pv-mid"><i class="pv-mid__line"></i><span class="pv-mid__mark"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 11v2h12l-5.5 5.5l1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5L16 11z"/></svg></span><i class="pv-mid__line"></i></div>
+              <div class="pv-get"><span class="pv-get__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg></span><span class="pv-get__txt"><span class="pv-get__kind">Admin</span><span class="pv-get__what">A handover document covering 14 flows and 6 triggers</span></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag board__tag--after">Вариант B</span><span class="board__note">четыре карточки в ряд: задача, запрос в кавычках, результат с галочкой</span></div>
+      <section class="section">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">Product proof</div>
+            <h2 class="t-h1 section-head__lead">Four everyday requests, start to finish.</h2>
+          </div>
+          <div class="pv-cards">
+            <div class="pv-card">
+              <span class="pv-card__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2v6h2v3H5c-1.11 0-2 .89-2 2v3H1v6h6v-6H5v-3h6v3H9v6h6v-6h-2v-3h6v3h-2v6h6v-6h-2v-3c0-1.11-.89-2-2-2h-6V8h2V2z"/></svg></span>
+              <span class="pv-card__kind">Automation</span>
+              <span class="pv-card__title">Build a Flow</span>
+              <p class="pv-card__say">“When a renewal opportunity slips twice, alert the account owner and the regional manager.”</p>
+              <span class="pv-card__get"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2m-2 15l-5-5l1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>A Flow with two alerts and a follow-up task</span>
+            </div>
+            <div class="pv-card">
+              <span class="pv-card__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 3a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2H3v2h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h2v-2H8v-5a2 2 0 0 0-2-2a2 2 0 0 0 2-2V5h2V3m6 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2a2 2 0 0 1-2-2V5h-2V3z"/></svg></span>
+              <span class="pv-card__kind">Code</span>
+              <span class="pv-card__title">Create an Apex class</span>
+              <p class="pv-card__say">“Recalculate account health when a support case is closed.”</p>
+              <span class="pv-card__get"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2m-2 15l-5-5l1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>An Apex class with tests, 96% coverage</span>
+            </div>
+            <div class="pv-card">
+              <span class="pv-card__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.99.99 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88zM12 4.15L6.04 7.5L12 10.85l5.96-3.35z"/></svg></span>
+              <span class="pv-card__kind">Configuration</span>
+              <span class="pv-card__title">Add a custom object</span>
+              <p class="pv-card__say">“We need to track service agreements against accounts, with start and end dates.”</p>
+              <span class="pv-card__get"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2m-2 15l-5-5l1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>A new object with its layout, list view and tab</span>
+            </div>
+            <div class="pv-card">
+              <span class="pv-card__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg></span>
+              <span class="pv-card__kind">Admin</span>
+              <span class="pv-card__title">Generate documentation</span>
+              <p class="pv-card__say">“Document every automation that touches the Opportunity object.”</p>
+              <span class="pv-card__get"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2m-2 15l-5-5l1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg>A handover document covering 14 flows and 6 triggers</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ════════════════ EXPERTISE ════════════════ -->
+  <div class="board__block">
+    <div class="board__head">
+      <h2 class="t-h2">Expertise — «AI doesn't replace Salesforce expertise…»</h2>
+      <p class="t-body board__why">Новая раскладка: теги «Where experience still decides» переезжают влево под текст, справа — иллюстрация. Сюжет: рутинные блоки NOVA обрабатывает сама, сложная конструкция (архитектура, интеграции, миграция, безопасность) остаётся специалистам. Ниже — как будет выглядеть секция и два кадра на выбор.</p>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag board__tag--after">Раскладка</span><span class="board__note">с первым кадром для примера</span></div>
+      <section class="section">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">Expertise</div>
+            <h2 class="t-h1 section-head__lead">AI doesn't replace Salesforce expertise. It removes the bottleneck around it.</h2>
+          </div>
+          <div class="pv-exp">
+            <div class="pv-exp__text">
+              <p class="t-lead">There will always be complex Salesforce projects. That work requires experience.</p>
+              <p class="t-lead">But much of the everyday work around Salesforce is structured, repetitive and increasingly suitable for AI-assisted development. NOVA handles more of that work so your specialists can focus on the decisions where specialists actually add value.</p>
+              <span class="pv-exp__label">Where experience still decides</span>
+              <div class="tag-i-row">
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3v18h6v-3.5h2V21h6V3zm2 2h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2zM7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2zm-8 4h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2zm-8 4h2v2H7zm8 0h2v2h-2z"/></svg>Enterprise architecture</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.4 7.5c.8.8.8 2.1 0 2.8l-2.8 2.8l-7.8-7.8l2.8-2.8c.8-.8 2.1-.8 2.8 0l1.8 1.8l3-3l1.4 1.4l-3 3zm-5.8 5.8l-1.4-1.4l-2.8 2.8l-2.1-2.1l2.8-2.8l-1.4-1.4l-2.8 2.8l-1.5-1.4l-2.8 2.8c-.8.8-.8 2.1 0 2.8l1.8 1.8l-4 4l1.4 1.4l4-4l1.8 1.8c.8.8 2.1.8 2.8 0l2.8-2.8l-1.4-1.4z"/></svg>Integrations</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 7c0-2.21 3.58-4 8-4s8 1.79 8 4s-3.58 4-8 4s-8-1.79-8-4m15.72 6.05c.18-.34.28-.69.28-1.05V9c0 2.21-3.58 4-8 4s-8-1.79-8-4v3c0 2.21 3.58 4 8 4c.65 0 1.28-.04 1.88-.11A5.99 5.99 0 0 1 19 13c.24 0 .5 0 .72.05m-6.62 4.91c-.36.04-.73.04-1.1.04c-4.42 0-8-1.79-8-4v3c0 2.21 3.58 4 8 4c.46 0 .9 0 1.33-.06A6 6 0 0 1 13 19c0-.36.04-.7.1-1.04M23 19l-3-3v2h-4v2h4v2z"/></svg>Data migration</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5zm0 6c1.4 0 2.8 1.1 2.8 2.5V11c.6 0 1.2.6 1.2 1.3v3.5c0 .6-.6 1.2-1.3 1.2H9.2c-.6 0-1.2-.6-1.2-1.3v-3.5c0-.6.6-1.2 1.2-1.2V9.5C9.2 8.1 10.6 7 12 7m0 1.2c-.8 0-1.5.5-1.5 1.3V11h3V9.5c0-.8-.7-1.3-1.5-1.3"/></svg>Security</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m2.3 20.28l9.6-9.6l-1.4-1.42l-.72.71a.996.996 0 0 1-1.41 0l-.71-.71a.996.996 0 0 1 0-1.41l5.66-5.66a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.69l1.42 1.43a.996.996 0 0 1 1.41 0c.39.39.39 1.03 0 1.42l1.41 1.41l.71-.71c.39-.39 1.03-.39 1.42 0l.7.71c.39.39.39 1.03 0 1.42l-5.65 5.65c-.39.39-1.03.39-1.42 0l-.7-.7a.99.99 0 0 1 0-1.42l.7-.71l-1.41-1.41l-9.61 9.61a.996.996 0 0 1-1.41 0c-.39-.39-.39-1.03 0-1.42M20 19a2 2 0 0 1 2 2v1H12v-1a2 2 0 0 1 2-2z"/></svg>Governance</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m3 14l.5.07L8.07 9.5a1.95 1.95 0 0 1 .52-1.91c.78-.79 2.04-.79 2.82 0c.53.52.7 1.26.52 1.91l2.57 2.57l.5-.07c.18 0 .35 0 .5.07l3.57-3.57C19 8.35 19 8.18 19 8a2 2 0 0 1 2-2a2 2 0 0 1 2 2a2 2 0 0 1-2 2c-.18 0-.35 0-.5-.07l-3.57 3.57c.07.15.07.32.07.5a2 2 0 0 1-2 2a2 2 0 0 1-2-2l.07-.5l-2.57-2.57c-.32.07-.68.07-1 0L4.93 15.5L5 16a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2"/></svg>Business transformation</span>
+              </div>
+            </div>
+            <div class="pv-exp__media"><img src="../assets/board-illu/in-exp-1.webp" alt="Expertise, кадр 1"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag">Кадры на выбор</span></div>
+      <div class="board__now">
+        <div class="pv-exp-grid">
+          <div>
+            <div class="pv-exp__media"><img src="../assets/board-illu/in-exp-1.webp" alt="Expertise, кадр 1"></div>
+            <p class="board__note" style="margin-top:10px"><strong>1</strong> — рекомендую: слева конвейер с автоматической станцией (рутина), справа сложная конструкция с красным узлом и щитом (работа специалистов). Сюжет читается сразу.</p>
+            <span class="board__path">C:\Users\fartv\agents\WP-Elementor\projects\redorange\assets\_src\board-illu2\exp-1-bgfix.png</span>
+          </div>
+          <div>
+            <div class="pv-exp__media"><img src="../assets/board-illu/in-exp-2.webp" alt="Expertise, кадр 2"></div>
+            <p class="board__note" style="margin-top:10px"><strong>2</strong> — рутинная часть читается хуже, красный акцент маленький.</p>
+            <span class="board__path">C:\Users\fartv\agents\WP-Elementor\projects\redorange\assets\_src\board-illu2\exp-2-bgfix.png</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
