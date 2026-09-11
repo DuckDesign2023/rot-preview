@@ -81,6 +81,9 @@
     .pv-exp__media { background: var(--bg-warm); aspect-ratio: 1216 / 896; overflow: hidden; }
     .pv-exp__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .pv-exp__media--low { aspect-ratio: 2 / 1; }
+    /* На доске нет CSS страницы NOVA — отступы лида The problem задаём здесь
+       теми же значениями, что на странице (.n-problem__lead: gap 24) */
+    .pv-exp .n-problem__lead { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
     .pv-exp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 
     @media (max-width: 1024px) {
