@@ -21,9 +21,9 @@
 .n-cta      { padding-top: 140px; padding-bottom: 140px; }
 
 /* ── 1 · Hero ──────────────────────────────────────────────────
-   Визуал героя — не иллюстрация, а схема экрана (блок 35). Колонка
-   визуала в hero-split по умолчанию держит пропорцию картинки;
-   здесь высоту задаёт содержимое панели, поэтому пропорция снята. */
+   Визуал героя — иллюстрация A (решение пользователя 2026-09-11);
+   до этого стояла схема экрана (блок 35), правила ниже для неё
+   оставлены на случай возврата, когда придут настоящие скриншоты. */
 
 .n-hero .hero-split__visual {
   background: transparent;
@@ -77,17 +77,9 @@
 .n-how__chain { margin-top: var(--space-xs); }
 
 /* ── 4 · Доказательство продукта ───────────────────────────────
-   Четыре микро-примера из брифа (Build a Flow, Create an Apex class,
-   Add a custom object, Generate documentation) — сеткой 2 × 2.
-   Панели тянутся на всю высоту ячейки, чтобы низ у пары совпадал. */
-
-.proof-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--col-gap);
-}
-
-.proof-grid .ui-panel { height: 100%; }
+   Четыре микро-примера из брифа — лентой «запрос → результат»
+   (блок 45 ask-flow, выбор пользователя 2026-09-11). Своих правил
+   на странице нет: вся раскладка в библиотеке. */
 
 /* ── 5 · Операционная модель ───────────────────────────────────
    Тёмная секция: два столбца текста, под ними лок-ап. */
@@ -114,25 +106,26 @@
    а не пишем то же правило на странице. */
 
 /* ── 7 · Что остаётся людям ────────────────────────────────────
-   Ряд «текст слева / теги справа»: перечень сложных работ из копии
-   не абзац, а список — тегами он читается как область, а не как речь. */
+   Текст и теги сложных работ слева, иллюстрация справа. Перечень из
+   копии — не абзац, а список: тегами он читается как область. */
 
 .n-scope__row {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--col-gap);
-  align-items: flex-start;
+  align-items: center;
   margin-top: var(--space-xl);
 }
 
-.n-scope__row > * { flex: 1 1 0; min-width: 0; }
-
-.n-scope__aside {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
 .n-scope__aside-label { color: var(--gray-500); }
+
+/* Правка 2026-09-11 (замечание пользователя): теги перенесены влево под
+   текст, справа — иллюстрация «рутина — NOVA, сложное — специалистам».
+   Elementor: контейнер row 50 / 50 → Image. */
+.n-scope__lead  { min-width: 0; }
+.n-scope__tags  { display: flex; flex-direction: column; gap: var(--space-sm); margin-top: var(--space-2xs); }
+.n-scope__media { background: var(--bg-warm); aspect-ratio: 1216 / 896; overflow: hidden; }
+.n-scope__media > img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ── Планшет ≤ 1024 ────────────────────────────────────────── */
 @media (max-width: 1024px) {
@@ -146,10 +139,11 @@
   .n-model    { padding-top: 80px;  padding-bottom: 80px; }
   .n-cta      { padding-top: 112px; padding-bottom: 112px; }
 
-  .proof-grid { grid-template-columns: 1fr; }
+  .n-model__cols { flex-direction: column; }
 
-  .n-model__cols,
-  .n-scope__row { flex-direction: column; }
+  /* Иллюстрация уходит под текст и не растягивается шире 640 */
+  .n-scope__row   { grid-template-columns: 1fr; }
+  .n-scope__media { max-width: 640px; }
 }
 
 /* ── Мобильный ≤ 767 ───────────────────────────────────────── */

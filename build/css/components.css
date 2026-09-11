@@ -3274,3 +3274,98 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   /* в лесенке рельс должен тянуться на высоту узла, иначе отрезки не смыкаются */
   .track--start .track__node { align-items: stretch; }
 }
+
+/* ══ 45. ASK FLOW — «вы пишете → продукт делает» ═══════════════
+   Выбор пользователя 2026-09-11 (NOVA Product proof, доска
+   nova-proposals, вариант A) вместо четырёх панелей-экранов: смысл
+   секции — пара «запрос обычными словами → результат», и лента
+   показывает ровно её, без баров, статусов и технических строк.
+   Строка: запрос в тёплой плашке → стрелка через NOVA (акцентная
+   рамка) → тёмная иконка результата + тип + одна фраза.
+   Подписи колонок You write / NOVA / You get — наши, не копия клиента.
+   Elementor: контейнер column; строка — контейнер Grid 3 колонки
+   (1fr / 120 / 1fr); плашка запроса — Icon List на фоне Warm White;
+   середина — Divider + Icon (Framed) + Divider; результат — Icon Box. */
+
+.ask-flow { border-top: var(--border-width) solid var(--hairline); }
+
+.ask-flow__head,
+.ask-flow__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 120px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--col-gap);
+}
+
+.ask-flow__head { padding: var(--space-sm) 0; color: var(--gray-500); font-size: 14px; font-weight: 500; }
+.ask-flow__head span:nth-child(2) { text-align: center; }
+
+.ask-flow__row { padding: var(--space-md) 0; border-top: var(--border-width) solid var(--hairline); }
+
+.ask-flow__say {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  padding: var(--space-sm) 20px;
+  background: var(--bg-warm);
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-dark);
+}
+
+.ask-flow__say .ico { width: 20px; height: 20px; color: var(--gray-500); margin-top: 2px; }
+
+.ask-flow__mid  { display: flex; align-items: center; }
+.ask-flow__line { flex: 1 1 0; height: var(--border-width); background: var(--gray-400); }
+
+.ask-flow__mark {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: grid;
+  place-items: center;
+  border: var(--border-width) solid var(--color-accent);
+  color: var(--color-accent);
+}
+
+.ask-flow__mark .ico { width: 18px; height: 18px; }
+
+.ask-flow__get { display: flex; align-items: center; gap: var(--space-sm); }
+
+.ask-flow__icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  display: grid;
+  place-items: center;
+  background: var(--color-dark);
+  color: var(--color-white);
+}
+
+.ask-flow__icon .ico { width: 22px; height: 22px; }
+
+.ask-flow__txt  { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.ask-flow__kind { font-size: 13px; color: var(--gray-500); }
+.ask-flow__what { font-size: 16px; font-weight: 500; line-height: 1.35; }
+
+/* Планшет и мобильный (замечание пользователя 2026-09-11: на телефоне
+   три части просто падали стопкой, стрелка вправо в столбике не читалась).
+   Строка становится ступенью конвейера: плашка запроса → короткий
+   вертикальный рельс с маленькой стрелкой вниз → результат. Рельс шириной
+   с иконку результата (48) и центрирован по ней — связь «запрос ↓
+   результат» видна глазом, как у лесенки блока 43. Подписи колонок
+   на узком экране скрываются. */
+@media (max-width: 1024px) {
+  .ask-flow__head { display: none; }
+  .ask-flow__row  { grid-template-columns: 1fr; gap: 0; }
+  .ask-flow__mid  { width: 48px; flex-direction: column; align-items: center; }
+  .ask-flow__line { flex: 0 0 auto; width: var(--border-width); height: 12px; }
+  .ask-flow__mark { width: 28px; height: 28px; flex-basis: 28px; }
+  .ask-flow__mark .ico { width: 14px; height: 14px; transform: rotate(90deg); }
+}
+
+@media (max-width: 767px) {
+  .ask-flow__row  { padding: 20px 0; }
+  .ask-flow__say  { padding: 14px 16px; font-size: 15px; }
+  .ask-flow__what { font-size: 15px; }
+}
