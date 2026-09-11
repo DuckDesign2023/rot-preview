@@ -45,16 +45,31 @@
 .p-product__name { display: flex; flex-direction: column; gap: var(--space-2xs); }
 
 /* ── 3 · Почему свои продукты ──────────────────────────────────
-   Лид и теги решений, которые приходят после прототипа. */
+   Лид и теги решений, которые приходят после прототипа, слева;
+   иллюстрация «от прототипа к платформе» справа (2026-09-11: раньше
+   текст занимал 940 из 1360, и справа оставалось пустое поле).
+   Elementor: контейнер row, 2 колонки по 50 %, gap 32 → Image. */
+
+.p-own__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--col-gap);
+  align-items: center;
+}
 
 .p-own__lead {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  max-width: 940px;
+  min-width: 0;
 }
 
 .p-own__lead .tag-i-row { margin-top: var(--space-2xs); }
+
+/* Тёплая плитка того же тона, что фон кадра: на белой секции
+   иллюстрация читается плиткой, как визуалы карточек на главной */
+.p-own__media { background: var(--bg-warm); aspect-ratio: 1216 / 896; overflow: hidden; }
+.p-own__media > img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ── Планшет ≤ 1024 ────────────────────────────────────────── */
 @media (max-width: 1024px) {
@@ -65,6 +80,10 @@
   .p-cta    { padding-top: 112px; padding-bottom: 112px; }
 
   .p-lineup__rows { gap: var(--space-xl); }
+
+  /* Иллюстрация уходит под текст: рядом с ней лид сжимается
+     до 450 px, строки по 5–6 слов читаются хуже */
+  .p-own__row { grid-template-columns: 1fr; }
 }
 
 /* ── Мобильный ≤ 767 ───────────────────────────────────────── */
