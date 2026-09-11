@@ -2952,6 +2952,15 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   align-items: center;
 }
 
+/* Иллюстрация вместо схемы экрана (решение пользователя 2026-09-11,
+   направление A «технический чертёж»). Кадр заполняет колонку целиком:
+   у иллюстраций свой тёплый фон и много воздуха по краям, поэтому
+   кадрирование cover ничего не срезает, а поле панели не нужно.
+   Elementor: контейнер с Background Image (Size Cover, Position Center)
+   или виджет Image с Object Fit Cover и высотой 100 %. */
+.split__media--illu { background: var(--bg-warm); padding: 0; }
+.split__media--illu > img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
 /* Зеркальная полоса: визуал слева, текст справа. Нужна, чтобы три
    продуктовые полосы подряд не читались как один длинный список
    с одинаковым ритмом. Внешний паддинг панели переезжает на другую

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Иллюстрации внутри страниц продуктов — выбор | Red Orange Technologies</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* Служебная доска выбора — в перенос не идёт */
+    .board { padding: 64px 40px 120px; max-width: 1440px; margin: 0 auto; }
+    .board__intro { max-width: 860px; display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .board__slot { border-top: 1px solid var(--hairline); padding-top: 48px; margin-top: 48px; }
+    .board__head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; max-width: 860px; }
+    .board__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .board__cell { display: flex; flex-direction: column; gap: 10px; }
+    .board__frame { background: var(--bg-warm); overflow: hidden; }
+    .board__frame--dark { background: var(--bg-near-black); }
+    .board__frame img { width: 100%; height: auto; display: block; }
+    .board__cap { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+    .board__tag { font-family: var(--font-badge); font-size: 12px; font-weight: 600; line-height: 1; padding: 6px 10px; border-radius: 100px; background: var(--gray-100); }
+    .board__tag--best { background: var(--accent-tint); border: 1px solid var(--accent-tint-line); }
+    .board__note { color: var(--gray-500); font-size: 14px; }
+    .board__path { font-size: 12px; color: var(--gray-500); word-break: break-all; }
+    .board__done { background: var(--bg-warm); padding: 20px 24px; display: flex; flex-direction: column; gap: 8px; max-width: 860px; }
+    .board__done a { text-decoration: underline; }
+    @media (max-width: 767px) {
+      .board { padding: 40px 20px 72px; }
+      .board__grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="board">
+
+  <div class="board__intro">
+    <span class="badge">Выбор варианта</span>
+    <h1 class="t-h1">Иллюстрации внутри страниц продуктов</h1>
+    <p class="t-lead">Направление A «технический чертёж» одобрено. Ниже — кадры для четырёх мест на страницах продуктов. У каждого места два варианта. <strong>На страницы они ещё не поставлены</strong> — жду вашего выбора или комментариев.</p>
+    <p class="t-body">Экраны интерфейса (герои, Product proof, Agent Studio) не трогаю: бриф клиента требует там реальный UI. Для тёмных секций — тот же стиль, светлыми линиями на #121212.</p>
+    <div class="board__done">
+      <strong>Уже стоит на сайте (одобрено):</strong>
+      <span class="t-body">Три полосы на странице Products — вместо схем-панелей иллюстрации A: NOVA, WorkHub (перегенерирован без слова «budget»), NOVAlab. <a href="products.html">Открыть Products</a></span>
+    </div>
+  </div>
+
+  <!-- ── 1 · WorkHub, The problem ─────────────────────────────────── -->
+  <section class="board__slot">
+    <div class="board__head">
+      <h2 class="t-h2">1 · WorkHub — The problem</h2>
+      <p class="board__note">Сейчас справа пустое место под фото. Вместо фото — иллюстрация «всё про проект вокруг одной платформы»: она прямо иллюстрирует фразу секции «connects the operational parts of a project in one environment». Тот же сюжет, что в полосе Products, — можно поставить тот же кадр или второй вариант.</p>
+    </div>
+    <div class="board__grid">
+      <div class="board__cell">
+        <div class="board__frame"><img src="../assets/board-illu/in-workhub-2.webp" alt="WorkHub, вариант 1"></div>
+        <div class="board__cap"><span class="board__tag board__tag--best">1</span><span class="board__note">Тот же кадр, что стоит в полосе Products. Чистый, без текста.</span></div>
+        <span class="board__path">C:\Users\fartv\agents\WP-Elementor\projects\redorange\assets\_src\board-illu2\workhub-2.png</span>
+      </div>
+      <div class="board__cell">
+        <div class="board__frame"><img src="../assets/board-illu/in-workhub-1.webp" alt="WorkHub, вариант 2"></div>
+        <div class="board__cap"><span class="board__tag">2</span><span class="board__note">Каждая область на своей площадке. Минус: каска нарисована дважды.</span></div>
+        <span class="board__path">C:\Users\fartv\agents\WP-Elementor\projects\redorange\assets\_src\board-illu2\workhub-1.png</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 2 · NOVAlab, Orchestration ──────────────────────────────── -->
+  <section class="board__slot">
+    <div class="board__head">
+      <h2 class="t-h2">2 · NOVAlab — Orchestration</h2>
+      <p class="board__note">Сейчас только текст и теги. Бриф прямо просит: «покажите, как разные типы работы входят в NOVAlab и направляются к нужной возможности». Секция станет рядом «текст слева, иллюстрация справа».</p>
+    </div>
+    <div class="board__grid">
+      <div class="board__cell">
+        <div class="board__frame"><img src="../assets/board-illu/in-orchestr-2.webp" alt="Orchestration, вариант 1"></div>
+        <div class="board__cap"><span class="board__tag board__tag--best">1</span><span class="board__note">Задачи сходятся в красный центр и расходятся к разным блокам — маршрутизация читается сразу.</span></div>
+        <span class="board__path">C:\Users\fartv\agents\WP-Elementor\projects\redorange\assets\_src\board-illu2\orchestr-2.png</span>
+      </div>
+      <div class="board__cell">
+        <div class="board__frame"><img src="../assets/board-illu/in-orchestr-1.webp" alt="Orchestration, вариант 2"></div>
+        <div class="board__cap"><span class="board__tag">2</span><span class="board__note">Конвейер по диагонали. Спокойнее, но «направление к нужному блоку» не видно.</span></div>
+        <span class="board__path">C:\Users\fartv\agents\WP-Elementor\projects\redorange\assets\_src\board-illu2\orchestr-1.png</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3 · NOVAlab, Vendor ─────────────────────────────────────── -->
+  <section class="board__slot">
+    <div class="board__head">
+      <h2 class="t-h2">3 · NOVAlab — «Don't build your AI strategy around one model vendor»</h2>
+      <p class="board__note">Тёмная секция, сейчас справа абстрактные полукруги. Сюжет: платформа стоит, модули-модели вынимаются и заменяются.</p>
+    </div>
+    <div class="board__grid">
+      <div class="board__cell">
+        <div class="board__frame board__frame--dark"><img src="../assets/board-illu/in-vendor-1.webp" alt="Vendor, вариант 1"></div>
+        <div class="board__cap"><span class="board__tag board__tag--best">1</span><span class="board__note">Спокойно: основа красным контуром, один модуль уходит, другой встаёт.</span></div>
+        <span class="board__path">C:\Users\fartv\agents\WP-Elementor\projects\redorange\assets\_src\board-illu2\vendor-1.png</span>
+      </div>
+      <div class="board__cell">
+        <div class="board__frame board__frame--dark"><img src="../assets/board-illu/in-vendor-2.webp" alt="Vendor, вариант 2"></div>
+        <div class="board__cap"><span class="board__tag">2</span><span class="board__note">«Картриджи» в стойке — метафора сильнее, но много красного и плотно.</span></div>
+        <span class="board__path">C:\Users\fartv\agents\WP-Elementor\projects\redorange\assets\_src\board-illu2\vendor-2.png</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 4 · NOVA, How it works ──────────────────────────────────── -->
+  <section class="board__slot">
+    <div class="board__head">
+      <h2 class="t-h2">4 · NOVA for Salesforce — How it works</h2>
+      <p class="board__note">Тёмная секция, сейчас рядом с шагами абстрактные полукруги. Сюжет: Describe → Build → Review → Deploy, готовый пакет красным.</p>
+    </div>
+    <div class="board__grid">
+      <div class="board__cell">
+        <div class="board__frame board__frame--dark"><img src="../assets/board-illu/in-how-1.webp" alt="How it works, вариант 1"></div>
+        <div class="board__cap"><span class="board__tag board__tag--best">1</span><span class="board__note">Лист → сборка → проверка → готовый пакет. Ровный, в стиле серии.</span></div>
+        <span class="board__path">C:\Users\fartv\agents\WP-Elementor\projects\redorange\assets\_src\board-illu2\how-1.png</span>
+      </div>
+      <div class="board__cell">
+        <div class="board__frame board__frame--dark"><img src="../assets/board-illu/in-how-2.webp" alt="How it works, вариант 2"></div>
+        <div class="board__cap"><span class="board__tag">2</span><span class="board__note">Та же история через рамки-станции, чуть проще.</span></div>
+        <span class="board__path">C:\Users\fartv\agents\WP-Elementor\projects\redorange\assets\_src\board-illu2\how-2.png</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
