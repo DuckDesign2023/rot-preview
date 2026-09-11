@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блоки «текст + теги» — до и после | Red Orange Technologies</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/novalab.css">
+  <link rel="stylesheet" href="css/workhub.css">
+  <style>
+    /* ══ Служебная доска выбора — в перенос не идёт ══════════════════ */
+    .board { padding-block: 64px 120px; }
+    .board__intro,
+    .board__head { max-width: 1440px; margin-inline: auto; padding-inline: 40px; }
+    .board__intro { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+    .board__intro > p { max-width: 860px; }
+    .board__nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .board__nav a { padding: 8px 12px; border: 1px solid var(--hairline); font-size: 14px; }
+    .board__nav a:hover { border-color: var(--color-accent); }
+
+    .board__block { border-top: 1px solid var(--hairline); padding-top: 64px; margin-top: 64px; }
+    .board__head { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+    .board__why { color: var(--gray-500); max-width: 860px; }
+
+    .board__stage { margin-top: 32px; }
+    .board__label {
+      max-width: 1440px; margin: 0 auto 12px; padding-inline: 40px;
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px;
+    }
+    .board__tag {
+      font-family: var(--font-badge); font-size: 12px; font-weight: 600; line-height: 1;
+      padding: 6px 10px; border-radius: 100px; background: var(--gray-100); color: var(--color-dark);
+    }
+    .board__tag--after { background: var(--accent-tint); color: var(--color-dark); border: 1px solid var(--accent-tint-line); }
+    .board__note { color: var(--gray-500); font-size: 14px; }
+    .board__stage .section { padding-block: 72px; outline: 1px solid var(--hairline); }
+    .board__stage .section--dark { outline: 0; }
+
+    @media (max-width: 767px) {
+      .board__intro, .board__head, .board__label { padding-inline: 20px; }
+      .board__stage .section { padding-block: 56px; }
+    }
+
+    /* ══ ПРЕДЛОЖЕНИЯ ═════════════════════════════════════════════════
+       Префикс bv- — черновые классы. После выбора варианта выбранное
+       переезжает в components.css новым блоком библиотеки. */
+
+    .ico { display: block; width: 16px; height: 16px; flex: 0 0 auto; }
+
+    /* ── 41 · Тег с иконкой ─────────────────────────────────────────
+       Отличие от .tag: рамка вместо серой заливки, кегль Body вместо
+       бейджа, filled-иконка 16 акцентом слева. Иконка — не текст,
+       поэтому акцент на белом (4.01) проходит порог 3 : 1 для графики.
+       Elementor: контейнер row (gap 6, padding 8/12, Border 1 Hairline)
+       → Icon 16 + Text Editor. Или Icon List, раскладка Inline. */
+    .tag-i-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag-i {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 12px 8px 10px;
+      border: 1px solid var(--hairline);
+      background: var(--color-white);
+      font-size: 14px; line-height: 1.2; color: var(--color-dark);
+    }
+    .tag-i .ico { color: var(--color-accent); }
+    .on-dark .tag-i { background: transparent; border-color: var(--ui-line); color: var(--color-white); }
+
+    /* ── Общая пара «текст | визуал» ─────────────────────────────── */
+    .bv-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); align-items: start; }
+    .bv-row--stretch { align-items: stretch; }
+    .bv-text { display: flex; flex-direction: column; gap: var(--space-md); min-width: 0; }
+
+    /* ── WorkHub · Problem · A — текст + фото ────────────────────── */
+    .bv-photo {
+      position: relative; min-height: 460px; height: 100%;
+      background: var(--bg-warm);
+      display: flex; align-items: flex-end;
+    }
+    .bv-photo__cap {
+      margin: 24px; padding: 12px 16px; background: var(--color-white);
+      border-left: var(--accent-rule) solid var(--color-accent);
+      font-size: 13px; line-height: 1.4; color: var(--color-dark); max-width: 420px;
+    }
+
+    /* ── WorkHub · Problem · B — сетка областей 6 × 2 ────────────── */
+    .bv-areas {
+      display: grid; grid-template-columns: repeat(6, 1fr);
+      gap: 1px; background: var(--hairline); border: 1px solid var(--hairline);
+    }
+    .bv-area {
+      background: var(--color-white); min-height: 128px; padding: 20px;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 24px;
+    }
+    .bv-area .ico { width: 24px; height: 24px; color: var(--color-accent); }
+    .bv-area__name { font-size: 14px; font-weight: 500; line-height: 1.2; }
+    .bv-area--core { background: var(--bg-near-black); color: var(--color-white); }
+    .bv-area__title { font-size: 24px; font-weight: 600; line-height: 1; letter-spacing: -.02em; }
+    .bv-area__sub { font-size: 13px; line-height: 1.3; color: var(--ui-dim); }
+
+    /* ── WorkHub · Access · A — вложенные слои доступа ───────────── */
+    .bv-layer {
+      border: 1px solid var(--ui-line); padding: 16px;
+      display: flex; flex-direction: column; gap: 14px; min-width: 0;
+    }
+    /* Подписи слоёв — это фразы клиента по 30–40 знаков, а не метки:
+       капсом такая длина читается плохо. Обычный регистр, Medium. */
+    .bv-layer__label {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500; line-height: 1.3;
+      color: var(--ui-dim);
+    }
+    .bv-layer__label .ico { color: var(--color-accent); }
+    .bv-layer--core { border-color: var(--color-accent); }
+    .bv-layer--core .bv-layer__label { color: var(--color-white); }
+    .bv-rec {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-mono); font-size: 13px; line-height: 1.3;
+      padding: 8px 0; border-top: 1px solid var(--ui-line);
+    }
+    .bv-rec:first-of-type { border-top: 0; padding-top: 0; }
+    .bv-rec .ico { color: var(--color-accent); }
+    .bv-rec--off { color: var(--ui-dim); }
+    .bv-rec--off .ico { color: var(--ui-dim); }
+    .bv-rec span:last-child { margin-left: auto; color: var(--ui-dim); font-size: 12px; }
+    .bv-who {
+      display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+      padding: 6px 10px; border: 1px solid var(--ui-line); font-size: 13px; color: var(--color-white);
+    }
+    .bv-who .ico { color: var(--color-accent); }
+
+    /* ── WorkHub · Access · B — матрица «кто что видит» ──────────── */
+    .bv-matrix { display: grid; grid-template-columns: 1.7fr repeat(3, 1fr); font-size: 13px; line-height: 1.3; }
+    .bv-matrix > div { padding: 12px 8px; border-top: 1px solid var(--ui-line); min-width: 0; overflow-wrap: anywhere; }
+    .bv-matrix > div:nth-child(4n+1) { padding-left: 0; }
+    .bv-matrix__h { border-top: 0 !important; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ui-dim); }
+    .bv-yes { display: inline-flex; align-items: center; gap: 6px; }
+    .bv-yes::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); }
+    .bv-no { color: var(--ui-dim); }
+
+    /* ── NOVAlab · Data · A — периметр ЕС ────────────────────────── */
+    .bv-perim { display: flex; flex-direction: column; gap: 12px; }
+    .bv-perim__frame {
+      border: 1px dashed rgba(255, 255, 255, .35); padding: 20px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .bv-perim__top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+    .bv-perim__top .bv-layer__label { color: var(--color-white); }
+    .bv-perim__top small { margin-left: auto; font-size: 12px; color: var(--ui-dim); }
+    .bv-tenants { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .bv-tenant {
+      border: 1px solid var(--ui-line); padding: 12px;
+      display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ui-dim); min-width: 0;
+    }
+    .bv-tenant .ico { color: var(--ui-dim); }
+    .bv-tenant--own { border-color: var(--color-accent); color: var(--color-white); }
+    .bv-tenant--own .ico { color: var(--color-accent); }
+    .bv-flow { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 12px; color: var(--ui-dim); padding-left: 12px; }
+    .bv-flow::before { content: ""; width: 1px; height: 28px; background: var(--color-accent); }
+    .bv-node-dark {
+      border: 1px solid var(--color-white); padding: 14px 16px;
+      display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500;
+    }
+    .bv-node-dark .ico { width: 20px; height: 20px; color: var(--color-accent); }
+    .bv-node-dark small { margin-left: auto; font-weight: 400; font-size: 12px; color: var(--ui-dim); }
+    .bv-gate {
+      display: flex; align-items: center; gap: 10px; padding: 10px 0;
+      font-size: 13px; color: var(--color-white);
+    }
+    .bv-gate .ico { color: var(--color-accent); }
+    .bv-outside {
+      border: 1px solid var(--ui-line); padding: 14px 16px; opacity: 1;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; font-size: 13px; color: var(--ui-dim);
+    }
+    .bv-outside span { display: inline-flex; align-items: center; gap: 8px; }
+    .bv-outside .ico { color: var(--ui-dim); }
+
+    /* ── NOVAlab · Data · B — лента фактов 5 × 1 ─────────────────── */
+    .bv-facts {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 1px; background: var(--ui-line); border: 1px solid var(--ui-line);
+    }
+    .bv-fact {
+      background: var(--bg-near-black); padding: 24px; min-height: 150px;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 32px;
+    }
+    .bv-fact .ico { width: 24px; height: 24px; color: var(--color-accent); }
+    .bv-fact p { font-size: 14px; line-height: 1.4; color: var(--color-white); }
+
+    /* ── NOVAlab · Governance · A — конвейер с развилкой ─────────── */
+    .bv-plate { background: var(--bg-warm); padding: 40px 32px; }
+    .bv-track { display: grid; grid-template-columns: repeat(10, 1fr); }
+    .bv-node { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; min-width: 0; }
+    .bv-node__rail { display: flex; align-items: center; width: 100%; }
+    .bv-node__line { flex: 1 1 0; height: 1px; background: var(--gray-400); }
+    .bv-node:first-child .bv-node__line:first-child,
+    .bv-node:last-child  .bv-node__line:last-child { visibility: hidden; }
+    .bv-node__icon {
+      width: 48px; height: 48px; flex: 0 0 48px;
+      display: grid; place-items: center;
+      border: 1px solid var(--gray-300); background: var(--color-white); color: var(--color-dark);
+    }
+    .bv-node__icon .ico { width: 20px; height: 20px; }
+    .bv-node--end .bv-node__icon { border-color: var(--color-accent); color: var(--color-accent); }
+    .bv-node__txt { display: flex; flex-direction: column; gap: 4px; padding-inline: 4px; }
+    .bv-node__num { font-family: var(--font-mono); font-size: 11px; color: var(--gray-500); }
+    .bv-node__name { font-size: 14px; font-weight: 500; line-height: 1.25; }
+
+    .bv-branch { display: grid; grid-template-columns: repeat(10, 1fr); margin-top: 16px; }
+    .bv-branch__arc {
+      grid-column: 4 / 8; margin-inline: 12.5%; height: 28px;
+      border: 1px dashed var(--color-accent); border-top: 0;
+    }
+    .bv-branch__box {
+      grid-column: 4 / 8; justify-self: center; margin-top: -1px;
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px; background: var(--color-white); border: 1px dashed var(--color-accent);
+      font-size: 13px; line-height: 1.35; max-width: 420px;
+    }
+    .bv-branch__box .ico { width: 20px; height: 20px; color: var(--color-accent); }
+    .bv-branch__box strong { font-weight: 600; display: block; }
+
+    /* ── NOVAlab · Governance · B — трасса запроса ───────────────── */
+    /* Штатное прохождение — приглушённо; акцентом только ступень,
+       которая остановила запрос, иначе восемь красных «pass» читаются
+       как восемь ошибок */
+    .bv-trace .ui-panel__ok { color: var(--ui-dim); }
+    .bv-trace .ui-panel__row--flag { color: var(--color-white); }
+    .bv-trace .ui-panel__row--flag .ui-panel__meta { color: var(--color-white); }
+    .bv-trace .ui-panel__row--flag .ui-panel__ok { color: var(--color-accent); font-weight: 600; }
+    .bv-trace .ui-panel__key { min-width: 104px; }
+
+    /* ══ Планшет ≤ 1024 ══════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .bv-row { grid-template-columns: 1fr; }
+      .bv-photo { min-height: 0; aspect-ratio: 16 / 10; }
+      .bv-areas { grid-template-columns: repeat(4, 1fr); }
+      .bv-facts { grid-template-columns: 1fr; }
+      .bv-fact { min-height: 0; flex-direction: row; align-items: center; justify-content: flex-start; gap: 16px; padding: 16px 20px; }
+      .bv-plate { padding: 32px 16px; }
+      .bv-node__name { font-size: 13px; }
+      .bv-node__icon { width: 40px; height: 40px; flex-basis: 40px; }
+    }
+
+    /* ══ Мобильный ≤ 767 ═════════════════════════════════════════ */
+    @media (max-width: 767px) {
+      .bv-areas { grid-template-columns: repeat(2, 1fr); }
+      .bv-area { min-height: 112px; padding: 16px; }
+      .bv-tenants { grid-template-columns: 1fr; }
+      /* Заголовки колонок не рвутся посреди слова: у них свой кегль
+         и запрет переноса, anywhere остаётся только у имён записей */
+      .bv-matrix { grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr)); font-size: 12px; }
+      .bv-matrix__h { font-size: 11px; letter-spacing: 0; overflow-wrap: normal !important; }
+      .bv-trace .ui-panel__key { min-width: 0; }
+
+      /* Конвейер встаёт вертикальной лесенкой: рельс поворачивается,
+         линии между иконками становятся вертикальными */
+      .bv-plate { padding: 24px 16px; }
+      .bv-track { grid-template-columns: 1fr; }
+      .bv-node { flex-direction: row; align-items: stretch; gap: 16px; text-align: left; }
+      .bv-node__rail { flex-direction: column; width: 40px; flex: 0 0 40px; }
+      .bv-node__line { width: 1px; height: auto; min-height: 10px; }
+      .bv-node__txt { justify-content: center; padding: 0; }
+      .bv-branch { grid-template-columns: 1fr; margin-top: 16px; }
+      .bv-branch__arc { display: none; }
+      .bv-branch__box { grid-column: 1; justify-self: stretch; max-width: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="board">
+
+  <div class="board__intro">
+    <span class="badge">Выбор варианта</span>
+    <h1 class="t-h1">Блоки «текст + теги» — до и после</h1>
+    <p class="t-lead">Четыре блока со страниц WorkHub и NOVAlab, которые держатся на одном тексте и строке тегов. У каждого блока показано, как он выглядит сейчас, и два варианта с визуалом. Тексты клиента не менялись ни в одном варианте.</p>
+    <p class="t-body">Рамки из визуального брифа клиента: NOVAlab — «больше всего иллюстраций», фотографии там не предусмотрены; WorkHub — «самая продуктовая страница», фото допустимо, если это реальная отраслевая сцена. Никаких роботов, мозгов из микросхем и потоков данных. Все иллюстрации собраны средствами дизайн-системы: волосяные линии, одна акцентная линия, filled-иконки 16–24 px на <code>currentColor</code>.</p>
+    <p class="t-body">Общий для всех вариантов элемент — <strong>тег с иконкой</strong> (новый блок 41): рамка вместо серой заливки, иконка акцентом слева. Его можно поставить и там, где раскладку не меняем, например в секции Orchestration на NOVAlab.</p>
+    <nav class="board__nav" aria-label="Блоки">
+      <a href="#b1">1 · WorkHub — The problem</a>
+      <a href="#b2">2 · WorkHub — External access</a>
+      <a href="#b3">3 · NOVAlab — Data control</a>
+      <a href="#b4">4 · NOVAlab — Governance</a>
+    </nav>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════
+       1 · WORKHUB — THE PROBLEM
+       ════════════════════════════════════════════════════════════ -->
+  <div class="board__block" id="b1">
+    <div class="board__head">
+      <h2 class="t-h2">1 · WorkHub — The problem</h2>
+      <p class="t-body board__why">Одиннадцать серых тегов подряд читаются как облако ключевых слов. Но это не ключевые слова, а области работы, которые WorkHub сводит в одно место, и это можно показать буквально.</p>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag">До</span><span class="board__note">сейчас на странице</span></div>
+      <section class="section w-problem">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">The problem</div>
+            <h2 class="t-h1 section-head__lead">Stop managing the gaps between systems.</h2>
+          </div>
+          <div class="w-lead">
+            <p class="t-lead">Most project platforms manage tasks. But project-driven companies manage much more than tasks.</p>
+            <div class="tag-row">
+              <span class="tag">People</span><span class="tag">Qualifications</span><span class="tag">Subcontractors</span><span class="tag">Documentation</span><span class="tag">Safety</span><span class="tag">Quality</span><span class="tag">Budgets</span><span class="tag">Capacity</span><span class="tag">Customers</span><span class="tag">Suppliers</span><span class="tag">Compliance</span>
+            </div>
+            <p class="t-lead">WorkHub was built around that reality. Instead of forcing the organisation to stitch together multiple specialised tools, WorkHub connects the operational parts of a project in one environment.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag board__tag--after">После · A</span><span class="board__note">теги с иконками + фото из отрасли (бриф: «руководитель проекта на объекте»)</span></div>
+      <section class="section w-problem">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">The problem</div>
+            <h2 class="t-h1 section-head__lead">Stop managing the gaps between systems.</h2>
+          </div>
+          <div class="bv-row bv-row--stretch">
+            <div class="bv-text">
+              <p class="t-lead">Most project platforms manage tasks. But project-driven companies manage much more than tasks.</p>
+              <div class="tag-i-row">
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9A3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42c-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3a3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3a3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9c-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65c2.56.34 4.45 1.51 4.45 2.9z"/></svg>People</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 3c-1.11 0-2 .89-2 2v10a2 2 0 0 0 2 2h8v5l3-3l3 3v-5h2a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm8 2l3 2l3-2v3.5l3 1.5l-3 1.5V15l-3-2l-3 2v-3.5L9 10l3-1.5zM4 5h5v2H4zm0 4h3v2H4zm0 4h5v2H4z"/></svg>Qualifications</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4M8 9a4 4 0 0 0 4 4a4 4 0 0 0 4-4m-4.5-7c-.3 0-.5.21-.5.5v3h-1V3s-2.25.86-2.25 3.75c0 0-.75.14-.75 1.25h10c-.05-1.11-.75-1.25-.75-1.25C16.25 3.86 14 3 14 3v2.5h-1v-3c0-.29-.19-.5-.5-.5z"/></svg>Subcontractors</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>Documentation</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 9c1.11 0 2 .89 2 2v3c0 1.11-.89 2-2 2h-2.23l-1.24-1.23c-.75-.77-1.76-1.17-2.83-1.17s-2.07.4-2.83 1.17L7.64 16H6c-1.11 0-2-.89-2-2v-3c0-1.11.89-2 2-2zm0-2H6a4 4 0 0 0-4 4H1v3h1a4 4 0 0 0 4 4h2.5c.04-.06.09-.12 1.79-1.82c.39-.39.9-.58 1.41-.58c.52 0 1.03.19 1.42.58L14.91 18H18a4 4 0 0 0 4-4h1v-3h-1a4 4 0 0 0-4-4"/></svg>Safety</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m23 12l-2.44-2.78l.34-3.68l-3.61-.82l-1.89-3.18L12 3L8.6 1.54L6.71 4.72l-3.61.81l.34 3.68L1 12l2.44 2.78l-.34 3.69l3.61.82l1.89 3.18L12 21l3.4 1.46l1.89-3.18l3.61-.82l-.34-3.68zm-13 5l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg>Quality</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 6h18v12H5zm9 3a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3M9 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2zm-8 2h2v10h16v2H1z"/></svg>Budgets</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8c0 2.4-1 4.5-2.7 6c-1.4-1.3-3.3-2-5.3-2s-3.8.7-5.3 2C5 16.5 4 14.4 4 12a8 8 0 0 1 8-8m2 1.89c-.38.01-.74.26-.9.65l-1.29 3.23l-.1.23c-.71.13-1.3.6-1.57 1.26c-.41 1.03.09 2.19 1.12 2.6s2.19-.09 2.6-1.12c.26-.66.14-1.42-.29-1.98l.1-.26l1.29-3.21l.01-.03c.2-.51-.05-1.09-.56-1.3c-.13-.05-.26-.07-.41-.07M10 6a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1M7 9a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1m10 0a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1"/></svg>Capacity</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 6h3l3.29-3.3a1 1 0 0 1 1.42 0l2.58 2.59a1 1 0 0 1 0 1.41L19 9h-8v2a1 1 0 0 1-1 1a1 1 0 0 1-1-1V8a2 2 0 0 1 2-2m-6 5v4l-2.29 2.29a1 1 0 0 0 0 1.41l2.58 2.59a1 1 0 0 0 1.42 0L11 17h4a1 1 0 0 0 1-1v-1h1a1 1 0 0 0 1-1v-1h1a1 1 0 0 0 1-1v-1h-7v1a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9Z"/></svg>Customers</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 18.5a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5m1.5-9l1.96 2.5H17V9.5m-11 9A1.5 1.5 0 0 1 4.5 17A1.5 1.5 0 0 1 6 15.5A1.5 1.5 0 0 1 7.5 17A1.5 1.5 0 0 1 6 18.5M20 8h-3V4H3c-1.11 0-2 .89-2 2v11h2a3 3 0 0 0 3 3a3 3 0 0 0 3-3h6a3 3 0 0 0 3 3a3 3 0 0 0 3-3h2v-5z"/></svg>Suppliers</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m10 17l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9m-6-8L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5z"/></svg>Compliance</span>
+              </div>
+              <p class="t-lead">WorkHub was built around that reality. Instead of forcing the organisation to stitch together multiple specialised tools, WorkHub connects the operational parts of a project in one environment.</p>
+            </div>
+            <div class="bv-photo" role="img" aria-label="Место под фотографию">
+              <p class="bv-photo__cap">Место под фото: руководитель проекта на стройке с планшетом, на экране WorkHub. Подберём сток или сгенерируем кадр после выбора варианта.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag board__tag--after">После · B</span><span class="board__note">одиннадцать областей плюс WorkHub двенадцатой ячейкой: «всё это в одном месте»</span></div>
+      <section class="section w-problem">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">The problem</div>
+            <h2 class="t-h1 section-head__lead">Stop managing the gaps between systems.</h2>
+          </div>
+          <div class="w-lead">
+            <p class="t-lead">Most project platforms manage tasks. But project-driven companies manage much more than tasks.</p>
+          </div>
+          <div class="bv-areas">
+            <div class="bv-area"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9A3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42c-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3a3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3a3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9c-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65c2.56.34 4.45 1.51 4.45 2.9z"/></svg><span class="bv-area__name">People</span></div>
+            <div class="bv-area"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 3c-1.11 0-2 .89-2 2v10a2 2 0 0 0 2 2h8v5l3-3l3 3v-5h2a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm8 2l3 2l3-2v3.5l3 1.5l-3 1.5V15l-3-2l-3 2v-3.5L9 10l3-1.5zM4 5h5v2H4zm0 4h3v2H4zm0 4h5v2H4z"/></svg><span class="bv-area__name">Qualifications</span></div>
+            <div class="bv-area"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4M8 9a4 4 0 0 0 4 4a4 4 0 0 0 4-4m-4.5-7c-.3 0-.5.21-.5.5v3h-1V3s-2.25.86-2.25 3.75c0 0-.75.14-.75 1.25h10c-.05-1.11-.75-1.25-.75-1.25C16.25 3.86 14 3 14 3v2.5h-1v-3c0-.29-.19-.5-.5-.5z"/></svg><span class="bv-area__name">Subcontractors</span></div>
+            <div class="bv-area"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg><span class="bv-area__name">Documentation</span></div>
+            <div class="bv-area"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 9c1.11 0 2 .89 2 2v3c0 1.11-.89 2-2 2h-2.23l-1.24-1.23c-.75-.77-1.76-1.17-2.83-1.17s-2.07.4-2.83 1.17L7.64 16H6c-1.11 0-2-.89-2-2v-3c0-1.11.89-2 2-2zm0-2H6a4 4 0 0 0-4 4H1v3h1a4 4 0 0 0 4 4h2.5c.04-.06.09-.12 1.79-1.82c.39-.39.9-.58 1.41-.58c.52 0 1.03.19 1.42.58L14.91 18H18a4 4 0 0 0 4-4h1v-3h-1a4 4 0 0 0-4-4"/></svg><span class="bv-area__name">Safety</span></div>
+            <div class="bv-area"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m23 12l-2.44-2.78l.34-3.68l-3.61-.82l-1.89-3.18L12 3L8.6 1.54L6.71 4.72l-3.61.81l.34 3.68L1 12l2.44 2.78l-.34 3.69l3.61.82l1.89 3.18L12 21l3.4 1.46l1.89-3.18l3.61-.82l-.34-3.68zm-13 5l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg><span class="bv-area__name">Quality</span></div>
+            <div class="bv-area"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 6h18v12H5zm9 3a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3M9 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2zm-8 2h2v10h16v2H1z"/></svg><span class="bv-area__name">Budgets</span></div>
+            <div class="bv-area"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8c0 2.4-1 4.5-2.7 6c-1.4-1.3-3.3-2-5.3-2s-3.8.7-5.3 2C5 16.5 4 14.4 4 12a8 8 0 0 1 8-8m2 1.89c-.38.01-.74.26-.9.65l-1.29 3.23l-.1.23c-.71.13-1.3.6-1.57 1.26c-.41 1.03.09 2.19 1.12 2.6s2.19-.09 2.6-1.12c.26-.66.14-1.42-.29-1.98l.1-.26l1.29-3.21l.01-.03c.2-.51-.05-1.09-.56-1.3c-.13-.05-.26-.07-.41-.07M10 6a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1M7 9a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1m10 0a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1"/></svg><span class="bv-area__name">Capacity</span></div>
+            <div class="bv-area"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 6h3l3.29-3.3a1 1 0 0 1 1.42 0l2.58 2.59a1 1 0 0 1 0 1.41L19 9h-8v2a1 1 0 0 1-1 1a1 1 0 0 1-1-1V8a2 2 0 0 1 2-2m-6 5v4l-2.29 2.29a1 1 0 0 0 0 1.41l2.58 2.59a1 1 0 0 0 1.42 0L11 17h4a1 1 0 0 0 1-1v-1h1a1 1 0 0 0 1-1v-1h1a1 1 0 0 0 1-1v-1h-7v1a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9Z"/></svg><span class="bv-area__name">Customers</span></div>
+            <div class="bv-area"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 18.5a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5m1.5-9l1.96 2.5H17V9.5m-11 9A1.5 1.5 0 0 1 4.5 17A1.5 1.5 0 0 1 6 15.5A1.5 1.5 0 0 1 7.5 17A1.5 1.5 0 0 1 6 18.5M20 8h-3V4H3c-1.11 0-2 .89-2 2v11h2a3 3 0 0 0 3 3a3 3 0 0 0 3-3h6a3 3 0 0 0 3 3a3 3 0 0 0 3-3h2v-5z"/></svg><span class="bv-area__name">Suppliers</span></div>
+            <div class="bv-area"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m10 17l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9m-6-8L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5z"/></svg><span class="bv-area__name">Compliance</span></div>
+            <div class="bv-area bv-area--core"><span class="bv-area__title">WorkHub</span><span class="bv-area__sub">One environment</span></div>
+          </div>
+          <div class="w-lead">
+            <p class="t-lead">WorkHub was built around that reality. Instead of forcing the organisation to stitch together multiple specialised tools, WorkHub connects the operational parts of a project in one environment.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════
+       2 · WORKHUB — EXTERNAL ACCESS
+       ════════════════════════════════════════════════════════════ -->
+  <div class="board__block" id="b2">
+    <div class="board__head">
+      <h2 class="t-h2">2 · WorkHub — External access</h2>
+      <p class="t-body board__why">Четыре меры защиты сейчас стоят в ряд, как равные пункты. На самом деле они вложены друг в друга, и подрядчик видит только самый внутренний слой. В этом и есть смысл секции.</p>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag">До</span><span class="board__note">сейчас на странице</span></div>
+      <section class="section section--dark w-access on-dark">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">External access</div>
+            <h2 class="t-h1 section-head__lead">Give suppliers access. Without giving them access to everything.</h2>
+          </div>
+          <div class="w-access__cols">
+            <div><p class="t-lead">External collaboration is essential to many projects. It is also one of the easiest ways to lose control of information.</p></div>
+            <div><p class="t-lead">WorkHub includes scoped access for subcontractors and suppliers so external participants can work directly with the information relevant to them without getting unnecessary access to the wider organisation.</p></div>
+          </div>
+          <div class="w-access__close">
+            <div class="chain">
+              <span class="chain__step">Tenant isolation</span><span class="chain__arrow" aria-hidden="true">&middot;</span>
+              <span class="chain__step">Row-level security in the database</span><span class="chain__arrow" aria-hidden="true">&middot;</span>
+              <span class="chain__step">Role-based permissions</span><span class="chain__arrow" aria-hidden="true">&middot;</span>
+              <span class="chain__step">External users see only shared records</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag board__tag--after">После · A</span><span class="board__note">слои доступа вложены друг в друга, подрядчик доходит только до внутреннего</span></div>
+      <section class="section section--dark w-access on-dark">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">External access</div>
+            <h2 class="t-h1 section-head__lead">Give suppliers access. Without giving them access to everything.</h2>
+          </div>
+          <div class="bv-row">
+            <div class="bv-text">
+              <p class="t-lead">External collaboration is essential to many projects. It is also one of the easiest ways to lose control of information.</p>
+              <p class="t-lead">WorkHub includes scoped access for subcontractors and suppliers so external participants can work directly with the information relevant to them without getting unnecessary access to the wider organisation.</p>
+            </div>
+            <div class="bv-layer" role="img" aria-label="Схема: изоляция арендатора, защита на уровне строк и роли вложены друг в друга; внешний пользователь видит только общие записи">
+              <div class="bv-layer__label"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 15h-2v2h2m0-6h-2v2h2m2 6h-8v-2h2v-2h-2v-2h2v-2h-2V9h8M10 7H8V5h2m0 6H8V9h2m0 6H8v-2h2m0 6H8v-2h2M6 7H4V5h2m0 6H4V9h2m0 6H4v-2h2m0 6H4v-2h2m6-10V3H2v18h20V7z"/></svg>Tenant isolation</div>
+              <div class="bv-layer">
+                <div class="bv-layer__label"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16v-.5a2.5 2.5 0 0 0-5 0v.5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h5c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1m-1 0h-3v-.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5zm-7 2h-1v-4h2.26c.28-.79.78-1.5 1.43-2H12V8h6v3.05c.17-.02.33-.05.5-.05c.53 0 1.03.1 1.5.26V6c0-1.11-.89-2-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h9zm-3 0H4v-4h6zm0-6H4V8h6z"/></svg>Row-level security in the database</div>
+                <div class="bv-layer">
+                  <div class="bv-layer__label"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 10v2H9v2H7v-2H5.8c-.4 1.2-1.5 2-2.8 2c-1.7 0-3-1.3-3-3s1.3-3 3-3c1.3 0 2.4.8 2.8 2zm-8 0c-.6 0-1 .4-1 1s.4 1 1 1s1-.4 1-1s-.4-1-1-1m13 4c2.7 0 8 1.3 8 4v2H8v-2c0-2.7 5.3-4 8-4m0-2c-2.2 0-4-1.8-4-4s1.8-4 4-4s4 1.8 4 4s-1.8 4-4 4"/></svg>Role-based permissions</div>
+                  <div class="bv-rec bv-rec--off"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.83 9L15 12.16V12a3 3 0 0 0-3-3zm-4.3.8l1.55 1.55c-.05.21-.08.42-.08.65a3 3 0 0 0 3 3c.22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53a5 5 0 0 1-5-5c0-.79.2-1.53.53-2.2M2 4.27l2.28 2.28l.45.45C3.08 8.3 1.78 10 1 12c1.73 4.39 6 7.5 11 7.5c1.55 0 3.03-.3 4.38-.84l.43.42L19.73 22L21 20.73L3.27 3M12 7a5 5 0 0 1 5 5c0 .64-.13 1.26-.36 1.82l2.93 2.93c1.5-1.25 2.7-2.89 3.43-4.75c-1.73-4.39-6-7.5-11-7.5c-1.4 0-2.74.25-4 .7l2.17 2.15C10.74 7.13 11.35 7 12 7"/></svg>Budget &amp; margins<span>hidden</span></div>
+                  <div class="bv-rec bv-rec--off"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.83 9L15 12.16V12a3 3 0 0 0-3-3zm-4.3.8l1.55 1.55c-.05.21-.08.42-.08.65a3 3 0 0 0 3 3c.22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53a5 5 0 0 1-5-5c0-.79.2-1.53.53-2.2M2 4.27l2.28 2.28l.45.45C3.08 8.3 1.78 10 1 12c1.73 4.39 6 7.5 11 7.5c1.55 0 3.03-.3 4.38-.84l.43.42L19.73 22L21 20.73L3.27 3M12 7a5 5 0 0 1 5 5c0 .64-.13 1.26-.36 1.82l2.93 2.93c1.5-1.25 2.7-2.89 3.43-4.75c-1.73-4.39-6-7.5-11-7.5c-1.4 0-2.74.25-4 .7l2.17 2.15C10.74 7.13 11.35 7 12 7"/></svg>Contracts<span>hidden</span></div>
+                  <div class="bv-layer bv-layer--core">
+                    <div class="bv-layer__label"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1s-1-.44-1-1s.44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4c.94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5a2.5 2.5 0 0 1 2.5-2.5a2.5 2.5 0 0 1 2.5 2.5a2.5 2.5 0 0 1-2.5 2.5m-7.86-1.75L8.85 19l.29-.74C10.43 15.06 13.5 13 17 13c1.05 0 2.06.21 3 .56V8l-6-6H6c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4.5c-.55-.66-1-1.42-1.36-2.25M13 3.5L18.5 9H13z"/></svg>External users see only shared records</div>
+                    <span class="bv-who"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4M8 9a4 4 0 0 0 4 4a4 4 0 0 0 4-4m-4.5-7c-.3 0-.5.21-.5.5v3h-1V3s-2.25.86-2.25 3.75c0 0-.75.14-.75 1.25h10c-.05-1.11-.75-1.25-.75-1.25C16.25 3.86 14 3 14 3v2.5h-1v-3c0-.29-.19-.5-.5-.5z"/></svg>Subcontractor</span>
+                    <div>
+                      <div class="bv-rec"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>Drawing set · Block C<span>shared</span></div>
+                      <div class="bv-rec"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>SJA · Scaffolding, level 4<span>shared</span></div>
+                      <div class="bv-rec"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>Delivery schedule · week 38<span>shared</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag board__tag--after">После · B</span><span class="board__note">экран прав доступа (бриф WorkHub: «реальный UI по всей странице») + теги с иконками</span></div>
+      <section class="section section--dark w-access on-dark">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">External access</div>
+            <h2 class="t-h1 section-head__lead">Give suppliers access. Without giving them access to everything.</h2>
+          </div>
+          <div class="bv-row">
+            <div class="bv-text">
+              <p class="t-lead">External collaboration is essential to many projects. It is also one of the easiest ways to lose control of information.</p>
+              <p class="t-lead">WorkHub includes scoped access for subcontractors and suppliers so external participants can work directly with the information relevant to them without getting unnecessary access to the wider organisation.</p>
+              <div class="tag-i-row">
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 15h-2v2h2m0-6h-2v2h2m2 6h-8v-2h2v-2h-2v-2h2v-2h-2V9h8M10 7H8V5h2m0 6H8V9h2m0 6H8v-2h2m0 6H8v-2h2M6 7H4V5h2m0 6H4V9h2m0 6H4v-2h2m0 6H4v-2h2m6-10V3H2v18h20V7z"/></svg>Tenant isolation</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16v-.5a2.5 2.5 0 0 0-5 0v.5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h5c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1m-1 0h-3v-.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5zm-7 2h-1v-4h2.26c.28-.79.78-1.5 1.43-2H12V8h6v3.05c.17-.02.33-.05.5-.05c.53 0 1.03.1 1.5.26V6c0-1.11-.89-2-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h9zm-3 0H4v-4h6zm0-6H4V8h6z"/></svg>Row-level security in the database</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 10v2H9v2H7v-2H5.8c-.4 1.2-1.5 2-2.8 2c-1.7 0-3-1.3-3-3s1.3-3 3-3c1.3 0 2.4.8 2.8 2zm-8 0c-.6 0-1 .4-1 1s.4 1 1 1s1-.4 1-1s-.4-1-1-1m13 4c2.7 0 8 1.3 8 4v2H8v-2c0-2.7 5.3-4 8-4m0-2c-2.2 0-4-1.8-4-4s1.8-4 4-4s4 1.8 4 4s-1.8 4-4 4"/></svg>Role-based permissions</span>
+                <span class="tag-i"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1s-1-.44-1-1s.44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4c.94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5a2.5 2.5 0 0 1 2.5-2.5a2.5 2.5 0 0 1 2.5 2.5a2.5 2.5 0 0 1-2.5 2.5m-7.86-1.75L8.85 19l.29-.74C10.43 15.06 13.5 13 17 13c1.05 0 2.06.21 3 .56V8l-6-6H6c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h4.5c-.55-.66-1-1.42-1.36-2.25M13 3.5L18.5 9H13z"/></svg>External users see only shared records</span>
+              </div>
+            </div>
+            <div class="ui-panel">
+              <div class="ui-panel__bar"><span class="ui-panel__dot"></span><span class="ui-panel__name">Harbour Block C · Access</span><span class="ui-panel__status">3 roles</span></div>
+              <div class="ui-panel__body">
+                <div class="bv-matrix">
+                  <div class="bv-matrix__h">Record</div><div class="bv-matrix__h">Internal</div><div class="bv-matrix__h">Subcontr.</div><div class="bv-matrix__h">Supplier</div>
+                  <div>Drawing set</div><div><span class="bv-yes">edit</span></div><div><span class="bv-yes">view</span></div><div class="bv-no">—</div>
+                  <div>SJA / HSE</div><div><span class="bv-yes">edit</span></div><div><span class="bv-yes">edit</span></div><div class="bv-no">—</div>
+                  <div>Delivery schedule</div><div><span class="bv-yes">edit</span></div><div class="bv-no">—</div><div><span class="bv-yes">view</span></div>
+                  <div>Budget &amp; margins</div><div><span class="bv-yes">edit</span></div><div class="bv-no">—</div><div class="bv-no">—</div>
+                  <div>Other projects</div><div><span class="bv-yes">view</span></div><div class="bv-no">—</div><div class="bv-no">—</div>
+                </div>
+                <div class="ui-panel__result"><strong>External users see only shared records</strong><span>RLS ON</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════
+       3 · NOVALAB — DATA CONTROL
+       ════════════════════════════════════════════════════════════ -->
+  <div class="board__block" id="b3">
+    <div class="board__head">
+      <h2 class="t-h2">3 · NOVAlab — Data control</h2>
+      <p class="t-body board__why">Пять фактов через точку — это перечень. А обещание секции пространственное: данные не покидают периметр. Периметр можно нарисовать.</p>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag">До</span><span class="board__note">сейчас на странице</span></div>
+      <section class="section section--dark l-data on-dark">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">Data control</div>
+            <h2 class="t-h1 section-head__lead">Your business data should not become somebody else's AI data.</h2>
+          </div>
+          <div class="l-data__cols">
+            <div><p class="t-lead">NOVAlab puts a security and governance layer between your organisation and the underlying AI infrastructure. Instead of allowing individual features or applications to decide where data goes, model traffic is governed centrally.</p></div>
+            <div><p class="t-lead">For particularly sensitive workloads, self-hosted inference means prompts and responses remain within NOVAlab's own infrastructure, with no external AI provider in the model path.</p></div>
+          </div>
+          <div class="l-data__close">
+            <div class="chain">
+              <span class="chain__step">Processing and storage in the EU</span><span class="chain__arrow" aria-hidden="true">&middot;</span>
+              <span class="chain__step">Residency control on model traffic</span><span class="chain__arrow" aria-hidden="true">&middot;</span>
+              <span class="chain__step">Self-hosted inference</span><span class="chain__arrow" aria-hidden="true">&middot;</span>
+              <span class="chain__step">Isolated by tenant</span><span class="chain__arrow" aria-hidden="true">&middot;</span>
+              <span class="chain__step">Not used to train shared models</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag board__tag--after">После · A</span><span class="board__note">периметр ЕС: арендаторы изолированы, инференс внутри, внешние провайдеры за границей</span></div>
+      <section class="section section--dark l-data on-dark">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">Data control</div>
+            <h2 class="t-h1 section-head__lead">Your business data should not become somebody else's AI data.</h2>
+          </div>
+          <div class="bv-row">
+            <div class="bv-text">
+              <p class="t-lead">NOVAlab puts a security and governance layer between your organisation and the underlying AI infrastructure. Instead of allowing individual features or applications to decide where data goes, model traffic is governed centrally.</p>
+              <p class="t-lead">For particularly sensitive workloads, self-hosted inference means prompts and responses remain within NOVAlab's own infrastructure, with no external AI provider in the model path.</p>
+            </div>
+            <div class="bv-perim" role="img" aria-label="Схема: внутри периметра ЕС изолированные арендаторы и собственный инференс; внешние AI-провайдеры вне пути модели">
+              <div class="bv-perim__frame">
+                <div class="bv-perim__top">
+                  <span class="bv-layer__label"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.5 12c-1.9 0-3.5 1.6-3.5 3.5c0 2.6 3.5 6.5 3.5 6.5s3.5-3.9 3.5-6.5c0-1.9-1.6-3.5-3.5-3.5m0 4.8c-.7 0-1.2-.6-1.2-1.2c0-.7.6-1.2 1.2-1.2s1.2.6 1.2 1.2c.1.6-.5 1.2-1.2 1.2M4 12V9c0 2.21 3.58 4 8 4c.57 0 1.13-.03 1.67-.09c-.42.78-.67 1.66-.67 2.59c0 .15 0 .31.03.46c-.34.04-.68.04-1.03.04c-4.42 0-8-1.79-8-4m0-5c0-2.21 3.58-4 8-4s8 1.79 8 4s-3.58 4-8 4s-8-1.79-8-4m11 13.71c-.93.19-1.94.29-3 .29c-4.42 0-8-1.79-8-4v-3c0 2.21 3.58 4 8 4c.5 0 1.03-.03 1.5-.07c.4.98.94 1.94 1.5 2.78"/></svg>Processing and storage in the EU</span>
+                  <small>NOVAlab infrastructure</small>
+                </div>
+                <div class="bv-tenants">
+                  <div class="bv-tenant bv-tenant--own"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17a2 2 0 0 0 2-2a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5a5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg>Your tenant</div>
+                  <div class="bv-tenant"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17a2 2 0 0 0 2-2a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5a5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg>Tenant B</div>
+                  <div class="bv-tenant"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17a2 2 0 0 0 2-2a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5a5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg>Tenant C</div>
+                </div>
+                <div class="bv-flow">prompts &amp; responses · isolated by tenant</div>
+                <div class="bv-node-dark"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1M9 5h1V3H9zm0 8h1v-2H9zm0 8h1v-2H9zM5 3v2h2V3zm0 8v2h2v-2zm0 8v2h2v-2z"/></svg>Self-hosted inference<small>no external provider in the path</small></div>
+              </div>
+              <div class="bv-gate"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2c3.31 0 6 2.66 6 5.95C18 12.41 12 19 12 19S6 12.41 6 7.95C6 4.66 8.69 2 12 2m0 4a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2m8 13c0 2.21-3.58 4-8 4s-8-1.79-8-4c0-1.29 1.22-2.44 3.11-3.17l.64.91C6.67 17.19 6 17.81 6 18.5c0 1.38 2.69 2.5 6 2.5s6-1.12 6-2.5c0-.69-.67-1.31-1.75-1.76l.64-.91C18.78 16.56 20 17.71 20 19"/></svg>Residency control on model traffic</div>
+              <div class="bv-outside">
+                <span><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12S6.47 2 12 2m3.59 5L12 10.59L8.41 7L7 8.41L10.59 12L7 15.59L8.41 17L12 13.41L15.59 17L17 15.59L13.41 12L17 8.41z"/></svg>External AI providers</span>
+                <span><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.07 15.87c.59-.56.93-1.19.93-1.87v2.8zM20 9c0 1.54-1.73 2.86-4.27 3.53l2.16 2.16C19.19 14 20 13.04 20 12zm0-2c0-2.21-3.58-4-8-4c-1.87 0-3.58.33-4.94.86l7 7C17.5 10.41 20 8.85 20 7M2.39 1.73L1.11 3l3.1 3.1c-.13.29-.21.59-.21.9c0 1.63 1.96 3.04 4.77 3.66l2.31 2.31C7.1 12.74 4 11.06 4 9v3c0 2.21 3.58 4 8 4c.69 0 1.35-.05 2-.13l1.66 1.68c-1.09.29-2.34.45-3.66.45c-4.42 0-8-1.79-8-4v3c0 2.21 3.58 4 8 4c2.31 0 4.38-.5 5.84-1.27l3 3l1.27-1.27z"/></svg>Not used to train shared models</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag board__tag--after">После · B</span><span class="board__note">лёгкий вариант: раскладка прежняя, факты становятся лентой с иконками</span></div>
+      <section class="section section--dark l-data on-dark">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">Data control</div>
+            <h2 class="t-h1 section-head__lead">Your business data should not become somebody else's AI data.</h2>
+          </div>
+          <div class="l-data__cols">
+            <div><p class="t-lead">NOVAlab puts a security and governance layer between your organisation and the underlying AI infrastructure. Instead of allowing individual features or applications to decide where data goes, model traffic is governed centrally.</p></div>
+            <div><p class="t-lead">For particularly sensitive workloads, self-hosted inference means prompts and responses remain within NOVAlab's own infrastructure, with no external AI provider in the model path.</p></div>
+          </div>
+          <div class="bv-facts">
+            <div class="bv-fact"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.5 12c-1.9 0-3.5 1.6-3.5 3.5c0 2.6 3.5 6.5 3.5 6.5s3.5-3.9 3.5-6.5c0-1.9-1.6-3.5-3.5-3.5m0 4.8c-.7 0-1.2-.6-1.2-1.2c0-.7.6-1.2 1.2-1.2s1.2.6 1.2 1.2c.1.6-.5 1.2-1.2 1.2M4 12V9c0 2.21 3.58 4 8 4c.57 0 1.13-.03 1.67-.09c-.42.78-.67 1.66-.67 2.59c0 .15 0 .31.03.46c-.34.04-.68.04-1.03.04c-4.42 0-8-1.79-8-4m0-5c0-2.21 3.58-4 8-4s8 1.79 8 4s-3.58 4-8 4s-8-1.79-8-4m11 13.71c-.93.19-1.94.29-3 .29c-4.42 0-8-1.79-8-4v-3c0 2.21 3.58 4 8 4c.5 0 1.03-.03 1.5-.07c.4.98.94 1.94 1.5 2.78"/></svg><p>Processing and storage in the EU</p></div>
+            <div class="bv-fact"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2c3.31 0 6 2.66 6 5.95C18 12.41 12 19 12 19S6 12.41 6 7.95C6 4.66 8.69 2 12 2m0 4a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2m8 13c0 2.21-3.58 4-8 4s-8-1.79-8-4c0-1.29 1.22-2.44 3.11-3.17l.64.91C6.67 17.19 6 17.81 6 18.5c0 1.38 2.69 2.5 6 2.5s6-1.12 6-2.5c0-.69-.67-1.31-1.75-1.76l.64-.91C18.78 16.56 20 17.71 20 19"/></svg><p>Residency control on model traffic</p></div>
+            <div class="bv-fact"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1M9 5h1V3H9zm0 8h1v-2H9zm0 8h1v-2H9zM5 3v2h2V3zm0 8v2h2v-2zm0 8v2h2v-2z"/></svg><p>Self-hosted inference</p></div>
+            <div class="bv-fact"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17a2 2 0 0 0 2-2a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5a5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg><p>Isolated by tenant</p></div>
+            <div class="bv-fact"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.07 15.87c.59-.56.93-1.19.93-1.87v2.8zM20 9c0 1.54-1.73 2.86-4.27 3.53l2.16 2.16C19.19 14 20 13.04 20 12zm0-2c0-2.21-3.58-4-8-4c-1.87 0-3.58.33-4.94.86l7 7C17.5 10.41 20 8.85 20 7M2.39 1.73L1.11 3l3.1 3.1c-.13.29-.21.59-.21.9c0 1.63 1.96 3.04 4.77 3.66l2.31 2.31C7.1 12.74 4 11.06 4 9v3c0 2.21 3.58 4 8 4c.69 0 1.35-.05 2-.13l1.66 1.68c-1.09.29-2.34.45-3.66.45c-4.42 0-8-1.79-8-4v3c0 2.21 3.58 4 8 4c2.31 0 4.38-.5 5.84-1.27l3 3l1.27-1.27z"/></svg><p>Not used to train shared models</p></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════
+       4 · NOVALAB — GOVERNANCE
+       ════════════════════════════════════════════════════════════ -->
+  <div class="board__block" id="b4">
+    <div class="board__head">
+      <h2 class="t-h2">4 · NOVAlab — Governance</h2>
+      <p class="t-body board__why">Бриф называет конвейер «сильным визуальным доказательством» того, что NOVAlab — не обёртка над языковой моделью. Сейчас это десять одинаковых плашек. И главного, эскалации к человеку, на схеме нет: она спрятана в тексте под ней.</p>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag">До</span><span class="board__note">сейчас на странице</span></div>
+      <section class="section l-pipeline">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">Governance</div>
+            <h2 class="t-h1 section-head__lead">AI needs governance before it needs autonomy.</h2>
+          </div>
+          <div class="l-lead">
+            <p class="t-lead">Giving AI access to business systems changes the risk equation. A chatbot producing the wrong answer is inconvenient. An autonomous system performing the wrong action can be expensive.</p>
+            <p class="t-lead">NOVAlab therefore evaluates requests before allowing consequential actions. The current architecture uses an eight-stage governed pipeline.</p>
+          </div>
+          <div class="l-pipeline__plate">
+            <div class="chain">
+              <span class="chain__step chain__step--mark">Request</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+              <span class="chain__step">Guardian</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+              <span class="chain__step">Intent</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+              <span class="chain__step">Risk</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+              <span class="chain__step">AI Engine</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+              <span class="chain__step">Trust</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+              <span class="chain__step">Confidence</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+              <span class="chain__step">Memory</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+              <span class="chain__step">Audit</span><span class="chain__arrow" aria-hidden="true">&rarr;</span>
+              <span class="chain__step chain__step--mark">Trusted result / approved action</span>
+            </div>
+          </div>
+          <p class="t-lead l-pipeline__note">High-risk or low-confidence actions can be escalated for human approval rather than executed automatically. This makes autonomy something that can be controlled, rather than simply switched on.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag board__tag--after">После · A</span><span class="board__note">конвейер с иконками и номерами ступеней + ветка к человеку от Risk и Confidence</span></div>
+      <section class="section l-pipeline">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">Governance</div>
+            <h2 class="t-h1 section-head__lead">AI needs governance before it needs autonomy.</h2>
+          </div>
+          <div class="l-lead">
+            <p class="t-lead">Giving AI access to business systems changes the risk equation. A chatbot producing the wrong answer is inconvenient. An autonomous system performing the wrong action can be expensive.</p>
+            <p class="t-lead">NOVAlab therefore evaluates requests before allowing consequential actions. The current architecture uses an eight-stage governed pipeline.</p>
+          </div>
+          <div class="bv-plate" role="img" aria-label="Конвейер: Request, затем восемь ступеней от Guardian до Audit, на выходе Trusted result. От ступеней Risk и Confidence ветка ведёт к подтверждению человеком">
+            <div class="bv-track">
+              <div class="bv-node bv-node--end"><div class="bv-node__rail"><i class="bv-node__line"></i><span class="bv-node__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2M6 9h12v2H6m8 3H6v-2h8m4-4H6V6h12"/></svg></span><i class="bv-node__line"></i></div><div class="bv-node__txt"><span class="bv-node__num">in</span><span class="bv-node__name">Request</span></div></div>
+              <div class="bv-node"><div class="bv-node__rail"><i class="bv-node__line"></i><span class="bv-node__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 11c0 5.55-3.84 10.74-9 12c-5.16-1.26-9-6.45-9-12V5l9-4l9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12z"/></svg></span><i class="bv-node__line"></i></div><div class="bv-node__txt"><span class="bv-node__num">01</span><span class="bv-node__name">Guardian</span></div></div>
+              <div class="bv-node"><div class="bv-node__rail"><i class="bv-node__line"></i><span class="bv-node__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 2v2.07A8 8 0 0 0 4.07 11H2v2h2.07A8 8 0 0 0 11 19.93V22h2v-2.07A8 8 0 0 0 19.93 13H22v-2h-2.07A8 8 0 0 0 13 4.07V2m-2 4.08V8h2V6.09c2.5.41 4.5 2.41 4.92 4.91H16v2h1.91c-.41 2.5-2.41 4.5-4.91 4.92V16h-2v1.91C8.5 17.5 6.5 15.5 6.08 13H8v-2H6.09C6.5 8.5 8.5 6.5 11 6.08M12 11a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1"/></svg></span><i class="bv-node__line"></i></div><div class="bv-node__txt"><span class="bv-node__num">02</span><span class="bv-node__name">Intent</span></div></div>
+              <div class="bv-node"><div class="bv-node__rail"><i class="bv-node__line"></i><span class="bv-node__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg></span><i class="bv-node__line"></i></div><div class="bv-node__txt"><span class="bv-node__num">03</span><span class="bv-node__name">Risk</span></div></div>
+              <div class="bv-node"><div class="bv-node__rail"><i class="bv-node__line"></i><span class="bv-node__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64z"/></svg></span><i class="bv-node__line"></i></div><div class="bv-node__txt"><span class="bv-node__num">04</span><span class="bv-node__name">AI Engine</span></div></div>
+              <div class="bv-node"><div class="bv-node__rail"><i class="bv-node__line"></i><span class="bv-node__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m23 12l-2.44-2.78l.34-3.68l-3.61-.82l-1.89-3.18L12 3L8.6 1.54L6.71 4.72l-3.61.81l.34 3.68L1 12l2.44 2.78l-.34 3.69l3.61.82l1.89 3.18L12 21l3.4 1.46l1.89-3.18l3.61-.82l-.34-3.68zm-13 5l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg></span><i class="bv-node__line"></i></div><div class="bv-node__txt"><span class="bv-node__num">05</span><span class="bv-node__name">Trust</span></div></div>
+              <div class="bv-node"><div class="bv-node__rail"><i class="bv-node__line"></i><span class="bv-node__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8c0 2.4-1 4.5-2.7 6c-1.4-1.3-3.3-2-5.3-2s-3.8.7-5.3 2C5 16.5 4 14.4 4 12a8 8 0 0 1 8-8m2 1.89c-.38.01-.74.26-.9.65l-1.29 3.23l-.1.23c-.71.13-1.3.6-1.57 1.26c-.41 1.03.09 2.19 1.12 2.6s2.19-.09 2.6-1.12c.26-.66.14-1.42-.29-1.98l.1-.26l1.29-3.21l.01-.03c.2-.51-.05-1.09-.56-1.3c-.13-.05-.26-.07-.41-.07M10 6a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1M7 9a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1m10 0a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1"/></svg></span><i class="bv-node__line"></i></div><div class="bv-node__txt"><span class="bv-node__num">06</span><span class="bv-node__name">Confidence</span></div></div>
+              <div class="bv-node"><div class="bv-node__rail"><i class="bv-node__line"></i><span class="bv-node__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4s8-1.79 8-4s-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg></span><i class="bv-node__line"></i></div><div class="bv-node__txt"><span class="bv-node__num">07</span><span class="bv-node__name">Memory</span></div></div>
+              <div class="bv-node"><div class="bv-node__rail"><i class="bv-node__line"></i><span class="bv-node__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m10 17l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9m-6-6a1 1 0 0 1 1 1a1 1 0 0 1-1 1a1 1 0 0 1-1-1a1 1 0 0 1 1-1m7 0h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"/></svg></span><i class="bv-node__line"></i></div><div class="bv-node__txt"><span class="bv-node__num">08</span><span class="bv-node__name">Audit</span></div></div>
+              <div class="bv-node bv-node--end"><div class="bv-node__rail"><i class="bv-node__line"></i><span class="bv-node__icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2m-2 15l-5-5l1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg></span><i class="bv-node__line"></i></div><div class="bv-node__txt"><span class="bv-node__num">out</span><span class="bv-node__name">Trusted result / approved action</span></div></div>
+            </div>
+            <div class="bv-branch">
+              <div class="bv-branch__arc"></div>
+              <div class="bv-branch__box"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m21.1 12.5l1.4 1.41l-6.53 6.59L12.5 17l1.4-1.41l2.07 2.08zM10 17l3 3H3v-2c0-2.21 3.58-4 8-4l1.89.11zm1-13a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4"/></svg><span><strong>Human approval</strong>High-risk or low-confidence actions</span></div>
+            </div>
+          </div>
+          <p class="t-lead l-pipeline__note">High-risk or low-confidence actions can be escalated for human approval rather than executed automatically. This makes autonomy something that can be controlled, rather than simply switched on.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag board__tag--after">После · B</span><span class="board__note">трасса одного запроса по восьми ступеням: product UI (40 % страницы по брифу)</span></div>
+      <section class="section l-pipeline">
+        <div class="section__inner">
+          <div class="section-head">
+            <div class="t-overline section-head__label">Governance</div>
+            <h2 class="t-h1 section-head__lead">AI needs governance before it needs autonomy.</h2>
+          </div>
+          <div class="bv-row">
+            <div class="bv-text">
+              <p class="t-lead">Giving AI access to business systems changes the risk equation. A chatbot producing the wrong answer is inconvenient. An autonomous system performing the wrong action can be expensive.</p>
+              <p class="t-lead">NOVAlab therefore evaluates requests before allowing consequential actions. The current architecture uses an eight-stage governed pipeline.</p>
+              <p class="t-lead">High-risk or low-confidence actions can be escalated for human approval rather than executed automatically. This makes autonomy something that can be controlled, rather than simply switched on.</p>
+            </div>
+            <div class="ui-panel bv-trace">
+              <div class="ui-panel__bar"><span class="ui-panel__dot"></span><span class="ui-panel__name">Request trace · #4821</span><span class="ui-panel__status">escalated</span></div>
+              <div class="ui-panel__body">
+                <div class="ui-panel__prompt"><span class="ui-panel__caret">&gt;</span><p>Move the delivery date for order 11734 to Friday and notify the customer.</p></div>
+                <div class="ui-panel__rows">
+                  <div class="ui-panel__row"><span class="ui-panel__idx">01</span><span class="ui-panel__key">Guardian</span><span class="ui-panel__meta">policy check</span><span class="ui-panel__ok">pass</span></div>
+                  <div class="ui-panel__row"><span class="ui-panel__idx">02</span><span class="ui-panel__key">Intent</span><span class="ui-panel__meta">update_order + send_email</span><span class="ui-panel__ok">pass</span></div>
+                  <div class="ui-panel__row"><span class="ui-panel__idx">03</span><span class="ui-panel__key">Risk</span><span class="ui-panel__meta">writes to ERP · medium</span><span class="ui-panel__ok">pass</span></div>
+                  <div class="ui-panel__row"><span class="ui-panel__idx">04</span><span class="ui-panel__key">AI Engine</span><span class="ui-panel__meta">structured action</span><span class="ui-panel__ok">pass</span></div>
+                  <div class="ui-panel__row"><span class="ui-panel__idx">05</span><span class="ui-panel__key">Trust</span><span class="ui-panel__meta">source records verified</span><span class="ui-panel__ok">pass</span></div>
+                  <div class="ui-panel__row ui-panel__row--flag"><span class="ui-panel__idx">06</span><span class="ui-panel__key">Confidence</span><span class="ui-panel__meta">0.71 · threshold 0.85</span><span class="ui-panel__ok">hold</span></div>
+                  <div class="ui-panel__row"><span class="ui-panel__idx">07</span><span class="ui-panel__key">Memory</span><span class="ui-panel__meta">order history attached</span><span class="ui-panel__ok">pass</span></div>
+                  <div class="ui-panel__row"><span class="ui-panel__idx">08</span><span class="ui-panel__key">Audit</span><span class="ui-panel__meta">logged 14:02:11</span><span class="ui-panel__ok">pass</span></div>
+                </div>
+                <div class="ui-panel__result"><strong>Sent for human approval</strong><span>AWAITING</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
