@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Red Orange Technologies | Technology built on people, partnerships and trust</title>
+  <meta name="description" content="Red Orange Technologies is an international technology company with one office in Norway and two offices in India, helping businesses build, scale and improve digital solutions since 2011.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+
+<!-- ══ HEADER — 152:1823 → Theme Builder → Header (общий с главной) ══ -->
+<header class="site-header" data-el="container" data-name="header">
+  <a class="site-header__logo" href="index.html" data-wp="/" data-el="image" aria-label="Red Orange Technologies — home">
+    <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
+  </a>
+  <!-- Панель меню: внутри только виджет Nav Menu (пункты берутся из меню
+       WordPress) и отдельный блок с языком и CTA — ссылки правятся
+       в «Внешний вид → Меню», не трогая Elementor -->
+  <div class="site-menu" id="site-menu" data-el="container">
+    <nav class="site-nav" data-el="nav-menu" aria-label="Main">
+      <a class="t-nav site-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+      <a class="t-nav site-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+      <a class="t-nav site-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce</a>
+      <a class="t-nav site-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+      <a class="t-nav site-nav__link" href="products.html" data-wp="/products/">Products</a>
+      <a class="t-nav site-nav__link" href="#" data-wp="/company/" aria-current="page">Company</a>
+    </nav>
+
+    <div class="site-menu__cta" data-el="container">
+      <a class="t-nav site-menu__lang" href="#" data-el="text">EN</a>
+      <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    </div>
+  </div>
+  <div class="site-header__actions" data-el="container">
+      <a class="t-nav site-nav__link" href="#" data-el="text">EN</a>
+    <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    <button class="site-header__burger" type="button" data-el="button"
+            aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <svg class="burger-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect class="burger-icon__bar burger-icon__bar--top" x="0" y="5"  width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--mid" x="0" y="11" width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--bot" x="0" y="17" width="24" height="2"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- затемнение под мобильным меню: сосед хедера, иначе
+     оказывается внутри его stacking context и накрывает логотип -->
+<div class="site-menu-backdrop" hidden></div>
+
+<main>
+
+  <!-- ══ 1 · HERO — блок 10 hero-split + снимок команды в Норвегии ═══ -->
+  <section class="section a-hero" data-el="container" data-name="hero">
+    <div class="section__inner" data-el="container">
+      <div class="hero-split" data-el="container">
+        <div class="hero-split__content" data-el="container">
+          <div class="hero-split__stack" data-el="container">
+            <span class="badge" data-el="text">About us</span>
+            <div class="hero-split__body" data-el="container">
+              <h1 class="t-display" data-el="heading">Technology built on people, partnerships and trust</h1>
+              <p class="t-lead hero-split__lead" data-el="text">Red Orange Technologies is an international technology company helping businesses build, scale and improve digital solutions.</p>
+              <div class="hero__actions" data-el="container">
+                <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+                <a class="btn btn--outline" href="#" data-wp="/company/why-us/" data-el="button">Why Red Orange Technologies</a>
+              </div>
+            </div>
+          </div>
+          <hr class="divider divider--soft">
+          <p class="hero-split__note" data-el="text">With one office in Norway and two offices in India, we work across borders as one company.</p>
+        </div>
+        <div class="hero-split__visual" data-el="image">
+          <img src="../assets/team-norway.webp" width="1536" height="1024"
+               alt="Geir Aasen, Amit Sharma and Henning Børve Figenschou at the Red Orange Technologies office in Norway">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2 · OUR STORY — section-head + ряд «фото команды в Индии / текст» ══ -->
+  <section class="section a-story" data-el="container" data-name="story">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Our story</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">From two founders to an international technology company</h2>
+      </div>
+
+      <div class="a-story__row" data-el="container">
+        <div class="a-story__photo" data-el="image">
+          <img src="../assets/staff-team-india.webp" width="1400" height="1050" loading="lazy"
+               alt="The Red Orange Technologies team at the office in Pune, India">
+        </div>
+        <div class="a-story__text" data-el="container">
+          <p class="t-lead" data-el="text">Our story started in India in 2011. Today, we combine strong technical capabilities in India with local presence and leadership in Norway, giving our clients access to experienced technology professionals while keeping communication, commercial understanding and decision-making close.</p>
+          <p class="t-lead" data-el="text"><strong>Red Orange Technologies was founded in 2011 by Amit Sharma and Prakash Kattoli.</strong></p>
+          <p class="t-lead" data-el="text">What started with software development, integrations and web solutions grew steadily through long-term client relationships, technical expertise and a simple principle: deliver quality and take responsibility for the result.</p>
+          <p class="t-lead" data-el="text">Over the years, the company has expanded its capabilities, team and international presence. Today, we support businesses with software development, cloud solutions, Salesforce, integrations, data, AI and dedicated technology resources.</p>
+          <p class="t-lead" data-el="text">The company has also developed a strong presence in Norway, creating a closer connection between clients in Europe and our technology and delivery teams in India.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 3 · LEADERSHIP — два столбца текста + блок 46 person grid ═══ -->
+  <section class="section a-lead" data-el="container" data-name="leadership">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Leadership</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Local presence. International leadership.</h2>
+      </div>
+
+      <div class="a-lead__cols" data-el="container">
+        <div data-el="container">
+          <p class="t-lead" data-el="text">Our Norwegian office is home to Henning Børve Figenschou, Geir Aasen and co-founder Amit Sharma, bringing leadership, commercial understanding and close client dialogue together in Norway.</p>
+          <p class="t-lead" data-el="text">In India, co-founder Prakash Kattoli works closely with our local teams and delivery organization across our two Indian offices.</p>
+        </div>
+        <div data-el="container">
+          <p class="t-lead" data-el="text">This combination gives Red Orange Technologies a strong local presence in Norway while maintaining close leadership involvement with our technology and delivery teams in India.</p>
+          <p class="t-lead" data-el="text">For our clients, that means direct access to decision-makers, clear communication and a delivery model where responsibility is shared across borders rather than handed over from one location to another.</p>
+        </div>
+      </div>
+
+      <div class="person-grid" data-el="container" data-name="leaders">
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-henning.webp" width="640" height="800" loading="lazy" alt="Henning Børve Figenschou"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="person-card__place" data-el="text">Norway</span>
+            <span class="t-h3 person-card__name" data-el="text">Henning Børve Figenschou</span>
+            <span class="t-body person-card__role" data-el="text">CEO, Europe</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-geir.webp" width="640" height="800" loading="lazy" alt="Geir Aasen"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="person-card__place" data-el="text">Norway</span>
+            <span class="t-h3 person-card__name" data-el="text">Geir Aasen</span>
+            <span class="t-body person-card__role" data-el="text">Chief Revenue Officer, Europe</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-amit.webp" width="640" height="800" loading="lazy" alt="Amit Sharma"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="person-card__place" data-el="text">Norway</span>
+            <span class="t-h3 person-card__name" data-el="text">Amit Sharma</span>
+            <span class="t-body person-card__role" data-el="text">Co-founder, Group CEO</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-prakash.webp" width="640" height="800" loading="lazy" alt="Prakash Kattoli"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="person-card__place" data-el="text">India</span>
+            <span class="t-h3 person-card__name" data-el="text">Prakash Kattoli</span>
+            <span class="t-body person-card__role" data-el="text">Co-founder, Group COO</span>
+          </figcaption>
+        </figure>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 4 · ONE COMPANY — тёмная секция, блок 15 dark split ════════ -->
+  <section class="section section--dark a-one on-dark" data-el="container" data-name="one-company">
+    <div class="section__inner" data-el="container">
+      <div class="dark-split" data-el="container">
+        <div class="dark-split__text" data-el="container">
+          <h2 class="t-h1 t-h1--normal" data-el="heading">One company. Two countries. Shared responsibility.</h2>
+          <p class="t-lead dark-split__lead a-one__claim" data-el="text">Working internationally should not mean creating distance.</p>
+          <p class="t-lead dark-split__lead" data-el="text">Our model is built around close collaboration between our clients, our Norwegian team and our technology teams in India. This gives our clients the advantages of an international technology organization while maintaining direct access to people who understand their business, market and expectations.</p>
+          <p class="t-lead dark-split__lead" data-el="text">We believe the best technology partnerships are built through involvement, transparency and accountability. That means staying close to the project, communicating clearly and taking ownership throughout the delivery.</p>
+        </div>
+        <div class="dark-split__graphic" data-el="image">
+          <img src="../assets/norway-graphic.svg" width="432" height="384" alt="" role="presentation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 5 · WHAT WE DO — блок 22 icon grid, 4 × 2 ══════════════════ -->
+  <section class="section a-what" data-el="container" data-name="what-we-do">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">What we do</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">We help companies use technology to solve business challenges, improve operations and create new opportunities.</h2>
+      </div>
+
+      <p class="t-lead a-what__lead" data-el="text">Our capabilities include:</p>
+
+      <div class="icon-grid" data-el="container" data-name="capabilities">
+        <div class="icon-card" data-el="container"><span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 3a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2H3v2h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h2v-2H8v-5a2 2 0 0 0-2-2a2 2 0 0 0 2-2V5h2V3m6 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2a2 2 0 0 1-2-2V5h-2V3z"/></svg></span><div class="icon-card__body" data-el="container"><h3 class="t-h3 icon-card__title" data-el="heading">Software development</h3></div></div>
+        <div class="icon-card" data-el="container"><span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.5 20q-2.28 0-3.89-1.57Q1 16.85 1 14.58q0-1.95 1.17-3.48q1.18-1.53 3.08-1.95q.63-2.3 2.5-3.72Q9.63 4 12 4q2.93 0 4.96 2.04Q19 8.07 19 11q1.73.2 2.86 1.5q1.14 1.28 1.14 3q0 1.88-1.31 3.19T18.5 20Z"/></svg></span><div class="icon-card__body" data-el="container"><h3 class="t-h3 icon-card__title" data-el="heading">Salesforce consulting and development</h3></div></div>
+        <div class="icon-card" data-el="container"><span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 19c0 .34.03.67.08 1H6.5c-1.5 0-2.81-.5-3.89-1.57C1.54 17.38 1 16.09 1 14.58q0-1.95 1.17-3.48C3.34 9.57 4 9.43 5.25 9.15c.42-1.53 1.25-2.77 2.5-3.72S10.42 4 12 4c1.95 0 3.6.68 4.96 2.04S19 9.05 19 11c1.15.13 2.1.63 2.86 1.5c.06.05.1.13.14.19c-.9-.44-1.92-.69-3-.69c-3.87 0-7 3.13-7 7m11.83 1.64l-1 1.73c-.07.13-.2.13-.33.13l-1.23-.5c-.27.18-.54.34-.84.47l-.19 1.32c-.02.12-.13.21-.24.21h-2c-.14 0-.24-.09-.26-.21l-.19-1.32c-.31-.12-.59-.29-.85-.47l-1.24.5c-.12 0-.25 0-.31-.13l-1-1.73a.26.26 0 0 1 .06-.32l1.06-.82a4.2 4.2 0 0 1 0-1l-1.06-.82a.25.25 0 0 1-.06-.32l1-1.73c.07-.13.2-.13.31-.13l1.24.5c.26-.18.55-.34.85-.47l.19-1.32A.26.26 0 0 1 18 14h2c.11 0 .22.09.23.21l.19 1.32c.31.12.58.29.85.47l1.23-.5c.13 0 .26 0 .32.13l1 1.73c.06.11.03.24-.06.32l-1.06.82c.03.17.04.33.04.5s-.02.33-.04.5l1.07.82c.09.08.12.21.06.32M20.5 19c0-.83-.68-1.5-1.5-1.5s-1.5.67-1.5 1.5s.66 1.5 1.5 1.5s1.5-.67 1.5-1.5"/></svg></span><div class="icon-card__body" data-el="container"><h3 class="t-h3 icon-card__title" data-el="heading">Cloud solutions</h3></div></div>
+        <div class="icon-card" data-el="container"><span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.4 7.5c.8.8.8 2.1 0 2.8l-2.8 2.8l-7.8-7.8l2.8-2.8c.8-.8 2.1-.8 2.8 0l1.8 1.8l3-3l1.4 1.4l-3 3zm-5.8 5.8l-1.4-1.4l-2.8 2.8l-2.1-2.1l2.8-2.8l-1.4-1.4l-2.8 2.8l-1.5-1.4l-2.8 2.8c-.8.8-.8 2.1 0 2.8l1.8 1.8l-4 4l1.4 1.4l4-4l1.8 1.8c.8.8 2.1.8 2.8 0l2.8-2.8l-1.4-1.4z"/></svg></span><div class="icon-card__body" data-el="container"><h3 class="t-h3 icon-card__title" data-el="heading">Integrations</h3></div></div>
+        <div class="icon-card" data-el="container"><span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 21H2V3h2v16h2v-9h4v9h2V6h4v13h2v-5h4z"/></svg></span><div class="icon-card__body" data-el="container"><h3 class="t-h3 icon-card__title" data-el="heading">Data and analytics</h3></div></div>
+        <div class="icon-card" data-el="container"><span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 6a6 6 0 0 1 6 6c0 2.22-1.21 4.16-3 5.2V19a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1.8c-1.79-1.04-3-2.98-3-5.2a6 6 0 0 1 6-6m2 15v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1zm6-10h3v2h-3zM1 11h3v2H1zM13 1v3h-2V1zM4.92 3.5l2.13 2.14l-1.42 1.41L3.5 4.93zm12.03 2.13l2.12-2.13l1.43 1.43l-2.13 2.12z"/></svg></span><div class="icon-card__body" data-el="container"><h3 class="t-h3 icon-card__title" data-el="heading">Artificial intelligence</h3></div></div>
+        <div class="icon-card" data-el="container"><span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9A3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42c-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3a3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3a3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9c-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65c2.56.34 4.45 1.51 4.45 2.9z"/></svg></span><div class="icon-card__body" data-el="container"><h3 class="t-h3 icon-card__title" data-el="heading">Dedicated technology resources</h3></div></div>
+        <div class="icon-card" data-el="container"><span class="icon-card__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m3 14l.5.07L8.07 9.5a1.95 1.95 0 0 1 .52-1.91c.78-.79 2.04-.79 2.82 0c.53.52.7 1.26.52 1.91l2.57 2.57l.5-.07c.18 0 .35 0 .5.07l3.57-3.57C19 8.35 19 8.18 19 8a2 2 0 0 1 2-2a2 2 0 0 1 2 2a2 2 0 0 1-2 2c-.18 0-.35 0-.5-.07l-3.57 3.57c.07.15.07.32.07.5a2 2 0 0 1-2 2a2 2 0 0 1-2-2l.07-.5l-2.57-2.57c-.32.07-.68.07-1 0L4.93 15.5L5 16a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2"/></svg></span><div class="icon-card__body" data-el="container"><h3 class="t-h3 icon-card__title" data-el="heading">Digital transformation</h3></div></div>
+      </div>
+
+      <p class="t-lead a-what__close" data-el="text">We support both individual technology needs and larger, long-term transformation initiatives.</p>
+
+    </div>
+  </section>
+
+  <!-- ══ 6 · MISSION & VISION — две панели блока 37 versus ══════════ -->
+  <section class="section a-mv" data-el="container" data-name="mission-vision">
+    <div class="section__inner" data-el="container">
+      <div class="versus" data-el="container">
+
+        <div class="versus__panel" data-el="container">
+          <div class="t-overline versus__label" data-el="text">Our mission</div>
+          <h2 class="t-h2 a-mv__title" data-el="heading">Turning technology into measurable progress</h2>
+          <p class="t-lead" data-el="text">Our mission is to help businesses use technology to solve real problems, improve operations and create lasting value.</p>
+          <p class="t-lead" data-el="text">We combine technical expertise with business understanding to develop solutions that are practical, scalable and built around the needs of each client.</p>
+          <p class="t-lead a-mv__claim" data-el="text">Technology is the tool.<br>The outcome is what matters.</p>
+        </div>
+
+        <div class="versus__panel versus__panel--now on-dark" data-el="container">
+          <div class="t-overline versus__label" data-el="text">Our vision</div>
+          <h2 class="t-h2 a-mv__title" data-el="heading">Igniting Digital Transformation</h2>
+          <p class="t-lead" data-el="text">We want to make digital transformation more accessible, effective and valuable for the companies we work with.</p>
+          <p class="t-lead" data-el="text">For us, transformation is not about adopting technology for the sake of technology. It is about using the right technology to create meaningful improvement. That requires:</p>
+          <div class="tag-i-row" data-el="container">
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>Innovation</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 13c-1.86 0-3.41 1.28-3.86 3H2v2h2.14c.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3H22v-2H11.86c-.45-1.72-2-3-3.86-3m0 6c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2M19.86 6c-.45-1.72-2-3-3.86-3s-3.41 1.28-3.86 3H2v2h10.14c.45 1.72 2 3 3.86 3s3.41-1.28 3.86-3H22V6zM16 9c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2"/></svg>Adaptability</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m23 12l-2.44-2.78l.34-3.68l-3.61-.82l-1.89-3.18L12 3L8.6 1.54L6.71 4.72l-3.61.81l.34 3.68L1 12l2.44 2.78l-.34 3.69l3.61.82l1.89 3.18L12 21l3.4 1.46l1.89-3.18l3.61-.82l-.34-3.68zm-13 5l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg>Quality</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m10 17l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9m-6-8L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5z"/></svg>Responsibility</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 6h3l3.29-3.3a1 1 0 0 1 1.42 0l2.58 2.59a1 1 0 0 1 0 1.41L19 9h-8v2a1 1 0 0 1-1 1a1 1 0 0 1-1-1V8a2 2 0 0 1 2-2m-6 5v4l-2.29 2.29a1 1 0 0 0 0 1.41l2.58 2.59a1 1 0 0 0 1.42 0L11 17h4a1 1 0 0 0 1-1v-1h1a1 1 0 0 0 1-1v-1h1a1 1 0 0 0 1-1v-1h-7v1a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9Z"/></svg>Collaboration</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4a2 2 0 0 1 2 2v2h4a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8c0-1.11.89-2 2-2h4V4c0-1.11.89-2 2-2m4 4V4h-4v2z"/></svg>Business understanding</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M15 13h1.5v2.82l2.44 1.41l-.75 1.3L15 16.69zm4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67zM5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2zm11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85"/></svg>Long-term thinking</span>
+          </div>
+          <p class="t-lead" data-el="text">Our clients’ success is ultimately how we measure our own.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 7 · CULTURE — блок 24 split в сетке + фото офиса ═══════════ -->
+  <section class="section a-culture" data-el="container" data-name="culture">
+    <div class="section__inner" data-el="container">
+      <div class="split split--in-grid" data-el="container">
+        <div class="split__panel split__panel--warm" data-el="container">
+          <div class="t-overline a-culture__label" data-el="text">Our culture</div>
+          <h2 class="t-h1 t-h1--normal split__title" data-el="heading">Better together</h2>
+          <div class="split__body" data-el="container">
+            <p class="t-lead" data-el="text">Technology is created by people. Red Orange Technologies brings together people with different backgrounds, cultures, perspectives and areas of expertise.</p>
+            <p class="t-lead" data-el="text">Our teams in Norway and India work closely across projects, disciplines and borders. We value technical expertise, but equally important are curiosity, openness, responsibility and the willingness to help each other succeed.</p>
+            <p class="t-lead" data-el="text">We take our work seriously without believing that everything around work has to be serious. Strong teams perform better when people enjoy working together.</p>
+          </div>
+        </div>
+        <div class="split__media" data-el="image">
+          <img src="../assets/staff-workshop.webp" width="1400" height="1050" loading="lazy"
+               alt="Red Orange Technologies colleagues working together at the office in India">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 8 · WHY RED ORANGE — текст + чек-лист из десяти пунктов ════ -->
+  <section class="section a-why" data-el="container" data-name="why">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Why Red Orange Technologies?</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Choosing a technology partner is about more than technical capability.</h2>
+      </div>
+
+      <div class="a-why__row" data-el="container">
+        <div class="a-why__text" data-el="container">
+          <p class="t-lead" data-el="text">It is about finding people you can trust with important parts of your business.</p>
+          <p class="t-lead" data-el="text">We aim to be a partner that understands what needs to be achieved, communicates clearly and has the capabilities to turn plans into working solutions.</p>
+          <a class="btn btn--outline" href="#" data-wp="/company/why-us/" data-el="button">Why Red Orange Technologies</a>
+        </div>
+        <div class="a-why__list" data-el="container">
+          <span class="t-body a-why__list-label" data-el="text">Our clients benefit from:</span>
+          <div class="check-list" data-el="container">
+            <div class="check-list__col" data-el="container">
+              <div class="check-item" data-el="container"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg><span class="t-body" data-el="text">Local presence in Norway</span></div>
+              <div class="check-item" data-el="container"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg><span class="t-body" data-el="text">Leadership represented in both Norway and India</span></div>
+              <div class="check-item" data-el="container"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg><span class="t-body" data-el="text">Two technology offices in India</span></div>
+              <div class="check-item" data-el="container"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg><span class="t-body" data-el="text">International delivery capabilities</span></div>
+              <div class="check-item" data-el="container"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg><span class="t-body" data-el="text">Experienced technology professionals</span></div>
+            </div>
+            <div class="check-list__col" data-el="container">
+              <div class="check-item" data-el="container"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg><span class="t-body" data-el="text">Flexible access to specialist expertise</span></div>
+              <div class="check-item" data-el="container"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg><span class="t-body" data-el="text">Close and transparent collaboration</span></div>
+              <div class="check-item" data-el="container"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg><span class="t-body" data-el="text">Direct access to decision-makers</span></div>
+              <div class="check-item" data-el="container"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg><span class="t-body" data-el="text">Solutions tailored to real business needs</span></div>
+              <div class="check-item" data-el="container"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg><span class="t-body" data-el="text">A long-term partnership mindset</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 9 · CORE VALUES — PRIMA пятью плитками ═════════════════════ -->
+  <section class="section a-values" data-el="container" data-name="values">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Our core values — PRIMA</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Our values define how we work with clients, colleagues and partners.</h2>
+      </div>
+
+      <div class="a-prima" data-el="container" data-name="prima">
+        <div class="a-prima__cell" data-el="container"><span class="t-stat a-prima__letter" data-el="text">P</span><span class="t-h3" data-el="text">Passionate</span></div>
+        <div class="a-prima__cell" data-el="container"><span class="t-stat a-prima__letter" data-el="text">R</span><span class="t-h3" data-el="text">Respectful</span></div>
+        <div class="a-prima__cell" data-el="container"><span class="t-stat a-prima__letter" data-el="text">I</span><span class="t-h3" data-el="text">Integrated</span></div>
+        <div class="a-prima__cell" data-el="container"><span class="t-stat a-prima__letter" data-el="text">M</span><span class="t-h3" data-el="text">Meaningful</span></div>
+        <div class="a-prima__cell" data-el="container"><span class="t-stat a-prima__letter" data-el="text">A</span><span class="t-h3" data-el="text">Adaptive</span></div>
+      </div>
+
+      <div class="a-values__close" data-el="container">
+        <p class="t-lead" data-el="text">They reflect the culture we have built across countries and teams and guide the decisions we make every day.</p>
+        <a class="btn btn--outline" href="#" data-wp="/company/why-us/" data-el="button">The values behind how we work</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 10 · ФИНАЛЬНЫЙ CTA — блок 11 split 720 / 720 ═══════════════ -->
+  <section class="section a-cta" data-el="container" data-name="closing">
+    <div class="section__inner" data-el="container">
+      <div class="split split--in-grid split--sticky" data-el="container">
+        <div class="split__panel split__panel--warm" data-el="container">
+          <h2 class="t-h1 t-h1--normal split__title" data-el="heading">Built on experience. Growing through expertise.</h2>
+          <div class="split__body" data-el="container">
+            <p class="t-lead" data-el="text">Our capabilities have grown considerably since Red Orange Technologies was founded in 2011, but our approach remains the same:</p>
+            <p class="t-lead" data-el="text"><strong>Bring together good people, strong technology and close collaboration to deliver work we can be proud of.</strong></p>
+            <p class="t-lead" data-el="text">We continue to strengthen our team with experienced specialists across technologies and disciplines, creating an organization capable of supporting clients from individual development needs to complex digital transformation initiatives.</p>
+            <div class="split__actions" data-el="container">
+              <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+              <a class="btn btn--outline" href="#" data-wp="/company/why-us/" data-el="button">Why Red Orange Technologies</a>
+            </div>
+          </div>
+        </div>
+        <div class="split__media" data-el="image">
+          <img src="../assets/hero-mountains.webp" width="1360" height="504" loading="lazy" alt="" role="presentation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+
+
+<!-- ══ 10 · FOOTER — 152:131 → Theme Builder → Footer ═════════════ -->
+<footer class="site-footer" id="contact" data-el="container" data-name="footer">
+  <div class="site-footer__photo" aria-hidden="true"></div>
+  <div class="site-footer__wash" aria-hidden="true"></div>
+  <div class="site-footer__glow" aria-hidden="true"></div>
+
+  <div class="site-footer__inner" data-el="container">
+
+    <div class="footer-top" data-el="container">
+
+      <div class="footer-contact" data-el="container">
+        <div class="t-overline footer-contact__label" data-el="text">Get in touch</div>
+        <h2 class="t-h1 t-h1--normal" data-el="heading">Collaborate with us for complete IT solutions</h2>
+        <p class="t-lead footer-contact__lead" data-el="text">We're happy to answer any questions and help determine which of our services best fit your needs.</p>
+
+        <div class="check-list" data-el="container">
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Client-oriented</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Independent</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Competent</span>
+            </div>
+          </div>
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Results-driven</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Problem-solving</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Transparent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-form" data-el="container">
+        <h2 class="t-h2 footer-form__title" data-el="heading">Let us talk about your next solution</h2>
+        <form class="form" data-el="form" action="#" method="post">
+          <div class="form__row" data-el="container">
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-first" data-el="text">First name</label>
+              <input class="field__control" id="f-first" name="first-name" type="text" autocomplete="given-name">
+            </div>
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-last" data-el="text">Last name</label>
+              <input class="field__control" id="f-last" name="last-name" type="text" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-email" data-el="text">Email</label>
+            <input class="field__control" id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-company" data-el="text">Company</label>
+            <input class="field__control" id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field field--last" data-el="container">
+            <label class="t-body" for="f-message" data-el="text">Message</label>
+            <textarea class="field__control" id="f-message" name="message" rows="5"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit" data-el="button">Send message</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-nav" data-el="container">
+      <div class="footer-nav__cols" data-el="container">
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Solutions</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+            <a class="footer-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce Services</a>
+            <a class="footer-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+            <a class="footer-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Products</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="nova-for-salesforce.html" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+            <a class="footer-nav__link" href="#" data-wp="/products/workhub/">WorkHub</a>
+            <a class="footer-nav__link" href="#" data-wp="/products/novalab/">NOVAlab</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Company</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/">About us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/why-us/">Why us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/team/">Team</a>
+            <a class="footer-nav__link" href="#" data-wp="/cases/">Case studies</a>
+            <a class="footer-nav__link" href="#" data-wp="/insights/">Blog</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/careers/">Careers</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Contact</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Asker, Norway</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Pune, India</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Mohali, India</a>
+            <a class="footer-nav__link" href="mailto:contact@redorangetechnologies.com">contact@redorangetechnologies.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider divider--ondark-soft" data-el="divider">
+
+      <div class="footer-bottom" data-el="container">
+        <span class="footer-bottom__copy" data-el="text">© 2026 Red Orange Technologies</span>
+        <a href="#" data-wp="/terms/" data-el="text">Terms &amp; Conditions</a>
+        <a href="#" data-wp="/privacy/" data-el="text">Privacy Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

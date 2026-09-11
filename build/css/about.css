@@ -1,0 +1,143 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — About us (/company/).
+   Макета в Figma нет: страница собрана из библиотеки блоков по
+   `_client/About_Red_Orange_Technologies.docx` (карточка Trello
+   RKjUhL4e). Тексты дословные; предложения, стоявшие в docx отдельными
+   строками, местами сведены в абзацы — слова не менялись.
+   Фото — только реальные снимки клиента (команда в Норвегии, команда
+   и офис в Индии, портреты руководства со старого сайта). Стоковые
+   фото Unsplash со staging /about/ не взяты.
+
+   Здесь только вертикальный ритм и раскладки, которых нет
+   в components.css.
+   ══════════════════════════════════════════════════════════════ */
+
+/* Зазор между секциями (20 в макете) сложен в паддинги: обычно
+   в верхний следующей, а перед тонированной — в нижний предыдущей. */
+.a-hero    { padding-top:  84px; padding-bottom:  40px; }
+.a-story   { padding-top: 120px; padding-bottom: 120px; }
+.a-lead    { padding-top: 120px; padding-bottom: 140px; } /* +20 перед тёмной */
+.a-one     { padding-top: 100px; padding-bottom: 100px; } /* тёмная */
+.a-what    { padding-top: 120px; padding-bottom: 120px; }
+.a-mv      { padding-top: 120px; padding-bottom: 120px; }
+.a-culture { padding-top: 120px; padding-bottom: 120px; }
+.a-why     { padding-top: 120px; padding-bottom: 120px; }
+.a-values  { padding-top: 120px; padding-bottom: 120px; }
+.a-cta     { padding-top: 120px; padding-bottom: 140px; }
+
+/* ── 1 · Hero ──────────────────────────────────────────────────
+   Снимок команды 3 : 2, три человека во всю ширину кадра: в колонку
+   блока 10 с пропорцией 658 / 706 он не влезает без обрезки плеч.
+   Колонке визуала отдана пропорция самого снимка. */
+.a-hero .hero-split { align-items: center; }
+.a-hero .hero-split__visual { aspect-ratio: 3 / 2; }
+
+/* ── 2 · История ───────────────────────────────────────────────
+   Пара «фото 432 + текст» — та же, что intro-row на Staff
+   Augmentation; правила повторены здесь, а не вынесены: на двух
+   страницах одна раскладка, третья страница — повод для библиотеки. */
+.a-story__row { display: flex; gap: var(--col-gap); align-items: flex-start; }
+.a-story__photo { flex: 0 1 432px; min-width: 0; }
+.a-story__photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.a-story__text { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--space-md); max-width: 780px; }
+
+/* ── 3 · Руководство ───────────────────────────────────────────
+   Четыре абзаца двумя колонками, под ними портреты (блок 46). */
+.a-lead__cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--col-gap); }
+.a-lead__cols > div { display: flex; flex-direction: column; gap: var(--space-md); }
+.a-lead .person-grid { margin-top: var(--space-xl); }
+
+/* ── 4 · Одна компания — тёмная секция, блок 15 dark split ──── */
+.a-one .dark-split { align-items: center; }
+.a-one__claim { color: var(--color-white); font-weight: 500; }
+
+/* ── 5 · Что мы делаем — icon grid в четыре колонки ────────────
+   Восемь направлений: четыре колонки закрывают два ряда ровно,
+   две на планшете — четыре ряда, одна на мобильном. */
+.a-what .icon-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.a-what__lead, .a-what__close { max-width: 940px; }
+
+/* ── 6 · Миссия и видение — две панели блока 37 versus ────────── */
+.a-mv .versus__panel { padding: var(--space-2xl) var(--space-lg); gap: var(--space-md); }
+.a-mv__title { font-size: 32px; line-height: 1.15; letter-spacing: -0.03em; }
+/* Панели одной высоты: в миссии текста меньше, и вывод прижат к низу —
+   встаёт в пару с последней строкой видения, а не висит над пустотой */
+.a-mv__claim { font-weight: 600; color: var(--color-dark); margin-top: auto; }
+.a-mv .tag-i-row { margin-block: var(--space-2xs); }
+
+/* ── 7 · Культура — блок 24 split в сетке ───────────────────── */
+.a-culture .split__media { min-height: 520px; }
+.a-culture__label { color: var(--text-muted); }
+
+/* ── 8 · Почему мы — текст и чек-лист из десяти пунктов ─────── */
+.a-why__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--col-gap); align-items: start; }
+.a-why__text { display: flex; flex-direction: column; gap: var(--space-md); }
+.a-why__text .btn { align-self: flex-start; margin-top: var(--space-2xs); }
+.a-why__list { display: flex; flex-direction: column; gap: var(--space-sm); padding: var(--space-lg); background: var(--bg-warm); }
+.a-why__list-label { color: var(--gray-500); }
+
+/* ── 9 · Ценности PRIMA — пять букв плитками ───────────────────
+   Сетка с волосяными линиями, как icon-grid: зазор 1 px на фоне
+   Gray 200. Буква — Stat акцентом: 64 px — крупный текст, для него
+   порог AA 3 : 1, акцент на белом даёт 4.01. */
+.a-prima {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--border-width);
+  background: var(--gray-200);
+  border: var(--border-width) solid var(--gray-200);
+}
+.a-prima__cell { background: var(--color-white); padding: var(--space-lg) var(--space-md); display: flex; flex-direction: column; gap: var(--space-xs); }
+.a-prima__letter { color: var(--color-accent); }
+.a-values__close { max-width: 940px; display: flex; flex-direction: column; gap: var(--space-md); }
+.a-values__close .btn { align-self: flex-start; }
+
+/* ── Планшет ≤ 1024 ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  .a-hero    { padding-top: 64px; padding-bottom: 32px; }
+  .a-story,
+  .a-what,
+  .a-mv,
+  .a-culture,
+  .a-why,
+  .a-values  { padding-top: 96px; padding-bottom: 96px; }
+  .a-lead    { padding-top: 96px; padding-bottom: 112px; }
+  .a-one     { padding-top: 80px; padding-bottom: 80px; }
+  .a-cta     { padding-top: 96px; padding-bottom: 112px; }
+
+  .a-hero .hero-split__visual { aspect-ratio: 3 / 2; }
+  .a-story__row { flex-direction: column; }
+  .a-story__photo { flex: 0 0 auto; width: 100%; max-width: 640px; }
+  .a-lead__cols,
+  .a-why__row { grid-template-columns: 1fr; }
+  .a-what .icon-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .a-culture .split__media { min-height: 0; aspect-ratio: 4 / 3; flex: 1 1 auto; }
+}
+
+/* ── Мобильный ≤ 767 ───────────────────────────────────────── */
+@media (max-width: 767px) {
+
+  .a-hero { padding-top: 48px; padding-bottom: 24px; }
+  .a-story,
+  .a-lead,
+  .a-what,
+  .a-mv,
+  .a-culture,
+  .a-why,
+  .a-values,
+  .a-cta  { padding-top: 72px; padding-bottom: 72px; }
+  .a-one  { padding-top: 64px; padding-bottom: 64px; }
+
+  .a-what .icon-grid { grid-template-columns: 1fr; }
+  .a-mv .versus__panel { padding: var(--space-lg) var(--space-md); }
+  .a-mv__title { font-size: 26px; }
+  .a-why__list { padding: var(--space-md); }
+
+  /* Пять плиток в строку не помещаются: буква слева, слово справа */
+  .a-prima { grid-template-columns: 1fr; }
+  .a-prima__cell { flex-direction: row; align-items: center; gap: var(--space-md); padding: var(--space-sm) var(--space-md); }
+  .a-prima__letter { flex: 0 0 56px; }
+
+  .a-cta .btn { width: 100%; text-align: center; }
+}

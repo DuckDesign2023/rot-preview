@@ -1,0 +1,101 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — Why us (/company/why-us/).
+   Макета в Figma нет: страница собрана из библиотеки блоков по
+   `_client/Why_Red_Orange_Technologies.docx` (карточка Trello
+   RKjUhL4e). Тексты дословные; строки docx местами сведены в абзацы.
+   Адреса трёх офисов — с главной (блок 6), фото — реальные снимки
+   клиента. Здесь только вертикальный ритм и раскладки.
+   ══════════════════════════════════════════════════════════════ */
+
+.y-hero     { padding-top:  84px; padding-bottom:  40px; }
+.y-reasons  { padding-top: 120px; padding-bottom: 120px; }
+.y-prima    { padding-top: 120px; padding-bottom: 120px; }
+.y-how      { padding-top: 120px; padding-bottom: 140px; } /* +20 перед тёмной */
+.y-one      { padding-top: 100px; padding-bottom: 100px; } /* тёмная */
+.y-outcomes { padding-top: 120px; padding-bottom: 120px; }
+.y-numbers  { padding-top: 120px; padding-bottom: 120px; }
+.y-cta      { padding-top: 120px; padding-bottom: 140px; }
+
+/* ── 1 · Hero ──────────────────────────────────────────────────
+   Рабочая сессия команды 1400 × 814 — шире, чем колонка блока 10;
+   колонке отдана пропорция 4 : 3, кадр по центру стола. */
+.y-hero .hero-split { align-items: center; }
+.y-hero .hero-split__visual { aspect-ratio: 4 / 3; }
+
+/* ── Общий лид секции ──────────────────────────────────────── */
+.y-lead { display: flex; flex-direction: column; gap: var(--space-md); max-width: 940px; }
+
+/* ── 2 · Причины — icon grid 3 × 2, описания в два абзаца ─────── */
+.y-reasons .icon-card__body { gap: var(--space-2xs); }
+
+/* ── 3 · PRIMA — блок 26 fit-list с буквами вместо номеров ──────
+   Буква стоит слева и первой в разметке: «P — Passionate» читается
+   как расшифровка аббревиатуры. У Appero строки приглушены до
+   наведения — здесь названия ценностей в полную силу, наведение
+   только красит букву акцентом и линию снизу. */
+.y-prima .fit-list__row { align-items: flex-start; gap: var(--space-lg); padding: var(--space-md) 0; }
+.y-prima .fit-list__num { order: -1; flex: 0 0 96px; width: 96px; text-align: left; color: var(--gray-300); }
+.y-prima .fit-list__row:hover .fit-list__num { color: var(--color-accent); }
+.y-prima__txt { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--space-xs); padding-top: var(--space-2xs); }
+.y-prima .fit-list__text { color: var(--color-dark); }
+.y-prima__desc { max-width: 720px; color: var(--text-lead); }
+.y-prima .fit-list { margin-top: var(--space-2xs); }
+
+/* ── 4 · Как мы работаем — конвейер блока 43 ─────────────────── */
+.y-how .track { margin-block: var(--space-md) var(--space-2xs); }
+.y-how__close { max-width: 940px; display: flex; flex-direction: column; gap: var(--space-md); }
+.y-how__close .btn { align-self: flex-start; }
+
+/* ── 5 · Норвегия и Индия — как на главной (блок 15 + блок 6) ─── */
+.y-one .section__inner { gap: var(--space-2xl); }
+.y-one .dark-split { align-items: center; }
+.y-one__claim { color: var(--color-white); font-weight: 500; }
+
+/* ── 6 · Результаты — icon grid в четыре колонки ─────────────── */
+.y-outcomes .icon-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* ── 7 · Цифры — пара «графика + стат-сетка», как why-row главной ── */
+.y-numbers__row { display: flex; justify-content: space-between; gap: var(--col-gap); align-items: flex-start; }
+.y-numbers__art { flex: 0 1 548px; min-width: 0; padding-top: var(--space-md); }
+.y-numbers__art .graphic-plate { height: 250px; min-height: 0; }
+.y-numbers__stats { flex: 0 1 664px; min-width: 0; }
+
+/* ── Планшет ≤ 1024 ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+  .y-hero     { padding-top: 64px; padding-bottom: 32px; }
+  .y-reasons,
+  .y-prima,
+  .y-outcomes,
+  .y-numbers  { padding-top: 96px; padding-bottom: 96px; }
+  .y-how      { padding-top: 96px; padding-bottom: 112px; }
+  .y-one      { padding-top: 80px; padding-bottom: 80px; }
+  .y-cta      { padding-top: 96px; padding-bottom: 112px; }
+
+  .y-hero .hero-split__visual { aspect-ratio: 4 / 3; }
+  .y-outcomes .icon-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .y-reasons .icon-grid  { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .y-numbers__row { flex-direction: column; }
+  .y-numbers__art { display: none; }       /* декоративная графика на узком не нужна */
+  .y-numbers__stats { flex: 0 0 auto; width: 100%; }
+}
+
+/* ── Мобильный ≤ 767 ───────────────────────────────────────── */
+@media (max-width: 767px) {
+
+  .y-hero { padding-top: 48px; padding-bottom: 24px; }
+  .y-reasons,
+  .y-prima,
+  .y-how,
+  .y-outcomes,
+  .y-numbers,
+  .y-cta  { padding-top: 72px; padding-bottom: 72px; }
+  .y-one  { padding-top: 64px; padding-bottom: 64px; }
+
+  .y-reasons .icon-grid,
+  .y-outcomes .icon-grid { grid-template-columns: 1fr; }
+  .y-prima .fit-list__num { flex-basis: 56px; width: 56px; }
+  .y-prima .fit-list__row { gap: var(--space-sm); }
+
+  .y-cta .btn { width: 100%; text-align: center; }
+}
