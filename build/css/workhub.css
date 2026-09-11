@@ -57,7 +57,38 @@
   max-width: 940px;
 }
 
-.w-lead .tag-row { margin-top: var(--space-2xs); }
+.w-lead .tag-i-row { margin-top: var(--space-2xs); }
+
+/* ── 2 · Проблема ──────────────────────────────────────────────
+   Вариант A доски (решение пользователя 2026-09-11): текст и теги
+   с иконками слева, фото справа. Бриф WorkHub допускает фото только
+   как реальную отраслевую сцену — «руководитель проекта на объекте».
+   Пока кадра нет, стоит место под фото той же высоты; кадр встанет
+   картинкой с object-fit: cover (в Elementor — фон контейнера Cover). */
+
+.w-problem__row  { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); align-items: stretch; }
+.w-problem__text { display: flex; flex-direction: column; gap: var(--space-md); min-width: 0; }
+
+.w-problem__photo {
+  position: relative;
+  min-height: 460px;
+  background: var(--bg-warm);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.w-problem__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+.w-problem__photo-cap {
+  margin: var(--space-md);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-white);
+  border-left: var(--accent-rule) solid var(--color-accent);
+  font-size: 13px;
+  line-height: 1.4;
+  max-width: 420px;
+}
 
 /* ── 4 · Доказательство продукта ───────────────────────────────
    Четыре экрана из брифа — сеткой 2 × 2. Панели тянутся на всю
@@ -73,11 +104,12 @@
 .w-integrations__note { max-width: 940px; margin-top: var(--space-xl); }
 
 /* ── 6 · Доступ подрядчиков ────────────────────────────────────
-   Тёмная секция: два столбца текста и вывод под ними. */
+   Вариант B доски (решение пользователя 2026-09-11): текст и четыре
+   меры защиты тегами с иконками слева, экран прав доступа справа
+   (блок 44 — матрица внутри панели 35). */
 
-.w-access__cols { display: flex; gap: var(--col-gap); align-items: flex-start; }
-.w-access__cols > * { flex: 1 1 0; min-width: 0; }
-.w-access__close { margin-top: var(--space-2xl); max-width: 940px; }
+.w-access__row  { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); align-items: start; }
+.w-access__text { display: flex; flex-direction: column; gap: var(--space-md); min-width: 0; }
 
 /* ── 8 · Что даёт объединение ──────────────────────────────────
    Сравнение «до / после» и список выигрышей под ним. */
@@ -100,7 +132,9 @@
 
   .proof-grid { grid-template-columns: 1fr; }
 
-  .w-access__cols { flex-direction: column; }
+  .w-problem__row,
+  .w-access__row  { grid-template-columns: 1fr; }
+  .w-problem__photo { min-height: 0; aspect-ratio: 16 / 10; }
 }
 
 /* ── Мобильный ≤ 767 ───────────────────────────────────────── */

@@ -54,7 +54,7 @@
   max-width: 940px;
 }
 
-.p-own__lead .tag-row { margin-top: var(--space-2xs); }
+.p-own__lead .tag-i-row { margin-top: var(--space-2xs); }
 
 /* ── Планшет ≤ 1024 ────────────────────────────────────────── */
 @media (max-width: 1024px) {

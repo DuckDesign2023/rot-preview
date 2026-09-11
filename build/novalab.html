@@ -141,12 +141,12 @@
       <div class="l-lead" data-el="container">
         <p class="t-lead" data-el="text">No single AI model is best at everything.</p>
 
-        <div class="tag-row" data-el="container">
-          <span class="tag" data-el="text">Some are faster</span>
-          <span class="tag" data-el="text">Some reason better</span>
-          <span class="tag" data-el="text">Some write better</span>
-          <span class="tag" data-el="text">Some are cheaper</span>
-          <span class="tag" data-el="text">Some are better suited to sensitive workloads</span>
+        <div class="tag-i-row" data-el="container">
+          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 15H6l7-14v8h5l-7 14z"/></svg>Some are faster</span>
+          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>Some reason better</span>
+          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83l3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>Some write better</span>
+          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 6h18v12H3zm9 3a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3M7 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2z"/></svg>Some are cheaper</span>
+          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5zm0 6c1.4 0 2.8 1.1 2.8 2.5V11c.6 0 1.2.6 1.2 1.3v3.5c0 .6-.6 1.2-1.3 1.2H9.2c-.6 0-1.2-.6-1.2-1.3v-3.5c0-.6.6-1.2 1.2-1.2V9.5C9.2 8.1 10.6 7 12 7m0 1.2c-.8 0-1.5.5-1.5 1.3V11h3V9.5c0-.8-.7-1.3-1.5-1.3"/></svg>Some are better suited to sensitive workloads</span>
         </div>
 
         <p class="t-lead" data-el="text">NOVAlab is built as an orchestration platform rather than around dependency on one model vendor. Your applications and employees interact with NOVAlab. NOVAlab determines how the request should be handled, which capability is required and how it can be executed within the organisation's security and governance requirements.</p>
@@ -166,26 +166,34 @@
         <h2 class="t-h1 section-head__lead" data-el="heading">Your business data should not become somebody else's AI data.</h2>
       </div>
 
-      <div class="l-data__cols" data-el="container">
-        <div data-el="container">
+      <div class="l-data__row" data-el="container">
+        <div class="l-data__text" data-el="container">
           <p class="t-lead" data-el="text">NOVAlab puts a security and governance layer between your organisation and the underlying AI infrastructure. Instead of allowing individual features or applications to decide where data goes, model traffic is governed centrally.</p>
-        </div>
-        <div data-el="container">
           <p class="t-lead" data-el="text">For particularly sensitive workloads, self-hosted inference means prompts and responses remain within NOVAlab's own infrastructure, with no external AI provider in the model path.</p>
         </div>
-      </div>
 
-      <div class="l-data__close" data-el="container">
-        <div class="chain" data-el="container">
-          <span class="chain__step" data-el="text">Processing and storage in the EU</span>
-          <span class="chain__arrow" aria-hidden="true">&middot;</span>
-          <span class="chain__step" data-el="text">Residency control on model traffic</span>
-          <span class="chain__arrow" aria-hidden="true">&middot;</span>
-          <span class="chain__step" data-el="text">Self-hosted inference</span>
-          <span class="chain__arrow" aria-hidden="true">&middot;</span>
-          <span class="chain__step" data-el="text">Isolated by tenant</span>
-          <span class="chain__arrow" aria-hidden="true">&middot;</span>
-          <span class="chain__step" data-el="text">Not used to train shared models</span>
+        <!-- Блок 42 · периметр. Пять фактов из копии расставлены по местам:
+             внутри границы ЕС — арендаторы и инференс, на границе —
+             контроль резидентности, снаружи — внешние провайдеры. -->
+        <div class="perim" data-el="container" data-name="eu-perimeter">
+          <div class="perim__frame" data-el="container">
+            <div class="perim__top" data-el="container">
+              <span class="perim__label" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.5 12c-1.9 0-3.5 1.6-3.5 3.5c0 2.6 3.5 6.5 3.5 6.5s3.5-3.9 3.5-6.5c0-1.9-1.6-3.5-3.5-3.5m0 4.8c-.7 0-1.2-.6-1.2-1.2c0-.7.6-1.2 1.2-1.2s1.2.6 1.2 1.2c.1.6-.5 1.2-1.2 1.2M4 12V9c0 2.21 3.58 4 8 4c.57 0 1.13-.03 1.67-.09c-.42.78-.67 1.66-.67 2.59c0 .15 0 .31.03.46c-.34.04-.68.04-1.03.04c-4.42 0-8-1.79-8-4m0-5c0-2.21 3.58-4 8-4s8 1.79 8 4s-3.58 4-8 4s-8-1.79-8-4m11 13.71c-.93.19-1.94.29-3 .29c-4.42 0-8-1.79-8-4v-3c0 2.21 3.58 4 8 4c.5 0 1.03-.03 1.5-.07c.4.98.94 1.94 1.5 2.78"/></svg>Processing and storage in the EU</span>
+              <span class="perim__note" data-el="text">NOVAlab infrastructure</span>
+            </div>
+            <div class="perim__tenants" data-el="container">
+              <div class="perim__tenant perim__tenant--own" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17a2 2 0 0 0 2-2a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5a5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg>Your tenant</div>
+              <div class="perim__tenant" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17a2 2 0 0 0 2-2a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5a5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg>Tenant B</div>
+              <div class="perim__tenant" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 17a2 2 0 0 0 2-2a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5a5 5 0 0 1 5 5v2zm-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3"/></svg>Tenant C</div>
+            </div>
+            <div class="perim__flow" data-el="container"><span class="perim__flow-line" aria-hidden="true"></span><span data-el="text">Isolated by tenant</span></div>
+            <div class="perim__node" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1M9 5h1V3H9zm0 8h1v-2H9zm0 8h1v-2H9zM5 3v2h2V3zm0 8v2h2v-2zm0 8v2h2v-2z"/></svg>Self-hosted inference<span class="perim__note">No external AI provider in the model path</span></div>
+          </div>
+          <div class="perim__gate" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2c3.31 0 6 2.66 6 5.95C18 12.41 12 19 12 19S6 12.41 6 7.95C6 4.66 8.69 2 12 2m0 4a2 2 0 0 0-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2m8 13c0 2.21-3.58 4-8 4s-8-1.79-8-4c0-1.29 1.22-2.44 3.11-3.17l.64.91C6.67 17.19 6 17.81 6 18.5c0 1.38 2.69 2.5 6 2.5s6-1.12 6-2.5c0-.69-.67-1.31-1.75-1.76l.64-.91C18.78 16.56 20 17.71 20 19"/></svg>Residency control on model traffic</div>
+          <div class="perim__outside" data-el="icon-list">
+            <span><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12S6.47 2 12 2m3.59 5L12 10.59L8.41 7L7 8.41L10.59 12L7 15.59L8.41 17L12 13.41L15.59 17L17 15.59L13.41 12L17 8.41z"/></svg>External AI providers</span>
+            <span><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.07 15.87c.59-.56.93-1.19.93-1.87v2.8zM20 9c0 1.54-1.73 2.86-4.27 3.53l2.16 2.16C19.19 14 20 13.04 20 12zm0-2c0-2.21-3.58-4-8-4c-1.87 0-3.58.33-4.94.86l7 7C17.5 10.41 20 8.85 20 7M2.39 1.73L1.11 3l3.1 3.1c-.13.29-.21.59-.21.9c0 1.63 1.96 3.04 4.77 3.66l2.31 2.31C7.1 12.74 4 11.06 4 9v3c0 2.21 3.58 4 8 4c.69 0 1.35-.05 2-.13l1.66 1.68c-1.09.29-2.34.45-3.66.45c-4.42 0-8-1.79-8-4v3c0 2.21 3.58 4 8 4c2.31 0 4.38-.5 5.84-1.27l3 3l1.27-1.27z"/></svg>Not used to train shared models</span>
+          </div>
         </div>
       </div>
 
@@ -275,26 +283,21 @@
            акцентом, иначе десять одинаковых пилюль читаются как россыпь
            тегов, а не как путь. -->
       <div class="l-pipeline__plate" data-el="container" data-name="pipeline-chain">
-        <div class="chain" data-el="container">
-          <span class="chain__step chain__step--mark" data-el="text">Request</span>
-          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
-          <span class="chain__step" data-el="text">Guardian</span>
-          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
-          <span class="chain__step" data-el="text">Intent</span>
-          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
-          <span class="chain__step" data-el="text">Risk</span>
-          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
-          <span class="chain__step" data-el="text">AI Engine</span>
-          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
-          <span class="chain__step" data-el="text">Trust</span>
-          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
-          <span class="chain__step" data-el="text">Confidence</span>
-          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
-          <span class="chain__step" data-el="text">Memory</span>
-          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
-          <span class="chain__step" data-el="text">Audit</span>
-          <span class="chain__arrow" aria-hidden="true">&rarr;</span>
-          <span class="chain__step chain__step--mark" data-el="text">Trusted result / approved action</span>
+        <ol class="track" data-el="container" data-name="pipeline-track">
+          <li class="track__node track__node--end" data-el="container"><div class="track__rail" data-el="container"><i class="track__line"></i><span class="track__icon" data-el="icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2M6 9h12v2H6m8 3H6v-2h8m4-4H6V6h12"/></svg></span><i class="track__line"></i></div><div class="track__txt"><span class="track__num" data-el="text">In</span><span class="track__name" data-el="text">Request</span></div></li>
+          <li class="track__node" data-el="container"><div class="track__rail" data-el="container"><i class="track__line"></i><span class="track__icon" data-el="icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 11c0 5.55-3.84 10.74-9 12c-5.16-1.26-9-6.45-9-12V5l9-4l9 4zm-9 10c3.75-1 7-5.46 7-9.78V6.3l-7-3.12z"/></svg></span><i class="track__line"></i></div><div class="track__txt"><span class="track__num" data-el="text">01</span><span class="track__name" data-el="text">Guardian</span></div></li>
+          <li class="track__node" data-el="container"><div class="track__rail" data-el="container"><i class="track__line"></i><span class="track__icon" data-el="icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 2v2.07A8 8 0 0 0 4.07 11H2v2h2.07A8 8 0 0 0 11 19.93V22h2v-2.07A8 8 0 0 0 19.93 13H22v-2h-2.07A8 8 0 0 0 13 4.07V2m-2 4.08V8h2V6.09c2.5.41 4.5 2.41 4.92 4.91H16v2h1.91c-.41 2.5-2.41 4.5-4.91 4.92V16h-2v1.91C8.5 17.5 6.5 15.5 6.08 13H8v-2H6.09C6.5 8.5 8.5 6.5 11 6.08M12 11a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1"/></svg></span><i class="track__line"></i></div><div class="track__txt"><span class="track__num" data-el="text">02</span><span class="track__name" data-el="text">Intent</span></div></li>
+          <li class="track__node" data-el="container"><div class="track__rail" data-el="container"><i class="track__line"></i><span class="track__icon" data-el="icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg></span><i class="track__line"></i></div><div class="track__txt"><span class="track__num" data-el="text">03</span><span class="track__name" data-el="text">Risk</span></div></li>
+          <li class="track__node" data-el="container"><div class="track__rail" data-el="container"><i class="track__line"></i><span class="track__icon" data-el="icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64z"/></svg></span><i class="track__line"></i></div><div class="track__txt"><span class="track__num" data-el="text">04</span><span class="track__name" data-el="text">AI Engine</span></div></li>
+          <li class="track__node" data-el="container"><div class="track__rail" data-el="container"><i class="track__line"></i><span class="track__icon" data-el="icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m23 12l-2.44-2.78l.34-3.68l-3.61-.82l-1.89-3.18L12 3L8.6 1.54L6.71 4.72l-3.61.81l.34 3.68L1 12l2.44 2.78l-.34 3.69l3.61.82l1.89 3.18L12 21l3.4 1.46l1.89-3.18l3.61-.82l-.34-3.68zm-13 5l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg></span><i class="track__line"></i></div><div class="track__txt"><span class="track__num" data-el="text">05</span><span class="track__name" data-el="text">Trust</span></div></li>
+          <li class="track__node" data-el="container"><div class="track__rail" data-el="container"><i class="track__line"></i><span class="track__icon" data-el="icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8c0 2.4-1 4.5-2.7 6c-1.4-1.3-3.3-2-5.3-2s-3.8.7-5.3 2C5 16.5 4 14.4 4 12a8 8 0 0 1 8-8m2 1.89c-.38.01-.74.26-.9.65l-1.29 3.23l-.1.23c-.71.13-1.3.6-1.57 1.26c-.41 1.03.09 2.19 1.12 2.6s2.19-.09 2.6-1.12c.26-.66.14-1.42-.29-1.98l.1-.26l1.29-3.21l.01-.03c.2-.51-.05-1.09-.56-1.3c-.13-.05-.26-.07-.41-.07M10 6a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1M7 9a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1m10 0a1 1 0 0 0-1 1a1 1 0 0 0 1 1a1 1 0 0 0 1-1a1 1 0 0 0-1-1"/></svg></span><i class="track__line"></i></div><div class="track__txt"><span class="track__num" data-el="text">06</span><span class="track__name" data-el="text">Confidence</span></div></li>
+          <li class="track__node" data-el="container"><div class="track__rail" data-el="container"><i class="track__line"></i><span class="track__icon" data-el="icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4s8-1.79 8-4s-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg></span><i class="track__line"></i></div><div class="track__txt"><span class="track__num" data-el="text">07</span><span class="track__name" data-el="text">Memory</span></div></li>
+          <li class="track__node" data-el="container"><div class="track__rail" data-el="container"><i class="track__line"></i><span class="track__icon" data-el="icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m10 17l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9m-6-6a1 1 0 0 1 1 1a1 1 0 0 1-1 1a1 1 0 0 1-1-1a1 1 0 0 1 1-1m7 0h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"/></svg></span><i class="track__line"></i></div><div class="track__txt"><span class="track__num" data-el="text">08</span><span class="track__name" data-el="text">Audit</span></div></li>
+          <li class="track__node track__node--end" data-el="container"><div class="track__rail" data-el="container"><i class="track__line"></i><span class="track__icon" data-el="icon"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2m-2 15l-5-5l1.41-1.41L10 14.17l7.59-7.59L19 8z"/></svg></span><i class="track__line"></i></div><div class="track__txt"><span class="track__num" data-el="text">Out</span><span class="track__name" data-el="text">Trusted result / approved action</span></div></li>
+        </ol>
+        <div class="track__branch" data-el="container">
+          <div class="track__arc" aria-hidden="true"></div>
+          <div class="track__box" data-el="container"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m21.1 12.5l1.4 1.41l-6.53 6.59L12.5 17l1.4-1.41l2.07 2.08zM10 17l3 3H3v-2c0-2.21 3.58-4 8-4l1.89.11zm1-13a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4"/></svg><span data-el="text"><strong>Human approval</strong>High-risk or low-confidence actions</span></div>
         </div>
       </div>
 
@@ -364,14 +367,14 @@
         <div class="l-agents__text" data-el="container">
           <p class="t-lead" data-el="text">Agents designed around how your business works.</p>
 
-          <div class="tag-row" data-el="container">
-            <span class="tag" data-el="text">A sales agent</span>
-            <span class="tag" data-el="text">A research agent</span>
-            <span class="tag" data-el="text">A document agent</span>
-            <span class="tag" data-el="text">A compliance agent</span>
-            <span class="tag" data-el="text">A customer-service agent</span>
-            <span class="tag" data-el="text">A project agent</span>
-            <span class="tag" data-el="text">An internal knowledge agent</span>
+          <div class="tag-i-row" data-el="container">
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m16 11.78l4.24-7.33l1.73 1l-5.23 9.05l-6.51-3.75L5.46 19H22v2H2V3h2v14.54L9.5 8z"/></svg>A sales agent</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5l-1.5 1.5l-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16A6.5 6.5 0 0 1 3 9.5A6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14S14 12 14 9.5S12 5 9.5 5"/></svg>A research agent</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 9h5.5L13 3.5zM6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2m9 16v-2H6v2zm3-4v-2H6v2z"/></svg>A document agent</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m10 17l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9m-6-8L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5z"/></svg>A compliance agent</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1c-5 0-9 4-9 9v7a3 3 0 0 0 3 3h3v-8H5v-2a7 7 0 0 1 7-7a7 7 0 0 1 7 7v2h-4v8h4v1h-7v2h6a3 3 0 0 0 3-3V10c0-5-4.03-9-9-9"/></svg>A customer-service agent</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17 9H7V7h10m0 6H7v-2h10m-3 6H7v-2h7M12 3a1 1 0 0 1 1 1a1 1 0 0 1-1 1a1 1 0 0 1-1-1a1 1 0 0 1 1-1m7 0h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"/></svg>A project agent</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5c-1.65 0-3.35.3-4.75 1.05c-.1.05-.15.05-.25.05c-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1c1.11-.35 2.33-.5 3.5-.5c1.95 0 4.05.4 5.5 1.5c1.45-1.1 3.55-1.5 5.5-1.5c1.17 0 2.39.15 3.5.5c.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5c-.1 0-.15 0-.25-.05c-1.4-.75-3.1-1.05-4.75-1.05c-1.7 0-4.15.65-5.5 1.5M12 8v11.5c1.35-.85 3.8-1.5 5.5-1.5c1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5c-1.7 0-4.15.65-5.5 1.5m1 3.5c1.11-.68 2.6-1 4.5-1c.91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23q-2.655 0-4.5.84zm4.5.17c-1.71 0-3.21.26-4.5.79v1.69c1.11-.65 2.6-.99 4.5-.99c1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23m2.5 2.9c-.87-.16-1.71-.24-2.5-.24c-1.83 0-3.33.27-4.5.8v1.69c1.11-.66 2.6-.99 4.5-.99c1.04 0 1.88.08 2.5.24z"/></svg>An internal knowledge agent</span>
           </div>
 
           <p class="t-lead" data-el="text">Or an agent designed for a process unique to your organisation. Each can have its own responsibilities, memory, permissions, tools and level of autonomy.</p>
@@ -385,7 +388,7 @@
           <div class="ui-panel__bar" data-el="container">
             <span class="ui-panel__dot" aria-hidden="true"></span>
             <span class="ui-panel__name" data-el="text">Agent Studio</span>
-            <span class="ui-panel__status" data-el="text">draft · not deployed</span>
+            <span class="ui-panel__status" data-el="text">Draft</span>
           </div>
           <div class="ui-panel__body" data-el="container">
 
@@ -397,29 +400,23 @@
             <div class="ui-panel__rows" data-el="container">
               <div class="ui-panel__row" data-el="container">
                 <span class="ui-panel__key" data-el="text">Tools</span>
-                <span class="ui-panel__meta" data-el="text">document store · knowledge base · email</span>
+                <span class="ui-panel__meta" data-el="text">document store, knowledge base, email</span>
                 <span class="ui-panel__ok" data-el="text">4 granted</span>
               </div>
               <div class="ui-panel__row" data-el="container">
-                <span class="ui-panel__key" data-el="text">Memory</span>
-                <span class="ui-panel__meta" data-el="text">supplier history · scoped to tenant</span>
-                <span class="ui-panel__ok" data-el="text">on</span>
-              </div>
-              <div class="ui-panel__row" data-el="container">
                 <span class="ui-panel__key" data-el="text">Permissions</span>
-                <span class="ui-panel__meta" data-el="text">read · create · no delete</span>
-                <span class="ui-panel__ok" data-el="text">set</span>
+                <span class="ui-panel__meta" data-el="text">read, create, no delete</span>
+                <span class="ui-panel__ok" data-el="text">Set</span>
               </div>
               <div class="ui-panel__row" data-el="container">
                 <span class="ui-panel__key" data-el="text">Autonomy</span>
                 <span class="ui-panel__meta" data-el="text">rejection requires human approval</span>
-                <span class="ui-panel__ok" data-el="text">guarded</span>
+                <span class="ui-panel__ok" data-el="text">Guarded</span>
               </div>
             </div>
 
             <div class="ui-panel__result" data-el="container">
               <strong data-el="text">Review &amp; deploy agent</strong>
-              <span data-el="text">GOVERNED BY NOVALAB</span>
             </div>
 
           </div>

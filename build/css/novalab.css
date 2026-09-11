@@ -64,24 +64,33 @@
   max-width: 940px;
 }
 
-.l-lead .tag-row { margin-top: var(--space-2xs); }
+.l-lead .tag-i-row { margin-top: var(--space-2xs); }
 
 /* ── 3 · Данные ────────────────────────────────────────────────
-   Тёмная секция: два столбца текста и факты цепочкой под ними. */
+   Тёмная секция: текст слева, схема периметра (блок 42) справа.
+   Решение пользователя 2026-09-11 — вариант A доски. */
 
-.l-data__cols { display: flex; gap: var(--col-gap); align-items: flex-start; }
-.l-data__cols > * { flex: 1 1 0; min-width: 0; }
-.l-data__close { margin-top: var(--space-2xl); }
+.l-data__row  { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); align-items: start; }
+.l-data__text { display: flex; flex-direction: column; gap: var(--space-md); min-width: 0; }
 
 /* ── 5 · Конвейер ──────────────────────────────────────────────
-   Восемь ступеней из брифа. Цепочка стоит в тёплой плитке: десять
-   пилюль на голом белом читаются как россыпь тегов, а не как путь. */
+   Восемь ступеней из брифа — конвейер с иконками (блок 43) в тёплой
+   плитке и ветка к человеку от Risk и Confidence (вариант A доски).
+   Ветка раньше жила только в тексте под схемой. */
 
 .l-pipeline__plate {
   margin-top: var(--space-xl);
-  padding: var(--space-lg);
+  padding: 40px var(--space-lg);
   background: var(--bg-warm);
 }
+
+/* Колонки ветки = колонки конвейера (10 узлов). Скобка от центра
+   Risk (4-я колонка) до центра Confidence (7-я): при охвате четырёх
+   колонок центр крайней — это 12.5 % от ширины охвата. */
+.l-pipeline .track__branch { grid-template-columns: repeat(10, minmax(0, 1fr)); }
+.l-pipeline .track__arc,
+.l-pipeline .track__box    { grid-column: 4 / 8; }
+.l-pipeline .track__arc    { margin-inline: 12.5%; }
 
 .l-pipeline__note { margin-top: var(--space-md); max-width: 940px; }
 
@@ -115,8 +124,9 @@
 
   .hero__visual--diagram { padding: var(--space-md); }
 
-  .l-data__cols,
+  .l-data__row   { grid-template-columns: 1fr; }
   .l-agents__row { flex-direction: column; }
+  .l-pipeline__plate { padding: var(--space-lg) var(--space-sm); }
 }
 
 /* ── Мобильный ≤ 767 ───────────────────────────────────────── */
@@ -133,7 +143,7 @@
   .l-vendor { padding-top: 64px; padding-bottom: 64px; }
 
   .hero__visual--diagram { padding: var(--space-sm); }
-  .l-pipeline__plate     { padding: var(--space-md); }
+  .l-pipeline__plate     { padding: var(--space-md) var(--space-sm); }
 
   .l-cta .btn { width: 100%; text-align: center; }
 }
