@@ -80,6 +80,7 @@
     .pv-exp__label { color: var(--gray-500); font-size: 14px; }
     .pv-exp__media { background: var(--bg-warm); aspect-ratio: 1216 / 896; overflow: hidden; }
     .pv-exp__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pv-exp__media--low { aspect-ratio: 2 / 1; }
     .pv-exp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 
     @media (max-width: 1024px) {
@@ -102,7 +103,64 @@
     <span class="badge">Выбор варианта</span>
     <h1 class="t-h1">NOVA — Product proof и Expertise</h1>
     <p class="t-lead">Две секции страницы NOVA for Salesforce. У каждой — как сейчас и варианты. <strong>На страницу ничего из этого не поставлено</strong> — жду выбора или комментариев.</p>
-    <p class="t-body">Уже сделано на странице по вашим правкам: герой — иллюстрация вместо схемы экрана; конвейер в How it works выровнен по левому краю абзаца.</p>
+    <p class="t-body">Уже на странице: герой с иллюстрацией, конвейер How it works по левому краю, Product proof — лента «запрос → результат» (вариант A), Expertise — кадр 1. <strong>Новое на выбор — The problem</strong> (первый блок ниже).</p>
+  </div>
+
+
+  <!-- ════════════════ THE PROBLEM ════════════════ -->
+  <div class="board__block">
+    <div class="board__head">
+      <h2 class="t-h2">The problem — «Salesforce shouldn't require a consultant every time…»</h2>
+      <p class="t-body board__why">Сейчас справа от текста и тегов пусто. Кадр невысокий (2 : 1), чтобы секция не вытягивалась: слева копится очередь запросов перед закрытыми воротами, справа один запрос проходит напрямую и становится готовым модулем. Сравнение «старый путь / NOVA» остаётся под этим рядом без изменений.</p>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag board__tag--after">Раскладка</span><span class="board__note">с первым кадром для примера</span></div>
+      <section class="section">
+        <div class="section__inner">
+          <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">The problem</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Salesforce shouldn't require a consultant every time you want to change something.</h2>
+      </div>
+          <div class="pv-exp">
+      <div class="n-problem__lead" data-el="container">
+        <p class="t-lead" data-el="text">Traditionally, even relatively straightforward changes can end up in a development backlog.</p>
+
+        <div class="tag-i-row n-problem__asks" data-el="container">
+          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.99.99 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88zM12 4.15L6.04 7.5L12 10.85l5.96-3.35z"/></svg>A new object</span>
+          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 2v6h2v3H5c-1.11 0-2 .89-2 2v3H1v6h6v-6H5v-3h6v3H9v6h6v-6h-2v-3h6v3h-2v6h6v-6h-2v-3c0-1.11-.89-2-2-2h-6V8h2V2z"/></svg>A Flow</span>
+          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m23 12l-2.44-2.78l.34-3.68l-3.61-.82l-1.89-3.18L12 3L8.6 1.54L6.71 4.72l-3.61.81l.34 3.68L1 12l2.44 2.78l-.34 3.69l3.61.82l1.89 3.18L12 21l3.4 1.46l1.89-3.18l3.61-.82l-.34-3.68zm-13 5l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9z"/></svg>A validation rule</span>
+          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17 7h5v10h-5v2a1 1 0 0 0 1 1h2v2h-2.5c-.55 0-1.5-.45-1.5-1c0 .55-.95 1-1.5 1H12v-2h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-2V2h2.5c.55 0 1.5.45 1.5 1c0-.55.95-1 1.5-1H20v2h-2a1 1 0 0 0-1 1zM2 7h11v2H4v6h9v2H2zm18 8V9h-3v6z"/></svg>A field</span>
+          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 3a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2H3v2h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h2v-2H8v-5a2 2 0 0 0-2-2a2 2 0 0 0 2-2V5h2V3m6 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2a2 2 0 0 1-2-2V5h-2V3z"/></svg>An Apex class</span>
+          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 15H6l7-14v8h5l-7 14z"/></svg>An automation</span>
+          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 11h-3.18C14.4 9.84 13.3 9 12 9s-2.4.84-2.82 2H6c-.33 0-2-.1-2-2V8c0-1.83 1.54-2 2-2h10.18C16.6 7.16 17.7 8 19 8a3 3 0 0 0 3-3a3 3 0 0 0-3-3c-1.3 0-2.4.84-2.82 2H6C4.39 4 2 5.06 2 8v1c0 2.94 2.39 4 4 4h3.18c.42 1.16 1.52 2 2.82 2s2.4-.84 2.82-2H18c.33 0 2 .1 2 2v1c0 1.83-1.54 2-2 2H7.82C7.4 16.84 6.3 16 5 16a3 3 0 0 0-3 3a3 3 0 0 0 3 3c1.3 0 2.4-.84 2.82-2H18c1.61 0 4-1.07 4-4v-1c0-2.93-2.39-4-4-4m1-7a1 1 0 0 1 1 1a1 1 0 0 1-1 1a1 1 0 0 1-1-1a1 1 0 0 1 1-1M5 20a1 1 0 0 1-1-1a1 1 0 0 1 1-1a1 1 0 0 1 1 1a1 1 0 0 1-1 1"/></svg>A new business process</span>
+        </div>
+
+        <p class="t-lead" data-el="text">With NOVA for Salesforce, you describe what you need. The platform translates that intent into Salesforce configuration, automation or code. You review it. You stay in control. Then you deploy.</p>
+      </div>
+            <div class="pv-exp__media pv-exp__media--low"><img src="../assets/board-illu/in-problem-1.webp" alt="The problem, кадр 1"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="board__stage">
+      <div class="board__label"><span class="board__tag">Кадры на выбор</span></div>
+      <div class="board__now">
+        <div class="pv-exp-grid">
+          <div>
+            <div class="pv-exp__media pv-exp__media--low"><img src="../assets/board-illu/in-problem-1.webp" alt="The problem, кадр 1"></div>
+            <p class="board__note" style="margin-top:10px"><strong>1</strong> — рекомендую: слева очередь запросов перед воротами с песочными часами, справа один запрос проходит напрямую к красному модулю. Композиция уравновешена и хорошо ложится в низкий кадр.</p>
+            <span class="board__path">C:\Users\fartv\agents\WP-Elementor\projects\redorange\assets\_src\board-illu2\problem-1-bgfix.png</span>
+          </div>
+          <div>
+            <div class="pv-exp__media pv-exp__media--low"><img src="../assets/board-illu/in-problem-2.webp" alt="The problem, кадр 2"></div>
+            <p class="board__note" style="margin-top:10px"><strong>2</strong> — очередь и ворота обрезаны краями кадра, композиция разваливается.</p>
+            <span class="board__path">C:\Users\fartv\agents\WP-Elementor\projects\redorange\assets\_src\board-illu2\problem-2-bgfix.png</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ════════════════ PRODUCT PROOF ════════════════ -->
