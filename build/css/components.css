@@ -3423,3 +3423,45 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 @media (max-width: 1024px) {
   .person-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-md); }
 }
+
+/* ══ 47. AREAS — области продукта словами, без интерфейса ══════════
+   Решение пользователя 2026-09-14 после двух отклонённых заходов.
+   Секция «Product proof» на WorkHub была сеткой из четырёх нарисованных
+   экранов с выдуманными данными. Чтобы понять строку «Design · wk 12–18 ·
+   4 people · Done», читатель должен расшифровать чужой проект — на странице
+   продукта этого никто не делает. Обе попытки причесать таблицу пользователь
+   отклонил с одной формулировкой: «всё равно сложно для понимания».
+
+   Здесь данных нет вовсе. Строка = иконка + название области + одна фраза
+   обычными словами + теги того, что внутри (блок 41). Отличается от icon-grid
+   (блок 22), который на этой же странице стоит дважды: там плитки в сетке,
+   здесь широкие строки с волосяной линией — ритм другой, и секции не сливаются.
+
+   Elementor: контейнер column → по контейнеру на строку (Grid 3 колонки:
+   48 / 300 / 1fr, Align Items Start, Border Bottom 1 px Hairline).      */
+
+.areas { border-top: var(--border-width) solid var(--hairline); }
+
+.area {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 300px) minmax(0, 1fr);
+  gap: var(--space-md);
+  align-items: start;
+  padding: 28px 0;
+  border-bottom: var(--border-width) solid var(--hairline);
+}
+
+.area__ico  { width: 28px; height: 28px; color: var(--color-accent); flex: 0 0 auto; }
+.area__body { display: flex; flex-direction: column; gap: var(--space-sm); }
+
+@media (max-width: 1024px) {
+  /* Иконка остаётся колонкой, название и текст встают друг под другом:
+     при 300 px на название и 1fr на текст последний сжимался до 40 знаков. */
+  .area { grid-template-columns: 40px minmax(0, 1fr); }
+  .area__body { grid-column: 2; }
+}
+
+@media (max-width: 767px) {
+  .area { grid-template-columns: 1fr; gap: var(--space-sm); padding: 24px 0; }
+  .area__body { grid-column: auto; }
+}

@@ -84,11 +84,11 @@
 .w-problem__photo img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 /* ── 4 · Доказательство продукта ───────────────────────────────
-   Четыре экрана из брифа — сеткой 2 × 2. Панели тянутся на всю
-   высоту ячейки, чтобы низ у пары совпадал. */
+   Блок 47 areas: четыре области словами, без интерфейса и цифр
+   (решение пользователя 2026-09-14). Сетка 2 × 2 из нарисованных
+   экранов убрана вместе с .proof-grid. */
 
-.proof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--col-gap); }
-.proof-grid .ui-panel { height: 100%; }
+.w-proof .areas { margin-top: var(--space-xl); }
 
 /* ── 5 · Интеграции ────────────────────────────────────────────
    Диаграмма «центр и системы вокруг» (блок 38) и пример под ней. */
@@ -130,8 +130,6 @@
   .w-access       { padding-top: 80px;  padding-bottom: 80px; }
   .w-gains        { padding-top: 96px;  padding-bottom: 112px; }
   .w-cta          { padding-top: 112px; padding-bottom: 112px; }
-
-  .proof-grid { grid-template-columns: 1fr; }
 
   .w-problem__row,
   .w-access__row  { grid-template-columns: 1fr; }
