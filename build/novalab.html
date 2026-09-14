@@ -138,20 +138,31 @@
         <h2 class="t-h1 section-head__lead" data-el="heading">One AI platform. Multiple models. One governed layer.</h2>
       </div>
 
-      <div class="l-lead" data-el="container">
-        <p class="t-lead" data-el="text">No single AI model is best at everything.</p>
+      <!-- Текст слева, иллюстрация справа (решение пользователя 2026-09-14):
+           до этого лид шёл одним столбцом, и правая половина секции пустовала.
+           Кадр соблюдает правило брифа — ни одной прямой линии от данных
+           к моделям, всё проходит через слой NOVAlab. -->
+      <div class="l-orchestr__row" data-el="container">
+        <div class="l-lead" data-el="container">
+          <p class="t-lead" data-el="text">No single AI model is best at everything.</p>
 
-        <div class="tag-i-row" data-el="container">
-          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 15H6l7-14v8h5l-7 14z"/></svg>Some are faster</span>
-          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>Some reason better</span>
-          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83l3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>Some write better</span>
-          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 6h18v12H3zm9 3a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3M7 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2z"/></svg>Some are cheaper</span>
-          <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5zm0 6c1.4 0 2.8 1.1 2.8 2.5V11c.6 0 1.2.6 1.2 1.3v3.5c0 .6-.6 1.2-1.3 1.2H9.2c-.6 0-1.2-.6-1.2-1.3v-3.5c0-.6.6-1.2 1.2-1.2V9.5C9.2 8.1 10.6 7 12 7m0 1.2c-.8 0-1.5.5-1.5 1.3V11h3V9.5c0-.8-.7-1.3-1.5-1.3"/></svg>Some are better suited to sensitive workloads</span>
+          <div class="tag-i-row" data-el="container">
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 15H6l7-14v8h5l-7 14z"/></svg>Some are faster</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>Some reason better</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83l3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>Some write better</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 6h18v12H3zm9 3a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3M7 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2z"/></svg>Some are cheaper</span>
+            <span class="tag-i" data-el="icon-list"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5zm0 6c1.4 0 2.8 1.1 2.8 2.5V11c.6 0 1.2.6 1.2 1.3v3.5c0 .6-.6 1.2-1.3 1.2H9.2c-.6 0-1.2-.6-1.2-1.3v-3.5c0-.6.6-1.2 1.2-1.2V9.5C9.2 8.1 10.6 7 12 7m0 1.2c-.8 0-1.5.5-1.5 1.3V11h3V9.5c0-.8-.7-1.3-1.5-1.3"/></svg>Some are better suited to sensitive workloads</span>
+          </div>
+
+          <p class="t-lead" data-el="text">NOVAlab is built as an orchestration platform rather than around dependency on one model vendor. Your applications and employees interact with NOVAlab. NOVAlab determines how the request should be handled, which capability is required and how it can be executed within the organisation's security and governance requirements.</p>
+
+          <p class="t-lead" data-el="text">The architecture uses intent classification and orchestration to route work to real capabilities, including research, document generation, structured extraction, vision and governed agents.</p>
         </div>
 
-        <p class="t-lead" data-el="text">NOVAlab is built as an orchestration platform rather than around dependency on one model vendor. Your applications and employees interact with NOVAlab. NOVAlab determines how the request should be handled, which capability is required and how it can be executed within the organisation's security and governance requirements.</p>
-
-        <p class="t-lead" data-el="text">The architecture uses intent classification and orchestration to route work to real capabilities, including research, document generation, structured extraction, vision and governed agents.</p>
+        <div class="l-illu" data-el="image" data-name="orchestration-illu">
+          <img src="../assets/illu-nl-orch.webp" width="1600" height="1200" loading="lazy"
+               alt="Illustration: one request passes into a single red governed layer, which connects separately to five different models">
+        </div>
       </div>
 
     </div>
@@ -381,45 +392,12 @@
           <p class="t-lead" data-el="text">And because they operate on the NOVAlab platform, they inherit the same governance and security architecture.</p>
         </div>
 
-        <!-- Схема Agent Studio. Бриф просит здесь настоящий скриншот —
-             его у нас пока нет, поэтому стоит схема экрана в языке
-             дизайн-системы; замена на картинку раскладку не меняет. -->
-        <div class="ui-panel ui-panel--light" data-el="container" data-name="agent-studio-panel">
-          <div class="ui-panel__bar" data-el="container">
-            <span class="ui-panel__dot" aria-hidden="true"></span>
-            <span class="ui-panel__name" data-el="text">Agent Studio</span>
-            <span class="ui-panel__status" data-el="text">Draft</span>
-          </div>
-          <div class="ui-panel__body" data-el="container">
-
-            <div class="ui-panel__prompt" data-el="container">
-              <span class="ui-panel__caret" aria-hidden="true">&rsaquo;</span>
-              <p data-el="text">A compliance agent that reviews supplier documents, flags missing certificates and asks a human before rejecting anything.</p>
-            </div>
-
-            <div class="ui-panel__rows" data-el="container">
-              <div class="ui-panel__row" data-el="container">
-                <span class="ui-panel__key" data-el="text">Tools</span>
-                <span class="ui-panel__meta" data-el="text">document store, knowledge base, email</span>
-                <span class="ui-panel__ok" data-el="text">4 granted</span>
-              </div>
-              <div class="ui-panel__row" data-el="container">
-                <span class="ui-panel__key" data-el="text">Permissions</span>
-                <span class="ui-panel__meta" data-el="text">read, create, no delete</span>
-                <span class="ui-panel__ok" data-el="text">Set</span>
-              </div>
-              <div class="ui-panel__row" data-el="container">
-                <span class="ui-panel__key" data-el="text">Autonomy</span>
-                <span class="ui-panel__meta" data-el="text">rejection requires human approval</span>
-                <span class="ui-panel__ok" data-el="text">Guarded</span>
-              </div>
-            </div>
-
-            <div class="ui-panel__result" data-el="container">
-              <strong data-el="text">Review &amp; deploy agent</strong>
-            </div>
-
-          </div>
+        <!-- Иллюстрация вместо схемы экрана (решение пользователя 2026-09-14).
+             Бриф просит здесь настоящий скриншот Agent Studio — его нет,
+             а нарисованная панель показывала выдуманного агента. -->
+        <div class="l-illu" data-el="image" data-name="agent-studio-illu">
+          <img src="../assets/illu-nl-agents.webp" width="1600" height="1200" loading="lazy"
+               alt="Illustration: a red agent unit being assembled from parts — memory, an access key, a tool and an autonomy gate">
         </div>
 
       </div>

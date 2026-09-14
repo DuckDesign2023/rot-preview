@@ -66,6 +66,22 @@
 
 .l-lead .tag-i-row { margin-top: var(--space-2xs); }
 
+/* ── 2 · Оркестровка: лид + иллюстрация ───────────────────────
+   Решение пользователя 2026-09-14: лид шёл одним столбцом 940 px,
+   и правая половина секции пустовала. Теперь два равных столбца,
+   кадр прижат к верху, как текст.
+
+   Кадр иллюстрации — общий для секций NOVAlab (Orchestration, Agent
+   Studio): подложка Warm White, пропорция 4 : 3, кадр вписан целиком.
+   Фон картинки выровнен до одного цвета с подложкой, поля не видны.
+   Elementor: контейнер Warm White → Image, Fit Contain, Aspect 4 : 3. */
+
+.l-orchestr__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); align-items: start; }
+.l-orchestr__row .l-lead { max-width: none; min-width: 0; }
+
+.l-illu { background: var(--bg-warm); aspect-ratio: 4 / 3; overflow: hidden; }
+.l-illu img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
 /* ── 3 · Данные ────────────────────────────────────────────────
    Тёмная секция: текст слева, схема периметра (блок 42) справа.
    Решение пользователя 2026-09-11 — вариант A доски. */
@@ -95,8 +111,9 @@
 .l-pipeline__note { margin-top: var(--space-md); max-width: 940px; }
 
 /* ── 7 · Агенты ────────────────────────────────────────────────
-   Ряд «текст и типы агентов слева / схема Agent Studio справа».
-   Пропорция 1 : 1, как в паре how-row. */
+   Ряд «текст и типы агентов слева / иллюстрация справа». Пропорция 1 : 1.
+   2026-09-14 схема экрана Agent Studio (блок 35) заменена иллюстрацией
+   .l-illu: настоящего скриншота нет, а панель показывала выдуманного агента. */
 
 .l-agents__row {
   display: flex;
@@ -125,7 +142,11 @@
   .hero__visual--diagram { padding: var(--space-md); }
 
   .l-data__row   { grid-template-columns: 1fr; }
+  .l-orchestr__row { grid-template-columns: 1fr; }
   .l-agents__row { flex-direction: column; }
+  /* В колонке flex-basis 0 побеждает aspect-ratio, и кадр схлопывался
+     в нулевую высоту (тот же случай, что с финальным сплитом, блок 11). */
+  .l-agents__row > * { flex: 0 0 auto; }
   .l-pipeline__plate { padding: var(--space-lg) var(--space-sm); }
 }
 
