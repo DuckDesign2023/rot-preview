@@ -22,12 +22,10 @@
 .y-hero .hero-split { align-items: center; }
 .y-hero .hero-split__visual { aspect-ratio: 4 / 3; }
 
-/* Иллюстрация вместо фото рабочей сессии (решение пользователя 2026-09-14):
-   прежний снимок повторялся здесь и на Staff Augmentation. Кадр вписан
-   целиком — его тёплый фон совпадает с подложкой, поэтому поля не видны.
-   Elementor: контейнер Warm White → Image, Fit Contain. */
-.y-hero .hero-split__visual--illu { background: var(--bg-warm); }
-.y-hero .hero-split__visual--illu > img { width: 100%; height: 100%; object-fit: contain; }
+/* Герой снова фотография (решение пользователя 2026-09-14, второй заход:
+   «в таких блоках должны быть фотографии»). Стоит реальный снимок офиса
+   клиента; он же есть на Salesforce и Staff Augmentation — повтор принят
+   осознанно, настоящее фото компании лучше стока. Fit Cover, aspect 4 : 3. */
 
 /* ── Общий лид секции ──────────────────────────────────────── */
 .y-lead { display: flex; flex-direction: column; gap: var(--space-md); max-width: 940px; }
