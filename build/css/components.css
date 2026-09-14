@@ -2333,10 +2333,22 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   .split--sticky .split__panel { position: static; }
   .split--sticky .split__media { height: auto; min-height: 320px; align-self: stretch; }
 
+  /* Иллюстрация финального блока — портрет 3 : 4. В полосе высотой 320 от неё
+     оставалась тонкая горизонтальная вырезка, поэтому на стопке кадр вписан
+     целиком в поле 4 : 3: фон иллюстрации совпадает с подложкой, и поля
+     по бокам не читаются рамкой. Основа flex снята: в колонке flex-basis 0
+     побеждает пропорцию, и кадр схлопывался в нулевую высоту. */
+  .split--sticky .split__media--illu { flex: 0 0 auto; min-height: 0; aspect-ratio: 4 / 3; }
+  .split--sticky .split__media--illu > img { object-fit: contain; }
+
   .partner-grid--tiles { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (max-width: 767px) {
+  /* На телефоне поле отдано кадру целиком: его собственная пропорция 3 : 4,
+     и в поле 4 : 3 от ширины экрана ему доставалась половина. */
+  .split--sticky .split__media--illu { aspect-ratio: 3 / 4; }
+
   .partner-grid--tiles { grid-template-columns: repeat(3, 1fr); gap: var(--space-md) var(--space-2xs); }
   .partner-grid--tiles .partner-grid__cell { min-height: 76px; }
   .partner-grid--tiles .partner-grid__cell img { height: 32px; }
@@ -2709,6 +2721,14 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 .versus__note  { color: var(--gray-500); margin-top: auto; }
 .versus__panel--now .versus__note { color: var(--ui-dim); }
 .versus__panel--now .t-h3 { color: var(--color-white); }
+
+/* Кадр внутри панели (решение пользователя 2026-09-14). Раньше панели были
+   только из тегов, и правая «With WorkHub» с одним тегом смотрелась пустой.
+   Пропорция 3 : 2, кадр во всю ширину панели. На тёмной панели светлый фон
+   иллюстрации читается карточкой — так и задумано, тёмной версии не делаем.
+   Elementor: виджет Image, Object Fit Cover, Aspect Ratio 3 : 2. */
+.versus__media { background: var(--bg-warm); aspect-ratio: 3 / 2; overflow: hidden; }
+.versus__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ══ 38. HUB — центр и системы вокруг ══════════════════════════
    Диаграмма интеграций: продукт в центре, вокруг — системы, которыми
