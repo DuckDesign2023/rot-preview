@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Фотографии вместо иллюстраций | Red Orange Technologies</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .board { padding: 64px 40px 120px; max-width: 1440px; margin: 0 auto; }
+    .board__intro { max-width: 900px; display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+    .board__sec { border-top: 1px solid var(--hairline); padding-top: 40px; margin-top: 56px; }
+    .board__sec-head { display: flex; flex-direction: column; gap: 10px; max-width: 900px; margin-bottom: 22px; }
+    .board__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .board__cell { display: flex; flex-direction: column; gap: 9px; }
+    .board__frame { aspect-ratio: 3 / 4; overflow: hidden; background: var(--gray-100); }
+    .board__frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .board__frame--wide { aspect-ratio: 4 / 3; }
+    .board__tag { font-family: var(--font-badge); font-size: 12px; font-weight: 600; line-height: 1; padding: 6px 10px; border-radius: 100px; background: var(--gray-100); align-self: flex-start; }
+    .board__tag--pick { background: var(--color-accent); color: #fff; }
+    .board__tag--warn { background: #FDECE8; color: #9B2B13; }
+    .board__note { color: var(--gray-500); font-size: 14px; }
+    .board__warn { border-left: 3px solid var(--color-accent); padding: 14px 18px; background: var(--bg-warm); max-width: 900px; }
+    @media (max-width: 1024px) { .board__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 767px) { .board { padding: 40px 20px 72px; } .board__grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="board">
+
+  <div class="board__intro">
+    <span class="badge">Выбор варианта</span>
+    <h1 class="t-h1">Фотографии в финальный блок</h1>
+    <p class="t-lead">Кадры показаны в пропорции самого блока — 3 : 4, как они встанут на странице. Ничего не куплено и не поставлено: это превью из стока, полноразмерные файлы скачиваю только под ваш выбор.</p>
+    <div class="board__warn">
+      <p class="t-body"><strong>Одну вещь стоит сказать прямо.</strong> Стандартная деловая фотосъёмка — улыбающиеся люди у флипчарта, «команда смотрит в ноутбук» — рядом с вашими настоящими снимками из офиса в Пуне выглядит подделкой, и её сразу видно. Поэтому я её не предлагаю. Вместо неё два честных источника: <strong>норвежские места</strong> (на главной уже стоят горы, в подвале фьорд — это и есть фотоязык сайта) и <strong>реальная рабочая среда</strong> — стройка, серверная, рабочее место разработчика.</p>
+    </div>
+  </div>
+
+  <!-- ══ Products ═══════════════════════════════════════════════════ -->
+  <div class="board__sec" style="border-top:0; margin-top:0; padding-top:0">
+    <div class="board__sec-head">
+      <span class="badge">Products</span>
+      <h2 class="t-h2">«Use our products. Or let us build yours.»</h2>
+    </div>
+    <div class="board__grid">
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/p-kragero.webp" alt=""></div><span class="board__tag board__tag--pick">рекомендую</span><span class="board__note">Крагерё, Телемарк: дома на скале у воды. Узнаваемо норвежское, без открыточности.</span></div>
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/p-rovaer.webp" alt=""></div><span class="board__tag">вариант</span><span class="board__note">Ровер под Хаугесунном — посёлок и причал в пасмурном свете.</span></div>
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/p-oslo.webp" alt=""></div><span class="board__tag">вариант</span><span class="board__note">Осло, набережная у Акерсхуса. Городской, деловой тон.</span></div>
+    </div>
+  </div>
+
+  <!-- ══ About us ════════════════════════════════════════════════════ -->
+  <div class="board__sec">
+    <div class="board__sec-head">
+      <span class="badge">About us</span>
+      <h2 class="t-h2">«Built on experience. Growing through expertise.»</h2>
+    </div>
+    <div class="board__grid">
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/p-bergen.webp" alt=""></div><span class="board__tag board__tag--pick">рекомендую</span><span class="board__note">Берген сверху: город, порт, вода. Читается как «компания в Норвегии», а не как абстрактный пейзаж.</span></div>
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/p-hammerfest.webp" alt=""></div><span class="board__tag">вариант</span><span class="board__note">Хаммерфест, Финнмарк — северный город под тяжёлым небом.</span></div>
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/p-alesund.webp" alt=""></div><span class="board__tag">вариант</span><span class="board__note">Олесунн: дома на берегу, горы за ними.</span></div>
+    </div>
+  </div>
+
+  <!-- ══ Why us ══════════════════════════════════════════════════════ -->
+  <div class="board__sec">
+    <div class="board__sec-head">
+      <span class="badge">Why us</span>
+      <h2 class="t-h2">«Let's solve what comes next»</h2>
+    </div>
+    <div class="board__grid">
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/p-nusfjord.webp" alt=""></div><span class="board__tag board__tag--pick">рекомендую</span><span class="board__note">Нусфьорд, Лофотены: посёлок в складке скал.</span></div>
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/p-reine.webp" alt=""></div><span class="board__tag">вариант</span><span class="board__note">Рейне. Самый эффектный кадр и самый «обойный» — такой вид встречается часто.</span></div>
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/p-rovaer.webp" alt=""></div><span class="board__tag">вариант</span><span class="board__note">Ровер, если Products уйдёт на Крагерё.</span></div>
+    </div>
+  </div>
+
+  <!-- ══ WorkHub ═════════════════════════════════════════════════════ -->
+  <div class="board__sec">
+    <div class="board__sec-head">
+      <span class="badge">WorkHub</span>
+      <h2 class="t-h2">«Your projects already have enough complexity»</h2>
+      <p class="t-body">Здесь фотография работает лучше всего: у WorkHub заказчики — проектные компании, стройка и промышленность.</p>
+    </div>
+    <div class="board__grid">
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/w-plant.webp" alt=""></div><span class="board__tag board__tag--pick">рекомендую</span><span class="board__note">Двое на промышленной площадке в сумерках, планшет в руках. Снято как работа, а не как постановка.</span></div>
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/w-tablet.webp" alt=""></div><span class="board__tag">вариант</span><span class="board__note">Инженер с планшетом на фоне стройки.</span></div>
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/w-manager.webp" alt=""></div><span class="board__tag">вариант</span><span class="board__note">Руководитель на объекте с планшетом, техника за спиной.</span></div>
+    </div>
+  </div>
+
+  <!-- ══ NOVAlab ═════════════════════════════════════════════════════ -->
+  <div class="board__sec">
+    <div class="board__sec-head">
+      <span class="badge">NOVAlab</span>
+      <h2 class="t-h2">«Enterprise AI without enterprise paralysis»</h2>
+      <p class="t-body">Почти весь сток про ИИ — синее свечение и «мозги в проводах», это прямо запрещено брифом. Осталось два кадра с нормальным светом.</p>
+    </div>
+    <div class="board__grid">
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/n-corridor.webp" alt=""></div><span class="board__tag board__tag--pick">рекомендую</span><span class="board__note">Коридор серверной при обычном свете: инфраструктура как она есть, без подсветки.</span></div>
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/n-bw.webp" alt=""></div><span class="board__tag">вариант</span><span class="board__note">Тот же сюжет почти без цвета — строже, но холоднее остального сайта.</span></div>
+    </div>
+  </div>
+
+  <!-- ══ NOVA + AI & Product Dev ═════════════════════════════════════ -->
+  <div class="board__sec">
+    <div class="board__sec-head">
+      <span class="badge board__tag--warn">Слабое место</span>
+      <h2 class="t-h2">NOVA for Salesforce и AI &amp; Product Development</h2>
+      <p class="t-body">Вот с этими двумя честно плохо. Их предмет — софт, а фотография софта в стоке сводится к «код на экране». Такой кадр ничего не сообщает, но хотя бы не врёт. Три варианта на обе страницы — или скажите, и я оставлю на этих двух иллюстрации, а фотографии поставлю на остальные пять.</p>
+    </div>
+    <div class="board__grid">
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/d-desk.webp" alt=""></div><span class="board__tag">вариант</span><span class="board__note">Рабочее место разработчика: несколько мониторов, вечерний свет.</span></div>
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/d-coder.webp" alt=""></div><span class="board__tag">вариант</span><span class="board__note">Крупно: руки и экран с кодом.</span></div>
+      <div class="board__cell"><div class="board__frame"><img src="../assets/board-photo/d-screen.webp" alt=""></div><span class="board__tag">вариант</span><span class="board__note">Экран с кодом без людей.</span></div>
+    </div>
+  </div>
+
+  <!-- ══ Два кадра не в финальном блоке ══════════════════════════════ -->
+  <div class="board__sec">
+    <div class="board__sec-head">
+      <span class="badge">Ещё два места</span>
+      <h2 class="t-h2">Герой Why us и WorkHub → The problem</h2>
+      <p class="t-body">Оба раньше были фотографиями, и оба я заменил иллюстрациями. Возвращаю фотографии. Пропорция здесь 4 : 3.</p>
+    </div>
+    <div class="board__grid">
+      <div class="board__cell"><div class="board__frame board__frame--wide"><img src="../assets/staff-office.webp" alt=""></div><span class="board__tag board__tag--pick">Why us, герой</span><span class="board__note">Ваш собственный снимок офиса. Сейчас стоит на Salesforce и Staff Augmentation — третье появление, но это реальное фото компании, а не сток.</span></div>
+      <div class="board__cell"><div class="board__frame board__frame--wide"><img src="../assets/board-photo/w-tablet.webp" alt=""></div><span class="board__tag board__tag--pick">WorkHub, The problem</span><span class="board__note">Ровно то, что просил бриф: руководитель на объекте, планшет в руках.</span></div>
+      <div class="board__cell"><div class="board__frame board__frame--wide"><img src="../assets/board-photo/w-plan.webp" alt=""></div><span class="board__tag">вариант для The problem</span><span class="board__note">Он же с бумажным планом внутри недостроенного здания.</span></div>
+    </div>
+  </div>
+
+  <div class="board__sec">
+    <div class="board__sec-head">
+      <h2 class="t-h2">Что остаётся иллюстрациями</h2>
+      <p class="t-body">Если это тоже надо перевести в фотографии — скажите, но пока я их не трогаю: это схемы, а не «картинка для настроения». Полосы трёх продуктов на Products, герой и Expertise на NOVA, «до / после» на WorkHub, герой и External access на WorkHub — те, что вы только что выбрали.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

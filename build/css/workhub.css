@@ -25,21 +25,21 @@
 .w-cta          { padding-top: 140px; padding-bottom: 140px; }
 
 /* ── 1 · Hero ──────────────────────────────────────────────────
-   Визуал героя — схема дашборда (блок 35). Колонка визуала в
-   hero-split по умолчанию держит пропорцию картинки; здесь высоту
-   задаёт содержимое панели, поэтому пропорция снята. */
-
-/* Панель НЕ растягивается на высоту колонки, в отличие от NOVA.
-   Там пять строк вывода заполняли её целиком, здесь содержимого
-   меньше: при растяжении перед итогом оставалось 180 px пустоты.
-   Тот же случай, что с плиткой визуала на AI & Product Development,
-   где растяжение давало половину полосы пустой заливки. */
+   Визуал героя — иллюстрация (решение пользователя 2026-09-14).
+   До этого здесь стояла нарисованная схема дашборда: настоящих
+   снимков WorkHub нет, и панель показывала придуманные цифры.
+   Кадр 4 : 3 вписан целиком; его тёплый фон совпадает с подложкой,
+   поэтому поля по краям не читаются рамкой.
+   Elementor: контейнер Warm White → Image, Fit Contain. */
 .w-hero .hero-split__visual {
-  background: transparent;
-  align-items: flex-start;
+  align-items: center;
   padding: 0;
   min-height: 0;
+  aspect-ratio: 4 / 3;
 }
+
+.w-hero .hero-split__visual--illu { background: var(--bg-warm); }
+.w-hero .hero-split__visual--illu > img { width: 100%; height: 100%; object-fit: contain; }
 
 /* Шесть плиток дашборда: три ряда по две. Клиент перечислил
    шесть показателей, и в два столбца они читаются как сводка,
@@ -97,12 +97,19 @@
 .w-integrations__note { max-width: 940px; margin-top: var(--space-xl); }
 
 /* ── 6 · Доступ подрядчиков ────────────────────────────────────
-   Вариант B доски (решение пользователя 2026-09-11): текст и четыре
-   меры защиты тегами с иконками слева, экран прав доступа справа
-   (блок 44 — матрица внутри панели 35). */
+   Текст и четыре меры защиты тегами с иконками слева, иллюстрация
+   справа (решение пользователя 2026-09-14; до этого стоял экран прав
+   доступа — блок 44). Секция тёмная, поэтому кадр нарисован светлой
+   линией по фону Near Black: подложка кадра и полоса — один цвет,
+   рамки вокруг картинки нет. Кадр держит свою пропорцию 4 : 3 и
+   прижат к верху колонки, как и текст.
+   Elementor: контейнер Near Black → Image, Fit Contain, Aspect 4 : 3. */
 
 .w-access__row  { display: grid; grid-template-columns: 1fr 1fr; gap: var(--col-gap); align-items: start; }
 .w-access__text { display: flex; flex-direction: column; gap: var(--space-md); min-width: 0; }
+
+.w-access__illu { background: var(--bg-near-black); aspect-ratio: 4 / 3; overflow: hidden; }
+.w-access__illu img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 /* ── 8 · Что даёт объединение ──────────────────────────────────
    Сравнение «до / после» и список выигрышей под ним. */
@@ -114,6 +121,7 @@
 @media (max-width: 1024px) {
 
   .w-hero         { padding-top: 64px; padding-bottom: 32px; }
+  .w-hero .hero-split__visual { aspect-ratio: 4 / 3; }
   .w-problem,
   .w-capabilities,
   .w-proof,

@@ -77,56 +77,12 @@
           <p class="hero-split__note" data-el="text">WorkHub brings it together.<br>Project management, people, documents, compliance, sales, finance and business operations in one connected workspace.</p>
         </div>
 
-        <div class="hero-split__visual" data-el="container">
-          <!-- Схема дашборда. Настоящих скриншотов WorkHub у нас пока нет;
-               когда придут — панель заменяется картинкой, раскладка секции
-               не меняется. Показатели взяты из брифа клиента, раздел
-               «Hero visual»: активные проекты, прогресс, задачи, загрузка
-               команды, финансы, оповещения по HSE. -->
-          <div class="ui-panel ui-panel--light" data-el="container" data-name="workhub-hero-panel">
-            <div class="ui-panel__bar" data-el="container">
-              <span class="ui-panel__dot" aria-hidden="true"></span>
-              <span class="ui-panel__name" data-el="text">WorkHub</span>
-              <span class="ui-panel__status" data-el="text">This week</span>
-            </div>
-            <div class="ui-panel__body" data-el="container">
-
-              <div class="ui-panel__tiles" data-el="container">
-                <div class="ui-panel__tile" data-el="container">
-                  <span class="ui-panel__tile-label" data-el="text">Active projects</span>
-                  <span class="ui-panel__tile-value" data-el="text">24</span>
-                </div>
-                <div class="ui-panel__tile" data-el="container">
-                  <span class="ui-panel__tile-label" data-el="text">Project progress</span>
-                  <span class="ui-panel__tile-value" data-el="text">82%</span>
-                  <div class="ui-panel__track" aria-hidden="true"><div class="ui-panel__fill" style="width: 82%"></div></div>
-                </div>
-                <div class="ui-panel__tile" data-el="container">
-                  <span class="ui-panel__tile-label" data-el="text">Upcoming tasks</span>
-                  <span class="ui-panel__tile-value" data-el="text">17</span>
-                </div>
-                <div class="ui-panel__tile" data-el="container">
-                  <span class="ui-panel__tile-label" data-el="text">Team capacity</span>
-                  <span class="ui-panel__tile-value" data-el="text">86%</span>
-                  <div class="ui-panel__track" aria-hidden="true"><div class="ui-panel__fill" style="width: 86%"></div></div>
-                </div>
-                <div class="ui-panel__tile" data-el="container">
-                  <span class="ui-panel__tile-label" data-el="text">Budget</span>
-                  <span class="ui-panel__tile-value" data-el="text">NOK 1.84M / 2.1M</span>
-                  <div class="ui-panel__track" aria-hidden="true"><div class="ui-panel__fill" style="width: 88%"></div></div>
-                </div>
-                <div class="ui-panel__tile ui-panel__tile--alert" data-el="container">
-                  <span class="ui-panel__tile-label" data-el="text">HSE</span>
-                  <span class="ui-panel__tile-value" data-el="text">2 actions required</span>
-                </div>
-              </div>
-
-              <div class="ui-panel__result" data-el="container">
-                <strong data-el="text">Everything connected</strong>
-              </div>
-
-            </div>
-          </div>
+        <!-- Иллюстрация вместо схемы дашборда (решение пользователя 2026-09-14).
+             Настоящих снимков WorkHub у нас нет, а нарисованная панель показывала
+             придуманные цифры. Кадр в утверждённом стиле A. -->
+        <div class="hero-split__visual hero-split__visual--illu" data-el="image">
+          <img src="../assets/illu-wh-hero.webp" width="2304" height="1728"
+               alt="Illustration: a project site on one platform — frame, crane, containers, drawings and progress bars together">
         </div>
 
       </div>
@@ -449,27 +405,12 @@
           </div>
         </div>
 
-        <!-- Блок 44 · экран прав доступа. Записи и роли — демо-данные
-             в духе брифа (стройка, HSE, поставки); заменяются
-             настоящим кадром без правки раскладки. -->
-        <div class="ui-panel" data-el="container" data-name="access-panel">
-          <div class="ui-panel__bar" data-el="container">
-            <span class="ui-panel__dot" aria-hidden="true"></span>
-            <span class="ui-panel__name" data-el="text">Harbour Block C — access</span>
-            <span class="ui-panel__status" data-el="text">3 roles</span>
-          </div>
-          <div class="ui-panel__body" data-el="container">
-            <div class="ui-panel__matrix" data-el="container">
-              <div class="ui-panel__mh">Record</div><div class="ui-panel__mh">Internal</div><div class="ui-panel__mh">Sub-contractor</div><div class="ui-panel__mh">Supplier</div>
-              <div>Drawing set</div><div><span class="ui-panel__yes"><span class="ui-panel__dot" aria-hidden="true"></span>Edit</span></div><div><span class="ui-panel__yes"><span class="ui-panel__dot" aria-hidden="true"></span>View</span></div><div class="ui-panel__no">No access</div>
-              <div>SJA and HSE</div><div><span class="ui-panel__yes"><span class="ui-panel__dot" aria-hidden="true"></span>Edit</span></div><div><span class="ui-panel__yes"><span class="ui-panel__dot" aria-hidden="true"></span>Edit</span></div><div class="ui-panel__no">No access</div>
-              <div>Delivery schedule</div><div><span class="ui-panel__yes"><span class="ui-panel__dot" aria-hidden="true"></span>Edit</span></div><div class="ui-panel__no">No access</div><div><span class="ui-panel__yes"><span class="ui-panel__dot" aria-hidden="true"></span>View</span></div>
-              <div>Budget and margins</div><div><span class="ui-panel__yes"><span class="ui-panel__dot" aria-hidden="true"></span>Edit</span></div><div class="ui-panel__no">No access</div><div class="ui-panel__no">No access</div>
-            </div>
-            <div class="ui-panel__result" data-el="container">
-              <strong data-el="text">External users see only shared records</strong>
-            </div>
-          </div>
+        <!-- Иллюстрация вместо экрана прав (решение пользователя 2026-09-14).
+             Секция тёмная, поэтому кадр нарисован светлой линией по фону #121212 —
+             тот же цвет, что у полосы, рамки вокруг картинки нет. -->
+        <div class="w-access__illu" data-el="image" data-name="access-illu">
+          <img src="../assets/illu-wh-access.webp" width="2304" height="1728" loading="lazy"
+               alt="Illustration: a closed project perimeter with a single gate, one record shared outward to partners">
         </div>
       </div>
 
