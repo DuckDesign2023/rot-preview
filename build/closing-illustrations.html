@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Финальный блок — семь иллюстраций вместо гор | Red Orange Technologies</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .board { padding: 64px 40px 120px; max-width: 1440px; margin: 0 auto; }
+    .board__intro { max-width: 860px; display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+    .board__now { display: flex; flex-direction: column; gap: 10px; margin-bottom: 48px; max-width: 420px; }
+    .board__now img { width: 100%; height: auto; display: block; }
+    .board__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .board__cell { display: flex; flex-direction: column; gap: 10px; }
+    .board__frame { background: var(--bg-warm); aspect-ratio: 3 / 4; overflow: hidden; }
+    .board__frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .board__tag { font-family: var(--font-badge); font-size: 12px; font-weight: 600; line-height: 1; padding: 6px 10px; border-radius: 100px; background: var(--gray-100); align-self: flex-start; }
+    .board__note { color: var(--gray-500); font-size: 14px; }
+    .board__path { font-size: 12px; color: var(--gray-500); word-break: break-all; }
+    @media (max-width: 1024px) { .board__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 767px) { .board { padding: 40px 20px 72px; } .board__grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="board">
+  <div class="board__intro">
+    <span class="badge">Выбор варианта</span>
+    <h1 class="t-h1">Финальный блок: семь иллюстраций вместо одних гор</h1>
+    <p class="t-lead">Снимок гор стоял в блоке финального призыва сразу на семи страницах — один и тот же кадр подряд. Вместо него по кадру на страницу, в утверждённом стиле A: изометрия тонкой линией, один красный акцент, фон в цвет сайта. Формат 3 : 4 — колонка финального блока высокая.</p>
+    <p class="t-body"><strong>На страницы ещё не поставлено</strong> — жду вашего слова. На главной горы остаются: там это кадр из утверждённого макета Figma.</p>
+  </div>
+
+  <div class="board__now">
+    <span class="board__tag">Сейчас на семи страницах</span>
+    <img src="../assets/hero-mountains.webp" alt="Текущий кадр гор">
+  </div>
+
+  <div class="board__grid">
+    <div class="board__cell"><div class="board__frame"><img src="../assets/board-illu/close-products.webp" alt="Products"></div><span class="board__tag">Products</span><span class="board__note">Три продукта тремя плитами, средняя красная.</span><span class="board__path">assets\_src\closing\products-bgfix.png</span></div>
+    <div class="board__cell"><div class="board__frame"><img src="../assets/board-illu/close-about.webp" alt="About us"></div><span class="board__tag">About us</span><span class="board__note">Растущая башня со строительными лесами, новый ярус красный.</span><span class="board__path">assets\_src\closing\about-bgfix.png</span></div>
+    <div class="board__cell"><div class="board__frame"><img src="../assets/board-illu/close-why-us.webp" alt="Why us"></div><span class="board__tag">Why us</span><span class="board__note">Две площадки и связь между ними. Самый слабый кадр: мост читается как зигзаг — могу перегенерировать.</span><span class="board__path">assets\_src\closing\why-us-bgfix.png</span></div>
+    <div class="board__cell"><div class="board__frame"><img src="../assets/board-illu/close-nova.webp" alt="NOVA for Salesforce"></div><span class="board__tag">NOVA for Salesforce</span><span class="board__note">Запрос поднимается через сборку в готовый модуль.</span><span class="board__path">assets\_src\closing\nova-bgfix.png</span></div>
+    <div class="board__cell"><div class="board__frame"><img src="../assets/board-illu/close-workhub.webp" alt="WorkHub"></div><span class="board__tag">WorkHub</span><span class="board__note">Хаб с красным центром и пристыкованными модулями.</span><span class="board__path">assets\_src\closing\workhub-bgfix.png</span></div>
+    <div class="board__cell"><div class="board__frame"><img src="../assets/board-illu/close-novalab.webp" alt="NOVAlab"></div><span class="board__tag">NOVAlab</span><span class="board__note">Слоистая защита, красные ворота в середине.</span><span class="board__path">assets\_src\closing\novalab-bgfix.png</span></div>
+    <div class="board__cell"><div class="board__frame"><img src="../assets/board-illu/close-ai-product.webp" alt="AI &amp; Product Development"></div><span class="board__tag">AI &amp; Product Development</span><span class="board__note">Прототип на верстаке и готовая платформа над ним.</span><span class="board__path">assets\_src\closing\ai-product-bgfix.png</span></div>
+  </div>
+</div>
+</body>
+</html>
