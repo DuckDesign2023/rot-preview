@@ -1087,6 +1087,24 @@ html { scrollbar-gutter: stable; }
 
 .ledger__media--center img { width: auto; height: 56px; mix-blend-mode: darken; }  /* 2021:69 — гасит белую подложку логотипа */
 
+/* Плитка-иллюстрация (Salesforce · Services, 2068:192). В плитке ОДНА
+   картинка — кадр раскрытой строки 432 × 424. Схлопнутая строка 140
+   показывает его середину: вырез делает сама плитка (min-height + overflow),
+   второго кадра для закрытого состояния нет. Абсолют обязателен, как у
+   card__visual--fill: в потоке картинка растила бы строку своей высотой.
+   Elementor: контейнер Background Warm White, Overflow Hidden → Image,
+   Position Absolute, Width / Height 100 %, Object Fit Cover, Position Center. */
+.ledger__media--art { background: var(--bg-warm); }
+
+.ledger__media--art > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .ledger__wordmark-text {
   font-family: var(--font-primary);
   font-size: 12px;
@@ -1687,6 +1705,18 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 }
 
 .process-plate__shot--on { opacity: 1; }
+
+/* Кадры-иллюстрации вместо скриншотов (Salesforce · How we work, 2068:56 /
+   85 / 112 / 142): рисунок на тёмной сетке заполняет плитку без полей.
+   В макете плитка 348 при раскрытом тексте в четыре строки и 328 при трёх;
+   все четыре SVG приведены к одному холсту 664 × 348, иначе сетка
+   сдвигалась бы на 10 px при смене шага. Elementor: Image, Object Fit Cover. */
+.process-plate--art .process-plate__shot {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 /* Кадр активного шага. Порядок важен: сначала гасим кадр шага по умолчанию,
    затем зажигаем кадр того шага, на котором курсор или фокус. */
@@ -3464,4 +3494,118 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 @media (max-width: 767px) {
   .area { grid-template-columns: 1fr; gap: var(--space-sm); padding: 24px 0; }
   .area__body { grid-column: auto; }
+}
+
+/* ══ 48. SPLIT · FORM — копия и форма заявки ═══════════════════════
+   2068:732 · CPQ Fit Assessment на Appero. Полоса во всю ширину, как
+   блок 11 на этой же странице: слева тёплая панель с копией, прижатой
+   к полю страницы 40, справа белая панель формы до правого края экрана.
+   На 1440 это 700 / 740 — заданы долями 48.6 / 51.4 %, как у футера
+   (620 / 740), чтобы на 1025–1360 колонки ужимались вместе.
+   Секция появилась по решению клиента 2026-09-11 (Option 2): основная
+   форма страницы уходит из футера сюда, а футер Appero отдаёт whitepaper
+   (блок 49). Место — пункт 9 брифа: после Partnership, перед финальным
+   CTA, поэтому две формы подряд не стоят.
+   Elementor: контейнер Full Width, row → панель копии (Width 48.6 %,
+   Background Warm White, Padding 60 / 32 / 60 / 40, Justify Center) +
+   панель формы (Width 51.4 %, Background White, Padding 60 / 40) → Form (Pro). */
+
+.split--form { min-height: 0; }
+
+.split--form .split__panel {
+  flex-basis: 48.6%;
+  max-width: 48.6%;
+  gap: var(--space-md);
+  padding: 60px var(--space-lg) 60px var(--gutter);
+}
+
+.split__points { display: flex; flex-direction: column; gap: var(--space-sm); }
+.split__lead   { display: flex; flex-direction: column; gap: var(--space-xs); max-width: 475px; }
+
+.split__form {
+  flex: 1 1 0;
+  min-width: 0;
+  background: var(--color-white);
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Содержимое панели держит ширину макета 660 — на планшете панель
+   встаёт во всю ширину экрана, и поля в 960 px читались бы анкетой. */
+.split__form > * { width: 100%; max-width: 660px; }
+
+.split__form-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  text-align: center;
+}
+
+.split__form-head .t-h2   { max-width: 312px; }   /* 2068:781 — две строки */
+.split__form-head .t-body { max-width: 360px; }   /* 2068:782 */
+
+/* ══ 49. FOOTER · GUIDE — лид-магнит вместо формы связи ════════════
+   2068:807 (поля пустые) / 2068:885 (заполнены) · только Appero.
+   Клиент 2026-09-10: whitepaper отдаём после имени, email и компании —
+   это сбор лидов. 2026-09-11 выбран вариант с этой формой в футере
+   (Option 2, скриншот guide / fill в Trello). Верх футера — обложка
+   478 × 676 и белая панель формы, зазор 24, по центру по вертикали;
+   навигация и копирайт те же, что в блоке 17.
+   Elementor: второй шаблон Theme Builder → Footer с условием
+   «Singular → Page → Appero»; Form (Pro) с Actions After Submit:
+   Collect Submissions + Redirect на PDF в Media. */
+
+.footer-guide {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.footer-guide__cover { flex: 0 1 478px; min-width: 0; }
+.footer-guide__cover img { display: block; width: 100%; height: auto; }
+
+.footer-guide__panel {
+  flex: 1 1 0;
+  min-width: 0;
+  background: var(--color-white);
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.footer-guide__intro,
+.footer-guide__head { display: flex; flex-direction: column; gap: var(--space-sm); }
+
+/* Кнопка «спит», пока обязательные поля не заполнены (2068:807 → 2068:885):
+   та же Primary под 23 % непрозрачности. Это вид, а не disabled — кнопка
+   остаётся в таб-порядке и нажимается, а нажатие показывает, какое поле
+   пустое (штатная валидация браузера).
+   CUSTOM-CSS: связка «поле → кнопка» через :has(). Elementor — Custom CSS
+   виджета Form: selector form:has(:invalid) .elementor-button { opacity: .23 } */
+.form--gate .btn { transition: background-color .2s ease, opacity .2s ease; }
+.form--gate:has(.field__control:invalid) .btn { opacity: .23; }
+
+@media (max-width: 1024px) {
+  /* Селекторы с модификатором перебивают общие правила полосы (блок 11),
+     поэтому раскладка колонкой повторена здесь. В колонке основа flex
+     мерила бы высоту — обе панели на auto. */
+  .split--form .split__panel { flex: 0 0 auto; max-width: none; padding: 80px var(--gutter) 56px; }
+  .split__form { flex: 0 0 auto; padding: 56px var(--gutter) 80px; }
+
+  .footer-guide { flex-direction: column; align-items: stretch; gap: var(--space-lg); }
+  .footer-guide__cover { flex: 0 0 auto; width: min(360px, 100%); align-self: center; }
+  .footer-guide__panel { flex: 0 0 auto; padding: 40px; }
+}
+
+@media (max-width: 767px) {
+  .split--form .split__panel { padding: 56px var(--gutter) 40px; }
+  .split__form { padding: 40px var(--gutter) 56px; }
+
+  .footer-guide__cover { width: min(240px, 72%); }
+  .footer-guide__panel { padding: var(--space-md); }
 }

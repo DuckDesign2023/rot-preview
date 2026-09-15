@@ -1,12 +1,13 @@
 /* ══════════════════════════════════════════════════════════════
    Red Orange Technologies — эталон, минимальный ванильный JS.
 
-   ВНИМАНИЕ: в WordPress этот файл НЕ переносится. Он делает две вещи —
-   переключает табы «Selected cases» и открывает мобильное меню;
-   в Elementor это нативные виджеты Nested Tabs и Nav Menu (Pro),
-   каждый со своим скриптом и своей ARIA. Скрипт нужен только для того,
-   чтобы эталон вёл себя как готовая страница при показе клиенту.
-   Всё остальное на обеих страницах работает без JS — на CSS.
+   ВНИМАНИЕ: в WordPress этот файл НЕ переносится. Он делает три вещи —
+   переключает табы «Selected cases», открывает мобильное меню и отдаёт
+   whitepaper после формы в футере Appero; в Elementor это нативные
+   Nested Tabs, Nav Menu (Pro) и Form (Pro) с действием Redirect, каждый
+   со своим скриптом и своей ARIA. Скрипт нужен только для того, чтобы
+   эталон вёл себя как готовая страница при показе клиенту.
+   Всё остальное работает без JS — на CSS.
    ══════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
@@ -95,5 +96,16 @@
       return tab.getAttribute('aria-selected') === 'true';
     });
     select(initial < 0 ? 0 : initial);
+  });
+
+  /* ── Лид-магнит: после отправки формы отдаём файл ──────────────
+     submit срабатывает только у валидной формы — пустые обязательные
+     поля браузер не пропустит. Данные никуда не уходят: это эмуляция
+     Elementor Form → Actions After Submit → Redirect на файл в Media. */
+  document.querySelectorAll('form[data-download]').forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      window.location.href = form.getAttribute('data-download');
+    });
   });
 })();

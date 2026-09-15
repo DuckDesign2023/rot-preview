@@ -18,8 +18,9 @@
 .s-benefits     { padding-top: 140px; padding-bottom:   0;   } /* секция кончается линией */
 .s-positioning  { padding-top: 100px; padding-bottom: 100px; }
 .s-fit          { padding-top: 140px; padding-bottom:   0;   } /* секция кончается линией */
-.s-partnership  { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тёмным CTA */
-.s-cta          { padding: 0; }                                /* полосы 720/720 во всю ширину, без полей секции */
+.s-partnership  { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тонированной формой */
+.s-assess       { padding: 0; }                                /* полоса формы 700/740 во всю ширину, блок 48 */
+.s-cta          { padding: 0; }                                /* полоса 720/720 во всю ширину, без полей секции */
 
 /* Замыкающая линия секции: 64 от контента, 20 до следующей секции
    (152:2101 и 180:680 — Divider во всю рабочую ширину). Линия — такой же
@@ -28,12 +29,13 @@
 .section-rule { margin-top: 20px; margin-bottom: 20px; }
 .s-fit .section-rule { margin-bottom: 0; }   /* дальше светлая секция, зазор её */
 
-/* ── 3 · Meet appero quote (190:810) ───────────────────────────
+/* ── 3 · Meet appero quote (190:810, иллюстрации 2068:306) ─────
    Card grid 4×: первая колонка — текст и плитка с графикой,
    остальные три — визуал + заголовок + описание. Шахматный сдвиг
-   тот же, что на главной: карточки 2 и 4 опущены на 52. */
-
-.s-meet .card-grid__text { padding-bottom: var(--space-md); }
+   тот же, что на главной: карточки 2 и 4 опущены на 52.
+   Отбивка текста первой карточки снята 2026-09-15: в 2068:312 между
+   текстом и плиткой только общий зазор 24 — с ней плитка стояла
+   на 21 px ниже макета. */
 
 /* ── 6 · CPQ Light positioning (180:583) ───────────────────────
    Левая колонка 395 фиксирована и прижата к низу ряда, таблица
@@ -54,15 +56,18 @@
   gap: var(--space-sm);
 }
 
+/* Иллюстрация 2068:373 — 276 × 181, в плитке стоит с отступом 50 сверху
+   и прижата влево (2068:372). Elementor: Image, Width 276, Margin Top 50. */
 .positioning-col__art {
   flex: 1 1 auto;
   min-height: 0;
   overflow: hidden;
   display: flex;
   align-items: flex-start;
+  padding-top: 50px;
 }
 
-.positioning-col__art img { width: 212px; height: auto; max-width: 100%; }
+.positioning-col__art img { width: 276px; height: auto; max-width: 100%; }
 
 .positioning-col__text { display: flex; flex-direction: column; gap: var(--space-sm); }
 
@@ -97,11 +102,12 @@
 
 .fit-row > .fit-list { flex: 1 1 0; min-width: 0; }
 
-/* ── 8 · Partnership (184:156) ─────────────────────────────────
+/* ── 8 · Partnership (184:156, иллюстрации 2068:445) ───────────
    Тот же card grid, но сдвинута третья карточка, а не вторая
-   и четвёртая: в макете выше стоят appero и Together. */
-
-.s-partnership .graphic-plate--offset { min-height: 466px; }
+   и четвёртая: в макете выше стоят appero и Together.
+   С 2026-09-15 все восемь плиток обеих сеток — иллюстрации дизайнера
+   в приёме главной (card__visual--fill); плитка circle-graphic со
+   смещением (блок 29) и подпись-цепочка в ней из макета ушли. */
 
 /* ══ ПЛАНШЕТ ≤ 1024 ════════════════════════════════════════════ */
 @media (max-width: 1024px) {
@@ -126,8 +132,14 @@
 
   .fit-row       { flex-direction: column; }
   .fit-row__aside { flex: 1 1 auto; width: 100%; position: static; }
-  .s-meet .graphic-plate--offset,
-  .s-partnership .graphic-plate--offset { min-height: 300px; }
+
+  /* Плитки-иллюстрации (2068:306 / 2068:445). В две колонки плитка
+     шириной ~464 режет рисунок по высоте библиотечных 240: круг Native,
+     диаграмма первой плитки Partnership и «C» appero срезались сверху
+     и снизу. Фигуры здесь крупнее, чем на главной, поэтому плитка выше.
+     Elementor: контейнер визуала → Min Height 360 (Tablet), 320 (Mobile). */
+  .s-meet .card__visual,
+  .s-partnership .card__visual { min-height: 360px; }
 }
 
 /* ══ МОБИЛЬНЫЙ ≤ 767 ═══════════════════════════════════════════ */
@@ -147,6 +159,6 @@
 
   .section-rule  { margin-top: 8px; }
 
-  .s-partnership .graphic-plate--offset,
-  .s-meet .graphic-plate--offset { min-height: 260px; }
+  .s-meet .card__visual,
+  .s-partnership .card__visual { min-height: 320px; }
 }

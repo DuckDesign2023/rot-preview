@@ -1,9 +1,11 @@
 /* ══════════════════════════════════════════════════════════════
    Red Orange Technologies — Salesforce services.
-   Макета в Figma нет: страница собрана из библиотеки блоков по
+   Макета страницы в Figma нет: она собрана из библиотеки блоков по
    контенту staging `/salesforce-services/` (клиент дал ссылку
    в Trello 2026-09-02 и отдельно попросил использовать логотип
-   Salesforce и названия продуктов).
+   Salesforce и названия продуктов). С 2026-09-15 три секции —
+   hero, How we work и Services — несут иллюстрации дизайнера
+   из Figma `2068:26` (part 4, одобрена клиентом 2026-09-12).
    Здесь только вертикальный ритм и раскладки, которых нет
    в components.css.
    ══════════════════════════════════════════════════════════════ */
@@ -18,25 +20,16 @@
 .s-cta      { padding-top: 140px; padding-bottom: 140px; }
 
 /* ── 1 · Hero ──────────────────────────────────────────────────
-   Клиент просил показать логотип Salesforce. Он стоит один
-   в плитке: логотип — знак, а не иллюстрация, растягивать его
-   на всю высоту колонки нельзя. */
+   Иллюстрация дизайнера 2068:45 (part 4, одобрена клиентом 2026-09-12):
+   облако на орбитах вместо плитки с логотипом Salesforce, стоявшей здесь
+   с 2026-09-09. Кадр 658 × 706 совпадает с колонкой на десктопе; на
+   планшете (16 : 10) и телефоне (4 : 3) вписан целиком — подложка
+   рисунка вычищена, фон даёт плитка, поэтому поля не читаются рамкой.
+   Тот же модификатор, что в героях NOVA и WorkHub.
+   Elementor: контейнер Warm White → Image, Object Fit Contain. */
 
-.hero-split__visual--logo {
-  background: var(--bg-warm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-2xl);
-  align-self: center;
-  min-height: 0;
-}
-
-.hero-split__visual--logo > img {
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-}
+.s-hero .hero-split__visual--illu { background: var(--bg-warm); }
+.s-hero .hero-split__visual--illu > img { width: 100%; height: 100%; object-fit: contain; }
 
 /* ── 2 · Cloud solutions ───────────────────────────────────────
    Семь облаков в сетке role-grid. Число нечётное, а линии сетки
@@ -67,17 +60,38 @@
   gap: var(--space-sm);
 }
 
+/* ── 4 · How we work ───────────────────────────────────────────
+   Кадры шагов лежат в плитке абсолютом (блок 28, process-plate--art),
+   поэтому высоту ряда задаёт колонка шагов — а она зависит от того,
+   какой шаг раскрыт: тексты Listen и Execute длиннее остальных на строку.
+   Замер 2026-09-15 (все четыре шага по очереди): 346 / 327 на 1280–1920,
+   366 / 346 на 1100–1200, 386 / 366 на 1025. Без опоры блок прыгал бы
+   на 19–20 px при каждом переходе курсора — раньше это гасила плитка
+   графики высотой 448. Min Height 388 перекрывает самый высокий шаг
+   на всех десктопных ширинах; в макете плитка 348 / 328 и сама меняла
+   высоту по шагам. Если клиент удлинит тексты шагов — перемерить.
+   Elementor: контейнер плитки → Min Height 388 (Desktop), 320 (Tablet). */
+
+.s-process .process-plate { min-height: 388px; }
+
+/* Последний шаг дотягивается до низа колонки. Иначе у его нижнего края
+   остаётся полоса 19–20 px, где раскрытие мигает: шаг 4 раскрылся и стал
+   короче (его текст на строку меньше, чем у шага по умолчанию), курсор
+   оказался под ним, вернулся шаг 1 — и шаг 4 снова под курсором. Найдено
+   проводкой мыши 2026-09-15 на 1440 и 1025. Elementor: у контейнера
+   последнего шага Flex Grow 1. */
+.s-process .process__item:last-child { flex-grow: 1; }
+
 /* ── 6 · Signals ───────────────────────────────────────────────
    Лид перед чек-листом; сам список — блок 27 fit-list. */
 
 .s-signals__lead { max-width: 72ch; margin-bottom: var(--space-lg); }
 
 /* ── 7 · Services ──────────────────────────────────────────────
-   В ledger вместо скриншота продукта — иконка услуги: медиа-плитка
-   светлая, знак по центру. */
-
-.ledger__icon { display: block; color: var(--color-accent); }
-.ledger__icon svg { width: 56px; height: 56px; }
+   В ledger вместо скриншота продукта — иллюстрация услуги (2068:192):
+   одна картинка раскрытой строки 432 × 424 на плитку, схлопнутая строка
+   режет её по центру — модификатор ledger__media--art (блок 3).
+   До 2026-09-15 здесь стояли иконки 56 px по центру светлой плитки. */
 
 .services-close {
   display: flex;
@@ -100,8 +114,8 @@
   .s-cta      { padding-top: 116px; padding-bottom: 116px; }
   .s-process  { padding-block: 80px; }
 
-  .hero-split__visual--logo { padding: var(--space-xl); }
-  .hero-split__visual--logo > img { max-width: 240px; }
+  /* ниже 1024 шаги раскрыты все сразу, опора не нужна — как в библиотеке */
+  .s-process .process-plate { min-height: 320px; }
 
   .expect-row { flex-direction: column; }
 }
@@ -117,9 +131,6 @@
   .s-services,
   .s-cta      { padding-top: 92px; padding-bottom: 92px; }
   .s-process  { padding-block: 64px; }
-
-  .hero-split__visual--logo { padding: var(--space-lg); }
-  .hero-split__visual--logo > img { max-width: 180px; }
 
   .services-close .btn { width: 100%; text-align: center; }
 }
