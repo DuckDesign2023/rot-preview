@@ -600,11 +600,15 @@ a.post-card:hover {
   position: relative;
   z-index: 70;
   background: var(--color-white);
-  /* Меню из шести длинных пунктов (735 px) плюс лого 200 и колонка действий 200
-     помещаются в строку только от ~1300. Ниже зазор поджимается, а пункты
-     переносятся на вторую строку — высота хедера при этом не растёт, потому что
-     бокс логотипа (62) выше двух строк меню (24 + 8 + 24 = 56). */
-  column-gap: clamp(16px, 2.2vw, var(--col-gap));
+  /* Меню из шести длинных пунктов (735 px) плюс лого 200 и колонка действий
+     (EN / NO + кнопка, 221) помещаются в строку от 1267. Ниже пункты переносятся
+     на вторую строку — высота хедера при этом не растёт, потому что бокс
+     логотипа (62) выше двух строк меню (24 + 8 + 24 = 56).
+     Зазор растёт линейно: 16 на 1040 → 32 на 1440 (значение макета). Раньше
+     было 2.2vw — после появления NO колонка действий стала шире на 21 px, и
+     меню начинало переноситься уже с 1294; более крутой зазор вернул порог.
+     В Elementor: Gap → единица «custom», то же выражение. */
+  column-gap: clamp(16px, 4vw - 25.6px, var(--col-gap));
   row-gap: var(--space-2xs);
   padding: 4px var(--gutter);
 }
@@ -626,7 +630,7 @@ a.post-card:hover {
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  column-gap: clamp(16px, 2.2vw, var(--col-gap));
+  column-gap: clamp(16px, 4vw - 25.6px, var(--col-gap));   /* тот же, что у хедера */
   row-gap: var(--space-2xs);
   min-width: 0;
 }
@@ -646,14 +650,30 @@ a.post-card:hover {
   border-bottom-color: var(--color-accent);
 }
 
+/* Колонка действий — по содержимому (в макете 200). С переключателем EN / NO
+   (правка клиента 2026-09-15) она 221: фиксированные 200 выталкивали кнопку
+   за край, а min-width 200 не давал колонке ужаться на мобильном — на 320
+   появлялся горизонтальный скролл. */
 .site-header__actions {
-  width: 200px;
-  flex: 0 0 200px;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: var(--space-sm);
 }
+
+/* ── Переключатель языка EN / NO ──────────────────────────────────
+   Клиент 2026-09-15 (ROT_website_feedback.pdf): «Add NO option». Текущий язык —
+   Primary Dark и aria-current, второй приглушён, как пункты меню; наведение
+   темнит. Норвежских страниц пока нет, NO ведёт на «#»: переводы появятся
+   на этапе WordPress. Elementor: виджет переключателя языков WPML / Polylang
+   (или Nav Menu с пунктами языков) — Typography Nav Link, цвета те же. */
+/* EN и NO — пара: между ними 8, до кнопки 16, поэтому читаются отдельно от CTA */
+.lang-switch { display: flex; align-items: center; gap: var(--space-2xs); }
+
+.lang-switch__item { transition: color .2s ease; }
+.lang-switch__item[aria-current="true"],
+.lang-switch__item:hover { color: var(--color-dark); }
 
 /* Пока панель открыта, страница за ней не прокручивается. Без этой строки
    полоса прокрутки исчезает вместе с прокруткой, рабочая ширина прибавляет
@@ -2029,7 +2049,8 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   .site-header { gap: var(--space-xs); }
   .site-header__logo { width: 120px; height: auto; }
   .site-header__actions { gap: var(--space-xs); }
-  .site-header__actions .site-nav__link { display: none; }
+  .site-header__actions .site-nav__link,
+  .site-header__actions .lang-switch { display: none; }
 
   /* EN и CTA показываются внутри панели — в строке хедера для них нет места */
   .site-menu__cta {
@@ -2039,13 +2060,8 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
     padding-top: var(--space-md);
   }
 
-  .site-menu__lang {
-    color: var(--gray-500);
-    padding-block: var(--space-2xs);
-    transition: color .2s ease;
-  }
-
-  .site-menu__lang:hover { color: var(--color-dark); }
+  .site-menu__cta .lang-switch { gap: var(--space-md); }
+  .site-menu__cta .lang-switch__item { padding-block: var(--space-2xs); }
   .site-header .btn { padding-inline: var(--space-xs); }
 
   .logo-strip__row img { height: 24px; }
@@ -3612,4 +3628,93 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 
   .footer-guide__cover { width: min(240px, 72%); }
   .footer-guide__panel { padding: var(--space-md); }
+}
+
+
+/* ══ 50. ARTICLE — статья Insights ═════════════════════════════════
+   Макета нет. Первая статья — норвежский текст клиента про внешние
+   команды (2026-09-15, ссылка с Pricing на Staff Augmentation).
+   Сетка — та же, что у шапки секции (блок 1): лейбл в колонке 316,
+   текст с x = 348, ничего не центрируется. Заголовок идёт на всю
+   колонку, тело сужено до 640: Poppins широкий, и 640 при 16 px дают
+   около 80 знаков в строке — предел для долгого чтения (680 давали 86).
+   Elementor: Theme Builder → Single Post. Post Title (Global Font
+   Heading 1), тело — один виджет Post Content: H2, абзацы и списки
+   приходят из редактора записи и оформляются стилями ниже. */
+
+.article-back {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: var(--space-2xs);
+  transition: color .2s ease;
+}
+.article-back__icon { flex: 0 0 24px; width: 24px; height: 9px; }
+.article-back__icon svg { display: block; width: 100%; height: 100%; transform: scaleX(-1); }
+.article-back:hover { color: var(--color-accent); }
+
+.article {
+  display: flex;
+  gap: var(--col-gap);
+  align-items: flex-start;
+}
+
+.article__aside { flex: 0 0 var(--col-label); width: var(--col-label); }
+
+.article__main {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* Тело статьи — стили Post Content. Кегль Body Large, но интерлиньяж
+   1.6 вместо 1.4: 1.4 держит две-три строки карточки, а не экран текста.
+   CUSTOM-CSS: всё, что ниже, кроме цвета и типографики самого виджета —
+   отступы между элементами, H2 и strong внутри контента, маркер списка. */
+.article__body {
+  max-width: var(--article-width);
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  letter-spacing: -0.02em;
+  color: var(--text-lead);
+  overflow-wrap: break-word;
+}
+
+.article__body > * + *  { margin-top: var(--space-md); }
+.article__body > * + h2 { margin-top: var(--space-xl); }
+.article__body > h2 + * { margin-top: var(--space-sm); }
+
+.article__body h2 {
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  line-height: 1.25;             /* у Heading 2 lh 1.0 — на двух строках слипается */
+  letter-spacing: -0.02em;
+  color: var(--color-dark);
+}
+
+.article__body strong { font-weight: 600; color: var(--color-dark); }
+
+.article__body ul { display: flex; flex-direction: column; gap: var(--space-sm); }
+.article__body li { position: relative; padding-left: var(--space-md); }
+
+/* Маркер — короткая акцентная черта на середине первой строки: тот же
+   приём «тонкая линия + акцент», что у номеров леджера и карточки адреса */
+.article__body li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(0.8em - 1px);
+  width: var(--space-xs);
+  height: 2px;
+  background: var(--color-accent);
+}
+
+@media (max-width: 1024px) {
+  /* Лейбл встаёт над заголовком, как в шапке секции. В колонке основа
+     flex мерила бы высоту — у колонки-лейбла она сброшена на auto */
+  .article { flex-direction: column; gap: var(--space-sm); }
+  .article__aside { flex: 0 0 auto; width: auto; }
+  .article__main { flex: 0 0 auto; width: 100%; gap: var(--space-lg); }
 }

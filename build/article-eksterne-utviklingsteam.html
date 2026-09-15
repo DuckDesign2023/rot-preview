@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hvordan eksterne utviklingsteam løser mangelen på utviklere | Red Orange Technologies</title>
+  <meta name="description" content="Norske teknologiledere kjenner godt på utfordringen: det har aldri vært vanskeligere å finne dyktige utviklere lokalt.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/article.css">
+</head>
+<body>
+
+<!-- ══ HEADER — 152:1823 → Theme Builder → Header (общий с главной) ══ -->
+<header class="site-header" data-el="container" data-name="header">
+  <a class="site-header__logo" href="index.html" data-wp="/" data-el="image" aria-label="Red Orange Technologies — home">
+    <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
+  </a>
+  <!-- Панель меню: внутри только виджет Nav Menu (пункты берутся из меню
+       WordPress) и отдельный блок с языком и CTA — ссылки правятся
+       в «Внешний вид → Меню», не трогая Elementor -->
+  <div class="site-menu" id="site-menu" data-el="container">
+    <nav class="site-nav" data-el="nav-menu" aria-label="Main">
+      <a class="t-nav site-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/" aria-current="page">Staff Augmentation</a>
+      <a class="t-nav site-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+      <a class="t-nav site-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce</a>
+      <a class="t-nav site-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+      <a class="t-nav site-nav__link" href="products.html" data-wp="/products/">Products</a>
+      <a class="t-nav site-nav__link" href="about.html" data-wp="/company/">Company</a>
+    </nav>
+
+    <div class="site-menu__cta" data-el="container">
+      <div class="lang-switch" role="group" aria-label="Language" data-el="container">
+        <a class="t-nav lang-switch__item" href="#" lang="en" hreflang="en" data-el="text">EN</a>
+        <a class="t-nav lang-switch__item" href="#" aria-current="true" lang="nb" data-el="text">NO</a>
+      </div>
+      <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    </div>
+  </div>
+  <div class="site-header__actions" data-el="container">
+      <div class="lang-switch" role="group" aria-label="Language" data-el="container">
+        <a class="t-nav lang-switch__item" href="#" lang="en" hreflang="en" data-el="text">EN</a>
+        <a class="t-nav lang-switch__item" href="#" aria-current="true" lang="nb" data-el="text">NO</a>
+      </div>
+    <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    <button class="site-header__burger" type="button" data-el="button"
+            aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <svg class="burger-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect class="burger-icon__bar burger-icon__bar--top" x="0" y="5"  width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--mid" x="0" y="11" width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--bot" x="0" y="17" width="24" height="2"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- затемнение под мобильным меню: сосед хедера, иначе
+     оказывается внутри его stacking context и накрывает логотип -->
+<div class="site-menu-backdrop" hidden></div>
+
+<main>
+
+  <!-- ══ ARTICLE — макета нет: статья Insights (блок 50 «article») ══════
+       Текст дословно из _client/Article_StaffAug_Er_Løsningen_1.docx.
+       В WordPress это запись блога: шаблон Theme Builder → Single Post,
+       заголовок — виджет Post Title, всё тело — один виджет Post Content
+       (текст живёт в редакторе записи, а не в Elementor). -->
+  <section class="section s-article" data-el="container" data-name="article">
+    <div class="section__inner" data-el="container">
+
+      <a class="t-nav article-back" href="staff-augmentation.html" data-wp="/staff-augmentation/" data-el="button">
+        <span class="article-back__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 9"><path fill="currentColor" d="M18.7528 0C19.8793 1.21001 20.8534 2.13213 21.675 2.76634C22.4966 3.39221 23.2716 3.85953 24 4.16829V4.73157C23.1615 5.13213 22.3483 5.64534 21.5606 6.27121C20.7729 6.88873 19.8327 7.79833 18.7401 9H17.7618C18.558 7.32267 19.3923 6.03338 20.2647 5.13213H0V3.86787H20.2647C19.621 3.05841 19.172 2.45758 18.9179 2.06537C18.6638 1.67316 18.2869 0.984701 17.7872 0H18.7528Z"/></svg></span>
+        Staff Augmentation
+      </a>
+
+      <div class="article" data-el="container">
+        <div class="article__aside" data-el="container">
+          <div class="t-overline" data-el="text">Insights</div>
+        </div>
+
+        <article class="article__main" lang="nb" data-el="container">
+          <h1 class="t-h1 article__title" data-el="post-title">Hvordan eksterne utviklingsteam løser mangelen på utviklere&nbsp;- norsk kontakt og global kompetanse</h1>
+          <div class="article__body" data-el="post-content">
+            <h2>Mangelen på utviklere i Norge&nbsp;- en ny normal.</h2>
+            <p>Norske teknologiledere kjenner godt på utfordringen: det har aldri vært vanskeligere å finne dyktige utviklere lokalt. Allerede i 2020 slo en bredt sammensatt rapport fast at behovet for IKT-folk vil øke fra rundt 56 000 i dag til minst 95 000 innen 2030. Til tross for økende satsing på IT-utdanning, anslår NAV og NHO at Norge allerede i dag mangler 1 500-2 000 IKT-spesialister. Utdanningskapasiteten alene klarer ikke å dekke behovet på kort sikt. Norge utdanner rundt 5 500 nye IT-kandidater årlig, men behovet er langt høyere. Dette kompetansegapet hemmer digitaliseringen og vekstambisjonene i mange norske selskaper.</p>
+            <p>Samtidig som den lokale talenttilgangen er begrenset, øker presset på å innovere og skalere. Økt digitalisering og innovasjon krever flere fagfolk, men tradisjonelle tiltak som å utdanne flere utviklere har effekt først på lang sikt. Hvordan kan selskaper løse sitt akutte kompetansebehov uten å måtte senke ambisjonene? For mange ligger svaret i å tenke nytt og se utover landegrensene. Eksterne utviklingsteam, altså å utvide sitt eksisterende utviklingsteamet med eksterne ressurser, peker seg ut som en stadig mer attraktiv strategi.</p>
+            <h2>Stadig flere ser globalt etter utviklere.</h2>
+            <p>Flere norske bedrifter har de senere år valgt å hente inn eksterne utviklingsteam fra utlandet fremfor å utelukkende rekruttere hjemme. En undersøkelse fra SSB viser at i perioden 2018-2020 flyttet omtrent 6 % av norske foretak en eller flere funksjoner ut av landet. Selv om andelen fortsatt er lav, er trenden økende. Innen teknologitjenester har andelen outsourcing faktisk doblet seg sammenlignet med midten av 2010-tallet. Rekrutteringsselskaper merker også økt pågang: Stadig flere virksomheter tar kontakt fordi de må rekruttere på tvers av landegrenser, forteller internasjonale rekrutteringseksperter.</p>
+            <p>Motivasjonen handler ikke bare om kostnader, men først og fremst om tilgang på kompetanse. Når norske virksomheter etablerer dedikerte team i for eksempel India eller Øst-Europa, får de tilgang til en global talentpool som langt overgår den her hjemme. Som en teknologidirektør i finanssektoren påpeker, handler det om tilgang på flinke folk som kan samarbeide med det norske kjerne-teamet, ikke om lavere timepris. Kostnadsbesparelser kommer likevel som en bonus. Over 60% av selskapene som outsourcet oppgir reduserte lønns- og driftskostnader som en viktig faktor. Eksempler finnes overalt: Alt fra medieselskaper til banker og industribedrifter har sett verdien av å hente utviklere der de finnes, enten det er gjennom nearshoring I Øst-Europa eller offshoring til India.</p>
+            <h2>Lokal rekruttering vs. dedikerte eksterne team.</h2>
+            <p>Hvorfor går så mange selskaper for dedikerte utviklingsteam i land som India fremfor å rekruttere lokalt? Her er noen nøkkelfordeler med en slik strategi:</p>
+            <ul>
+              <li><strong>Tilgang på større talentpool:</strong> Globalt finnes det et enormt utvalg av erfarne utviklere og spesialister. Norge utdanner bare noen tusen IT-ressurser i året, mens f.eks. India uteksaminerer rundt 1,5 millioner IT-kandidater årlig (90% av dem snakker engelsk). Dette gjør det lettere å finne nisjekompetanse, enten du trenger flere app-utviklere, erfarne seniorer eller spesialister innen AI/ML.</li>
+              <li><strong>Kostnadseffektiv skalering:</strong> Lønnsnivået for utviklere i Norge er høyt, og konkurransen om hodene presser det opp ytterligere. Ved å engasjere eksterne team i land med lavere lønnskostnader (uten at kvaliteten er lavere) kan man oppnå betydelige besparelser. Enda viktigere er det at man får forutsigbare kostnader, typisk en fast månedspris per utvikler. Noe som forenkler budsjettering for vekstselskaper.</li>
+              <li><strong>Raskere onboarding og fleksibilitet:</strong> Å ansette en utvikler i Norge kan ta mange måneder med annonsering, intervjuer og oppsigelsestid. Eksterne leverandører av dedikerte team kan derimot presentere kvalifiserte kandidater i løpet av dager. Dermed kan et nytt teammedlem være operativt på prosjektet i løpet av få dager og uker, ikke måneder. I tillegg kan man skalere opp eller ned teamet etter behov. For en startup kan det være en trygghet å kunne skalere opp, ned eller pause et prosjektteam etter markedssituasjonen. Noe som er langt vanskeligere med egne fast ansatte.</li>
+              <li><strong>Integrasjon og kontinuitet:</strong> Moderne modeller for eksterne utviklingsteam handler ikke om kortvarige frilansere, men om dedikerte team som fungerer som en forlengelse av deres egen organisasjon. De sitter kanskje i Pune (India), men deltar på daglige standups, kommuniserer på Slack eller Teams og kjenner produktet og kulturen. Med en riktig partner unngår man skyhøy turnover, har medarbeidere som trives og blir gjerne i årevis, slik at teamet beholder kunnskap og momentum over tid.</li>
+            </ul>
+            <h2>Utfordringer ved rask skalering og hvordan de løses.</h2>
+            <p>Å bygge et større teknologiteam raskt er ikke nødvendigvis enkelt. Mange har erfart at intensiv lokal rekruttering kan gå ut over kvalitet og arbeidsmiljø. I tillegg kommer konkurransen om talentene: de beste hodene har ofte flere tilbud og forsvinner raskt fra markedet. Her kan eksterne utviklingsteam utgjøre en strategisk forskjell. Ved å samarbeide med en ekstern partner som har ferdige team eller ressurser på plass, kan man unngå flaskehalsene i rekrutteringsprosessen. I tillegg slipper en å ta all rekrutteringsrisiko internt, og man får i stedet presentert kandidater som allerede er evaluert og ansatt hos leverandøren. Det betyr også at HR-avdelingen avlastes betydelig.</p>
+            <p>En annen utfordring er at behovene svinger. Kanskje trenger du 6 utviklere nå, men om et år er 2 nok, eller omvendt. Det å ansette og så nedbemanne er kostbart og smertefullt. Med en fleksibel modell for eksterne utviklingsteam kan man justere teamstørrelsen smidig. Dette gjør det mulig å skalere produkter og tjenester raskere, fordi man vet at utviklerkapasiteten kan tilpasses uten lang ledetid. Som nevnt får mange startups økt handlingsrom i usikre tider ved å engasjere eksterne team de kan skalere opp eller ned etter behov. Rask tilgang på utviklere kan faktisk bli et konkurransefortrinn, i stedet for at mangel på kompetente utviklere bremser veksten, kan selskapet utnytte mulighetene når de dukker opp.</p>
+            <h2>Norsk kontakt, global kompetanse = en trygg leveransemodell.</h2>
+            <p>Til tross for alle fordelene er det naturlig at beslutningstakere bekymrer seg for kvalitet, kultur og kontroll når utvikling flyttes ut. SSB-undersøkelsen viste at kulturelle og språklige barrierer er den hyppigste grunnen til at noen lar være å outsource. Mange er usikre på om et eksternt team forstår forretningskonteksten og holder kvalitetsnivået oppe. Løsningen på disse bekymringene ligger i måten leveransen organiseres på. Modellen «norsk kontaktpunkt&nbsp;– global kompetanse» kombinerer det beste fra to verdener:</p>
+            <p>Selskapene får en lokal kontakt som tar seg av kommunikasjon, kontrakt og oppfølging, samtidig som selve utviklingsarbeidet gjøres av et dyktig team i utlandet. Eksperter på internasjonal rekruttering fremhever viktigheten av en dedikert kontaktperson for kunden, uansett hvor i verden kandidatene befinner seg. Når kunden har en norsk kontakt som kjenner selskapets kultur og behov, blir samarbeidet mye enklere og tryggere. Denne personen oversetter bokstavelig talt kultur og forventninger mellom partene. I praksis betyr det at man beholder norsk kontraktsmessig trygghet og kommunikasjon på norsk, samtidig som man utnytter den globale kompetansen.</p>
+            <p>Det lokale kontaktpunktet sørger også for at GDPR, sikkerhet og personvern håndteres korrekt. For mange selskaper i Norge er dette en forutsetning. Man kan ikke risikere data på avveie. Med en norsk leverandør som kontraktspart sikres juridisk samsvar med europeiske regler, noe som fjerner en stor bekymring i samarbeidet. Kort sagt: Ved å ha en fot i Norge og en fot der kompetansen finnes, får man både kulturell forståelse og global rekkevidde.</p>
+            <h2>Det beste fra to verdener i praksis&nbsp;– Red Orange Technologies.</h2>
+            <p>Jeg har jobbet med IT-leveranser i flere tiår, og derfor har jeg personlig sett hvordan denne modellen gir resultater. Vårt selskap, Red Orange Technologies, har bygget sine tjenester rundt norsk kontakt, global kompetanse-prinsippet. Vi kombinerer lokal tilstedeværelse med egne utviklingsteam i India, slik at kundene våre kan skalere raskt uten å gå på kompromiss med trygghet eller kvalitet. Nøkkelfordelene med vår leveransemodell er:</p>
+            <ul>
+              <li><strong>Norsk kontrakt og kontaktpunkt:</strong> Avtalen gjøres med vårt norske selskap, og kundene forholder seg til en fast norsk kontaktperson. Dette sikrer tydelig kommunikasjon, kjennskap til kundens virksomhet og kultur, samt full ivaretakelse av sikkerhet og GDPR-krav.</li>
+              <li><strong>Seniorutviklere med global kompetanse:</strong> Vi leverer erfarne utviklere fra våre egne team i India. Våre folk er håndplukket for sin kompetanse og jobber etter nordisk arbeidskultur, med overlappende arbeidstider, sterke engelskkunnskaper og forståelse for hva som kreves i det norske markedet. Resultatet er at teamet i praksis fungerer som en integrert del av kundens organisasjon.</li>
+              <li><strong>Rask oppstart (48 timer):</strong> Tiden det tar fra behovet oppstår til en utvikler er på plass, er minimal. Når en kunde beskriver sitt behov, teknologiønsker og varighet, sender vi relevante CV-er i løpet av 48 timer. Kunden kan intervjue kandidater ved behov, og vi signerer deretter kontrakt gjennom vårt norske selskap. Ofte er utvikleren i gang på prosjektet innen få uker etter at behovet ble meldt. Denne hastigheten gjør at vekstselskaper kan gripe muligheter uten forsinkelse.</li>
+              <li><strong>Forutsigbare og kostnadseffektive betingelser:</strong> Med ved å benytte eksterne utviklingsteam får kunden en fast månedspris per ressurs. Det betyr ingen overraskelser, kostnadene er forutsigbare, og som regel vesentlig lavere enn om man skulle ansatt tilsvarende kompetanse lokalt. Man unngår dessuten rekrutteringskostnader og administrativt merarbeid. Slik kan teknologiteamet skaleres opp og ned etter behov, uten byrden ved tradisjonell rekruttering.</li>
+            </ul>
+            <h2>Strategisk bruk av eksterne utviklingsteam skaper vekst.</h2>
+            <p>Utviklermangelen trenger ikke være et forsinkende ledd. Den kan tvert imot utløse nytenkning og smartere måter å jobbe på. Ved å omfavne eksterne utviklingsteam gjennom en modell som ivaretar norsk kontakt og global kompetanse, kan norske vekstbedrifter både avhjelpe kompetansemangelen og styrke sin konkurransekraft. Det handler om å se mulighetene i utfordringen: den ekspertisen man ikke finner på hjemmebane, finnes ofte tilgjengelig ute i verden. Med riktig partner og leveransemodell kan man trygt dra nytte av kostnadseffektiv skalering og en grenseløs talenttilgang. Uten å miste kontroll eller intern kultur underveis. For teknologiledere og HR-ledere gjelder det å tenke strategisk og langsiktig: eksterne utviklingsteam er ikke bare en kortsiktig nødløsning, men et inspirerende verktøy for å bygge sterke utviklingsteam som tar selskapet videre inn i fremtiden.</p>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+
+<!-- ══ 10 · FOOTER — 152:131 → Theme Builder → Footer ═════════════ -->
+<footer class="site-footer" id="contact" data-el="container" data-name="footer">
+  <div class="site-footer__photo" aria-hidden="true"></div>
+  <div class="site-footer__wash" aria-hidden="true"></div>
+  <div class="site-footer__glow" aria-hidden="true"></div>
+
+  <div class="site-footer__inner" data-el="container">
+
+    <div class="footer-top" data-el="container">
+
+      <div class="footer-contact" data-el="container">
+        <div class="t-overline footer-contact__label" data-el="text">Get in touch</div>
+        <h2 class="t-h1 t-h1--normal" data-el="heading">Collaborate with us for complete IT solutions</h2>
+        <p class="t-lead footer-contact__lead" data-el="text">We're happy to answer any questions and help determine which of our services best fit your needs.</p>
+
+        <div class="check-list" data-el="container">
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Client-oriented</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Independent</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Competent</span>
+            </div>
+          </div>
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Results-driven</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Problem-solving</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Transparent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-form" data-el="container">
+        <h2 class="t-h2 footer-form__title" data-el="heading">Let us talk about your next solution</h2>
+        <form class="form" data-el="form" action="#" method="post">
+          <div class="form__row" data-el="container">
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-first" data-el="text">First name</label>
+              <input class="field__control" id="f-first" name="first-name" type="text" autocomplete="given-name">
+            </div>
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-last" data-el="text">Last name</label>
+              <input class="field__control" id="f-last" name="last-name" type="text" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-email" data-el="text">Email</label>
+            <input class="field__control" id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-company" data-el="text">Company</label>
+            <input class="field__control" id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field field--last" data-el="container">
+            <label class="t-body" for="f-message" data-el="text">Message</label>
+            <textarea class="field__control" id="f-message" name="message" rows="5"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit" data-el="button">Send message</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-nav" data-el="container">
+      <div class="footer-nav__cols" data-el="container">
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Solutions</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+            <a class="footer-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce Services</a>
+            <a class="footer-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+            <a class="footer-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Products</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="nova-for-salesforce.html" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+            <a class="footer-nav__link" href="workhub.html" data-wp="/products/workhub/">WorkHub</a>
+            <a class="footer-nav__link" href="novalab.html" data-wp="/products/novalab/">NOVAlab</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Company</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="about.html" data-wp="/company/">About us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/why-us/">Why us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/team/">Team</a>
+            <a class="footer-nav__link" href="#" data-wp="/cases/">Case studies</a>
+            <a class="footer-nav__link" href="#" data-wp="/insights/">Blog</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/careers/">Careers</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Contact</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Asker, Norway</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Pune, India</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Mohali, India</a>
+            <a class="footer-nav__link" href="mailto:contact@redorangetechnologies.com">contact@redorangetechnologies.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider divider--ondark-soft" data-el="divider">
+
+      <div class="footer-bottom" data-el="container">
+        <span class="footer-bottom__copy" data-el="text">© 2026 Red Orange Technologies</span>
+        <a href="#" data-wp="/terms/" data-el="text">Terms &amp; Conditions</a>
+        <a href="#" data-wp="/privacy/" data-el="text">Privacy Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

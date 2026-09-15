@@ -1,0 +1,20 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — статья Insights
+   (/no/insights/eksterne-utviklingsteam/)
+
+   Макета в Figma НЕТ. Страница — один блок 50 «article» из библиотеки;
+   текст дословно из `_client/Article_StaffAug_Er_Løsningen_1.docx`.
+   В WordPress это запись блога на шаблоне Theme Builder → Single Post,
+   поэтому здесь только ритм секции: сверху как у героя подстраниц,
+   снизу 120 + 20 перед футером, как на остальных страницах.
+   ══════════════════════════════════════════════════════════════ */
+
+.s-article { padding-top: 84px; padding-bottom: 140px; }
+
+@media (max-width: 1024px) {
+  .s-article { padding-top: 56px; padding-bottom: 116px; }
+}
+
+@media (max-width: 767px) {
+  .s-article { padding-top: 40px; padding-bottom: 92px; }
+}
