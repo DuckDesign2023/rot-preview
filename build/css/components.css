@@ -1733,6 +1733,10 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 .how-row:has(.process__item:nth-child(4):focus-within) .process-plate__shot:nth-child(4) { opacity: 1; }
 .how-row:has(.process__item:nth-child(5):hover) .process-plate__shot:nth-child(5),
 .how-row:has(.process__item:nth-child(5):focus-within) .process-plate__shot:nth-child(5) { opacity: 1; }
+/* Шестой шаг — AI & Product Development (2026-09-15). Правила пишутся
+   по числу шагов: без пары для шестого плитка на нём оставалась пустой. */
+.how-row:has(.process__item:nth-child(6):hover) .process-plate__shot:nth-child(6),
+.how-row:has(.process__item:nth-child(6):focus-within) .process-plate__shot:nth-child(6) { opacity: 1; }
 
 /* ══ 29. Плитка circle-graphic со смещением ════════════════════
    190:814 / 184:160 · композиция 440 × 259 лежит со сдвигом

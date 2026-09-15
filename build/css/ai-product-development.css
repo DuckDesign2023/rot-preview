@@ -1,9 +1,11 @@
 /* ══════════════════════════════════════════════════════════════
    Red Orange Technologies — AI & Product Development.
-   Макета в Figma нет: страница собрана из библиотеки блоков по
+   Макета страницы в Figma нет: она собрана из библиотеки блоков по
    брифу клиента (Red_Orange_Technologies_Landing_Pages_and_Visual_
-   Direction.docx, раздел 1). Здесь только вертикальный ритм и те
-   раскладки, которых нет в components.css.
+   Direction.docx, раздел 1). С 2026-09-15 hero, How we work и
+   Architecture несут иллюстрации дизайнера — Figma `2101:971`
+   (part 5, одобрена клиентом 2026-09-15). Здесь только вертикальный
+   ритм и те раскладки, которых нет в components.css.
 
    Указание клиента по визуалу (раздел 5 брифа): никакой типовой
    «AI-образности» — ни роботов, ни мозгов из микросхем, ни
@@ -16,34 +18,18 @@
 .s-build        { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тёмной */
 .s-process      { padding-top: 100px; padding-bottom: 100px; }
 .s-products     { padding-top: 140px; padding-bottom: 140px; } /* +20 перед тёмной */
-.s-architecture { padding-top: 100px; padding-bottom: 100px; }
+.s-architecture { padding-top:   0;   padding-bottom:   0;   } /* высоту задаёт текстовая колонка, см. §6 */
 .s-cta          { padding-top: 140px; padding-bottom: 140px; }
 
 /* ── 1 · Hero ──────────────────────────────────────────────────
-   Подзаголовок стоит между Display и лидом, поэтому у него свой
-   отступ: иначе строка липнет к заголовку. */
+   Иллюстрация 2101:990 — «линзы» на сетке, холст 658 × 706 совпадает
+   с колонкой. Вписана целиком в тёплую плитку, как в героях NOVA,
+   WorkHub и Salesforce. Подзаголовок «From idea to working product.»
+   до 2026-09-15 стоял отдельной строкой Heading 1; в макете part 5 он
+   первой фразой лида. Elementor: контейнер Warm White → Image, Fit Contain. */
 
-.hero-split__sub { margin-top: 4px; }
-
-/* Визуал героя — вектор, а не фото. Плитка не тянется на всю высоту
-   текстовой колонки: у неё своя высота по содержимому, иначе вокруг
-   некрупной композиции остаётся полполосы пустой заливки. */
-.hero-split__visual--art {
-  background: var(--bg-warm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-lg);
-  align-self: center;
-  min-height: 0;
-}
-
-.hero-split__visual--art > img {
-  width: 100%;
-  max-width: 560px;
-  height: auto;
-  object-fit: contain;
-}
+.s-hero .hero-split__visual--illu { background: var(--bg-warm); }
+.s-hero .hero-split__visual--illu > img { width: 100%; height: 100%; object-fit: contain; }
 
 /* ── 2 · Why now ───────────────────────────────────────────────
    Лид в две ступени яркости под шапкой, затем ряд «список / вывод»
@@ -58,13 +44,22 @@
 }
 
 /* ── 4 · Process ───────────────────────────────────────────────
-   Шесть шагов вместо пяти, поэтому колонка выше плитки: плитка
-   выравнивается по верху, а не растягивается на всю высоту. */
+   Шесть шагов, у каждого свой кадр (2101:1025 / 1055 / 1085 / 1118 /
+   1157 / 1187), все SVG приведены к холсту 664 × 456 — блок 28,
+   process-plate--art. Кадры лежат абсолютом и высоту не держат, её
+   задаёт колонка шагов, а та зависит от раскрытого шага: у Discover
+   текст на строку длиннее. Опора — Min Height плитки по замеру самого
+   высокого состояния; последний шаг тянется до низа колонки, иначе
+   у его нижнего края раскрытие мигает (находка Salesforce 2026-09-15).
+   Замер 2026-09-15 (шесть шагов по очереди): 455 / 435 на 1200–1920,
+   474 / 455 / 435 на 1025–1100. Min Height 476 перекрывает все десктопные
+   ширины; в макете плитка 456 / 436 и сама меняла высоту. Если клиент
+   удлинит тексты шагов — перемерить.
+   Elementor: плитка → Min Height 476 (Desktop), 320 (Tablet); последний
+   шаг → Flex Grow 1. */
 
-.graphic-plate--dark {
-  background: var(--surface-on-dark);
-  align-self: flex-start;
-}
+.s-process .process-plate { min-height: 476px; }
+.s-process .process__item:last-child { flex-grow: 1; }
 
 .s-process__actions { margin-top: var(--space-xl); }
 
@@ -80,6 +75,35 @@
   margin-top: var(--space-xl);
 }
 
+/* ── 6 · Architecture ──────────────────────────────────────────
+   2101:1224. Секция без вертикальных паддингов: высоту задаёт текстовая
+   колонка (896, паддинг 120 сверху и снизу), а колонка графики 432
+   тянется на всю высоту секции — полоса сетки у её правого края идёт
+   от верхней границы секции до нижней. Рисунок одним SVG 432 × 602
+   (иллюстрация + полоса), абсолютом, Cover от левого края: если текст
+   на узком десктопе выше, режется полоса справа, а не сам рисунок.
+   Фон — Near Black, как в макете (до 2026-09-15 был Background Dark).
+   Elementor: контейнер графики Align Self Stretch, Overflow Hidden →
+   Image Position Absolute, 100 % × 100 %, Object Fit Cover, Position Left Center. */
+
+.s-architecture .dark-split { align-items: stretch; }
+.s-architecture .dark-split__text { padding-block: 120px; }
+
+.s-architecture .dark-split__graphic {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.s-architecture .dark-split__graphic > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+}
+
 /* ══ ПЛАНШЕТ ≤ 1024 ════════════════════════════════════════════ */
 @media (max-width: 1024px) {
 
@@ -92,11 +116,16 @@
   .s-build,
   .s-products,
   .s-cta          { padding-bottom: 116px; }
-  .s-process,
-  .s-architecture { padding-block: 80px; }
+  .s-process      { padding-block: 80px; }
+  .s-architecture .dark-split__text { padding-block: 80px; }
 
-  .hero-split__visual--art { padding: var(--space-xl); }
-  .hero-split__visual--art > img { max-height: 320px; }
+  /* Ниже 1024 шаги раскрыты все сразу — опора высоты не нужна. Плитка
+     встаёт под шагами во всю ширину; с библиотечной высотой 320 вытянутые
+     рисунки (воронка Discover, ромбы Build) резались сверху и снизу.
+     Пропорция 16 : 9 держит кадр 664 × 456 целиком по высоте рисунка.
+     Основа flex — auto: в колонке flex-basis 0 побеждает пропорцию и
+     плитка схлопывается. Elementor: Tablet → Aspect Ratio 16 : 9, Flex Grow 0. */
+  .s-process .process-plate { flex: 0 0 auto; min-height: 0; aspect-ratio: 16 / 9; }
 }
 
 /* ══ МОБИЛЬНЫЙ ≤ 767 ═══════════════════════════════════════════ */
@@ -111,11 +140,18 @@
   .s-build,
   .s-products,
   .s-cta          { padding-bottom: 92px; }
-  .s-process,
-  .s-architecture { padding-block: 64px; }
+  .s-process      { padding-block: 64px; }
 
-  .hero-split__visual--art { padding: var(--space-lg); }
-  .hero-split__visual--art > img { max-height: 240px; }
+  /* Колонкой: текст сверху, графика ниже во всю ширину. У графики нет
+     собственной высоты (картинка абсолютом) — задаём её явно. */
+  .s-architecture .dark-split__text { padding-block: 64px 32px; }
+  .s-architecture .dark-split__graphic {
+    flex: 0 0 auto;
+    align-self: stretch;
+    max-width: none;
+    margin-left: 0;
+    height: 320px;
+  }
 
   .products-close .btn { width: 100%; text-align: center; }
 }
