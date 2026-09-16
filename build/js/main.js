@@ -57,6 +57,43 @@
     setMenu(false);
   }
 
+  /* ── Подменю Products / Company ─────────────────────────────
+     На десктопе раскрывает наведение (чистый CSS), поэтому кнопка-стрелка
+     там не должна брать фокус. На планшете и мобильном она — настоящая
+     кнопка-аккордеон. В Elementor то же делает сам виджет Nav Menu. */
+  var toggles = Array.prototype.slice.call(
+    document.querySelectorAll('.site-nav__toggle'));
+
+  if (toggles.length) {
+    var compact = window.matchMedia('(max-width: 1024px)');
+
+    var closeAllSubs = function () {
+      toggles.forEach(function (t) { t.setAttribute('aria-expanded', 'false'); });
+    };
+
+    var applyMode = function () {
+      toggles.forEach(function (t) {
+        if (compact.matches) t.removeAttribute('tabindex');
+        else t.setAttribute('tabindex', '-1');
+      });
+      closeAllSubs();
+    };
+
+    toggles.forEach(function (t) {
+      t.addEventListener('click', function () {
+        if (!compact.matches) return;
+        var open = t.getAttribute('aria-expanded') === 'true';
+        closeAllSubs();
+        t.setAttribute('aria-expanded', open ? 'false' : 'true');
+      });
+    });
+
+    if (compact.addEventListener) compact.addEventListener('change', applyMode);
+    else compact.addListener(applyMode);
+
+    applyMode();
+  }
+
   document.querySelectorAll('[role="tablist"]').forEach(function (list) {
     var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
     if (!tabs.length) return;

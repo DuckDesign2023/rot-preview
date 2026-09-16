@@ -28,8 +28,23 @@
       <a class="t-nav site-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
       <a class="t-nav site-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce</a>
       <a class="t-nav site-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
-      <a class="t-nav site-nav__link" href="products.html" data-wp="/products/" aria-current="page">Products</a>
-      <a class="t-nav site-nav__link" href="#" data-wp="/company/">Company</a>
+      <div class="site-nav__item" data-el="container" data-current="ancestor">
+        <a class="t-nav site-nav__link site-nav__link--parent" href="products.html" data-wp="/products/">Products</a>
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="sub-products" aria-label="Products submenu"><svg class="site-nav__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1.25 5 5 9 1.25"/></svg></button>
+        <div class="site-nav__sub" id="sub-products" data-el="container">
+          <a class="t-nav site-nav__sublink" href="nova-for-salesforce.html" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+          <a class="t-nav site-nav__sublink" href="workhub.html" data-wp="/products/workhub/" aria-current="page">WorkHub</a>
+          <a class="t-nav site-nav__sublink" href="novalab.html" data-wp="/products/novalab/">NOVAlab</a>
+        </div>
+      </div>
+      <div class="site-nav__item" data-el="container">
+        <a class="t-nav site-nav__link site-nav__link--parent" href="#" data-wp="/company/">Company</a>
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="sub-company" aria-label="Company submenu"><svg class="site-nav__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1.25 5 5 9 1.25"/></svg></button>
+        <div class="site-nav__sub" id="sub-company" data-el="container">
+          <a class="t-nav site-nav__sublink" href="#" data-wp="/company/">About us</a>
+          <a class="t-nav site-nav__sublink" href="#" data-wp="/company/why-us/">Why us</a>
+        </div>
+      </div>
     </nav>
 
     <div class="site-menu__cta" data-el="container">

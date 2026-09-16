@@ -600,15 +600,16 @@ a.post-card:hover {
   position: relative;
   z-index: 70;
   background: var(--color-white);
-  /* Меню из шести длинных пунктов (735 px) плюс лого 200 и колонка действий
-     (EN / NO + кнопка, 221) помещаются в строку от 1267. Ниже пункты переносятся
-     на вторую строку — высота хедера при этом не растёт, потому что бокс
-     логотипа (62) выше двух строк меню (24 + 8 + 24 = 56).
-     Зазор растёт линейно: 16 на 1040 → 32 на 1440 (значение макета). Раньше
-     было 2.2vw — после появления NO колонка действий стала шире на 21 px, и
-     меню начинало переноситься уже с 1294; более крутой зазор вернул порог.
-     В Elementor: Gap → единица «custom», то же выражение. */
-  column-gap: clamp(16px, 4vw - 25.6px, var(--col-gap));
+  /* Меню (732 px: шесть пунктов, два из них со стрелкой подменю) плюс лого 200
+     и колонка действий (EN / NO + кнопка, 221) помещаются в строку от 1265.
+     Ниже пункты переносятся на вторую строку — высота хедера при этом не
+     растёт, потому что бокс логотипа (62) выше двух строк меню (24 + 8 + 24).
+     Зазор линейный: 16 на 1265 → 32 на 1440 (значение макета). Формулу меняли
+     дважды: 2.2vw не хватило после появления NO (перенос с 1294), а «4vw − 25.6»
+     — после стрелок подменю, которые добавили 32 px (перенос с 1285).
+     Текущая «10vw − 112» кладёт зазор на пол ровно там, где меню перестаёт
+     помещаться. В Elementor: Gap → единица «custom», то же выражение. */
+  column-gap: clamp(16px, 10vw - 112px, var(--col-gap));
   row-gap: var(--space-2xs);
   padding: 4px var(--gutter);
 }
@@ -630,7 +631,7 @@ a.post-card:hover {
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  column-gap: clamp(16px, 4vw - 25.6px, var(--col-gap));   /* тот же, что у хедера */
+  column-gap: clamp(16px, 10vw - 112px, var(--col-gap));   /* тот же, что у хедера */
   row-gap: var(--space-2xs);
   min-width: 0;
 }
@@ -648,6 +649,91 @@ a.post-card:hover {
 .site-nav__link[aria-current="page"] {
   color: var(--color-dark);
   border-bottom-color: var(--color-accent);
+}
+
+/* ── Выпадающие подменю (Products, Company) ────────────────────
+   В Elementor это нативное поведение виджета Nav Menu (Pro): пункты
+   с дочерними берутся из «Внешний вид → Меню», раскрытие по наведению,
+   оформление — Style → Dropdown. CUSTOM-CSS здесь не нужен. */
+.site-nav__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.site-nav__link--parent { white-space: nowrap; }
+
+/* Указатель «здесь есть вложенные пункты». На десктопе он только знак:
+   раскрывает наведение, поэтому кнопка не ловит курсор и не берёт фокус
+   (tabindex снимает main.js). На планшете и мобильном — настоящая кнопка. */
+.site-nav__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.site-nav__chevron {
+  width: 9px;
+  height: 6px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  transition: transform .2s ease;
+}
+
+.site-nav__item:hover .site-nav__chevron,
+.site-nav__item:focus-within .site-nav__chevron { transform: rotate(180deg); }
+
+.site-nav__item[data-current="ancestor"] > .site-nav__link--parent {
+  color: var(--color-dark);
+  border-bottom-color: var(--color-accent);
+}
+
+.site-nav__sub {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 216px;
+  padding: var(--space-2xs) 0;
+  background: var(--color-white);
+  border: var(--border-width) solid var(--hairline);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+}
+
+.site-nav__item:hover .site-nav__sub,
+.site-nav__item:focus-within .site-nav__sub {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.site-nav__sublink {
+  display: block;
+  padding: var(--space-2xs) var(--space-sm);
+  white-space: nowrap;
+  transition: color .2s ease;
+}
+
+.site-nav__sublink:hover { color: var(--color-accent); }
+
+.site-nav__sublink[aria-current="page"] {
+  color: var(--color-dark);
+  box-shadow: inset 2px 0 0 var(--color-accent);
 }
 
 /* Колонка действий — по содержимому (в макете 200). С переключателем EN / NO
@@ -1972,6 +2058,61 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 
   .site-nav__link:hover,
   .site-nav__link[aria-current="page"] { border-bottom-color: var(--color-accent); }
+
+  /* Подменю в мобильной панели — раскрытие тапом по стрелке (Elementor
+     Nav Menu ведёт себя так же: текст ведёт на страницу, стрелка раскрывает) */
+  .site-nav__item {
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .site-nav__link--parent {
+    flex: 1 1 auto;
+    white-space: normal;
+  }
+
+  .site-nav__toggle {
+    pointer-events: auto;
+    width: 44px;
+    flex: 0 0 44px;
+    border-bottom: var(--border-width) solid var(--hairline);
+  }
+
+  .site-nav__toggle:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+  /* Строка-родителя подчёркнута двумя разными бордерами — у ссылки и у стрелки.
+     Чтобы линия не обрывалась на середине, наведение в мобильной панели
+     не красит ничего (наведение — только на десктопе), а акцент остаётся
+     лишь у текущей страницы и её родителя, и сразу у обоих элементов.
+     Найдено на 1024 и 375, 2026-09-16. */
+  .site-nav__link:hover { border-bottom-color: var(--hairline); }
+
+  .site-nav__item[data-current="ancestor"] > .site-nav__link--parent,
+  .site-nav__item[data-current="ancestor"] > .site-nav__toggle,
+  .site-nav__link--parent[aria-current="page"] ~ .site-nav__toggle {
+    border-bottom-color: var(--color-accent);
+  }
+
+  .site-nav__sub {
+    position: static;
+    display: none;
+    width: 100%;
+    min-width: 0;
+    padding: 0 0 0 var(--space-sm);
+    border: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .site-nav__toggle[aria-expanded="true"] ~ .site-nav__sub { display: flex; }
+
+  .site-nav__sublink {
+    padding: var(--space-sm) 0;
+    white-space: normal;
+    border-bottom: var(--border-width) solid var(--hairline);
+  }
 
   /* Иконка тогла — один SVG, а не три блока: три отдельных бокса по 2 px
      округляются к пиксельной сетке независимо, и при системном масштабе
