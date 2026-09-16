@@ -2088,11 +2088,20 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
      Найдено на 1024 и 375, 2026-09-16. */
   .site-nav__link:hover { border-bottom-color: var(--hairline); }
 
-  .site-nav__item[data-current="ancestor"] > .site-nav__link--parent,
-  .site-nav__item[data-current="ancestor"] > .site-nav__toggle,
-  .site-nav__link--parent[aria-current="page"] ~ .site-nav__toggle {
-    border-bottom-color: var(--color-accent);
+  /* Текущая страница в панели помечается ТОЛЬКО цветом текста (решение
+     пользователя 2026-09-16). Акцентные линии здесь читались как ошибка:
+     у пункта подменю полоска слева, а у строки-родителя подчёркивание,
+     которое ещё и делится между ссылкой и стрелкой.
+     Elementor: Nav Menu → Style → Active Item Color (Mobile). */
+  .site-nav__link[aria-current="page"],
+  .site-nav__sublink[aria-current="page"] {
+    color: var(--color-accent);
+    border-bottom-color: var(--hairline);
+    box-shadow: none;
   }
+
+  /* раздел, внутри которого текущая страница: обычный тёмный текст */
+  .site-nav__item[data-current="ancestor"] > .site-nav__link--parent { color: var(--color-dark); }
 
   .site-nav__sub {
     position: static;
@@ -2109,6 +2118,14 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   .site-nav__toggle[aria-expanded="true"] ~ .site-nav__sub { display: flex; }
 
   .site-nav__toggle[aria-expanded="true"] .site-nav__chevron { transform: rotate(180deg); }
+
+  /* Текущий подпункт в мобильной панели — только цветом текста: акцентная
+     полоска слева спорила с волосяными линиями строк (решение пользователя,
+     2026-09-16). На десктопе полоска остаётся — там панель узкая и линий нет. */
+  .site-nav__sublink[aria-current="page"] {
+    box-shadow: none;
+    color: var(--color-accent);
+  }
 
   .site-nav__sublink {
     padding: var(--space-sm) 0;
