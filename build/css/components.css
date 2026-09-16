@@ -1482,20 +1482,24 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
    Elementor: контейнер Background #121212, Padding 60, внутри Image
    (Width auto, Object Fit Contain). Для SVG в Медиатеке нужен включённый
    аплоад SVG (Elementor → Settings → Advanced). */
-.split__media--art { background: var(--bg-near-black); padding: 60px; }
+.split__media--art { background: var(--bg-near-black); position: relative; }
+
+/* Кадр лежит на всю половину без полей — ровно как графика секции Architecture
+   на AI & Product Development: Position Absolute, Inset 0, 100 % × 100 %,
+   Object Fit Cover. Никаких своих отступов: сетка кадра доходит до краёв полосы. */
+.split__media--art > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 
 /* Зеркало: на AI кадр читается «из узла наружу», здесь смысл обратный —
    «много входов сходятся в одно». Elementor: Image → Advanced → Transform →
    Flip Horizontal, нативный контрол. */
 .split__media--art > img.is-flipped { transform: scaleX(-1); }
-
-.split__media--art > img {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
 
 .split__body    { display: flex; flex-direction: column; gap: var(--space-md); }
 .split__actions { display: flex; gap: var(--space-xs); flex-wrap: wrap; }
@@ -2020,9 +2024,11 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   .split { flex-direction: column; }
   .split__panel { flex: 1 1 auto; max-width: none; padding: 80px var(--gutter); }
   .split__media { min-height: 420px; }
-  /* Полоса ниже 1024 разворачивается колонкой: высоту рисунка ограничивает
-     панель, поэтому под иллюстрацию её добавляем — иначе графика мельчает. */
-  .split__media--art { min-height: 520px; padding: 40px; }
+  /* Полоса ниже 1024 разворачивается колонкой — кадру нужна своя высота.
+     Cover здесь срезал бы композицию: панель широкая и низкая (1024 × 520 против
+     холста 432 × 602), в кадре оставалась только середина. Поэтому Contain. */
+  .split__media--art { min-height: 520px; }
+  .split__media--art > img { object-fit: contain; }
   .split__media--doc { padding-block: 60px; }
   .split__media--doc > img { height: 340px; }
 
@@ -2146,9 +2152,8 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 
   .split__panel { padding: 56px var(--gutter); }
   .split__media { min-height: 300px; }
-  /* min-height не снимать: у панели flex-basis 0, и в колонке она схлопнется.
-     Кадр вертикальный (432 × 602), поэтому высоты нужно больше, чем 300 блока 11 */
-  .split__media--art { min-height: 420px; padding: var(--space-md); }
+  /* min-height не снимать: у панели flex-basis 0, и в колонке она схлопнется */
+  .split__media--art { min-height: 420px; }
   .split__media--doc > img { height: 260px; }
 
   .fit-list__row { gap: var(--space-sm); }
