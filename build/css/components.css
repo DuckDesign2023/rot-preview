@@ -2108,6 +2108,8 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 
   .site-nav__toggle[aria-expanded="true"] ~ .site-nav__sub { display: flex; }
 
+  .site-nav__toggle[aria-expanded="true"] .site-nav__chevron { transform: rotate(180deg); }
+
   .site-nav__sublink {
     padding: var(--space-sm) 0;
     white-space: normal;
