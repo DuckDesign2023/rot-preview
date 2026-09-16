@@ -193,25 +193,45 @@
       <div class="how-row" data-el="container">
 
         <div class="process" data-el="container" data-name="process-steps">
-          <div class="process__item process__item--open" tabindex="0" data-el="container">
-            <h3 class="t-h3 process__title" data-el="heading">Start from the opportunity</h3>
-            <p class="t-body process__text" data-el="text">Move directly from a Salesforce Opportunity into the quoting process. Relevant recipients and quote templates can already be available from the opportunity.</p>
+          <div class="process__item process__item--open" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading"><button class="process__toggle" type="button" aria-expanded="true" aria-controls="ap-step-1">Start from the opportunity</button></h3>
+            <div class="process__text" id="ap-step-1" data-el="container">
+              <div class="process__text-inner" data-el="container">
+                <p class="t-body" data-el="text">Move directly from a Salesforce Opportunity into the quoting process. Relevant recipients and quote templates can already be available from the opportunity.</p>
+              </div>
+            </div>
           </div>
-          <div class="process__item" tabindex="0" data-el="container">
-            <h3 class="t-h3 process__title" data-el="heading">Select the right products</h3>
-            <p class="t-body process__text" data-el="text">Search products, select the right items and work with product information directly inside the quote.</p>
+          <div class="process__item" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading"><button class="process__toggle" type="button" aria-expanded="false" aria-controls="ap-step-2">Select the right products</button></h3>
+            <div class="process__text" id="ap-step-2" data-el="container">
+              <div class="process__text-inner" data-el="container">
+                <p class="t-body" data-el="text">Search products, select the right items and work with product information directly inside the quote.</p>
+              </div>
+            </div>
           </div>
-          <div class="process__item" tabindex="0" data-el="container">
-            <h3 class="t-h3 process__title" data-el="heading">Apply the right pricing</h3>
-            <p class="t-body process__text" data-el="text">Automate pricing logic including discounts, tiered pricing, surcharges, deductions and price dependencies.</p>
+          <div class="process__item" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading"><button class="process__toggle" type="button" aria-expanded="false" aria-controls="ap-step-3">Apply the right pricing</button></h3>
+            <div class="process__text" id="ap-step-3" data-el="container">
+              <div class="process__text-inner" data-el="container">
+                <p class="t-body" data-el="text">Automate pricing logic including discounts, tiered pricing, surcharges, deductions and price dependencies.</p>
+              </div>
+            </div>
           </div>
-          <div class="process__item" tabindex="0" data-el="container">
-            <h3 class="t-h3 process__title" data-el="heading">Build the proposal visually</h3>
-            <p class="t-body process__text" data-el="text">Edit content while keeping the actual customer document in view. Use Salesforce data in the document and maintain control over layout and presentation.</p>
+          <div class="process__item" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading"><button class="process__toggle" type="button" aria-expanded="false" aria-controls="ap-step-4">Build the proposal visually</button></h3>
+            <div class="process__text" id="ap-step-4" data-el="container">
+              <div class="process__text-inner" data-el="container">
+                <p class="t-body" data-el="text">Edit content while keeping the actual customer document in view. Use Salesforce data in the document and maintain control over layout and presentation.</p>
+              </div>
+            </div>
           </div>
-          <div class="process__item" tabindex="0" data-el="container">
-            <h3 class="t-h3 process__title" data-el="heading">Generate and send</h3>
-            <p class="t-body process__text" data-el="text">Create a professional customer-facing proposal without rebuilding the document outside Salesforce.</p>
+          <div class="process__item" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading"><button class="process__toggle" type="button" aria-expanded="false" aria-controls="ap-step-5">Generate and send</button></h3>
+            <div class="process__text" id="ap-step-5" data-el="container">
+              <div class="process__text-inner" data-el="container">
+                <p class="t-body" data-el="text">Create a professional customer-facing proposal without rebuilding the document outside Salesforce.</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -683,9 +703,10 @@
           </div>
         </div>
       </div>
-      <div class="split__media split__media--shot" data-el="image">
-        <img src="../assets/appero-quote-editor.webp" width="1600" height="834"
-             alt="Quote Editor in appero quote: the customer document stays in view while the quote is edited">
+      <!-- Иллюстрация вместо скриншота (решение пользователя 2026-09-16):
+           прозрачный SVG на тёмной подложке, строки прайса сходятся в один узел -->
+      <div class="split__media split__media--art" data-el="image">
+        <img class="is-flipped" src="../assets/ai-architecture.svg" width="432" height="602" alt="" role="presentation">
       </div>
     </div>
 

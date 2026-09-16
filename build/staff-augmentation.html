@@ -444,22 +444,28 @@
       <div class="delivery-row" data-el="container">
 
         <div class="process" data-el="container" data-name="delivery-steps">
-          <div class="process__item process__item--open" data-el="container" tabindex="0">
-            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">01</span> You describe your IT needs</h3>
-            <div class="process__text" data-el="container">
-              <p class="t-body" data-el="text">Describe the desired technology, experience level, project type, and expected duration.</p>
+          <div class="process__item process__item--open" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading"><button class="process__toggle" type="button" aria-expanded="true" aria-controls="sa-step-1"><span class="process__num">01</span> You describe your IT needs</button></h3>
+            <div class="process__text" id="sa-step-1" data-el="container">
+              <div class="process__text-inner" data-el="container">
+                <p class="t-body" data-el="text">Describe the desired technology, experience level, project type, and expected duration.</p>
+              </div>
             </div>
           </div>
-          <div class="process__item" data-el="container" tabindex="0">
-            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">02</span> We present relevant resources</h3>
-            <div class="process__text" data-el="container">
-              <p class="t-body" data-el="text">Within 48 hours, we send you CVs for evaluation. Interviews with candidate resources are conducted by you as the client, if desired.</p>
+          <div class="process__item" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading"><button class="process__toggle" type="button" aria-expanded="false" aria-controls="sa-step-2"><span class="process__num">02</span> We present relevant resources</button></h3>
+            <div class="process__text" id="sa-step-2" data-el="container">
+              <div class="process__text-inner" data-el="container">
+                <p class="t-body" data-el="text">Within 48 hours, we send you CVs for evaluation. Interviews with candidate resources are conducted by you as the client, if desired.</p>
+              </div>
             </div>
           </div>
-          <div class="process__item" data-el="container" tabindex="0">
-            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">03</span> A collaboration agreement is signed</h3>
-            <div class="process__text" data-el="container">
-              <p class="t-body" data-el="text">Fixed price per developer or external development team. Onboarding with the client and a Norwegian project manager. Working hours adapted to Norwegian needs. Security and GDPR are safeguarded — the agreement is followed up by our Norwegian company.</p>
+          <div class="process__item" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading"><button class="process__toggle" type="button" aria-expanded="false" aria-controls="sa-step-3"><span class="process__num">03</span> A collaboration agreement is signed</button></h3>
+            <div class="process__text" id="sa-step-3" data-el="container">
+              <div class="process__text-inner" data-el="container">
+                <p class="t-body" data-el="text">Fixed price per developer or external development team. Onboarding with the client and a Norwegian project manager. Working hours adapted to Norwegian needs. Security and GDPR are safeguarded — the agreement is followed up by our Norwegian company.</p>
+              </div>
             </div>
           </div>
         </div>

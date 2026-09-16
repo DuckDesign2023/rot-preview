@@ -1475,6 +1475,28 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 .split__media--doc { background: var(--color-white); }
 .split__media--doc > img { width: auto; height: 400px; object-fit: contain; }
 
+/* Иллюстрация на тёмной половине полосы (Appero, финальный CTA — решение
+   пользователя 2026-09-16 вместо скриншота). Фон тот же, что у текстовой панели
+   (Near Black): кадр лежит прямо на тёмном, как в секции Architecture на AI —
+   подложки под ним нет. Рисунок прозрачный, по центру, в натуральном размере.
+   Elementor: контейнер Background #121212, Padding 60, внутри Image
+   (Width auto, Object Fit Contain). Для SVG в Медиатеке нужен включённый
+   аплоад SVG (Elementor → Settings → Advanced). */
+.split__media--art { background: var(--bg-near-black); padding: 60px; }
+
+/* Зеркало: на AI кадр читается «из узла наружу», здесь смысл обратный —
+   «много входов сходятся в одно». Elementor: Image → Advanced → Transform →
+   Flip Horizontal, нативный контрол. */
+.split__media--art > img.is-flipped { transform: scaleX(-1); }
+
+.split__media--art > img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
 .split__body    { display: flex; flex-direction: column; gap: var(--space-md); }
 .split__actions { display: flex; gap: var(--space-xs); flex-wrap: wrap; }
 
@@ -1626,48 +1648,81 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 .lockup__arrow--back svg { transform: scaleX(-1); }
 
 /* ══ 28. PROCESS — шаги процесса ═══════════════════════════════
-   152:2000 · пять шагов на тёмном: у активного акцентная линия
-   слева, подсветка фона и раскрытое описание, у остальных описания
-   скрыты (hidden) — то есть аккордеон с одним открытым шагом.
-   Разметка на <details name>: клавиатура и скринридер работают без
-   скриптов, а браузер сам закрывает соседний пункт.
-   Elementor: виджет Accordion (Pro) — Normal / Active со своими
-   Background и Border Left. */
+   152:2000 · шаги на тёмном: у раскрытого акцентная линия слева,
+   подсветка фона и описание, у остальных описание схлопнуто —
+   аккордеон с одним открытым шагом. Рядом плитка с кадром шага.
+   Elementor: Nested Accordion (Max Items Expanded: One, первый раскрыт),
+   Normal / Active со своими Background и Border Left.
 
-/* Шаг раскрывается по наведению (и по фокусу с клавиатуры / тапу).
-   Описание не удаляется из потока, а схлопывается по max-height — текст
-   остаётся в DOM и доступен скринридеру в любом состоянии.
-   Геометрия макета: закрытый шаг 24 + 16 + 12 + 12 = 64,
-   раскрытый 24 + 16 + 12 + 40 + 24 = 116. */
+   Управление — решение пользователя 2026-09-15 (Salesforce · How we work):
+   на десктопе шаг раскрывается ТОЛЬКО наведением, на планшете и мобильном —
+   тапом. Раскрытый шаг остаётся раскрытым, когда курсор ушёл с колонки:
+   раньше при переходе к плитке всё откатывалось к первому шагу. Состоянием
+   управляет js/main.js — класс process__item--open, aria-expanded у кнопки
+   и кадр плитки; в WordPress — сниппет из spec/page-salesforce.md (реестр
+   паспорта, №20). Связки через :has() и пары «шаг → кадр» больше не нужны.
+
+   Геометрия макета: закрытый шаг 24 + 16 + 24 = 64,
+   раскрытый 24 + 16 + 12 + текст + 24. */
 
 .process { display: flex; flex-direction: column; }
 
+/* Колонка держит высоту самого длинного раскрытого шага — min-height ставит
+   скрипт, пересчитывая по ширине окна. Поэтому ряд с плиткой не меняет высоту
+   при смене шага. Тянуть последний шаг до низа (Flex Grow 1) — решение страницы,
+   а не библиотеки: там, где ряд выше колонки из-за графики или фото (NOVA,
+   Staff Augmentation), линия последнего шага уезжала бы вниз на сотню пикселей. */
 .process__item {
   border-left: var(--accent-rule) solid var(--hairline-on-dark);
+  padding-bottom: var(--space-md);
   transition: background-color .2s ease, border-color .2s ease;
 }
 
 .process__title {
-  padding: var(--space-md) var(--space-md) var(--space-xs);
+  padding: var(--space-md) var(--space-md) 0;
   color: var(--color-white);
+}
+
+/* Кнопка шага — для клавиатуры и скринридера (aria-expanded), выглядит как
+   заголовок. Тап работает по всей площади шага, не только по строке. */
+.process__toggle {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: left;
   cursor: default;
 }
 
+.process__toggle:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+
+/* CUSTOM-CSS: описание схлопывается по grid-template-rows 0fr → 1fr —
+   анимируется настоящая высота. С max-height закрывающийся шаг держал полную
+   высоту, пока открывающийся уже рос: колонка на миг становилась выше самого
+   длинного состояния, толкала ряд, и кадр в плитке прыгал. Обёртка
+   process__text-inner нужна, чтобы строка сетки ужималась до нуля. */
 .process__text {
-  padding: 0 var(--space-md) var(--space-xs);
-  color: var(--text-on-dark-80);
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height .35s ease, opacity .25s ease, padding-bottom .35s ease;
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows .35s ease, visibility 0s linear .35s;
 }
 
-/* CUSTOM-CSS: раскрытие соседа и смена кадра — связки через :has(),
-   нативных контролов в Elementor нет. Идёт в Custom CSS секции How it works. */
-.process__item--open .process__text {
-  max-height: 200px;
-  opacity: 1;
-  padding-bottom: var(--space-md);
+.process__text-inner {
+  min-height: 0;
+  overflow: hidden;
+  padding-inline: var(--space-md);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.process__text-inner > p {
+  padding-top: var(--space-xs);
+  color: var(--text-on-dark-80);
 }
 
 .process__item--open {
@@ -1675,36 +1730,15 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   background: var(--surface-on-dark);
 }
 
-/* Наведение (или фокус) перебивает шаг, раскрытый по умолчанию */
-.process:has(.process__item:hover) .process__item--open:not(:hover),
-.process:has(.process__item:focus-within) .process__item--open:not(:focus-within) {
-  border-left-color: var(--hairline-on-dark);
-  background: transparent;
+.process__item--open .process__text {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows .35s ease, visibility 0s linear 0s;
 }
 
-.process:has(.process__item:hover) .process__item--open:not(:hover) .process__text,
-.process:has(.process__item:focus-within) .process__item--open:not(:focus-within) .process__text {
-  max-height: 0;
-  opacity: 0;
-  padding-bottom: var(--space-xs);
-}
+.process__item--open .process__text-inner { opacity: 1; }
 
-.process__item:hover,
-.process__item:focus-within {
-  border-left-color: var(--color-accent);
-  background: var(--surface-on-dark);
-}
-
-.process__item:hover .process__text,
-.process__item:focus-within .process__text {
-  max-height: 200px;
-  opacity: 1;
-  padding-bottom: var(--space-md);
-}
-
-.process__item:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
-
-/* Плитка справа: кадры продукта лежат стопкой, виден кадр активного шага */
+/* Плитка справа: кадры шагов лежат стопкой, виден кадр раскрытого шага */
 .process-plate {
   flex: 1 1 0;
   min-width: 0;
@@ -1721,16 +1755,16 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   object-fit: contain;   /* кадр UI показываем целиком — обрезка режет таблицу по живому */
   object-position: center;
   opacity: 0;
-  transition: opacity .3s ease;
 }
 
-.process-plate__shot--on { opacity: 1; }
+/* Одна картинка за раз: уходящий кадр гаснет сразу, новый проявляется.
+   При встречном затухании два рисунка на миг лежали друг на друге. */
+.process-plate__shot--on {
+  opacity: 1;
+  transition: opacity .25s ease;
+}
 
-/* Кадры-иллюстрации вместо скриншотов (Salesforce · How we work, 2068:56 /
-   85 / 112 / 142): рисунок на тёмной сетке заполняет плитку без полей.
-   В макете плитка 348 при раскрытом тексте в четыре строки и 328 при трёх;
-   все четыре SVG приведены к одному холсту 664 × 348, иначе сетка
-   сдвигалась бы на 10 px при смене шага. Elementor: Image, Object Fit Cover. */
+/* Кадры-иллюстрации на всю плитку (AI & Product Development, 2101:971) */
 .process-plate--art .process-plate__shot {
   inset: 0;
   width: 100%;
@@ -1738,25 +1772,30 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   object-fit: cover;
 }
 
-/* Кадр активного шага. Порядок важен: сначала гасим кадр шага по умолчанию,
-   затем зажигаем кадр того шага, на котором курсор или фокус. */
-.how-row:has(.process__item:not(:first-child):hover) .process-plate__shot--on,
-.how-row:has(.process__item:not(:first-child):focus-within) .process-plate__shot--on { opacity: 0; }
+/* Холст без масштабирования (Salesforce · How we work, 2068:56 / 85 / 112 / 142).
+   Сетка — отдельный неподвижный слой, кадр шага — только иллюстрация на
+   прозрачном холсте. Холст стоит по центру плитки в натуральном размере
+   макета, поэтому рисунок не растягивается ни при смене шага, ни на узких
+   десктопах — плитка лишь подрезает сетку по краям. Размер холста и
+   положение сетки задаёт CSS страницы.
+   Elementor: контейнер холста → Position Absolute, Offset 50 % / 50 %,
+   Transform Translate −50 % / −50 %; сетка и кадры — Image, Position Absolute. */
+.process-plate__canvas {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--canvas-w, 664px);
+  height: var(--canvas-h, 348px);
+  transform: translate(-50%, -50%);
+}
 
-.how-row:has(.process__item:nth-child(1):hover) .process-plate__shot:nth-child(1),
-.how-row:has(.process__item:nth-child(1):focus-within) .process-plate__shot:nth-child(1) { opacity: 1; }
-.how-row:has(.process__item:nth-child(2):hover) .process-plate__shot:nth-child(2),
-.how-row:has(.process__item:nth-child(2):focus-within) .process-plate__shot:nth-child(2) { opacity: 1; }
-.how-row:has(.process__item:nth-child(3):hover) .process-plate__shot:nth-child(3),
-.how-row:has(.process__item:nth-child(3):focus-within) .process-plate__shot:nth-child(3) { opacity: 1; }
-.how-row:has(.process__item:nth-child(4):hover) .process-plate__shot:nth-child(4),
-.how-row:has(.process__item:nth-child(4):focus-within) .process-plate__shot:nth-child(4) { opacity: 1; }
-.how-row:has(.process__item:nth-child(5):hover) .process-plate__shot:nth-child(5),
-.how-row:has(.process__item:nth-child(5):focus-within) .process-plate__shot:nth-child(5) { opacity: 1; }
-/* Шестой шаг — AI & Product Development (2026-09-15). Правила пишутся
-   по числу шагов: без пары для шестого плитка на нём оставалась пустой. */
-.how-row:has(.process__item:nth-child(6):hover) .process-plate__shot:nth-child(6),
-.how-row:has(.process__item:nth-child(6):focus-within) .process-plate__shot:nth-child(6) { opacity: 1; }
+.process-plate__grid { position: absolute; max-width: none; }
+
+.process-plate--canvas .process-plate__shot {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
 
 /* ══ 29. Плитка circle-graphic со смещением ════════════════════
    190:814 / 184:160 · композиция 440 × 259 лежит со сдвигом
@@ -1831,28 +1870,33 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   .case-row { grid-template-columns: repeat(2, 1fr); }
   .case-panels { grid-column: 1 / -1; }
 
-  /* Ниже 1024 наведения нет: все шаги раскрыты, кадр остаётся один.
-     Селекторы повторяют базовые, иначе специфичность :has() их перебьёт. */
-  .process .process__item .process__text,
-  .process:has(.process__item:hover) .process__item--open:not(:hover) .process__text,
-  .process:has(.process__item:focus-within) .process__item--open:not(:focus-within) .process__text {
-    max-height: none;
-    opacity: 1;
-    padding-bottom: var(--space-md);
+  /* Шаги процесса ниже 1024 раскрываются тапом (js/main.js). Плитка встаёт
+     НАД списком: при раскрытии шага меняется то, что ниже, а кадр стоит
+     на месте. Elementor: плитка → Advanced → Order −1 (Tablet). */
+  .how-row > .process-plate { order: -1; }
+  .process__item:not(.process__item--open),
+  .process__item:not(.process__item--open) .process__toggle { cursor: pointer; }
+
+  /* Плитка — во всю ширину в пропорции холста, но не ниже 240: на телефоне
+     холст в пропорции ужимался вдвое, и линии рисунка толщиной 0.5 таяли.
+     Холст накрывает плитку — по ширине, а на узких экранах по высоте 240;
+     обрезается только сетка по бокам, рисунок целиком. Размер зависит лишь
+     от ширины экрана. Основа flex — auto, иначе в колонке flex-basis 0
+     побеждает пропорцию и плитка схлопывается.
+     Elementor: плитка → Min Height 240, Custom CSS aspect-ratio; холст →
+     Width max(100 %, 458 px), остальное как на десктопе. */
+  .process-plate.process-plate--canvas {
+    flex: 0 0 auto;
+    min-height: var(--canvas-min-h, 240px);
+    aspect-ratio: var(--canvas-ratio, 664 / 348);
   }
 
-  .process .process__item,
-  .process:has(.process__item:hover) .process__item--open:not(:hover),
-  .process:has(.process__item:focus-within) .process__item--open:not(:focus-within) {
-    border-left-color: var(--hairline-on-dark);
-    background: transparent;
+  .process-plate--canvas .process-plate__canvas {
+    width: max(100%, calc(var(--canvas-min-h, 240px) * var(--canvas-k, 1.908)));
+    height: auto;
+    aspect-ratio: var(--canvas-ratio, 664 / 348);
   }
 
-  .process .process__item:hover,
-  .process .process__item:focus-within {
-    border-left-color: var(--color-accent);
-    background: var(--surface-on-dark);
-  }
   .case-row__label,
   .case-list { grid-column: 1 / -1; }
 
@@ -1976,6 +2020,9 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   .split { flex-direction: column; }
   .split__panel { flex: 1 1 auto; max-width: none; padding: 80px var(--gutter); }
   .split__media { min-height: 420px; }
+  /* Полоса ниже 1024 разворачивается колонкой: высоту рисунка ограничивает
+     панель, поэтому под иллюстрацию её добавляем — иначе графика мельчает. */
+  .split__media--art { min-height: 520px; padding: 40px; }
   .split__media--doc { padding-block: 60px; }
   .split__media--doc > img { height: 340px; }
 
@@ -2099,6 +2146,9 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 
   .split__panel { padding: 56px var(--gutter); }
   .split__media { min-height: 300px; }
+  /* min-height не снимать: у панели flex-basis 0, и в колонке она схлопнется.
+     Кадр вертикальный (432 × 602), поэтому высоты нужно больше, чем 300 блока 11 */
+  .split__media--art { min-height: 420px; padding: var(--space-md); }
   .split__media--doc > img { height: 260px; }
 
   .fit-list__row { gap: var(--space-sm); }

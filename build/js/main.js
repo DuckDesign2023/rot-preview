@@ -1,12 +1,13 @@
 /* ══════════════════════════════════════════════════════════════
    Red Orange Technologies — эталон, минимальный ванильный JS.
 
-   ВНИМАНИЕ: в WordPress этот файл НЕ переносится. Он делает три вещи —
-   переключает табы «Selected cases», открывает мобильное меню и отдаёт
-   whitepaper после формы в футере Appero; в Elementor это нативные
-   Nested Tabs, Nav Menu (Pro) и Form (Pro) с действием Redirect, каждый
-   со своим скриптом и своей ARIA. Скрипт нужен только для того, чтобы
-   эталон вёл себя как готовая страница при показе клиенту.
+   ВНИМАНИЕ: в WordPress этот файл НЕ переносится. Он делает четыре вещи —
+   переключает табы «Selected cases», открывает мобильное меню, отдаёт
+   whitepaper после формы в футере Appero и раскрывает шаги процесса
+   (блок 28). Первые три в Elementor нативные — Nested Tabs, Nav Menu (Pro)
+   и Form (Pro) с действием Redirect. Шагам процесса нужен свой сниппет:
+   раскрытие наведением на десктопе и резерв высоты виджет не умеет
+   (spec/page-salesforce.md, реестр паспорта №20).
    Всё остальное работает без JS — на CSS.
    ══════════════════════════════════════════════════════════════ */
 (function () {
@@ -96,6 +97,98 @@
       return tab.getAttribute('aria-selected') === 'true';
     });
     select(initial < 0 ? 0 : initial);
+  });
+
+  /* ── Шаги процесса (блок 28) ───────────────────────────────────
+     Десктоп: шаг раскрывается наведением и остаётся раскрытым, когда курсор
+     ушёл. Планшет и мобильный: только тапом. Клавиатура — Enter / Space на
+     кнопке шага. Всегда раскрыт ровно один шаг, в плитке — его кадр.
+
+     Колонка шагов получает min-height самого длинного раскрытого состояния,
+     поэтому ряд с плиткой не меняет высоту при смене шага. */
+  var hoverMode = window.matchMedia('(min-width: 1025px) and (hover: hover)');
+
+  document.querySelectorAll('.process').forEach(function (list) {
+    var items = Array.prototype.slice.call(list.querySelectorAll(':scope > .process__item'));
+    if (!items.length) return;
+
+    var plate = list.parentElement && list.parentElement.querySelector(':scope > .process-plate');
+    var shots = plate ? Array.prototype.slice.call(plate.querySelectorAll('.process-plate__shot')) : [];
+
+    function current() {
+      return items.findIndex(function (item) { return item.classList.contains('process__item--open'); });
+    }
+
+    function open(index) {
+      items.forEach(function (item, i) {
+        var on = i === index;
+        item.classList.toggle('process__item--open', on);
+        var toggle = item.querySelector('.process__toggle');
+        if (toggle) toggle.setAttribute('aria-expanded', on ? 'true' : 'false');
+      });
+      shots.forEach(function (shot, i) {
+        shot.classList.toggle('process-plate__shot--on', i === index);
+      });
+    }
+
+    // Резерв: сумма шагов без описаний + самое длинное описание. Абзац внутри
+    // обёртки сохраняет полную высоту в любом состоянии, даже посреди анимации.
+    // Замер дробный (getBoundingClientRect): offsetHeight округляет, и ряд
+    // гулял на 0.4 px между шагами. На время замера колонка встаёт по своему
+    // содержимому: иначе растяжение под соседнюю графику (NOVA) или прошлый
+    // резерв, ушедший в последний шаг с Flex Grow 1, попали бы в сумму,
+    // и резерв рос бы с каждым пересчётом.
+    function reserve() {
+      // растягивает только ряд (на десктопе); в колонке (≤1024) align-self
+      // сузил бы список по ширине и текст перенёсся бы иначе
+      var inRow = getComputedStyle(list.parentElement).flexDirection.indexOf('row') === 0;
+      list.style.minHeight = '';
+      if (inRow) list.style.alignSelf = 'flex-start';
+      var base = 0;
+      var longest = 0;
+      items.forEach(function (item) {
+        var text = item.querySelector('.process__text');
+        var para = text && text.querySelector('p');
+        base += item.getBoundingClientRect().height - (text ? text.getBoundingClientRect().height : 0);
+        if (para) longest = Math.max(longest, para.getBoundingClientRect().height);
+      });
+      list.style.alignSelf = '';
+      // до четверти пикселя вверх — чтобы резерв не оказался на тысячную ниже раскладки
+      list.style.minHeight = Math.ceil((base + longest) * 4) / 4 + 'px';
+    }
+
+    // Наведение — только реальным движением мыши. Координаты сравниваются,
+    // чтобы сдвиг раскладки под неподвижным курсором не считался движением:
+    // иначе раскрытие цепочкой перескакивало бы на соседний шаг.
+    var lastX = null;
+    var lastY = null;
+    list.addEventListener('pointermove', function (event) {
+      if (event.pointerType !== 'mouse' || !hoverMode.matches) return;
+      if (event.clientX === lastX && event.clientY === lastY) return;
+      lastX = event.clientX;
+      lastY = event.clientY;
+      var index = items.indexOf(event.target.closest('.process__item'));
+      if (index > -1 && index !== current()) open(index);
+    });
+
+    // Тап на планшете и мобильном, Enter / Space с клавиатуры. На десктопе
+    // шаг под курсором уже раскрыт наведением — клик ничего не меняет.
+    list.addEventListener('click', function (event) {
+      var index = items.indexOf(event.target.closest('.process__item'));
+      if (index > -1 && index !== current()) open(index);
+    });
+
+    var initial = current();
+    open(initial < 0 ? 0 : initial);
+    reserve();
+
+    var pending = false;
+    window.addEventListener('resize', function () {
+      if (pending) return;
+      pending = true;
+      window.requestAnimationFrame(function () { pending = false; reserve(); });
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(reserve);
   });
 
   /* ── Лид-магнит: после отправки формы отдаём файл ──────────────

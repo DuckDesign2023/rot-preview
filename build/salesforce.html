@@ -190,43 +190,56 @@
       <div class="how-row" data-el="container">
 
         <div class="process" data-el="container" data-name="process-steps">
-          <div class="process__item process__item--open" data-el="container" tabindex="0">
-            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">01</span> Listen</h3>
-            <div class="process__text" data-el="container">
-              <p class="t-body" data-el="text">We facilitate contact between your company and our team of experts, who are keen to familiarise themselves with your business and your needs and challenges related to the existing implementation. We achieve this by asking relevant questions to gain a better understanding of your situation.</p>
+          <div class="process__item process__item--open" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading"><button class="process__toggle" type="button" aria-expanded="true" aria-controls="sf-step-1"><span class="process__num">01</span> Listen</button></h3>
+            <div class="process__text" id="sf-step-1" data-el="container">
+              <div class="process__text-inner" data-el="container">
+                <p class="t-body" data-el="text">We facilitate contact between your company and our team of experts, who are keen to familiarise themselves with your business and your needs and challenges related to the existing implementation. We achieve this by asking relevant questions to gain a better understanding of your situation.</p>
+              </div>
             </div>
           </div>
-          <div class="process__item" data-el="container" tabindex="0">
-            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">02</span> Proposal</h3>
-            <div class="process__text" data-el="container">
-              <p class="t-body" data-el="text">Our approach is to propose solutions to complex business challenges by prioritising what is in the best interest of your company, rather than imposing our assumptions on you. This is our genuine interpretation of Igniting Digital Transformation.</p>
+          <div class="process__item" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading"><button class="process__toggle" type="button" aria-expanded="false" aria-controls="sf-step-2"><span class="process__num">02</span> Proposal</button></h3>
+            <div class="process__text" id="sf-step-2" data-el="container">
+              <div class="process__text-inner" data-el="container">
+                <p class="t-body" data-el="text">Our approach is to propose solutions to complex business challenges by prioritising what is in the best interest of your company, rather than imposing our assumptions on you. This is our genuine interpretation of Igniting Digital Transformation.</p>
+              </div>
             </div>
           </div>
-          <div class="process__item" data-el="container" tabindex="0">
-            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">03</span> Execute</h3>
-            <div class="process__text" data-el="container">
-              <p class="t-body" data-el="text">Our philosophy focuses on collaboration rather than working for the individual, recognising that collective effort produces the best possible result. As your dedicated partner, we take responsibility for driving your success and that of your business through effective implementation.</p>
+          <div class="process__item" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading"><button class="process__toggle" type="button" aria-expanded="false" aria-controls="sf-step-3"><span class="process__num">03</span> Execute</button></h3>
+            <div class="process__text" id="sf-step-3" data-el="container">
+              <div class="process__text-inner" data-el="container">
+                <p class="t-body" data-el="text">Our philosophy focuses on collaboration rather than working for the individual, recognising that collective effort produces the best possible result. As your dedicated partner, we take responsibility for driving your success and that of your business through effective implementation.</p>
+              </div>
             </div>
           </div>
-          <div class="process__item" data-el="container" tabindex="0">
-            <h3 class="t-h3 process__title" data-el="heading"><span class="process__num">04</span> Improvement</h3>
-            <div class="process__text" data-el="container">
-              <p class="t-body" data-el="text">Our commitment is to continuous improvement rather than perfection. That's why we actively listen to your and your organisation's feedback and focus our efforts on continuous improvement at every milestone, sprint, and launch.</p>
+          <div class="process__item" data-el="container">
+            <h3 class="t-h3 process__title" data-el="heading"><button class="process__toggle" type="button" aria-expanded="false" aria-controls="sf-step-4"><span class="process__num">04</span> Improvement</button></h3>
+            <div class="process__text" id="sf-step-4" data-el="container">
+              <div class="process__text-inner" data-el="container">
+                <p class="t-body" data-el="text">Our commitment is to continuous improvement rather than perfection. That's why we actively listen to your and your organisation's feedback and focus our efforts on continuous improvement at every milestone, sprint, and launch.</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Кадр своего шага: виден кадр раскрытого шага, по наведению — того,
-             что под курсором (тот же приём, что на Appero, блок 28) -->
-        <div class="process-plate process-plate--art" data-el="container">
-          <img class="process-plate__shot process-plate__shot--on" src="../assets/sf-step-1-listen.svg"
-               width="664" height="348" alt="" role="presentation">
-          <img class="process-plate__shot" src="../assets/sf-step-2-proposal.svg"
-               width="664" height="348" alt="" role="presentation">
-          <img class="process-plate__shot" src="../assets/sf-step-3-execute.svg"
-               width="664" height="348" alt="" role="presentation">
-          <img class="process-plate__shot" src="../assets/sf-step-4-improve.svg"
-               width="664" height="348" alt="" role="presentation">
+        <!-- Плитка шага (2068:56 / 85 / 112 / 142): сетка неподвижна, поверх —
+             иллюстрация раскрытого шага в натуральном размере по центру.
+             Размер кадра не зависит от высоты колонки шагов — ничего не прыгает -->
+        <div class="process-plate process-plate--canvas" data-el="container">
+          <div class="process-plate__canvas" data-el="container">
+            <img class="process-plate__grid" src="../assets/sf-process-grid.svg"
+                 width="663" height="570" alt="" role="presentation">
+            <img class="process-plate__shot process-plate__shot--on" src="../assets/sf-step-1-listen.svg"
+                 width="664" height="348" alt="" role="presentation">
+            <img class="process-plate__shot" src="../assets/sf-step-2-proposal.svg"
+                 width="664" height="348" alt="" role="presentation">
+            <img class="process-plate__shot" src="../assets/sf-step-3-execute.svg"
+                 width="664" height="348" alt="" role="presentation">
+            <img class="process-plate__shot" src="../assets/sf-step-4-improve.svg"
+                 width="664" height="348" alt="" role="presentation">
+          </div>
         </div>
 
       </div>
