@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="432" height="384" viewBox="0 0 432 384" fill="none" role="img" aria-label="Room to grow">
+  <path opacity="0.2" d="M70.848 62.976V321.024M83.348 62.976V321.024M95.848 62.976V321.024M108.348 62.976V321.024M120.848 62.976V321.024M133.348 62.976V321.024M145.848 62.976V321.024M158.348 62.976V321.024M170.848 62.976V321.024M183.348 62.976V321.024M195.848 62.976V321.024M208.348 62.976V321.024M220.848 62.976V321.024M233.348 62.976V321.024M245.848 62.976V321.024M258.348 62.976V321.024M270.848 62.976V321.024M283.348 62.976V321.024M295.848 62.976V321.024M308.348 62.976V321.024M320.848 62.976V321.024M333.348 62.976V321.024M345.848 62.976V321.024M358.348 62.976V321.024M70.848 62.976H361.152M70.848 75.476H361.152M70.848 87.976H361.152M70.848 100.476H361.152M70.848 112.976H361.152M70.848 125.476H361.152M70.848 137.976H361.152M70.848 150.476H361.152M70.848 162.976H361.152M70.848 175.476H361.152M70.848 187.976H361.152M70.848 200.476H361.152M70.848 212.976H361.152M70.848 225.476H361.152M70.848 237.976H361.152M70.848 250.476H361.152M70.848 262.976H361.152M70.848 275.476H361.152M70.848 287.976H361.152M70.848 300.476H361.152M70.848 312.976H361.152" stroke="#78716C" stroke-width="0.5"/>
+  <g transform="translate(216 180) scale(1.2) translate(-216 -180)">
+    <ellipse cx="216" cy="118" rx="92" ry="22.08" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <ellipse cx="216" cy="142" rx="79" ry="18.96" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <ellipse cx="216" cy="166" rx="66" ry="15.84" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <ellipse cx="216" cy="190" rx="53" ry="12.72" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <ellipse cx="216" cy="214" rx="40" ry="9.6" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <ellipse cx="216" cy="238" rx="27" ry="6.48" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <ellipse cx="216" cy="262" rx="14" ry="3.36" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <path d="M216 290L216 70" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="2 2"/>
+    <path d="M124 118L202 262" fill="none" stroke="#ED3A20" stroke-width="0.5" stroke-dasharray="2 2"/>
+    <path d="M308 118L230 262" fill="none" stroke="#ED3A20" stroke-width="0.5" stroke-dasharray="2 2"/>
+    <circle cx="216" cy="290" r="6" fill="#ED3A20"/>
+    <circle cx="216" cy="70" r="9" fill="none" stroke="white" stroke-width="0.5"/>
+    <circle cx="216" cy="70" r="3" fill="white"/>
+  </g>
+</svg>

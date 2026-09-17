@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team | Red Orange Technologies</title>
+  <meta name="description" content="Meet the leadership and team members of Red Orange Technologies — technology professionals in Norway and India with industry-recognized certifications and experience.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/team.css">
+</head>
+<body>
+
+<!-- ══ HEADER — 152:1823 → Theme Builder → Header (общий с главной) ══ -->
+<header class="site-header" data-el="container" data-name="header">
+  <a class="site-header__logo" href="index.html" data-wp="/" data-el="image" aria-label="Red Orange Technologies — home">
+    <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
+  </a>
+  <!-- Панель меню: внутри только виджет Nav Menu (пункты берутся из меню
+       WordPress) и отдельный блок с языком и CTA — ссылки правятся
+       в «Внешний вид → Меню», не трогая Elementor -->
+  <div class="site-menu" id="site-menu" data-el="container">
+    <nav class="site-nav" data-el="nav-menu" aria-label="Main">
+      <a class="t-nav site-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+      <a class="t-nav site-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+      <a class="t-nav site-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce</a>
+      <a class="t-nav site-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+      <div class="site-nav__item" data-el="container">
+        <a class="t-nav site-nav__link site-nav__link--parent" href="products.html" data-wp="/products/">Products</a>
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="sub-products" aria-label="Products submenu"><svg class="site-nav__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1.25 5 5 9 1.25"/></svg></button>
+        <div class="site-nav__sub" id="sub-products" data-el="container">
+          <a class="t-nav site-nav__sublink" href="nova-for-salesforce.html" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+          <a class="t-nav site-nav__sublink" href="workhub.html" data-wp="/products/workhub/">WorkHub</a>
+          <a class="t-nav site-nav__sublink" href="novalab.html" data-wp="/products/novalab/">NOVAlab</a>
+        </div>
+      </div>
+      <div class="site-nav__item" data-el="container">
+        <a class="t-nav site-nav__link site-nav__link--parent" href="about.html" data-wp="/company/">Company</a>
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="sub-company" aria-label="Company submenu"><svg class="site-nav__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1.25 5 5 9 1.25"/></svg></button>
+        <div class="site-nav__sub" id="sub-company" data-el="container">
+          <a class="t-nav site-nav__sublink" href="about.html" data-wp="/company/">About us</a>
+          <a class="t-nav site-nav__sublink" href="#" data-wp="/company/why-us/">Why us</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="site-menu__cta" data-el="container">
+      <div class="lang-switch" role="group" aria-label="Language" data-el="container">
+        <a class="t-nav lang-switch__item" href="#" aria-current="true" lang="en" data-el="text">EN</a>
+        <a class="t-nav lang-switch__item" href="#" lang="nb" hreflang="nb" data-el="text">NO</a>
+      </div>
+      <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    </div>
+  </div>
+  <div class="site-header__actions" data-el="container">
+      <div class="lang-switch" role="group" aria-label="Language" data-el="container">
+        <a class="t-nav lang-switch__item" href="#" aria-current="true" lang="en" data-el="text">EN</a>
+        <a class="t-nav lang-switch__item" href="#" lang="nb" hreflang="nb" data-el="text">NO</a>
+      </div>
+    <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    <button class="site-header__burger" type="button" data-el="button"
+            aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <svg class="burger-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect class="burger-icon__bar burger-icon__bar--top" x="0" y="5"  width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--mid" x="0" y="11" width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--bot" x="0" y="17" width="24" height="2"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- затемнение под мобильным меню: сосед хедера, иначе
+     оказывается внутри его stacking context и накрывает логотип -->
+<div class="site-menu-backdrop" hidden></div>
+
+<main>
+
+  <!-- Макета нет: страница собрана из библиотеки блоков по staging /team/.
+       Тексты дословные; опечатка «Zahiruddinr» исправлена, дубли Gajann и
+       Pranshu в списке сотрудников сняты. СОСТАВ КОМАНДЫ ЖДЁТ ПОДТВЕРЖДЕНИЯ
+       КЛИЕНТА: staging давно не обновлялся, docx по Team у клиента нет. -->
+
+  <!-- ══ 1 · HERO — блок 10 hero-split + общий сбор команды в Индии ══ -->
+  <section class="section t-hero" data-el="container" data-name="hero">
+    <div class="section__inner" data-el="container">
+      <div class="hero-split" data-el="container">
+        <div class="hero-split__content" data-el="container">
+          <div class="hero-split__stack" data-el="container">
+            <span class="badge" data-el="text">Team</span>
+            <div class="hero-split__body" data-el="container">
+              <h1 class="t-display" data-el="heading">Get to know us a little better</h1>
+              <p class="t-lead hero-split__lead" data-el="text">Our employees here at Red Orange Technologies have a variety of industry-recognized certifications and experience.</p>
+              <div class="hero__actions" data-el="container">
+                <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+                <a class="btn btn--outline" href="#" data-wp="/company/careers/" data-el="button">We are hiring</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-split__visual" data-el="image">
+          <img src="../assets/team-group.webp" width="1536" height="1024"
+               alt="The Red Orange Technologies team together in a meeting room at the office in India">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2 · LEADERSHIP — section-head + блок 46 person grid, 7 портретов ══ -->
+  <section class="section t-leaders" data-el="container" data-name="leadership">
+    <div class="section__inner" data-el="container">
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Leadership</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Meet the leadership team</h2>
+      </div>
+      <div class="person-grid" data-el="container" data-name="leaders">
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-amit.webp" width="640" height="800" loading="lazy" alt="Amit Sharma"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="person-card__place" data-el="text">Norway</span>
+            <span class="t-h3 person-card__name" data-el="text">Amit Sharma</span>
+            <span class="t-body person-card__role" data-el="text">Founder and Group CEO</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-henning.webp" width="640" height="800" loading="lazy" alt="Henning Børve Figenschou"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="person-card__place" data-el="text">Norway</span>
+            <span class="t-h3 person-card__name" data-el="text">Henning Børve Figenschou</span>
+            <span class="t-body person-card__role" data-el="text">CEO, Europe</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-geir.webp" width="640" height="800" loading="lazy" alt="Geir Aasen"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="person-card__place" data-el="text">Norway</span>
+            <span class="t-h3 person-card__name" data-el="text">Geir Aasen</span>
+            <span class="t-body person-card__role" data-el="text">Chief Revenue Officer, Europe</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-christian.webp" width="640" height="800" loading="lazy" alt="Christian Helle"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="person-card__place" data-el="text">Norway</span>
+            <span class="t-h3 person-card__name" data-el="text">Christian Helle</span>
+            <span class="t-body person-card__role" data-el="text">Executive partner and board member</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-prakash.webp" width="640" height="800" loading="lazy" alt="Prakash Kattoli"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="person-card__place" data-el="text">India</span>
+            <span class="t-h3 person-card__name" data-el="text">Prakash Kattoli</span>
+            <span class="t-body person-card__role" data-el="text">Group COO</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-randhir.webp" width="640" height="800" loading="lazy" alt="Randhir Singh Mangat"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="person-card__place" data-el="text">India</span>
+            <span class="t-h3 person-card__name" data-el="text">Randhir Singh Mangat</span>
+            <span class="t-body person-card__role" data-el="text">Legal Advisor &amp; CFO</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-pranshu.webp" width="640" height="800" loading="lazy" alt="Pranshu Pathak"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="person-card__place" data-el="text">India</span>
+            <span class="t-h3 person-card__name" data-el="text">Pranshu Pathak</span>
+            <span class="t-body person-card__role" data-el="text">HR</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 3 · SUPPORT — тёмная секция, блок 15 dark split + кадр генератора ══ -->
+  <section class="section section--dark t-support on-dark" data-el="container" data-name="support">
+    <div class="section__inner" data-el="container">
+      <div class="dark-split" data-el="container">
+        <div class="dark-split__text" data-el="container">
+          <h2 class="t-h1 t-h1--normal" data-el="heading">Our team is here to support your team</h2>
+          <p class="t-lead dark-split__lead" data-el="text">With our IT experience, our technicians, engineers, business consultants, help-desk professionals, and account managers focus on your business and how we can help you achieve business success. Together with Red Orange Technologies, you will have the personal touch and expertise of our team at your service.</p>
+          <div class="hero__actions" data-el="container">
+            <a class="btn btn--primary" href="#contact" data-el="button">Get in touch</a>
+          </div>
+        </div>
+        <div class="dark-split__graphic" data-el="image">
+          <img src="../assets/team-support.svg" width="432" height="384" alt="" role="presentation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 4 · TEAM MEMBERS — section-head + лид + блок 46, 12 портретов ══ -->
+  <section class="section t-members" data-el="container" data-name="members">
+    <div class="section__inner" data-el="container">
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Team</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Meet some of our team members</h2>
+      </div>
+      <p class="t-lead t-members__lead" data-el="text">Our ongoing commitment to deliver the best possible service is our commitment to the education and expertise of our team members. We onboard experienced talents and continuously invest in their training and development, ensuring they are updated on the latest technologies. This dedication empowers us to assist you in achieving the growth of your business.</p>
+      <div class="person-grid" data-el="container" data-name="members">
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-simran.webp" width="480" height="600" loading="lazy" alt="Simran Arora"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="t-h3 person-card__name" data-el="text">Simran Arora</span>
+            <span class="t-body person-card__role" data-el="text">Business Analyst IT</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-prabhjot.webp" width="480" height="600" loading="lazy" alt="Prabhjot Singh"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="t-h3 person-card__name" data-el="text">Prabhjot Singh</span>
+            <span class="t-body person-card__role" data-el="text">Technical Project Manager</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-varun.webp" width="480" height="600" loading="lazy" alt="Varun Sharma"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="t-h3 person-card__name" data-el="text">Varun Sharma</span>
+            <span class="t-body person-card__role" data-el="text">Sr. Software Developer</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-gurpreet.webp" width="480" height="600" loading="lazy" alt="Gurpreet Singh"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="t-h3 person-card__name" data-el="text">Gurpreet Singh</span>
+            <span class="t-body person-card__role" data-el="text">Sr. UI Developer</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-pankaj.webp" width="480" height="600" loading="lazy" alt="Pankaj Batra"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="t-h3 person-card__name" data-el="text">Pankaj Batra</span>
+            <span class="t-body person-card__role" data-el="text">Business Analyst IT</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-sahil.webp" width="480" height="600" loading="lazy" alt="Sahil Atwal"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="t-h3 person-card__name" data-el="text">Sahil Atwal</span>
+            <span class="t-body person-card__role" data-el="text">Graphic and UI designer</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-navneet.webp" width="480" height="600" loading="lazy" alt="Navneet Sharma"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="t-h3 person-card__name" data-el="text">Navneet Sharma</span>
+            <span class="t-body person-card__role" data-el="text">Digital Marketing Expert</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-gagan.webp" width="480" height="600" loading="lazy" alt="Gagan Arora"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="t-h3 person-card__name" data-el="text">Gagan Arora</span>
+            <span class="t-body person-card__role" data-el="text">Jr. WordPress Developer</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-shaheen.webp" width="480" height="600" loading="lazy" alt="Shaheen Zahiruddin"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="t-h3 person-card__name" data-el="text">Shaheen Zahiruddin</span>
+            <span class="t-body person-card__role" data-el="text">Web Developer</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-gajann.webp" width="480" height="600" loading="lazy" alt="Gajann Manwar"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="t-h3 person-card__name" data-el="text">Gajann Manwar</span>
+            <span class="t-body person-card__role" data-el="text">Sr. WordPress Developer</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-surendra.webp" width="480" height="600" loading="lazy" alt="Surendra Singh Rebari"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="t-h3 person-card__name" data-el="text">Surendra Singh Rebari</span>
+            <span class="t-body person-card__role" data-el="text">React Native Developer</span>
+          </figcaption>
+        </figure>
+        <figure class="person-card" data-el="container">
+          <div class="person-card__photo" data-el="image"><img src="../assets/person-sanju.webp" width="480" height="600" loading="lazy" alt="Sanju Nekar"></div>
+          <figcaption class="person-card__cap" data-el="container">
+            <span class="t-h3 person-card__name" data-el="text">Sanju Nekar</span>
+            <span class="t-body person-card__role" data-el="text">Quality Analyst</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 5 · ФИНАЛЬНЫЙ CTA — блок 11 split 720 / 720, вся команда на лестнице ══ -->
+  <section class="section t-cta" data-el="container" data-name="closing">
+    <div class="section__inner" data-el="container">
+      <div class="split split--in-grid" data-el="container">
+        <div class="split__panel split__panel--warm" data-el="container">
+          <h2 class="t-h1 t-h1--normal split__title" data-el="heading">We are hiring</h2>
+          <div class="split__body" data-el="container">
+            <p class="t-lead" data-el="text">We are always looking for talented technology professionals who want to work on meaningful projects, develop their skills and be part of an international team.</p>
+            <div class="split__actions" data-el="container">
+              <a class="btn btn--primary" href="#" data-wp="/company/careers/" data-el="button">Careers</a>
+              <a class="btn btn--outline" href="#contact" data-el="button">Book a meeting</a>
+            </div>
+          </div>
+        </div>
+        <div class="split__media" data-el="image">
+          <img src="../assets/team-stairs.webp" width="1080" height="1440" loading="lazy"
+               alt="The Red Orange Technologies team gathered on the office staircase in India">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+
+
+<!-- ══ 10 · FOOTER — 152:131 → Theme Builder → Footer ═════════════ -->
+<footer class="site-footer" id="contact" data-el="container" data-name="footer">
+  <div class="site-footer__photo" aria-hidden="true"></div>
+  <div class="site-footer__wash" aria-hidden="true"></div>
+  <div class="site-footer__glow" aria-hidden="true"></div>
+
+  <div class="site-footer__inner" data-el="container">
+
+    <div class="footer-top" data-el="container">
+
+      <div class="footer-contact" data-el="container">
+        <div class="t-overline footer-contact__label" data-el="text">Get in touch</div>
+        <h2 class="t-h1 t-h1--normal" data-el="heading">Collaborate with us for complete IT solutions</h2>
+        <p class="t-lead footer-contact__lead" data-el="text">We're happy to answer any questions and help determine which of our services best fit your needs.</p>
+
+        <div class="check-list" data-el="container">
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Client-oriented</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Independent</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Competent</span>
+            </div>
+          </div>
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Results-driven</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Problem-solving</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Transparent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-form" data-el="container">
+        <h2 class="t-h2 footer-form__title" data-el="heading">Let us talk about your next solution</h2>
+        <form class="form" data-el="form" action="#" method="post">
+          <div class="form__row" data-el="container">
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-first" data-el="text">First name</label>
+              <input class="field__control" id="f-first" name="first-name" type="text" autocomplete="given-name">
+            </div>
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-last" data-el="text">Last name</label>
+              <input class="field__control" id="f-last" name="last-name" type="text" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-email" data-el="text">Email</label>
+            <input class="field__control" id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-company" data-el="text">Company</label>
+            <input class="field__control" id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field field--last" data-el="container">
+            <label class="t-body" for="f-message" data-el="text">Message</label>
+            <textarea class="field__control" id="f-message" name="message" rows="5"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit" data-el="button">Send message</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-nav" data-el="container">
+      <div class="footer-nav__cols" data-el="container">
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Solutions</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+            <a class="footer-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce Services</a>
+            <a class="footer-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+            <a class="footer-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Products</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="nova-for-salesforce.html" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+            <a class="footer-nav__link" href="workhub.html" data-wp="/products/workhub/">WorkHub</a>
+            <a class="footer-nav__link" href="novalab.html" data-wp="/products/novalab/">NOVAlab</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Company</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="about.html" data-wp="/company/">About us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/why-us/">Why us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/team/">Team</a>
+            <a class="footer-nav__link" href="#" data-wp="/cases/">Case studies</a>
+            <a class="footer-nav__link" href="#" data-wp="/insights/">Blog</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/careers/">Careers</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Contact</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Asker, Norway</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Pune, India</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Mohali, India</a>
+            <a class="footer-nav__link" href="mailto:contact@redorangetechnologies.com">contact@redorangetechnologies.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider divider--ondark-soft" data-el="divider">
+
+      <div class="footer-bottom" data-el="container">
+        <span class="footer-bottom__copy" data-el="text">© 2026 Red Orange Technologies</span>
+        <a href="#" data-wp="/terms/" data-el="text">Terms &amp; Conditions</a>
+        <a href="#" data-wp="/privacy/" data-el="text">Privacy Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

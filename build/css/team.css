@@ -1,0 +1,56 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — Team (/company/team/).
+   Макета в Figma нет: страница собрана из библиотеки блоков по
+   staging /team/ — docx по этой странице у клиента нет.
+   СОСТАВ КОМАНДЫ ЖДЁТ ПОДТВЕРЖДЕНИЯ КЛИЕНТА.
+   Фото — только реальные: портреты со staging (кроп 4 : 5 заранее,
+   одинаковый масштаб лиц), общий сбор и лестница — из Trello.
+   Иллюстрация тёмной секции — tools/ro_figma_style.py, язык кадров
+   дизайнера из Figma.
+
+   Здесь только вертикальный ритм и то, чего нет в components.css.
+   ══════════════════════════════════════════════════════════════ */
+
+.t-hero    { padding-top:  84px; padding-bottom:  40px; }
+.t-leaders { padding-top: 120px; padding-bottom: 140px; } /* +20 перед тёмной */
+.t-support { padding-top: 100px; padding-bottom: 100px; } /* тёмная */
+.t-members { padding-top: 120px; padding-bottom: 120px; }
+.t-cta     { padding-top: 120px; padding-bottom: 140px; }
+
+/* ── 1 · Hero — снимок 3 : 2, как на About ─────────────────── */
+.t-hero .hero-split { align-items: center; }
+.t-hero .hero-split__visual { aspect-ratio: 3 / 2; }
+
+/* ── 3 · Тёмная секция ─────────────────────────────────────── */
+.t-support .dark-split { align-items: center; }
+
+/* ── 4 · Сотрудники — лид над сеткой портретов ──────────────── */
+.t-members__lead { max-width: 940px; }
+.t-members .person-grid { margin-top: var(--space-xl); }
+
+/* ── Планшет ≤ 1024 ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .t-hero    { padding-top: 64px; padding-bottom: 32px; }
+  .t-leaders { padding-top: 96px; padding-bottom: 112px; }
+  .t-support { padding-top: 80px; padding-bottom: 80px; }
+  .t-members { padding-top: 96px; padding-bottom: 96px; }
+  .t-cta     { padding-top: 96px; padding-bottom: 112px; }
+
+  /* 19 портретов: в две колонки (как у четырёх руководителей на About)
+     каждый портрет шириной ~480 и страница вырастала до 11 700 px.
+     Здесь на планшете три колонки. В Elementor: Grid → Columns Tablet 3. */
+  .t-leaders .person-grid,
+  .t-members .person-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* ── Мобильный ≤ 767 ───────────────────────────────────────── */
+@media (max-width: 767px) {
+  .t-hero { padding-top: 48px; padding-bottom: 24px; }
+  .t-leaders,
+  .t-members,
+  .t-cta  { padding-top: 72px; padding-bottom: 72px; }
+  .t-support { padding-top: 64px; padding-bottom: 64px; }
+  .t-leaders .person-grid,
+  .t-members .person-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .t-cta .btn { width: 100%; text-align: center; }
+}

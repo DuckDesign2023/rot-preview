@@ -1,0 +1,97 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — Careers (/company/careers/).
+   Макета в Figma нет: страница собрана из библиотеки блоков по
+   `_client/Careers_at_Red_Orange_Technologies.docx` (Trello RKjUhL4e).
+   Тексты дословные. Фото — реальные снимки офиса из Trello.
+   Иллюстрация тёмной секции — tools/ro_figma_style.py.
+
+   Здесь только вертикальный ритм, пара «фото + список» и поля формы,
+   которых ещё не было в components.css (Select и File Upload).
+   ══════════════════════════════════════════════════════════════ */
+
+.c-hero  { padding-top:  84px; padding-bottom:  40px; }
+.c-join  { padding-top: 120px; padding-bottom: 120px; }
+.c-who   { padding-top: 120px; padding-bottom: 120px; }
+/* .c-apply — section--flush: полоса формы во всю ширину, как на Appero */
+.c-open  { padding-top: 100px; padding-bottom: 100px; } /* тёмная, перед футером */
+
+/* ── 1 · Hero ──────────────────────────────────────────────── */
+.c-hero .hero-split { align-items: center; }
+.c-hero .hero-split__visual { aspect-ratio: 3 / 2; }
+
+/* ── 2 · Why join us — фото 3 : 2 + тёплая панель со списком ───
+   Та же пара, что a-story на About и intro-row на Staff Aug:
+   в Elementor — row-контейнер, Image + контейнер с фоном Warm White. */
+.c-join__row { display: flex; gap: var(--col-gap); align-items: stretch; }
+.c-join__photo { flex: 1 1 0; min-width: 0; }
+.c-join__photo img { display: block; width: 100%; height: 100%; min-height: 360px; object-fit: cover; }
+.c-join__list {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  justify-content: center;
+  padding: var(--space-xl) var(--space-lg);
+  background: var(--bg-warm);
+}
+.c-join__label { color: var(--gray-500); }
+.c-join__items { display: flex; flex-direction: column; gap: var(--space-sm); }
+.c-join__items .check-item { align-items: flex-start; }
+.c-join__items .check-item svg { flex: 0 0 24px; }
+
+/* ── 3 · Кто нужен — role grid 3 × 3 ровно закрывает сетку ───── */
+.c-who .role-grid { margin-top: var(--space-xl); }
+
+/* ── 4 · Тёмная секция ─────────────────────────────────────── */
+.c-open .dark-split { align-items: center; }
+
+/* ── 5 · Форма ─────────────────────────────────────────────── */
+.c-apply__note { color: var(--text-muted); }
+
+/* Select — Form (Pro) → Style → Field: те же рамка, высота и шрифт, что
+   у текстового поля. Стрелка — фоновым SVG: у Select в Elementor свой
+   индикатор, в эталоне его заменяет эта картинка. */
+.field__control--select {
+  appearance: none;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1.25 5 5 9 1.25' fill='none' stroke='%231C1917' stroke-width='1.4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 10px 6px;
+  cursor: pointer;
+}
+
+/* CUSTOM-CSS: кнопка выбора файла у File Upload. Контролов оформления
+   кнопки внутри поля файла у Form нет — в Custom CSS виджета Form:
+   selector input[type=file]::file-selector-button { … }. Реестр паспорта. */
+.field__control--file { height: auto; padding: 10px var(--space-xs); cursor: pointer; }
+.field__control--file::file-selector-button {
+  margin-right: var(--space-sm);
+  padding: 6px 12px;
+  border: var(--border-width) solid var(--color-dark);
+  border-radius: 4px;
+  background: var(--color-white);
+  color: var(--color-dark);
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ── Планшет ≤ 1024 ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .c-hero { padding-top: 64px; padding-bottom: 32px; }
+  .c-join { padding-top: 96px; padding-bottom: 96px; }
+  .c-who  { padding-top: 96px; padding-bottom: 96px; }
+  .c-open { padding-top: 80px; padding-bottom: 80px; }
+  .c-join__row { flex-direction: column; }
+  .c-join__photo img { height: auto; min-height: 0; aspect-ratio: 3 / 2; }
+}
+
+/* ── Мобильный ≤ 767 ───────────────────────────────────────── */
+@media (max-width: 767px) {
+  .c-hero { padding-top: 48px; padding-bottom: 24px; }
+  .c-join,
+  .c-who  { padding-top: 72px; padding-bottom: 72px; }
+  .c-open { padding-top: 64px; padding-bottom: 64px; }
+  .c-join__list { padding: var(--space-lg) var(--space-md); }
+}
