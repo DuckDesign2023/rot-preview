@@ -33,18 +33,25 @@
 /* ── 2 · Причины — icon grid 3 × 2, описания в два абзаца ─────── */
 .y-reasons .icon-card__body { gap: var(--space-2xs); }
 
-/* ── 3 · PRIMA — блок 26 fit-list с буквами вместо номеров ──────
-   Буква стоит слева и первой в разметке: «P — Passionate» читается
-   как расшифровка аббревиатуры. У Appero строки приглушены до
-   наведения — здесь названия ценностей в полную силу, наведение
-   только красит букву акцентом и линию снизу. */
-.y-prima .fit-list__row { align-items: flex-start; gap: var(--space-lg); padding: var(--space-md) 0; }
-.y-prima .fit-list__num { order: -1; flex: 0 0 96px; width: 96px; text-align: left; color: var(--gray-300); }
-.y-prima .fit-list__row:hover .fit-list__num { color: var(--color-accent); }
-.y-prima__txt { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: var(--space-xs); padding-top: var(--space-2xs); }
-.y-prima .fit-list__text { color: var(--color-dark); }
-.y-prima__desc { max-width: 720px; color: var(--text-lead); }
-.y-prima .fit-list { margin-top: var(--space-2xs); }
+/* ── 3 · PRIMA — плитки, как секция values на About ────────────
+   Решение пользователя 2026-09-17: список fit-list заменён плитками About
+   («там она смотрится лучше»). Отличие от About — у каждой ценности есть
+   описание из docx, оно стоит в плитке под названием.
+   Сетка с волосяными линиями: зазор 1 px на фоне Gray 200 (как icon-grid).
+   Буква — Stat акцентом, 64 px: крупный текст, порог AA 3 : 1, акцент на
+   белом 4.01. В Elementor: Container Grid 5 колонок, Gap 1, фон Gray 200;
+   ячейка — column: Text (Stat) + Heading h3 + Text. */
+.a-prima {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--border-width);
+  background: var(--gray-200);
+  border: var(--border-width) solid var(--gray-200);
+}
+.a-prima__cell { background: var(--color-white); padding: var(--space-lg) var(--space-md); display: flex; flex-direction: column; gap: var(--space-xs); }
+.a-prima__letter { color: var(--color-accent); }
+.y-prima__grid { margin-top: var(--space-xl); }
+.y-prima__desc { color: var(--text-body); margin-top: var(--space-2xs); }
 
 /* ── 4 · Как мы работаем — конвейер блока 43 ─────────────────── */
 .y-how .track { margin-block: var(--space-md) var(--space-2xs); }
@@ -83,6 +90,13 @@
   .y-numbers__row { flex-direction: column; }
   .y-numbers__art { display: none; }       /* декоративная графика на узком не нужна */
   .y-numbers__stats { flex: 0 0 auto; width: 100%; }
+
+  /* Пять колонок с описанием на планшете узки (~180 px на текст):
+     плитка встаёт строкой — буква слева, название и описание справа. */
+  .a-prima { grid-template-columns: 1fr; }
+  .y-prima__cell { display: grid; grid-template-columns: 72px minmax(0, 1fr); column-gap: var(--space-md); row-gap: var(--space-2xs); align-items: start; }
+  .y-prima__cell .a-prima__letter { grid-row: 1 / span 2; }
+  .y-prima__cell .y-prima__desc { margin-top: 0; }
 }
 
 /* ── Мобильный ≤ 767 ───────────────────────────────────────── */
@@ -99,8 +113,8 @@
 
   .y-reasons .icon-grid,
   .y-outcomes .icon-grid { grid-template-columns: 1fr; }
-  .y-prima .fit-list__num { flex-basis: 56px; width: 56px; }
-  .y-prima .fit-list__row { gap: var(--space-sm); }
+
+  .y-prima__cell { grid-template-columns: 48px minmax(0, 1fr); column-gap: var(--space-sm); padding: var(--space-md); }
 
   .y-cta .btn { width: 100%; text-align: center; }
 }
