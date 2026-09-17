@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="432" height="384" viewBox="0 0 432 384" fill="none" role="img" aria-label="Three offices, one company">
+  <path opacity="0.2" d="M76.896 68.352V315.648M89.396 68.352V315.648M101.896 68.352V315.648M114.396 68.352V315.648M126.896 68.352V315.648M139.396 68.352V315.648M151.896 68.352V315.648M164.396 68.352V315.648M176.896 68.352V315.648M189.396 68.352V315.648M201.896 68.352V315.648M214.396 68.352V315.648M226.896 68.352V315.648M239.396 68.352V315.648M251.896 68.352V315.648M264.396 68.352V315.648M276.896 68.352V315.648M289.396 68.352V315.648M301.896 68.352V315.648M314.396 68.352V315.648M326.896 68.352V315.648M339.396 68.352V315.648M351.896 68.352V315.648M76.896 68.352H355.104M76.896 80.852H355.104M76.896 93.352H355.104M76.896 105.852H355.104M76.896 118.352H355.104M76.896 130.852H355.104M76.896 143.352H355.104M76.896 155.852H355.104M76.896 168.352H355.104M76.896 180.852H355.104M76.896 193.352H355.104M76.896 205.852H355.104M76.896 218.352H355.104M76.896 230.852H355.104M76.896 243.352H355.104M76.896 255.852H355.104M76.896 268.352H355.104M76.896 280.852H355.104M76.896 293.352H355.104M76.896 305.852H355.104" stroke="#78716C" stroke-width="0.5"/>
+  <g transform="translate(216 196) scale(1.15) translate(-216 -196)">
+    <circle cx="216" cy="104" r="46" fill="none" stroke="white" stroke-width="0.5"/>
+    <circle cx="216" cy="104" r="30" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="2 2"/>
+    <path d="M216 104L216 196" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="2 2"/>
+    <circle cx="216" cy="104" r="3.5" fill="white"/>
+    <circle cx="295.674" cy="242" r="46" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <circle cx="295.674" cy="242" r="30" fill="none" stroke="#ED3A20" stroke-width="0.5" stroke-dasharray="2 2"/>
+    <path d="M295.674 242L216 196" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="2 2"/>
+    <circle cx="295.674" cy="242" r="3.5" fill="#ED3A20"/>
+    <circle cx="136.326" cy="242" r="46" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <circle cx="136.326" cy="242" r="30" fill="none" stroke="#ED3A20" stroke-width="0.5" stroke-dasharray="2 2"/>
+    <path d="M136.326 242L216 196" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="2 2"/>
+    <circle cx="136.326" cy="242" r="3.5" fill="#ED3A20"/>
+    <path d="M216 104L295.674 242L136.326 242L216 104" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <circle cx="216" cy="196" r="16" fill="none" stroke="white" stroke-width="0.5"/>
+    <circle cx="216" cy="196" r="8" fill="#ED3A20"/>
+  </g>
+</svg>

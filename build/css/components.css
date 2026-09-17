@@ -3933,3 +3933,46 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   .article__aside { flex: 0 0 auto; width: auto; }
   .article__main { flex: 0 0 auto; width: 100%; gap: var(--space-lg); }
 }
+
+/* ══ 51. STEPS × 3 — короткие шаги строкой (Contact, 2026-09-17) ═════
+   Три равные колонки, у каждой верхняя линия 3 px, как у карточки
+   адреса (блок 13), но на белом: Gray 200. Номер Heading 2 цветом
+   Gray 500 — не акцентом (14–24 px акцента на белом ниже AA),
+   под ним шаг Heading 2. Без плитки кадров и раскрытия — для шагов
+   в одну фразу аккордеон блока 28 избыточен.
+   Elementor: Container Grid 3 колонки, Gap 32; шаг — контейнер
+   Border Top 3 Gray 200, Padding Top 24, внутри два Heading.
+   Список <ol> — только семантика эталона, в Elementor не переносится. */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--col-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: var(--accent-rule) solid var(--gray-200);
+}
+
+.step__num   { color: var(--gray-500); }
+.step__title { line-height: 1.25; }   /* у Heading 2 lh 1.0 — на двух строках слипается */
+
+/* Ссылки внутри карточки адреса (блок 13): телефон — текстом цвета адреса,
+   «View on map» — контурная кнопка на тёмном (btn--outline-dark), как
+   «View on map» в полосах Locations. Подчёркнутый текст действием не делаем
+   (анти-слоп T24). Margin Top auto — кнопки трёх колонок на одной линии.
+   Elementor: Button, стиль outline на тёмном; Advanced → Margin Top auto. */
+.address__phone { color: var(--text-on-dark-80); text-decoration: none; }
+.address__phone:hover { color: var(--color-accent); }
+.address__map { align-self: flex-start; margin-top: auto; }
+
+@media (max-width: 1024px) {
+  .steps { grid-template-columns: 1fr; gap: var(--space-md); }
+}

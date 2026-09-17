@@ -1,0 +1,58 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — Contact (/company/contact/).
+   Макета в Figma нет: страница собрана из библиотеки блоков по
+   staging /contact/. Тексты дословные, адрес Mohali — из
+   `_client/Our_Locations.docx` (новее staging).
+   Формы на странице нет: форма контакта — в футере (#contact).
+
+   Здесь только вертикальный ритм и строка почты в hero.
+   ══════════════════════════════════════════════════════════════ */
+
+.k-hero    { padding-top:  84px; padding-bottom: 100px; }
+.k-offices { padding-top: 100px; padding-bottom: 100px; } /* тёмная */
+.k-next    { padding-top: 120px; padding-bottom: 120px; } /* перед футером */
+
+/* ── 1 · Hero — как на Products: заголовок прижат к верху ──── */
+.k-hero .hero__top { align-items: flex-start; }
+
+.k-hero__headline {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+/* Почта — Heading 2 ссылкой: в Heading 1 (44) адрес из 33 знаков шире
+   колонки 664. Elementor: Heading с Link mailto:, Hover → Accent. */
+.k-mail { display: flex; flex-direction: column; gap: var(--space-xs); }
+.k-mail__link {
+  color: var(--color-dark);
+  text-decoration: none;
+  overflow-wrap: anywhere;          /* страховка на 320 */
+}
+.k-mail__link:hover { color: var(--color-accent); }
+
+/* ── 2 · Адреса ────────────────────────────────────────────── */
+.k-offices .section__inner { gap: var(--space-2xl); }
+
+/* ── Планшет ≤ 1024 ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .k-hero    { padding-top: 64px; padding-bottom: 80px; }
+  .k-offices { padding-top: 80px; padding-bottom: 80px; }
+  .k-next    { padding-top: 96px; padding-bottom: 96px; }
+}
+
+/* ── Мобильный ≤ 767 ───────────────────────────────────────── */
+@media (max-width: 767px) {
+  .k-hero    { padding-top: 48px; padding-bottom: 64px; }
+  .k-offices { padding-top: 64px; padding-bottom: 64px; }
+  .k-next    { padding-top: 72px; padding-bottom: 72px; }
+
+  /* Адрес в 24 px шире 335 даже после переноса по «@» — 18 px помещает
+     «redorangetechnologies.com» одной строкой. Перенос только после «@»
+     (<wbr> в разметке), посреди слова не рвём.
+     Elementor: Heading → Typography → Size на Mobile 18 (строка влезает и в 320). */
+  .k-mail__link { font-size: 18px; }
+}

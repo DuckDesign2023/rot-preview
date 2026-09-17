@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="520" viewBox="0 0 680 520" fill="none" role="img" aria-label="Close to our clients in Norway">
+  <path opacity="0.2" d="M170 98.8V421.2M182.5 98.8V421.2M195 98.8V421.2M207.5 98.8V421.2M220 98.8V421.2M232.5 98.8V421.2M245 98.8V421.2M257.5 98.8V421.2M270 98.8V421.2M282.5 98.8V421.2M295 98.8V421.2M307.5 98.8V421.2M320 98.8V421.2M332.5 98.8V421.2M345 98.8V421.2M357.5 98.8V421.2M370 98.8V421.2M382.5 98.8V421.2M395 98.8V421.2M407.5 98.8V421.2M420 98.8V421.2M432.5 98.8V421.2M445 98.8V421.2M457.5 98.8V421.2M470 98.8V421.2M482.5 98.8V421.2M495 98.8V421.2M507.5 98.8V421.2M170 98.8H510M170 111.3H510M170 123.8H510M170 136.3H510M170 148.8H510M170 161.3H510M170 173.8H510M170 186.3H510M170 198.8H510M170 211.3H510M170 223.8H510M170 236.3H510M170 248.8H510M170 261.3H510M170 273.8H510M170 286.3H510M170 298.8H510M170 311.3H510M170 323.8H510M170 336.3H510M170 348.8H510M170 361.3H510M170 373.8H510M170 386.3H510M170 398.8H510M170 411.3H510" stroke="#78716C" stroke-width="0.5"/>
+  <g transform="translate(340 260) scale(1) translate(-340 -260)">
+    <circle cx="322" cy="284" r="118" fill="none" stroke="white" stroke-width="0.5"/>
+    <circle cx="322" cy="284" r="73.16" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="2 2"/>
+    <circle cx="422.07" cy="221.47" r="6" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <circle cx="422.07" cy="221.47" r="9.5" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <circle cx="422.07" cy="221.47" r="13" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <circle cx="422.07" cy="221.47" r="16.5" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <circle cx="422.07" cy="221.47" r="20" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <circle cx="422.07" cy="221.47" r="23.5" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <circle cx="422.07" cy="221.47" r="27" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <circle cx="422.07" cy="221.47" r="30.5" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <circle cx="422.07" cy="221.47" r="34" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <path d="M422.07 221.47L322 284" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="2 2"/>
+    <circle cx="322" cy="284" r="4" fill="white"/>
+    <circle cx="422.07" cy="221.47" r="4.5" fill="#ED3A20"/>
+    <path d="M422.07 221.47L450.389 143.663" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <circle cx="450.389" cy="143.663" r="3" fill="#ED3A20"/>
+    <path d="M422.07 221.47L497.432 168.7" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <circle cx="497.432" cy="168.7" r="3" fill="#ED3A20"/>
+    <path d="M422.07 221.47L495.67 221.47" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+    <circle cx="495.67" cy="221.47" r="3" fill="#ED3A20"/>
+  </g>
+</svg>

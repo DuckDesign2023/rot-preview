@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Red Orange Technologies</title>
+  <meta name="description" content="Contact Red Orange Technologies: email contact@redorangetechnologies.com or visit our offices in Asker, Pune and Mohali.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+
+<!-- ══ HEADER — 152:1823 → Theme Builder → Header (общий с главной) ══ -->
+<header class="site-header" data-el="container" data-name="header">
+  <a class="site-header__logo" href="index.html" data-wp="/" data-el="image" aria-label="Red Orange Technologies — home">
+    <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
+  </a>
+  <!-- Панель меню: внутри только виджет Nav Menu (пункты берутся из меню
+       WordPress) и отдельный блок с языком и CTA — ссылки правятся
+       в «Внешний вид → Меню», не трогая Elementor -->
+  <div class="site-menu" id="site-menu" data-el="container">
+    <nav class="site-nav" data-el="nav-menu" aria-label="Main">
+      <a class="t-nav site-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+      <a class="t-nav site-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+      <a class="t-nav site-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce</a>
+      <a class="t-nav site-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+      <div class="site-nav__item" data-el="container">
+        <a class="t-nav site-nav__link site-nav__link--parent" href="products.html" data-wp="/products/">Products</a>
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="sub-products" aria-label="Products submenu"><svg class="site-nav__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1.25 5 5 9 1.25"/></svg></button>
+        <div class="site-nav__sub" id="sub-products" data-el="container">
+          <a class="t-nav site-nav__sublink" href="nova-for-salesforce.html" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+          <a class="t-nav site-nav__sublink" href="workhub.html" data-wp="/products/workhub/">WorkHub</a>
+          <a class="t-nav site-nav__sublink" href="novalab.html" data-wp="/products/novalab/">NOVAlab</a>
+        </div>
+      </div>
+      <div class="site-nav__item" data-el="container">
+        <a class="t-nav site-nav__link site-nav__link--parent" href="about.html" data-wp="/company/">Company</a>
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="sub-company" aria-label="Company submenu"><svg class="site-nav__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1.25 5 5 9 1.25"/></svg></button>
+        <div class="site-nav__sub" id="sub-company" data-el="container">
+          <a class="t-nav site-nav__sublink" href="about.html" data-wp="/company/">About us</a>
+          <a class="t-nav site-nav__sublink" href="#" data-wp="/company/why-us/">Why us</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="site-menu__cta" data-el="container">
+      <div class="lang-switch" role="group" aria-label="Language" data-el="container">
+        <a class="t-nav lang-switch__item" href="#" aria-current="true" lang="en" data-el="text">EN</a>
+        <a class="t-nav lang-switch__item" href="#" lang="nb" hreflang="nb" data-el="text">NO</a>
+      </div>
+      <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    </div>
+  </div>
+  <div class="site-header__actions" data-el="container">
+      <div class="lang-switch" role="group" aria-label="Language" data-el="container">
+        <a class="t-nav lang-switch__item" href="#" aria-current="true" lang="en" data-el="text">EN</a>
+        <a class="t-nav lang-switch__item" href="#" lang="nb" hreflang="nb" data-el="text">NO</a>
+      </div>
+    <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    <button class="site-header__burger" type="button" data-el="button"
+            aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <svg class="burger-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect class="burger-icon__bar burger-icon__bar--top" x="0" y="5"  width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--mid" x="0" y="11" width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--bot" x="0" y="17" width="24" height="2"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- затемнение под мобильным меню: сосед хедера, иначе
+     оказывается внутри его stacking context и накрывает логотип -->
+<div class="site-menu-backdrop" hidden></div>
+
+<main>
+
+  <!-- Макета нет: страница собрана из библиотеки блоков по staging /contact/.
+       Тексты дословные; адрес Mohali — из `_client/Our_Locations.docx`
+       (новее staging). Формы на странице нет: форма контакта — в футере
+       (якорь #contact), вторую форму над ней не ставим (правило блока 49). -->
+
+  <!-- ══ 1 · HERO — блок 9 без плитки визуала + почта ═════════════════ -->
+  <section class="section k-hero" data-el="container" data-name="hero">
+    <div class="section__inner" data-el="container">
+      <div class="hero" data-el="container">
+        <div class="hero__top" data-el="container">
+          <div class="k-hero__headline" data-el="container">
+            <span class="badge" data-el="text">Contact</span>
+            <h1 class="t-display hero__title" data-el="heading">We’re here to help</h1>
+          </div>
+          <div class="hero__aside" data-el="container">
+            <div class="k-mail" data-el="container">
+              <div class="t-overline" data-el="text">Email us:</div>
+              <a class="t-h2 k-mail__link" href="mailto:contact@redorangetechnologies.com" data-el="heading">contact@<wbr>redorangetechnologies.com</a>
+            </div>
+            <div class="hero__actions" data-el="container">
+              <a class="btn btn--primary" href="#contact" data-el="button">Send a message</a>
+              <a class="btn btn--outline" href="#" data-wp="/company/locations/" data-el="button">Our locations</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2 · OUR LOCATIONS — тёмная секция: section-head + блок 13 address × 3 ══ -->
+  <section class="section section--dark k-offices on-dark" data-el="container" data-name="locations">
+    <div class="section__inner" data-el="container">
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Our locations</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">We have offices both in India and Norway and we would love to show you around sometime.</h2>
+      </div>
+      <div class="address-grid" data-el="container">
+        <div class="address address--active" data-el="container">
+          <h3 class="t-h3" data-el="heading">Asker, Norway</h3>
+          <p class="t-body" data-el="text">Lensmannslia 4, N-1386 Asker</p>
+          <a class="btn btn--outline-dark address__map" href="https://www.google.com/maps/search/?api=1&query=Lensmannslia+4%2C+N-1386+Asker%2C+Norway" target="_blank" rel="noopener" data-el="button">View on map</a>
+        </div>
+        <div class="address" data-el="container">
+          <h3 class="t-h3" data-el="heading">Pune, India</h3>
+          <p class="t-body" data-el="text">4th Floor, Office No. 413, Ascent Avenue, Vitthal Nagar, Amanora Park Town Main Road, Hadapsar, Pune 411028</p>
+          <a class="t-body address__phone" href="tel:+917350157858" data-el="text">Mobile: +91 7350157858</a>
+          <a class="btn btn--outline-dark address__map" href="https://www.google.com/maps/search/?api=1&query=Ascent+Avenue%2C+Vitthal+Nagar%2C+Amanora+Park+Town+Main+Road%2C+Hadapsar%2C+Pune+411028%2C+India" target="_blank" rel="noopener" data-el="button">View on map</a>
+        </div>
+        <div class="address" data-el="container">
+          <h3 class="t-h3" data-el="heading">Mohali, India</h3>
+          <p class="t-body" data-el="text">BiggBang Building, 4th Floor, Cabin 3, E 279, Industrial Area, Sector 75, Sahibzada Ajit Singh Nagar, Punjab 160055</p>
+          <a class="btn btn--outline-dark address__map" href="https://www.google.com/maps/search/?api=1&query=BiggBang+Building%2C+E+279%2C+Industrial+Area%2C+Sector+75%2C+Sahibzada+Ajit+Singh+Nagar%2C+Punjab+160055%2C+India" target="_blank" rel="noopener" data-el="button">View on map</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 3 · WHAT HAPPENS NEXT — section-head + блок 51 steps × 3 ═════ -->
+  <section class="section k-next" data-el="container" data-name="next-steps">
+    <div class="section__inner" data-el="container">
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Next steps</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">What happens next?</h2>
+      </div>
+      <ol class="steps" data-el="container" data-name="steps">
+        <li class="step" data-el="container">
+          <span class="t-h2 step__num" data-el="text">01</span>
+          <h3 class="t-h2 step__title" data-el="heading">We schedule a call at your convenience</h3>
+        </li>
+        <li class="step" data-el="container">
+          <span class="t-h2 step__num" data-el="text">02</span>
+          <h3 class="t-h2 step__title" data-el="heading">We do a discovery and consulting meeting</h3>
+        </li>
+        <li class="step" data-el="container">
+          <span class="t-h2 step__num" data-el="text">03</span>
+          <h3 class="t-h2 step__title" data-el="heading">We prepare a proposal</h3>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+
+
+
+<!-- ══ 10 · FOOTER — 152:131 → Theme Builder → Footer ═════════════ -->
+<footer class="site-footer" id="contact" data-el="container" data-name="footer">
+  <div class="site-footer__photo" aria-hidden="true"></div>
+  <div class="site-footer__wash" aria-hidden="true"></div>
+  <div class="site-footer__glow" aria-hidden="true"></div>
+
+  <div class="site-footer__inner" data-el="container">
+
+    <div class="footer-top" data-el="container">
+
+      <div class="footer-contact" data-el="container">
+        <div class="t-overline footer-contact__label" data-el="text">Get in touch</div>
+        <h2 class="t-h1 t-h1--normal" data-el="heading">Collaborate with us for complete IT solutions</h2>
+        <p class="t-lead footer-contact__lead" data-el="text">We're happy to answer any questions and help determine which of our services best fit your needs.</p>
+
+        <div class="check-list" data-el="container">
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Client-oriented</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Independent</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Competent</span>
+            </div>
+          </div>
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Results-driven</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Problem-solving</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Transparent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-form" data-el="container">
+        <h2 class="t-h2 footer-form__title" data-el="heading">Let us talk about your next solution</h2>
+        <form class="form" data-el="form" action="#" method="post">
+          <div class="form__row" data-el="container">
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-first" data-el="text">First name</label>
+              <input class="field__control" id="f-first" name="first-name" type="text" autocomplete="given-name">
+            </div>
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-last" data-el="text">Last name</label>
+              <input class="field__control" id="f-last" name="last-name" type="text" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-email" data-el="text">Email</label>
+            <input class="field__control" id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-company" data-el="text">Company</label>
+            <input class="field__control" id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field field--last" data-el="container">
+            <label class="t-body" for="f-message" data-el="text">Message</label>
+            <textarea class="field__control" id="f-message" name="message" rows="5"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit" data-el="button">Send message</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-nav" data-el="container">
+      <div class="footer-nav__cols" data-el="container">
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Solutions</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+            <a class="footer-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce Services</a>
+            <a class="footer-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+            <a class="footer-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Products</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="nova-for-salesforce.html" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+            <a class="footer-nav__link" href="workhub.html" data-wp="/products/workhub/">WorkHub</a>
+            <a class="footer-nav__link" href="novalab.html" data-wp="/products/novalab/">NOVAlab</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Company</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="about.html" data-wp="/company/">About us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/why-us/">Why us</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/team/">Team</a>
+            <a class="footer-nav__link" href="#" data-wp="/cases/">Case studies</a>
+            <a class="footer-nav__link" href="#" data-wp="/insights/">Blog</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/careers/">Careers</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Contact</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Asker, Norway</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Pune, India</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Mohali, India</a>
+            <a class="footer-nav__link" href="mailto:contact@redorangetechnologies.com">contact@redorangetechnologies.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider divider--ondark-soft" data-el="divider">
+
+      <div class="footer-bottom" data-el="container">
+        <span class="footer-bottom__copy" data-el="text">© 2026 Red Orange Technologies</span>
+        <a href="#" data-wp="/terms/" data-el="text">Terms &amp; Conditions</a>
+        <a href="#" data-wp="/privacy/" data-el="text">Privacy Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

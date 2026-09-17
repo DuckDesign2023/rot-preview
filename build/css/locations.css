@@ -1,0 +1,77 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — Our Locations (/company/locations/).
+   Макета в Figma нет: страница собрана из библиотеки блоков по
+   `_client/Our_Locations.docx` (Trello RKjUhL4e). Тексты дословные.
+   Кадры офисов и тёмной секции — tools/ro_locations.py.
+
+   Здесь только вертикальный ритм и строка адреса в полосе офиса.
+   ══════════════════════════════════════════════════════════════ */
+
+.l-hero      { padding-top:  84px; padding-bottom:  40px; }
+.l-offices   { padding-top: 120px; padding-bottom: 140px; } /* +20 перед тёмной */
+.l-connected { padding-top: 100px; padding-bottom: 100px; } /* тёмная, перед футером */
+
+/* ── 1 · Hero — как на Products ────────────────────────────── */
+.l-hero .hero__top { align-items: flex-start; }
+
+.l-hero__headline {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+/* ── 2 · Полосы офисов — тот же ряд, что полосы Products ───── */
+.l-offices__rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  margin-top: var(--space-xl);
+}
+
+.l-office__name { display: flex; flex-direction: column; gap: var(--space-2xs); }
+
+/* Адрес — лейбл Overline и строки Body через <br>: в Elementor один
+   Text Editor с переносами Shift+Enter. Линия сверху отделяет факт
+   от описания офиса. */
+.l-office__address {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  padding-top: var(--space-md);
+  border-top: var(--border-width) solid var(--hairline);
+}
+.l-office__address .t-overline { color: var(--text-muted); }
+
+/* ── 3 · Тёмная секция ─────────────────────────────────────── */
+.l-connected .dark-split { align-items: center; }
+.l-connected__claim { color: var(--color-white); font-weight: 500; }
+
+/* ── Планшет ≤ 1024 ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .l-hero      { padding-top: 64px; padding-bottom: 32px; }
+  .l-offices   { padding-top: 96px; padding-bottom: 112px; }
+  .l-connected { padding-top: 80px; padding-bottom: 80px; }
+  .l-offices__rows { gap: var(--space-xl); }
+
+  /* Зеркальная полоса в колонке: без этого у Mohali остаётся десктопный
+     паддинг 80 слева (правило split--flip специфичнее планшетного правила
+     split--in-grid), и текст стоит ступенькой относительно Asker и Pune.
+     Elementor: у панели Padding на Tablet 44 / 32, как у соседних полос. */
+  .split--flip.split--in-grid .split__panel { padding: var(--space-xl) var(--space-lg); }
+}
+
+/* ── Мобильный ≤ 767 ───────────────────────────────────────── */
+@media (max-width: 767px) {
+  .l-hero      { padding-top: 48px; padding-bottom: 24px; }
+  .l-offices   { padding-top: 72px; padding-bottom: 72px; }
+  .l-connected { padding-top: 64px; padding-bottom: 64px; }
+
+  /* Кадр офиса в своей пропорции 680 : 520 вместо коробки 420: в узкой
+     высокой коробке Contain уменьшал рисунок до 40 % ширины. Основа flex
+     сброшена — в колонке flex-basis 0 схлопнул бы плитку в ноль.
+     Elementor: контейнер кадра Min Height 0, Aspect Ratio 4 : 3 (Custom 680/520). */
+  .l-offices .split__media--art { flex: 0 0 auto; min-height: 0; aspect-ratio: 680 / 520; }
+}
