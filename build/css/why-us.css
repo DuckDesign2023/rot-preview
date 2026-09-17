@@ -53,8 +53,19 @@
 .y-prima__grid { margin-top: var(--space-xl); }
 .y-prima__desc { color: var(--text-body); margin-top: var(--space-2xs); }
 
-/* ── 4 · Как мы работаем — конвейер блока 43 ─────────────────── */
-.y-how .track { margin-block: var(--space-md) var(--space-2xs); }
+/* ── 4 · Как мы работаем — «Цикл» (выбор пользователя 2026-09-17) ──
+   Кольцо из семи шагов (tools/ro_why_us.py, how_ring) и нумерованный список;
+   номера в кадре совпадают со списком, последний шаг — акцентом.
+   В Elementor: row-контейнер → Image 520 + контейнер-колонка из семи строк
+   (Text номер + Heading h3), линия — Border Top у строки. */
+.y-cycle { display: grid; grid-template-columns: minmax(0, 520px) minmax(0, 1fr); gap: 64px; align-items: center; margin-block: var(--space-md) var(--space-2xs); }
+.y-cycle__art img { display: block; width: 100%; height: auto; }
+.y-cycle__list { list-style: none; margin: 0; padding: 0; }
+.y-cycle__step { display: grid; grid-template-columns: 56px minmax(0, 1fr); align-items: baseline; padding: 14px 0; border-top: var(--border-width) solid var(--gray-200); }
+.y-cycle__step:first-child { border-top: 0; }
+.y-cycle__n { font-size: 14px; font-weight: 500; color: var(--gray-500); }
+.y-cycle__step:last-child .y-cycle__n,
+.y-cycle__step:last-child .t-h3 { color: var(--color-accent); }
 .y-how__close { max-width: 940px; display: flex; flex-direction: column; gap: var(--space-md); }
 .y-how__close .btn { align-self: flex-start; }
 
@@ -69,7 +80,7 @@
 /* ── 7 · Цифры — пара «графика + стат-сетка», как why-row главной ── */
 .y-numbers__row { display: flex; justify-content: space-between; gap: var(--col-gap); align-items: flex-start; }
 .y-numbers__art { flex: 0 1 548px; min-width: 0; padding-top: var(--space-md); }
-.y-numbers__art .graphic-plate { height: 250px; min-height: 0; }
+.y-numbers__img img { display: block; width: 100%; height: auto; }   /* «Рост», выбор 2026-09-17 */
 .y-numbers__stats { flex: 0 1 664px; min-width: 0; }
 
 /* ── Планшет ≤ 1024 ────────────────────────────────────────── */
@@ -89,6 +100,8 @@
   .y-reasons .icon-grid  { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .y-numbers__row { flex-direction: column; }
   .y-numbers__art { display: none; }       /* декоративная графика на узком не нужна */
+  .y-cycle { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .y-cycle__art { max-width: 420px; margin-inline: auto; width: 100%; }
   .y-numbers__stats { flex: 0 0 auto; width: 100%; }
 
   /* Пять колонок с описанием на планшете узки (~180 px на текст):
@@ -114,6 +127,8 @@
   .y-reasons .icon-grid,
   .y-outcomes .icon-grid { grid-template-columns: 1fr; }
 
+  .y-cycle__art { max-width: 300px; }
+  .y-cycle__step { grid-template-columns: 44px minmax(0, 1fr); padding: 12px 0; }
   .y-prima__cell { grid-template-columns: 48px minmax(0, 1fr); column-gap: var(--space-sm); padding: var(--space-md); }
 
   .y-cta .btn { width: 100%; text-align: center; }
