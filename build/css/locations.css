@@ -31,6 +31,10 @@
   margin-top: var(--space-xl);
 }
 
+/* Якоря офисов (#asker / #mohali / #pune) — ссылки городов из футера.
+   Полоса встаёт с полем 32 сверху. Elementor: CSS ID контейнера полосы. */
+.l-offices__rows > .split { scroll-margin-top: var(--space-lg); }
+
 .l-office__name { display: flex; flex-direction: column; gap: var(--space-2xs); }
 
 /* Адрес — лейбл Overline и строки Body через <br>: в Elementor один
