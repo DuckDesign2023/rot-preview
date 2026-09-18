@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights | Red Orange Technologies</title>
+  <meta name="description" content="The ROT Blog: news, technology advice and business culture from Red Orange Technologies.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/insights.css">
+</head>
+<body>
+
+<!-- ══ HEADER — 152:1823 → Theme Builder → Header (общий с главной) ══ -->
+<header class="site-header" data-el="container" data-name="header">
+  <a class="site-header__logo" href="index.html" data-wp="/" data-el="image" aria-label="Red Orange Technologies — home">
+    <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
+  </a>
+  <!-- Панель меню: внутри только виджет Nav Menu (пункты берутся из меню
+       WordPress) и отдельный блок с языком и CTA — ссылки правятся
+       в «Внешний вид → Меню», не трогая Elementor -->
+  <div class="site-menu" id="site-menu" data-el="container">
+    <nav class="site-nav" data-el="nav-menu" aria-label="Main">
+      <a class="t-nav site-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+      <a class="t-nav site-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+      <a class="t-nav site-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce</a>
+      <a class="t-nav site-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+      <div class="site-nav__item" data-el="container">
+        <a class="t-nav site-nav__link site-nav__link--parent" href="products.html" data-wp="/products/">Products</a>
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="sub-products" aria-label="Products submenu"><svg class="site-nav__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1.25 5 5 9 1.25"/></svg></button>
+        <div class="site-nav__sub" id="sub-products" data-el="container">
+          <a class="t-nav site-nav__sublink" href="nova-for-salesforce.html" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+          <a class="t-nav site-nav__sublink" href="workhub.html" data-wp="/products/workhub/">WorkHub</a>
+          <a class="t-nav site-nav__sublink" href="novalab.html" data-wp="/products/novalab/">NOVAlab</a>
+        </div>
+      </div>
+      <div class="site-nav__item" data-el="container">
+        <a class="t-nav site-nav__link site-nav__link--parent" href="about.html" data-wp="/company/">Company</a>
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="sub-company" aria-label="Company submenu"><svg class="site-nav__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1.25 5 5 9 1.25"/></svg></button>
+        <div class="site-nav__sub" id="sub-company" data-el="container">
+          <a class="t-nav site-nav__sublink" href="about.html" data-wp="/company/">About us</a>
+          <a class="t-nav site-nav__sublink" href="why-us.html" data-wp="/company/why-us/">Why us</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="site-menu__cta" data-el="container">
+      <div class="lang-switch" role="group" aria-label="Language" data-el="container">
+        <a class="t-nav lang-switch__item" href="#" aria-current="true" lang="en" data-el="text">EN</a>
+        <a class="t-nav lang-switch__item" href="#" lang="nb" hreflang="nb" data-el="text">NO</a>
+      </div>
+      <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    </div>
+  </div>
+  <div class="site-header__actions" data-el="container">
+      <div class="lang-switch" role="group" aria-label="Language" data-el="container">
+        <a class="t-nav lang-switch__item" href="#" aria-current="true" lang="en" data-el="text">EN</a>
+        <a class="t-nav lang-switch__item" href="#" lang="nb" hreflang="nb" data-el="text">NO</a>
+      </div>
+    <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    <button class="site-header__burger" type="button" data-el="button"
+            aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <svg class="burger-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect class="burger-icon__bar burger-icon__bar--top" x="0" y="5"  width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--mid" x="0" y="11" width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--bot" x="0" y="17" width="24" height="2"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- затемнение под мобильным меню: сосед хедера, иначе
+     оказывается внутри его stacking context и накрывает логотип -->
+<div class="site-menu-backdrop" hidden></div>
+
+<main>
+
+  <!-- Макета нет: список собран из библиотеки блоков. Посты — staging /blog/
+       (12 уникальных, дубль Magarpatta City снят), заголовки и отрывки дословные,
+       даты — article:published_time страниц постов. Рубрики staging не выводим:
+       они перепутаны (Design Thinking — «Cybersecurity»). Обложки: реальные фото
+       у трёх постов, у остальных вместо стокового клипарта — кадры
+       tools/ro_insights.py. Сверху — норвежская статья клиента (docx).
+       В WordPress: записи блога, сетка — Loop Grid, карточка — Loop Item (блок 9). -->
+
+  <!-- ══ 1 · HERO — блок 9 без плитки визуала ═══════════════════════ -->
+  <section class="section in-hero" data-el="container" data-name="hero">
+    <div class="section__inner" data-el="container">
+      <div class="hero" data-el="container">
+        <div class="hero__top" data-el="container">
+          <div class="in-hero__headline" data-el="container">
+            <span class="badge" data-el="text">Insights</span>
+            <h1 class="t-display hero__title" data-el="heading">The ROT Blog</h1>
+          </div>
+          <div class="hero__aside" data-el="container">
+            <p class="t-lead hero__lead" data-el="text">Our official blog with news, technology advice, and business culture.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2 · FEATURED — блок 53 post feature: норвежская статья ══════ -->
+  <section class="section in-featured" data-el="container" data-name="featured">
+    <div class="section__inner" data-el="container">
+      <a class="post-feature" href="#" data-wp="/no/insights/eksterne-utviklingsteam/" lang="nb" data-el="container">
+        <div class="post-feature__head" data-el="container">
+          <div class="t-overline" data-el="text">Featured · Norsk</div>
+          <h2 class="t-h1 t-h1--normal post-feature__title" data-el="heading">Hvordan eksterne utviklingsteam løser mangelen på utviklere&nbsp;- norsk kontakt og global kompetanse</h2>
+        </div>
+        <div class="post-feature__body" data-el="container">
+          <p class="t-lead" data-el="text">Norske teknologiledere kjenner godt på utfordringen: det har aldri vært vanskeligere å finne dyktige utviklere lokalt.</p>
+          <span class="btn btn--outline post-feature__cta" data-el="button">Les artikkelen</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ 3 · ALL ARTICLES — section-head + блок 9 post grid, 3 колонки ══ -->
+  <section class="section in-list" data-el="container" data-name="articles">
+    <div class="section__inner" data-el="container">
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">All articles</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Latest news, thinking and updates from Red Orange Technologies</h2>
+      </div>
+      <div class="post-grid post-grid--3" data-el="loop-grid">
+        <a class="post-card" href="#" data-wp="/insights/discover-the-it-hub-of-magarpatta-city-pune/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2024-02-02" data-el="text">Feb 2, 2024</time>
+            <h3 class="t-h3" data-el="heading">A hub for global giants in the IT sector. Welcome to Magarpatta City, Pune</h3>
+            <p class="t-body post-card__excerpt" data-el="text">Nestled in the heart of Pune, Magarpatta City has transformed into a bustling metropolis, earning recognition as a prime business destination for global corporations, especially in the IT sector.</p>
+          </div>
+          <div class="post-card__media" data-el="image">
+            <img src="../assets/insights-magarpatta.webp" width="1200" height="768" alt="Magarpatta City business district in Pune with office buildings and green avenues" loading="lazy">
+          </div>
+        </a>
+        <a class="post-card" href="#" data-wp="/insights/pranshu-navigating-company-direction-as-warm-hr-manager/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2024-01-15" data-el="text">Jan 15, 2024</time>
+            <h3 class="t-h3" data-el="heading">Pranshu is navigating our people and company direction as a warm and experienced HR Manager</h3>
+            <p class="t-body post-card__excerpt" data-el="text">In this article, you will meet Pranshu Pathak. She is our HR Manager here at Red Orange Technologies. She will share her responsibilities, professional qualities, and here focus on lifting female employees as a part of our focus on equality and company culture. In addition, she will share her thoughts on Indian business culture.</p>
+          </div>
+          <div class="post-card__media" data-el="image">
+            <img src="../assets/insights-pranshu.webp" width="1200" height="798" alt="Pranshu Pathak, HR Manager at Red Orange Technologies" loading="lazy">
+          </div>
+        </a>
+        <a class="post-card" href="#" data-wp="/insights/global-ceo-amit-sharma-interview-with-business-connect-2021/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2024-01-14" data-el="text">Jan 14, 2024</time>
+            <h3 class="t-h3" data-el="heading">Our Global CEO, Amit Sharma here as CTO for Mainbrainer in an interview from 2021 with Business Connect India – Pioneering business solutions with a visionary at the helm</h3>
+            <p class="t-body post-card__excerpt" data-el="text">In a feature from September 2021 on Mainbrainer by Business Connect India, the spotlight shines on their revolutionary approach to business solutions, backed by a visionary leader. Notably, Amit Sharma, who once served as the CTO at Mainbrainer, has now ascended to the role of Global CEO at Red Orange Technologies.</p>
+          </div>
+          <div class="post-card__media" data-el="image">
+            <img src="../assets/insights-amit.webp" width="1200" height="798" alt="Amit Sharma, Global CEO of Red Orange Technologies" loading="lazy">
+          </div>
+        </a>
+        <a class="post-card" href="#" data-wp="/insights/the-indian-it-company-red-orange-technologies-opened-its-doors-to-norway-together-with-norwegian-ownership-and-management/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2023-10-16" data-el="text">Oct 16, 2023</time>
+            <h3 class="t-h3" data-el="heading">The Indian IT company Red Orange Technologies opened its doors to Norway together with Norwegian ownership and management</h3>
+            <p class="t-body post-card__excerpt" data-el="text">It is with great pleasure that I can launch Red Orange Technologies in Norway and Scandinavia. This is a launch we are proud of and is of great significance for the whole of Red Orange and all our employees.</p>
+          </div>
+          <div class="post-card__media post-card__media--art" data-el="image">
+            <img src="../assets/insights-norway-launch.svg" width="640" height="400" alt="" role="presentation" loading="lazy">
+          </div>
+        </a>
+        <a class="post-card" href="#" data-wp="/insights/optimize-your-it-strategy-how-outsourced-resources-from-red-orange-technologies-can-empower-your-business/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2023-09-27" data-el="text">Sep 27, 2023</time>
+            <h3 class="t-h3" data-el="heading">Optimize your IT strategy: How outsourced resources from Red Orange Technologies can empower your business</h3>
+            <p class="t-body post-card__excerpt" data-el="text">In a business world where demands for technological development and cost control on IT projects are crucial, we at Red Orange Technologies, can support you and your organization with efficient implementation of IT projects.</p>
+          </div>
+          <div class="post-card__media post-card__media--art" data-el="image">
+            <img src="../assets/insights-outsourcing.svg" width="640" height="400" alt="" role="presentation" loading="lazy">
+          </div>
+        </a>
+        <a class="post-card" href="#" data-wp="/insights/red-orange-technologies-your-cloud-based-agile-solution-partner/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2023-09-22" data-el="text">Sep 22, 2023</time>
+            <h3 class="t-h3" data-el="heading">Red Orange Technologies: Your cloud-based agile solution partner</h3>
+            <p class="t-body post-card__excerpt" data-el="text">Cloud technology stands at the forefront of a technological revolution, offering unparalleled flexibility, efficiency, and security. At Red Orange Technologies, we harness cloud services to deliver cost-effective and tailored flexible solutions to meet your business requirements. Jump on board with us to understand our expertise in cloud technology, coupled with our unwavering commitment to optimizing workflow.</p>
+          </div>
+          <div class="post-card__media post-card__media--art" data-el="image">
+            <img src="../assets/insights-cloud.svg" width="640" height="400" alt="" role="presentation" loading="lazy">
+          </div>
+        </a>
+        <a class="post-card" href="#" data-wp="/insights/mastering-integration-achieve-seamless-user-experience-and-data-foundations-together-with-red-orange-technologies/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2023-09-21" data-el="text">Sep 21, 2023</time>
+            <h3 class="t-h3" data-el="heading">Mastering Integration: Achieve seamless user experience and data foundations together with Red Orange Technologies</h3>
+            <p class="t-body post-card__excerpt" data-el="text">To stay ahead in the digital landscape, organizations must achieve a seamless user experience and efficient data foundation. These two business features assist them in optimizing operations and drive growth.</p>
+          </div>
+          <div class="post-card__media post-card__media--art" data-el="image">
+            <img src="../assets/insights-integration.svg" width="640" height="400" alt="" role="presentation" loading="lazy">
+          </div>
+        </a>
+        <a class="post-card" href="#" data-wp="/insights/salesforce-wordpress-integration/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2023-09-15" data-el="text">Sep 15, 2023</time>
+            <h3 class="t-h3" data-el="heading">Salesforce + WordPress integration</h3>
+            <p class="t-body post-card__excerpt" data-el="text">Crafting compelling websites that seamlessly merge your Salesforce CRM data with WordPress through the WordPress Connect tool opens the door to a world of possibilities. Websites and content management serve as vital instruments for organizations to connect with their target audience, impart information about their offerings, and persuade them to engage with their enterprise.</p>
+          </div>
+          <div class="post-card__media post-card__media--art" data-el="image">
+            <img src="../assets/insights-salesforce-wordpress.svg" width="640" height="400" alt="" role="presentation" loading="lazy">
+          </div>
+        </a>
+        <a class="post-card" href="#" data-wp="/insights/applying-design-thinking-principles-to-the-six-stages-of-it-project-methodology/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2023-09-13" data-el="text">Sep 13, 2023</time>
+            <h3 class="t-h3" data-el="heading">Applying Design Thinking principles to the six stages of IT project methodology</h3>
+            <p class="t-body post-card__excerpt" data-el="text">To succeed in the dynamic IT environment, we at Red Orange Technologies adapt our project management methodologies to meet our clients’ evolving needs. Traditional project management approaches, while effective in some contexts, often fall short in IT, where flexibility, creativity, and user-centricity are paramount.</p>
+          </div>
+          <div class="post-card__media post-card__media--art" data-el="image">
+            <img src="../assets/insights-design-thinking.svg" width="640" height="400" alt="" role="presentation" loading="lazy">
+          </div>
+        </a>
+        <a class="post-card" href="#" data-wp="/insights/red-orange-technologies-pushing-automation-with-salesforce-hubspot-and-sap/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2023-09-11" data-el="text">Sep 11, 2023</time>
+            <h3 class="t-h3" data-el="heading">Red Orange Technologies pushing automation with Salesforce HubSpot and SAP</h3>
+            <p class="t-body post-card__excerpt" data-el="text">Customer Relationship Management (CRM) and Enterprise Resource Planning (ERP) systems are the two main solutions when it comes to automating core business processes. And businesses often choose between Salesforce, HubSpot, and SAP to integrate CRM and ERP. Integrating these platforms can profoundly streamline operations and elevate you to new heights.</p>
+          </div>
+          <div class="post-card__media post-card__media--art" data-el="image">
+            <img src="../assets/insights-automation.svg" width="640" height="400" alt="" role="presentation" loading="lazy">
+          </div>
+        </a>
+        <a class="post-card" href="#" data-wp="/insights/elevate-your-business-with-salesforce-sales-cloud/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2023-09-07" data-el="text">Sep 7, 2023</time>
+            <h3 class="t-h3" data-el="heading">Elevate your business with Salesforce Sales Cloud</h3>
+            <p class="t-body post-card__excerpt" data-el="text">Looking to grow your business, find new customers, and close deals faster than ever before? Then look no further than Salesforce Sales Cloud, the world’s leading CRM platform. At Red Orange Technologies, we’re committed to making life easier for your salespeople and increasing your sales department’s productivity by implementing, integrating, and offering consulting for Salesforce Sales Cloud.</p>
+          </div>
+          <div class="post-card__media post-card__media--art" data-el="image">
+            <img src="../assets/insights-sales-cloud.svg" width="640" height="400" alt="" role="presentation" loading="lazy">
+          </div>
+        </a>
+        <a class="post-card" href="#" data-wp="/insights/red-orange-technologies-and-techila-global-services-a-co-branded-salesforce-powerhouse/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2023-09-04" data-el="text">Sep 4, 2023</time>
+            <h3 class="t-h3" data-el="heading">Red Orange Technologies and Techila Global Services: A co-branded Salesforce powerhouse</h3>
+            <p class="t-body post-card__excerpt" data-el="text">In a transformative collaboration set to redefine the Scandinavian and European Salesforce landscape, Red Orange Technologies and Techila Global Services have strategically joined forces, leveraging the principles of co-branding to create a distinctive identity in the industry. This unique partnership operates with Red Orange Technologies spearheading operations in Europe, while Techila Global Services takes the lead in the United States and Asia.</p>
+          </div>
+          <div class="post-card__media post-card__media--art" data-el="image">
+            <img src="../assets/insights-techila.svg" width="640" height="400" alt="" role="presentation" loading="lazy">
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+
+
+<!-- ══ 10 · FOOTER — 152:131 → Theme Builder → Footer ═════════════ -->
+<footer class="site-footer" id="contact" data-el="container" data-name="footer">
+  <div class="site-footer__photo" aria-hidden="true"></div>
+  <div class="site-footer__wash" aria-hidden="true"></div>
+  <div class="site-footer__glow" aria-hidden="true"></div>
+
+  <div class="site-footer__inner" data-el="container">
+
+    <div class="footer-top" data-el="container">
+
+      <div class="footer-contact" data-el="container">
+        <div class="t-overline footer-contact__label" data-el="text">Get in touch</div>
+        <h2 class="t-h1 t-h1--normal" data-el="heading">Collaborate with us for complete IT solutions</h2>
+        <p class="t-lead footer-contact__lead" data-el="text">We're happy to answer any questions and help determine which of our services best fit your needs.</p>
+
+        <div class="check-list" data-el="container">
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Client-oriented</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Independent</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Competent</span>
+            </div>
+          </div>
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Results-driven</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Problem-solving</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Transparent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-form" data-el="container">
+        <h2 class="t-h2 footer-form__title" data-el="heading">Let us talk about your next solution</h2>
+        <form class="form" data-el="form" action="#" method="post">
+          <div class="form__row" data-el="container">
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-first" data-el="text">First name</label>
+              <input class="field__control" id="f-first" name="first-name" type="text" autocomplete="given-name">
+            </div>
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-last" data-el="text">Last name</label>
+              <input class="field__control" id="f-last" name="last-name" type="text" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-email" data-el="text">Email</label>
+            <input class="field__control" id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-company" data-el="text">Company</label>
+            <input class="field__control" id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field field--last" data-el="container">
+            <label class="t-body" for="f-message" data-el="text">Message</label>
+            <textarea class="field__control" id="f-message" name="message" rows="5"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit" data-el="button">Send message</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-nav" data-el="container">
+      <div class="footer-nav__cols" data-el="container">
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Solutions</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+            <a class="footer-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce Services</a>
+            <a class="footer-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+            <a class="footer-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Products</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="nova-for-salesforce.html" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+            <a class="footer-nav__link" href="workhub.html" data-wp="/products/workhub/">WorkHub</a>
+            <a class="footer-nav__link" href="novalab.html" data-wp="/products/novalab/">NOVAlab</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Company</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="about.html" data-wp="/company/">About us</a>
+            <a class="footer-nav__link" href="why-us.html" data-wp="/company/why-us/">Why us</a>
+            <a class="footer-nav__link" href="team.html" data-wp="/company/team/">Team</a>
+            <a class="footer-nav__link" href="#" data-wp="/cases/">Case studies</a>
+            <a class="footer-nav__link" href="#" data-wp="/insights/">Blog</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/careers/">Careers</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Contact</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Asker, Norway</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Pune, India</a>
+            <a class="footer-nav__link" href="#" data-wp="/company/contact/">Mohali, India</a>
+            <a class="footer-nav__link" href="mailto:contact@redorangetechnologies.com">contact@redorangetechnologies.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider divider--ondark-soft" data-el="divider">
+
+      <div class="footer-bottom" data-el="container">
+        <span class="footer-bottom__copy" data-el="text">© 2026 Red Orange Technologies</span>
+        <a href="#" data-wp="/terms/" data-el="text">Terms &amp; Conditions</a>
+        <a href="#" data-wp="/privacy/" data-el="text">Privacy Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

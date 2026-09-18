@@ -238,4 +238,23 @@
       window.location.href = form.getAttribute('data-download');
     });
   });
+
+  /* ── Фильтр списка кейсов (блок 54) ────────────────────────────
+     Эмуляция Taxonomy Filter (Pro): чип прячет плитки чужих рубрик.
+     В WordPress не переносится — фильтр делает сам виджет. */
+  document.querySelectorAll('.filter').forEach(function (bar) {
+    var grid = bar.parentElement.querySelector('.case-grid');
+    if (!grid) return;
+    var chips = bar.querySelectorAll('.filter-chip');
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var key = chip.getAttribute('data-filter');
+        chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
+        grid.querySelectorAll('.case-tile').forEach(function (tile) {
+          var cats = (tile.getAttribute('data-cats') || '').split(' ');
+          tile.hidden = key !== 'all' && cats.indexOf(key) < 0;
+        });
+      });
+    });
+  });
 })();

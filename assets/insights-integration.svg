@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" fill="none" role="img" aria-label="Two systems exchanging data">
+  <path opacity="0.2" d="M121.6 76V324M134.1 76V324M146.6 76V324M159.1 76V324M171.6 76V324M184.1 76V324M196.6 76V324M209.1 76V324M221.6 76V324M234.1 76V324M246.6 76V324M259.1 76V324M271.6 76V324M284.1 76V324M296.6 76V324M309.1 76V324M321.6 76V324M334.1 76V324M346.6 76V324M359.1 76V324M371.6 76V324M384.1 76V324M396.6 76V324M409.1 76V324M421.6 76V324M434.1 76V324M446.6 76V324M459.1 76V324M471.6 76V324M484.1 76V324M496.6 76V324M509.1 76V324M121.6 76H518.4M121.6 88.5H518.4M121.6 101H518.4M121.6 113.5H518.4M121.6 126H518.4M121.6 138.5H518.4M121.6 151H518.4M121.6 163.5H518.4M121.6 176H518.4M121.6 188.5H518.4M121.6 201H518.4M121.6 213.5H518.4M121.6 226H518.4M121.6 238.5H518.4M121.6 251H518.4M121.6 263.5H518.4M121.6 276H518.4M121.6 288.5H518.4M121.6 301H518.4M121.6 313.5H518.4" stroke="#78716C" stroke-width="0.5"/>
+  <circle cx="185" cy="210" r="70" fill="none" stroke="white" stroke-width="0.5"/>
+  <circle cx="455" cy="220" r="70" fill="none" stroke="#ED3A20" stroke-width="0.5"/>
+  <path d="M190 140L320 140L320 150L450 150" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="2 2"/>
+  <circle cx="190" cy="140" r="3.5" fill="white"/>
+  <circle cx="450" cy="150" r="3.5" fill="#ED3A20"/>
+  <path d="M170 210L320 210L320 230L470 230" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="2 2"/>
+  <circle cx="170" cy="210" r="3.5" fill="white"/>
+  <circle cx="470" cy="230" r="3.5" fill="#ED3A20"/>
+  <path d="M200 280L320 280L320 290L440 290" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="2 2"/>
+  <circle cx="200" cy="280" r="3.5" fill="white"/>
+  <circle cx="440" cy="290" r="3.5" fill="#ED3A20"/>
+</svg>
