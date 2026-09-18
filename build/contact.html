@@ -114,6 +114,9 @@
         <div class="t-overline section-head__label" data-el="text">Our locations</div>
         <h2 class="t-h1 section-head__lead" data-el="heading">We have offices both in India and Norway and we would love to show you around sometime.</h2>
       </div>
+      <!-- Карта и адреса — один блок без зазора: карта стыкуется с карточками
+           (правка пользователя 2026-09-18). Elementor: контейнер column, Gap 0. -->
+      <div class="k-map-block" data-el="container">
       <!-- Карта офисов (правка пользователя 2026-09-18): общий вид — все три
            офиса, клик по метке или карточке ниже приближает к адресу.
            Пока встроенная карта Google без ключа: она умеет только одну точку,
@@ -142,19 +145,20 @@
         <div class="address address--active" data-el="container">
           <h3 class="t-h3" data-el="heading">Asker, Norway</h3>
           <p class="t-body" data-el="text">Lensmannslia 4, N-1386 Asker</p>
-          <button class="btn btn--outline-dark address__map" type="button" data-office="asker" data-el="button">Show on map</button>
+          <button class="btn btn--tertiary address__map" type="button" data-office="asker" data-el="button">Show on map</button>
         </div>
         <div class="address" data-el="container">
           <h3 class="t-h3" data-el="heading">Pune, India</h3>
           <p class="t-body" data-el="text">4th Floor, Office No. 413, Ascent Avenue, Vitthal Nagar, Amanora Park Town Main Road, Hadapsar, Pune 411028</p>
           <a class="t-body address__phone" href="tel:+917350157858" data-el="text">Mobile: +91 7350157858</a>
-          <button class="btn btn--outline-dark address__map" type="button" data-office="pune" data-el="button">Show on map</button>
+          <button class="btn btn--tertiary address__map" type="button" data-office="pune" data-el="button">Show on map</button>
         </div>
         <div class="address" data-el="container">
           <h3 class="t-h3" data-el="heading">Mohali, India</h3>
           <p class="t-body" data-el="text">BiggBang Building, 4th Floor, Cabin 3, E 279, Industrial Area, Sector 75, Sahibzada Ajit Singh Nagar, Punjab 160055</p>
-          <button class="btn btn--outline-dark address__map" type="button" data-office="mohali" data-el="button">Show on map</button>
+          <button class="btn btn--tertiary address__map" type="button" data-office="mohali" data-el="button">Show on map</button>
         </div>
+      </div>
       </div>
     </div>
   </section>

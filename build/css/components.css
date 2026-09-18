@@ -3965,13 +3965,33 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 .step__title { line-height: 1.25; }   /* у Heading 2 lh 1.0 — на двух строках слипается */
 
 /* Ссылки внутри карточки адреса (блок 13): телефон — текстом цвета адреса,
-   «View on map» — контурная кнопка на тёмном (btn--outline-dark), как
-   «View on map» в полосах Locations. Подчёркнутый текст действием не делаем
-   (анти-слоп T24). Margin Top auto — кнопки трёх колонок на одной линии.
-   Elementor: Button, стиль outline на тёмном; Advanced → Margin Top auto. */
+   «Show on map» — третичная кнопка (btn--tertiary). Margin Top auto —
+   кнопки трёх колонок на одной линии. */
 .address__phone { color: var(--text-on-dark-80); text-decoration: none; }
 .address__phone:hover { color: var(--color-accent); }
 .address__map { align-self: flex-start; margin-top: auto; }
+
+/* ══ АТОМ: третичная кнопка (2026-09-18, решение пользователя) ═══════
+   Без фона и обводки — текст Button и полоса 2 px Accent Red снизу.
+   Для второстепенных действий рядом с контентом, где контурная кнопка
+   спорит с текстом карточки. Цвет текста — от секции (белый на тёмной,
+   Primary Dark на светлой). Hover и выбранное состояние — текст Accent Red.
+   Elementor: Button, Background none, Border Bottom 2 Accent Red, Radius 0,
+   Padding 0 0 6 0; Hover → Text Color Accent Red. */
+.btn--tertiary {
+  padding: 0 0 6px;
+  border: 0;
+  border-bottom: 2px solid var(--color-accent);
+  border-radius: 0;
+  background: none;
+  color: inherit;
+}
+.btn--tertiary:hover,
+.btn--tertiary[aria-pressed="true"] { color: var(--color-accent); }
+.btn--tertiary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+.on-dark .btn--tertiary { color: var(--color-white); }
+.on-dark .btn--tertiary:hover,
+.on-dark .btn--tertiary[aria-pressed="true"] { color: var(--color-accent); }
 
 @media (max-width: 1024px) {
   .steps { grid-template-columns: 1fr; gap: var(--space-md); }
@@ -4235,13 +4255,6 @@ a.post-feature:hover { background: var(--gray-100); }
   left: var(--space-md);
   bottom: var(--space-md);
   background: var(--bg-near-black);
-}
-
-/* Выбранный офис в карточке — кнопка залита белым */
-.address__map[aria-pressed="true"] {
-  background: var(--color-white);
-  border-color: var(--color-white);
-  color: var(--color-dark);
 }
 
 @media (max-width: 1024px) {

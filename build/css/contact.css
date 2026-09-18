@@ -37,6 +37,10 @@
 /* ── 2 · Адреса ────────────────────────────────────────────── */
 .k-offices .section__inner { gap: var(--space-2xl); }
 
+/* Карта стыкуется с карточками адресов: один контейнер без зазора
+   (правка пользователя 2026-09-18). Elementor: column, Gap 0. */
+.k-map-block { display: flex; flex-direction: column; }
+
 /* ── Планшет ≤ 1024 ────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .k-hero    { padding-top: 64px; padding-bottom: 80px; }
