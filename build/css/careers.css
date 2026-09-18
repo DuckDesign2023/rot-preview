@@ -12,7 +12,7 @@
 .c-hero  { padding-top:  84px; padding-bottom:  40px; }
 .c-join  { padding-top: 120px; padding-bottom: 120px; }
 .c-who   { padding-top: 120px; padding-bottom: 120px; }
-/* .c-apply — section--flush: полоса формы во всю ширину, как на Appero */
+.c-apply { padding-top: 0; padding-bottom: 120px; }  /* белая после белой: сверху 0 */
 .c-open  { padding-top: 100px; padding-bottom: 100px; } /* тёмная, перед футером */
 
 /* ── 1 · Hero ──────────────────────────────────────────────── */
@@ -49,6 +49,21 @@
 /* ── 5 · Форма ─────────────────────────────────────────────── */
 .c-apply__note { color: var(--text-muted); }
 
+/* Правка пользователя 2026-09-18: полоса формы без фона и в сетке 1360.
+   Обе половины — по 50 % минус зазор 32, без своих паддингов: текст
+   начинается от левого поля сетки, форма кончается у правого.
+   Elementor: секция Boxed 1360, row, gap 32; обе колонки Width 50 %,
+   Padding 0; у колонки текста Justify Content Start, фон не задан. */
+.c-apply .split--form { gap: var(--col-gap); align-items: flex-start; }
+.c-apply .split--form .split__panel {
+  flex: 1 1 0;
+  max-width: none;
+  padding: 0;
+  justify-content: flex-start;
+}
+.c-apply .split__form { flex: 1 1 0; padding: 0; align-items: stretch; }
+.c-apply .split__form > * { max-width: none; }
+
 /* Select — Form (Pro) → Style → Field: те же рамка, высота и шрифт, что
    у текстового поля. Стрелка — фоновым SVG: у Select в Elementor свой
    индикатор, в эталоне его заменяет эта картинка. */
@@ -83,6 +98,10 @@
   .c-join { padding-top: 96px; padding-bottom: 96px; }
   .c-who  { padding-top: 96px; padding-bottom: 96px; }
   .c-open { padding-top: 80px; padding-bottom: 80px; }
+  .c-apply { padding-bottom: 96px; }
+  .c-apply .split--form { flex-direction: column; align-items: stretch; gap: var(--space-xl); }
+  .c-apply .split--form .split__panel,
+  .c-apply .split__form { flex: 0 0 auto; padding: 0; }
   .c-join__row { flex-direction: column; }
   .c-join__photo img { height: auto; min-height: 0; aspect-ratio: 3 / 2; }
 }
@@ -93,5 +112,6 @@
   .c-join,
   .c-who  { padding-top: 72px; padding-bottom: 72px; }
   .c-open { padding-top: 64px; padding-bottom: 64px; }
+  .c-apply { padding-bottom: 72px; }
   .c-join__list { padding: var(--space-lg) var(--space-md); }
 }

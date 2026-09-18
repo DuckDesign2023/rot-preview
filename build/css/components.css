@@ -4153,3 +4153,101 @@ a.post-feature:hover { background: var(--gray-100); }
   .case-grid { grid-template-columns: 1fr; }
   .post-feature { padding: var(--space-lg) var(--space-md); }
 }
+
+/* ══ 55. OFFICE MAP — карта офисов с приближением (Contact, 2026-09-18) ══
+   Блок во всю ширину сетки 1360, высота 520 / 440 / 360. Общий вид —
+   встроенная карта Google без взаимодействия и три метки поверх: точка
+   акцентом с белой обводкой + подпись города плашкой Near Black. Клик по
+   метке или «Show on map» в карточке адреса — карта места (zoom 15),
+   с которой уже можно работать; кнопка «All offices» возвращает общий вид.
+   Карта в светлой гамме Google на тёмной секции — как фото-плитка.
+   Elementor: HTML-виджет с iframe и кнопками + Custom Code (JS) —
+   реестр №23; с ключом API — тот же HTML на Maps JavaScript API. */
+.office-map {
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+  background: var(--gray-100);
+}
+
+.office-map__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none;           /* общий вид — подложка: метки поверх не должны уезжать */
+}
+
+.office-map--zoomed .office-map__frame { pointer-events: auto; }
+
+.office-map__pins { position: absolute; inset: 0; pointer-events: none; }
+.office-map--zoomed .office-map__pins { display: none; }
+
+.office-map__pin {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: 0;
+  border: 0;
+  background: none;
+  transform: translate(-9px, -50%);   /* центр точки — в координате офиса */
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* Метка в правой половине — подпись слева от точки, иначе на телефоне
+   она уходит за край блока */
+.office-map__pin--left { flex-direction: row-reverse; transform: translate(calc(-100% + 9px), -50%); }
+
+.office-map__dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 3px solid var(--color-white);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .25);
+  transition: transform .2s ease;
+}
+
+.office-map__label {
+  padding: 6px 10px;
+  background: var(--bg-near-black);
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: background-color .2s ease;
+}
+
+.office-map__pin:hover .office-map__dot,
+.office-map__pin:focus-visible .office-map__dot { transform: scale(1.2); }
+.office-map__pin:hover .office-map__label,
+.office-map__pin:focus-visible .office-map__label { background: var(--color-accent); }
+.office-map__pin:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+
+.office-map__all[hidden] { display: none; }   /* у .btn свой display — hidden иначе не работает */
+
+.office-map__all {
+  position: absolute;
+  left: var(--space-md);
+  bottom: var(--space-md);
+  background: var(--bg-near-black);
+}
+
+/* Выбранный офис в карточке — кнопка залита белым */
+.address__map[aria-pressed="true"] {
+  background: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--color-dark);
+}
+
+@media (max-width: 1024px) {
+  .office-map { height: 440px; }
+}
+
+@media (max-width: 767px) {
+  .office-map { height: 360px; }
+}

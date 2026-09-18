@@ -203,14 +203,17 @@
     </div>
   </section>
 
-  <!-- ══ 4 · APPLY — блок 48 split · form, якорь #apply ══════════════
+  <!-- ══ 4 · APPLY — блок 48 split · form в сетке 1360, белый фон, якорь #apply ══
+       Правка пользователя 2026-09-18: без тёплой панели и в общей сетке —
+       текст по левому полю сетки, форма во второй половине.
        Форма стоит не над футером: в футере своя форма, а две формы подряд
        не ставятся (правило из Trello, spec/components.md блок 49).
        В Elementor: Form (Pro) — Text ×2, Email, Tel, Select, Textarea,
        File Upload (.pdf/.doc/.docx), действие Email на HR. -->
-  <section class="section section--flush c-apply" id="apply" data-el="container" data-name="apply">
+  <section class="section c-apply" id="apply" data-el="container" data-name="apply">
+    <div class="section__inner" data-el="container">
     <div class="split split--form" data-el="container">
-      <div class="split__panel split__panel--warm" data-el="container">
+      <div class="split__panel" data-el="container">
         <div class="t-overline" data-el="text">Apply</div>
         <h2 class="t-h1 t-h1--normal" data-el="heading">Interested in joining us?</h2>
         <div class="split__points" data-el="container">
@@ -269,6 +272,7 @@
           <button class="btn btn--primary" type="submit" data-el="button">Apply now</button>
         </form>
       </div>
+    </div>
     </div>
   </section>
 

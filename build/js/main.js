@@ -257,4 +257,100 @@
       });
     });
   });
+
+  /* ── Карта офисов (Contact) ─────────────────────────────────────
+     Встроенная карта Google без ключа показывает одну точку, поэтому
+     общий вид собран так: iframe по центру и зуму, которые посчитаны под
+     размер блока (все три офиса внутри), а метки — свои кнопки поверх,
+     в пикселях Web Mercator (тайл 256). Клик по метке или по «Show on map»
+     в карточке — карта места с булавкой Google, zoom 15.
+     С ключом API заменяется на Maps JavaScript API (fitBounds / panTo). */
+  document.querySelectorAll('.office-map').forEach(function (map) {
+    var frame = map.querySelector('.office-map__frame');
+    var pins = Array.prototype.slice.call(map.querySelectorAll('.office-map__pin'));
+    var allBtn = map.querySelector('.office-map__all');
+    var section = map.closest('section') || document;
+    var mode = 'all';
+    var lastKey = '';
+
+    function mercY(lat) {
+      var s = Math.sin(lat * Math.PI / 180);
+      return 0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI);   // 0…1
+    }
+    function unY(y) {
+      return 360 / Math.PI * Math.atan(Math.exp((0.5 - y) * 2 * Math.PI)) - 90;
+    }
+    function pts() {
+      return pins.map(function (p) {
+        return { el: p, x: (+p.dataset.lng + 180) / 360, y: mercY(+p.dataset.lat) };
+      });
+    }
+
+    function overview() {
+      var w = map.clientWidth, h = map.clientHeight;
+      var PAD = Math.min(72, w * 0.12);   // поле от меток до края: на телефоне уже, иначе зум падает до 1
+      var P = pts();
+      var minX = Math.min.apply(null, P.map(function (p) { return p.x; }));
+      var maxX = Math.max.apply(null, P.map(function (p) { return p.x; }));
+      var minY = Math.min.apply(null, P.map(function (p) { return p.y; }));
+      var maxY = Math.max.apply(null, P.map(function (p) { return p.y; }));
+      var z = 1;
+      for (var t = 8; t >= 1; t--) {
+        var world = 256 * Math.pow(2, t);
+        if ((maxX - minX) * world <= w - 2 * PAD && (maxY - minY) * world <= h - 2 * PAD) { z = t; break; }
+      }
+      var cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
+      var world2 = 256 * Math.pow(2, z);
+      P.forEach(function (p) {
+        var left = w / 2 + (p.x - cx) * world2;
+        p.el.style.left = left + 'px';
+        p.el.style.top = (h / 2 + (p.y - cy) * world2) + 'px';
+        p.el.classList.toggle('office-map__pin--left', left > w / 2);   // подпись к центру, не за край
+      });
+      var lat = unY(cy).toFixed(4), lng = (cx * 360 - 180).toFixed(4);
+      var key = lat + ',' + lng + ',' + z;
+      if (key !== lastKey || mode !== 'all') {
+        frame.src = 'https://maps.google.com/maps?ll=' + lat + ',' + lng + '&z=' + z + '&hl=en&output=embed';
+        lastKey = key;
+      }
+      mode = 'all';
+      map.classList.remove('office-map--zoomed');
+      allBtn.hidden = true;
+    }
+
+    function zoomTo(key) {
+      var pin = pins.filter(function (p) { return p.dataset.office === key; })[0];
+      if (!pin) return;
+      mode = key;
+      lastKey = '';
+      frame.src = 'https://maps.google.com/maps?q=' + encodeURIComponent(pin.dataset.q) + '&z=15&hl=en&output=embed';
+      map.classList.add('office-map--zoomed');
+      allBtn.hidden = false;
+      section.querySelectorAll('[data-office]').forEach(function (b) {
+        if (b.classList.contains('address__map')) b.setAttribute('aria-pressed', String(b.dataset.office === key));
+      });
+    }
+
+    pins.forEach(function (p) {
+      p.addEventListener('click', function () { zoomTo(p.dataset.office); });
+    });
+    section.querySelectorAll('.address__map[data-office]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        zoomTo(b.dataset.office);
+        map.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+    allBtn.addEventListener('click', function () {
+      section.querySelectorAll('.address__map[aria-pressed]').forEach(function (b) { b.removeAttribute('aria-pressed'); });
+      overview();
+    });
+
+    overview();
+    var pending = false;
+    window.addEventListener('resize', function () {
+      if (pending || mode !== 'all') return;
+      pending = true;
+      window.requestAnimationFrame(function () { pending = false; overview(); });
+    });
+  });
 })();

@@ -114,22 +114,46 @@
         <div class="t-overline section-head__label" data-el="text">Our locations</div>
         <h2 class="t-h1 section-head__lead" data-el="heading">We have offices both in India and Norway and we would love to show you around sometime.</h2>
       </div>
+      <!-- Карта офисов (правка пользователя 2026-09-18): общий вид — все три
+           офиса, клик по метке или карточке ниже приближает к адресу.
+           Пока встроенная карта Google без ключа: она умеет только одну точку,
+           поэтому общий вид — подложка-карта (без взаимодействия) и три метки
+           поверх, посчитанные по Web Mercator; приближение — карта места с
+           булавкой Google. С ключом — Maps JavaScript API: маркеры, fitBounds
+           и плавный panTo / setZoom (реестр паспорта №23). -->
+      <div class="office-map" data-el="html" data-name="office-map">
+        <iframe class="office-map__frame" title="Map of Red Orange Technologies offices" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" src="about:blank"></iframe>
+        <div class="office-map__pins" data-el="container">
+          <button class="office-map__pin" type="button" data-office="asker" data-lat="59.8347" data-lng="10.4336" data-q="Lensmannslia 4, 1386 Asker, Norway" aria-label="Zoom map to Asker, Norway">
+            <span class="office-map__dot" aria-hidden="true"></span><span class="office-map__label">Asker</span>
+          </button>
+          <button class="office-map__pin" type="button" data-office="pune" data-lat="18.5165" data-lng="73.9353" data-q="Ascent Avenue, Amanora Park Town, Hadapsar, Pune 411028, India" aria-label="Zoom map to Pune, India">
+            <span class="office-map__dot" aria-hidden="true"></span><span class="office-map__label">Pune</span>
+          </button>
+          <button class="office-map__pin" type="button" data-office="mohali" data-lat="30.7003" data-lng="76.7179" data-q="BiggBang Building, E 279, Industrial Area, Sector 75, Mohali, Punjab 160055, India" aria-label="Zoom map to Mohali, India">
+            <span class="office-map__dot" aria-hidden="true"></span><span class="office-map__label">Mohali</span>
+          </button>
+        </div>
+        <button class="btn btn--outline-dark office-map__all" type="button" hidden>All offices</button>
+      </div>
+
       <div class="address-grid" data-el="container">
         <div class="address address--active" data-el="container">
           <h3 class="t-h3" data-el="heading">Asker, Norway</h3>
           <p class="t-body" data-el="text">Lensmannslia 4, N-1386 Asker</p>
-          <a class="btn btn--outline-dark address__map" href="https://www.google.com/maps/search/?api=1&query=Lensmannslia+4%2C+N-1386+Asker%2C+Norway" target="_blank" rel="noopener" data-el="button">View on map</a>
+          <button class="btn btn--outline-dark address__map" type="button" data-office="asker" data-el="button">Show on map</button>
         </div>
         <div class="address" data-el="container">
           <h3 class="t-h3" data-el="heading">Pune, India</h3>
           <p class="t-body" data-el="text">4th Floor, Office No. 413, Ascent Avenue, Vitthal Nagar, Amanora Park Town Main Road, Hadapsar, Pune 411028</p>
           <a class="t-body address__phone" href="tel:+917350157858" data-el="text">Mobile: +91 7350157858</a>
-          <a class="btn btn--outline-dark address__map" href="https://www.google.com/maps/search/?api=1&query=Ascent+Avenue%2C+Vitthal+Nagar%2C+Amanora+Park+Town+Main+Road%2C+Hadapsar%2C+Pune+411028%2C+India" target="_blank" rel="noopener" data-el="button">View on map</a>
+          <button class="btn btn--outline-dark address__map" type="button" data-office="pune" data-el="button">Show on map</button>
         </div>
         <div class="address" data-el="container">
           <h3 class="t-h3" data-el="heading">Mohali, India</h3>
           <p class="t-body" data-el="text">BiggBang Building, 4th Floor, Cabin 3, E 279, Industrial Area, Sector 75, Sahibzada Ajit Singh Nagar, Punjab 160055</p>
-          <a class="btn btn--outline-dark address__map" href="https://www.google.com/maps/search/?api=1&query=BiggBang+Building%2C+E+279%2C+Industrial+Area%2C+Sector+75%2C+Sahibzada+Ajit+Singh+Nagar%2C+Punjab+160055%2C+India" target="_blank" rel="noopener" data-el="button">View on map</a>
+          <button class="btn btn--outline-dark address__map" type="button" data-office="mohali" data-el="button">Show on map</button>
         </div>
       </div>
     </div>
