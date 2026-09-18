@@ -45,6 +45,31 @@
 }
 .l-office__address .t-overline { color: var(--text-muted); }
 
+/* Фото офиса (правка пользователя 2026-09-18): реальный снимок места на всю
+   половину полосы, Cover; точка кадрирования — у каждого своя (Object Position
+   в Elementor), чтобы в почти квадратной половине остался главный объект.
+   Elementor: контейнер с Background Image или Image Cover 100 % × 100 %. */
+.split__media--photo { position: relative; margin: 0; }
+.split__media--photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* Подпись автора и лицензии — обязательна для CC BY / CC BY-SA. Плашка
+   в правом нижнем углу: Caption 12, белый на чёрном 55 %.
+   Elementor: Image → Caption (Custom), Style → Caption: Background, Typography;
+   Position Absolute справа снизу. */
+.photo-credit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, .55);
+  color: rgba(255, 255, 255, .85);
+  font-family: var(--font-primary);
+  font-size: 12px;
+  line-height: 1.3;
+}
+.photo-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.photo-credit a:hover { color: var(--color-white); }
+
 /* ── 3 · Тёмная секция ─────────────────────────────────────── */
 .l-connected .dark-split { align-items: center; }
 .l-connected__claim { color: var(--color-white); font-weight: 500; }
@@ -69,9 +94,8 @@
   .l-offices   { padding-top: 72px; padding-bottom: 72px; }
   .l-connected { padding-top: 64px; padding-bottom: 64px; }
 
-  /* Кадр офиса в своей пропорции 680 : 520 вместо коробки 420: в узкой
-     высокой коробке Contain уменьшал рисунок до 40 % ширины. Основа flex
-     сброшена — в колонке flex-basis 0 схлопнул бы плитку в ноль.
-     Elementor: контейнер кадра Min Height 0, Aspect Ratio 4 : 3 (Custom 680/520). */
-  .l-offices .split__media--art { flex: 0 0 auto; min-height: 0; aspect-ratio: 680 / 520; }
+  /* Фото офиса на телефоне — в пропорции 4 : 3. Основа flex сброшена —
+     в колонке flex-basis 0 схлопнул бы плитку в ноль.
+     Elementor: контейнер кадра Min Height 0, Aspect Ratio 4 : 3. */
+  .l-offices .split__media--photo { flex: 0 0 auto; min-height: 0; aspect-ratio: 4 / 3; }
 }
