@@ -4346,7 +4346,7 @@ a.post-feature:hover { background: var(--gray-100); }
   justify-content: center;
   aspect-ratio: 2 / 1;
   padding: var(--space-lg);
-  background: var(--gray-100);
+  background: var(--bg-warm);   /* та же тёплая подложка, что у плиток списка */
 }
 
 .case-logo img { max-width: 56%; max-height: 64px; object-fit: contain; }
@@ -4507,4 +4507,67 @@ a.post-feature:hover { background: var(--gray-100); }
   background: var(--color-dark);
   border-color: var(--color-dark);
   color: var(--color-white);
+}
+
+/* ── 59 · Case CTA — липкая панель призыва рядом с текстом кейса ───
+   Колонка чтения — 640, а полоса повествования 1012: справа оставалось
+   пустое поле. Туда встаёт узкая панель: с кем говорить и что нажать.
+   Не повторяет закрывающую полосу внизу — там общий призыв компании,
+   здесь конкретный человек и услуга этого кейса.
+   Elementor: контейнер Width 316, Sticky (Pro, Motion Effects,
+   «Stay in container», Offset 32); во Free остаётся статичной. */
+
+.case-cta {
+  position: sticky;
+  top: var(--space-lg);
+  flex: 0 0 var(--col-label);
+  width: var(--col-label);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--bg-warm);
+}
+
+.case-cta__person { display: flex; align-items: center; gap: var(--space-xs); }
+
+.case-cta__photo {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  overflow: hidden;
+  background: var(--gray-100);
+}
+
+.case-cta__photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+
+.case-cta__name { display: flex; flex-direction: column; gap: 2px; }
+.case-cta__role { color: var(--gray-500); }
+
+.case-cta__actions { display: flex; flex-direction: column; gap: var(--space-xs); align-items: stretch; }
+.case-cta__actions .btn { width: 100%; }
+
+@media (max-width: 1024px) {
+  /* на планшете панель уходит под текст и растягивается на всю ширину,
+     человек и кнопки встают в строку */
+  .case-cta {
+    position: static;
+    flex: 0 0 auto;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
+  }
+  .case-cta__person { flex: 0 0 auto; }        /* имя не жмём в три строки */
+  .case-cta__text { flex: 1 1 auto; max-width: 480px; }
+  .case-cta__actions { flex: 0 0 auto; flex-direction: row; }
+  .case-cta__actions .btn { width: auto; }
+}
+
+@media (max-width: 767px) {
+  .case-cta { flex-direction: column; align-items: stretch; gap: var(--space-md); padding: var(--space-md); }
+  .case-cta__actions { flex-direction: column; }
+  .case-cta__actions .btn { width: 100%; text-align: center; }
 }
