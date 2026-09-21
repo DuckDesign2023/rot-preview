@@ -243,19 +243,53 @@
      Эмуляция Taxonomy Filter (Pro): чип прячет плитки чужих рубрик.
      В WordPress не переносится — фильтр делает сам виджет. */
   document.querySelectorAll('.filter').forEach(function (bar) {
-    var grid = bar.parentElement.querySelector('.case-grid');
+    var wrap = bar.parentElement;
+    var grid = wrap.querySelector('.case-grid');
     if (!grid) return;
+
     var chips = bar.querySelectorAll('.filter-chip');
+    var tiles = Array.prototype.slice.call(grid.querySelectorAll('.case-tile'));
+    var more = wrap.querySelector('.load-more__btn');
+    var step = parseInt(grid.getAttribute('data-step'), 10) || tiles.length;
+    var key = 'all';
+    var shown = step;
+
+    /* Фильтр и «показать больше» — одно состояние: сколько плиток
+       подошло под фильтр и сколько из них уже показано. Смена фильтра
+       возвращает выдачу к первой порции, как это делает Loop Grid
+       в Elementor (фильтр перезапрашивает запрос с первой страницы). */
+    function apply() {
+      var matched = 0;
+      tiles.forEach(function (tile) {
+        var cats = (tile.getAttribute('data-cats') || '').split(' ');
+        var fits = key === 'all' || cats.indexOf(key) >= 0;
+        if (fits) matched++;
+        tile.hidden = !fits || matched > shown;
+      });
+      if (more) more.parentElement.hidden = matched <= shown;
+    }
+
     chips.forEach(function (chip) {
       chip.addEventListener('click', function () {
-        var key = chip.getAttribute('data-filter');
+        key = chip.getAttribute('data-filter');
+        shown = step;
         chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
-        grid.querySelectorAll('.case-tile').forEach(function (tile) {
-          var cats = (tile.getAttribute('data-cats') || '').split(' ');
-          tile.hidden = key !== 'all' && cats.indexOf(key) < 0;
-        });
+        apply();
       });
     });
+
+    if (more) {
+      more.addEventListener('click', function () {
+        shown += step;
+        apply();
+        /* фокус на первую из доезжающих плиток — иначе после клика
+           он остаётся на кнопке, которая уехала вниз или исчезла */
+        var next = tiles.filter(function (t) { return !t.hidden; })[shown - step];
+        if (next) next.focus({ preventScroll: true });
+      });
+    }
+
+    apply();
   });
 
   /* ── Карта офисов (Contact) ─────────────────────────────────────

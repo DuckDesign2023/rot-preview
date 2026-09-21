@@ -117,7 +117,7 @@
         <button class="filter-chip" type="button" aria-pressed="false" data-filter="web-development">Web Development <span class="filter-chip__count">3</span></button>
         <button class="filter-chip" type="button" aria-pressed="false" data-filter="it-consulting">IT Consulting <span class="filter-chip__count">2</span></button>
       </div>
-      <div class="case-grid" data-el="loop-grid" aria-live="polite">
+      <div class="case-grid" data-el="loop-grid" data-step="6" aria-live="polite">
         <a class="case-tile" href="#" data-wp="/cases/hdfc-bank-indias-largest-private-bank/" data-cats="salesforce" data-el="container">
           <div class="case-tile__media" data-el="container">
             <img src="../assets/case-hdfc.webp" width="720" height="126" alt="HDFC Bank" loading="lazy" data-el="image">
@@ -217,6 +217,12 @@
             <p class="t-body case-tile__industry" data-el="text">Industry: Dance Training and Dance Clubs</p>
           </div>
         </a>
+      </div>
+
+      <!-- Loop Grid → Pagination: Load on Click. Порция 6 = два ровных
+           ряда по три; смена фильтра возвращает выдачу к первой порции. -->
+      <div class="load-more" data-el="container">
+        <button class="btn btn--outline load-more__btn" type="button" data-el="button">Show more cases</button>
       </div>
     </div>
   </section>
