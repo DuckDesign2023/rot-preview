@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Варианты: пагинация, карточки, обложки | Red Orange Technologies</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    /* Служебная доска выбора. В перенос не идёт: здесь живут только
+       варианты оформления, из которых пользователь выбирает один. */
+    body { background: var(--color-white); }
+
+    .board       { max-width: 1360px; margin: 0 auto; padding: 56px var(--gutter) 120px; }
+    .board__lead { max-width: 720px; margin: 0 0 56px; color: var(--text-lead); font-size: var(--fs-lead); line-height: 1.5; }
+    .board h1    { margin: 0 0 16px; font-size: var(--fs-h1); font-weight: 500; line-height: 1.1; letter-spacing: -0.04em; }
+
+    .group       { margin-top: 88px; }
+    .group:first-of-type { margin-top: 0; }
+    .group > h2  { margin: 0 0 8px; font-size: var(--fs-h2); font-weight: 600; letter-spacing: -0.02em; }
+    .group > p   { margin: 0 0 40px; max-width: 720px; color: var(--text-lead); font-size: var(--fs-body); line-height: 1.5; }
+
+    .variant        { margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--hairline); }
+    .variant__name  { display: flex; align-items: baseline; gap: 12px; margin: 0 0 6px; font-size: var(--fs-h3); font-weight: 600; letter-spacing: -0.02em; }
+    .variant__tag   { padding: 3px 8px; background: var(--accent-tint); border: 1px solid var(--accent-tint-line); color: var(--color-accent);
+                   font-family: var(--font-badge); font-size: 12px; font-weight: 600; letter-spacing: -0.02em; }
+    .variant__note  { margin: 0 0 24px; max-width: 760px; color: var(--gray-500); font-size: var(--fs-body); line-height: 1.5; }
+    .variant__stage { padding: 32px; background: var(--color-white); border: 1px solid var(--gray-200); }
+
+    .pair        { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; align-items: start; }
+    .pair__label { margin: 0 0 12px; color: var(--text-muted); font-size: var(--fs-overline); font-weight: 500; letter-spacing: -0.04em; text-transform: uppercase; }
+
+    /* ── П2 · строка листания во всю ширину ───────────────────────── */
+    .pg-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+              min-height: 72px; padding: 0 24px; border: 1px solid var(--gray-200); }
+    .pg-bar__side { display: inline-flex; align-items: center; gap: 12px; color: var(--gray-500);
+                    font-size: var(--fs-button); line-height: 24px; background: none; border: 0; cursor: pointer; }
+    .pg-bar__side:hover:not([disabled]) { color: var(--color-accent); }
+    .pg-bar__side[disabled] { opacity: .35; cursor: default; }
+    .pg-bar__side svg { width: 24px; height: 9px; }
+    .pg-bar__side--prev svg { transform: scaleX(-1); }
+    .pg-bar__count { color: var(--color-dark); font-size: var(--fs-body); }
+    .pg-bar__count b { font-weight: 600; }
+
+    /* ── П3 · номера-вкладки ──────────────────────────────────────── */
+    .pg-tabs { display: flex; gap: 32px; border-bottom: 1px solid var(--hairline); }
+    .pg-tab  { margin-bottom: -1px; padding: 0 0 12px; border: 0; border-bottom: 2px solid transparent; background: none;
+               color: var(--gray-500); font-family: var(--font-primary); font-size: var(--fs-lead); letter-spacing: -0.02em; cursor: pointer; }
+    .pg-tab:hover { color: var(--color-dark); }
+    .pg-tab[aria-current="page"] { color: var(--color-dark); border-bottom-color: var(--color-accent); }
+    .pg-tabs__next { margin-left: auto; margin-bottom: -1px; padding: 0 0 12px; border: 0; background: none;
+                     color: var(--color-dark); font-family: var(--font-primary); font-size: var(--fs-lead); cursor: pointer; }
+
+    /* ── П4 · крупные номера, как в леджере ───────────────────────── */
+    .pg-ledger { display: flex; align-items: flex-end; gap: 40px; padding-top: 8px; }
+    .pg-num { display: block; padding: 0; border: 0; background: none; cursor: pointer;
+              font-family: var(--font-primary); font-size: 44px; font-weight: 500; line-height: 1; letter-spacing: -0.04em;
+              color: var(--text-faint); transition: color .2s ease; }
+    .pg-num:hover { color: var(--color-dark); }
+    .pg-num[aria-current="page"] { color: var(--color-dark); }
+    .pg-num[aria-current="page"]::after { content: ""; display: block; width: 100%; height: 2px; margin-top: 10px; background: var(--color-accent); }
+    .pg-ledger__next { margin-left: auto; align-self: center; }
+
+    /* ── Различение: поле вокруг картинки ─────────────────────────── */
+    .demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+                 border-right: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); }
+    .demo-grid .case-tile,
+    .demo-grid .post-card { border-top: 1px solid var(--gray-200); border-left: 1px solid var(--gray-200); }
+
+    /* V1 — поле 6 px вокруг плашки логотипа */
+    .v-inset .case-tile__media { margin: 6px; }
+    /* V2 — поле 6 px и у статьи тоже */
+    .v-inset-both .case-tile__media,
+    .v-inset-both .post-card__media { margin: 6px; }
+    /* V3 — у статьи кадр во всю плитку сверху, у кейса плашка с полем */
+    .v-flip .post-card { flex-direction: column-reverse; }
+    .v-flip .post-card__media { border-top: 0; border-bottom: 1px solid transparent; }
+    .v-flip .case-tile__media { margin: 6px; }
+    /* V4 — статьи отдельными карточками с зазором, кейсы — в сетке с линиями */
+    .v-loose { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; border: 0; }
+    .v-loose .post-card { border: 1px solid var(--gray-200); }
+    .v-loose .case-tile { border: 1px solid var(--gray-200); }
+    .v-loose .case-tile__media { margin: 6px; }
+
+    .covers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+    .covers figure { margin: 0; }
+    .covers img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+    .covers figcaption { margin-top: 12px; color: var(--text-lead); font-size: var(--fs-body); line-height: 1.5; }
+    .covers b { display: block; margin-bottom: 4px; color: var(--color-dark); font-weight: 600; }
+
+    @media (max-width: 1024px) {
+      .pair, .demo-grid, .covers, .v-loose { grid-template-columns: minmax(0, 1fr); }
+      .pg-ledger { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="board">
+
+  <h1>Варианты оформления списков</h1>
+  <p class="board__lead">Служебная страница для выбора. Всё живое — кнопки и номера нажимаются,
+     наведение работает. Выберите по одному варианту в каждом разделе, соберу на боевых страницах
+     и снесу эту доску.</p>
+
+  <!-- ══ 1 · ПАГИНАЦИЯ ══════════════════════════════════════════════ -->
+  <section class="group">
+    <h2>1 · Пагинация на Insights</h2>
+    <p>Сейчас стоит П1. Остальные три — предложения: полоса-строка, номера-вкладки и крупные номера.</p>
+
+    <div class="variant">
+      <h3 class="variant__name">П1 · Кнопки с обводкой <span class="variant__tag">сейчас</span></h3>
+      <p class="variant__note">Ровно то, что на странице. Надёжно и узнаваемо, но это просто три кнопки —
+         ничего от языка макета в них нет.</p>
+      <div class="variant__stage">
+        <nav class="pager" aria-label="Вариант 1">
+          <span class="pager__item pager__item--current" aria-current="page">1</span>
+          <a class="pager__item" href="#">2</a>
+          <a class="pager__item" href="#">Next <span class="pager__icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 9"><path fill="currentColor" d="M18.7528 0C19.8793 1.21001 20.8534 2.13213 21.675 2.76634C22.4966 3.39221 23.2716 3.85953 24 4.16829V4.73157C23.1615 5.13213 22.3483 5.64534 21.5606 6.27121C20.7729 6.88873 19.8327 7.79833 18.7401 9H17.7618C18.558 7.32267 19.3923 6.03338 20.2647 5.13213H0V3.86787H20.2647C19.621 3.05841 19.172 2.45758 18.9179 2.06537C18.6638 1.67316 18.2869 0.984701 17.7872 0H18.7528Z"/></svg></span></a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="variant">
+      <h3 class="variant__name">П2 · Полоса листания во всю ширину</h3>
+      <p class="variant__note">Ещё один ряд сетки, как кнопка «Show more» на кейсах: слева «предыдущие»,
+         справа «следующие», посередине счёт. Видно, сколько всего статей, и обе страницы читаются
+         одним движением глаз. Elementor: Pagination = Previous/Next плюс текст счёта.</p>
+      <div class="variant__stage">
+        <div class="pg-bar">
+          <button class="pg-bar__side pg-bar__side--prev" type="button" disabled>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 9" aria-hidden="true"><path fill="currentColor" d="M18.7528 0C19.8793 1.21001 20.8534 2.13213 21.675 2.76634C22.4966 3.39221 23.2716 3.85953 24 4.16829V4.73157C23.1615 5.13213 22.3483 5.64534 21.5606 6.27121C20.7729 6.88873 19.8327 7.79833 18.7401 9H17.7618C18.558 7.32267 19.3923 6.03338 20.2647 5.13213H0V3.86787H20.2647C19.621 3.05841 19.172 2.45758 18.9179 2.06537C18.6638 1.67316 18.2869 0.984701 17.7872 0H18.7528Z"/></svg>
+            Newer
+          </button>
+          <span class="pg-bar__count"><b>1–12</b> of 22 articles</span>
+          <button class="pg-bar__side" type="button">
+            Older
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 9" aria-hidden="true"><path fill="currentColor" d="M18.7528 0C19.8793 1.21001 20.8534 2.13213 21.675 2.76634C22.4966 3.39221 23.2716 3.85953 24 4.16829V4.73157C23.1615 5.13213 22.3483 5.64534 21.5606 6.27121C20.7729 6.88873 19.8327 7.79833 18.7401 9H17.7618C18.558 7.32267 19.3923 6.03338 20.2647 5.13213H0V3.86787H20.2647C19.621 3.05841 19.172 2.45758 18.9179 2.06537C18.6638 1.67316 18.2869 0.984701 17.7872 0H18.7528Z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="variant">
+      <h3 class="variant__name">П3 · Номера-вкладки</h3>
+      <p class="variant__note">Те же вкладки, что у рубрик на кейсах, только с номерами: ряд на тонкой
+         линии, активная страница загорается акцентом. Страница получается собрана одним приёмом
+         сверху донизу — рубрики вкладками, страницы вкладками.</p>
+      <div class="variant__stage">
+        <nav class="pg-tabs" aria-label="Вариант 3">
+          <button class="pg-tab" type="button" aria-current="page">1</button>
+          <button class="pg-tab" type="button">2</button>
+          <button class="pg-tabs__next" type="button">Next →</button>
+        </nav>
+      </div>
+    </div>
+
+    <div class="variant">
+      <h3 class="variant__name">П4 · Крупные номера, как в леджере</h3>
+      <p class="variant__note">Номер набран как заголовок 44 px: неактивные приглушены до 40 %,
+         текущий тёмный с акцентной чертой — ровно приём леджера продуктов с главной.
+         Самый выразительный вариант; при десятке страниц ряд станет длинным.</p>
+      <div class="variant__stage">
+        <nav class="pg-ledger" aria-label="Вариант 4">
+          <button class="pg-num" type="button" aria-current="page">01</button>
+          <button class="pg-num" type="button">02</button>
+          <a class="btn btn--outline pg-ledger__next" href="#">Next page</a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2 · КАРТОЧКИ ═══════════════════════════════════════════════ -->
+  <section class="group">
+    <h2>2 · Чем статья отличается от кейса</h2>
+    <p>Слева в каждой паре — карточка статьи, справа — плитка кейса. Ваша идея с полем 6 px — вариант В1.</p>
+
+    <div class="variant">
+      <h3 class="variant__name">В1 · Поле 6 px только у кейсов <span class="variant__tag">ваш вариант</span></h3>
+      <p class="variant__note">У кейса логотип лежит на бежевой плашке, вокруг которой белое поле —
+         плитка читается как «карточка клиента». У статьи кадр идёт до краёв: фотография заполняет
+         плитку целиком. Разница считывается мгновенно, при этом обе живут в одной сетке.</p>
+      <div class="variant__stage">
+        <div class="demo-grid v-inset">
+          <a class="post-card" href="#">
+            <div class="post-card__body">
+              <time class="t-overline" datetime="2023-09-15">Sep 15, 2023</time>
+              <h4 class="t-h3">Salesforce + WordPress integration</h4>
+              <p class="t-body post-card__excerpt">Crafting compelling websites that seamlessly merge your Salesforce CRM data with WordPress through the WordPress Connect tool opens the door to a world of possibilities.</p>
+            </div>
+            <div class="post-card__media"><img src="../assets/cover-demo-a.webp" width="1600" height="900" alt="" role="presentation"></div>
+          </a>
+          <a class="case-tile" href="#">
+            <div class="case-tile__media"><img src="../assets/case-hdfc.webp" width="720" height="126" alt="HDFC Bank"></div>
+            <div class="case-tile__body">
+              <div class="t-overline">Salesforce</div>
+              <h4 class="t-h3">HDFC Bank: India’s Largest Private Bank</h4>
+              <p class="t-body case-tile__excerpt">Headquartered in Mumbai, HDFC Bank Limited stands as a prominent Indian banking and financial services institution.</p>
+              <p class="t-body case-tile__industry">Industry: Financial/Lending</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="variant">
+      <h3 class="variant__name">В2 · Поле 6 px у обоих</h3>
+      <p class="variant__note">Поле и у статьи, и у кейса: обе картинки становятся вставками внутри плитки,
+         сетка выглядит легче и «дороже». Но тогда статьи и кейсы различаются только содержанием
+         кадра — фото против логотипа.</p>
+      <div class="variant__stage">
+        <div class="demo-grid v-inset-both">
+          <a class="post-card" href="#">
+            <div class="post-card__body">
+              <time class="t-overline" datetime="2023-09-13">Sep 13, 2023</time>
+              <h4 class="t-h3">Applying Design Thinking principles to the six stages of IT project methodology</h4>
+              <p class="t-body post-card__excerpt">To succeed in the dynamic IT environment, we at Red Orange Technologies adapt our project management methodologies to meet our clients’ evolving needs.</p>
+            </div>
+            <div class="post-card__media"><img src="../assets/cover-demo-c.webp" width="1600" height="900" alt="" role="presentation"></div>
+          </a>
+          <a class="case-tile" href="#">
+            <div class="case-tile__media"><img src="../assets/case-star-autoco.webp" width="720" height="57" alt="Star Autoco"></div>
+            <div class="case-tile__body">
+              <div class="t-overline">Salesforce</div>
+              <h4 class="t-h3">Star Autoco: Driving Excellence in Oslo</h4>
+              <p class="t-body case-tile__excerpt">Star Autoco is a trusted destination for premium used cars in Oslo, where quality meets value.</p>
+              <p class="t-body case-tile__industry">Industry: Automobile</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="variant">
+      <h3 class="variant__name">В3 · Кадр сверху у статьи</h3>
+      <p class="variant__note">У статьи фотография идёт первой и ведёт карточку, текст под ней;
+         у кейса сверху плашка с логотипом в поле 6 px. Два разных порядка чтения: статью открывает
+         кадр, кейс — клиент. Минус: карточка блога перестаёт быть той же, что в секции Insights на главной.</p>
+      <div class="variant__stage">
+        <div class="demo-grid v-flip">
+          <a class="post-card" href="#">
+            <div class="post-card__body">
+              <time class="t-overline" datetime="2023-09-11">Sep 11, 2023</time>
+              <h4 class="t-h3">Red Orange Technologies pushing automation with Salesforce, HubSpot and SAP</h4>
+              <p class="t-body post-card__excerpt">Customer Relationship Management (CRM) and Enterprise Resource Planning (ERP) systems are the two main solutions when it comes to automating core business processes.</p>
+            </div>
+            <div class="post-card__media"><img src="../assets/cover-demo-b.webp" width="1600" height="900" alt="" role="presentation"></div>
+          </a>
+          <a class="case-tile" href="#">
+            <div class="case-tile__media"><img src="../assets/client-flame.webp" width="608" height="231" alt="FLAME University"></div>
+            <div class="case-tile__body">
+              <div class="t-overline">Salesforce</div>
+              <h4 class="t-h3">FLAME University: Elevating Academic Excellence</h4>
+              <p class="t-body case-tile__excerpt">FLAME University (Foundation for Liberal and Management Education), a private co-educational and fully residential university based in Pune, India.</p>
+              <p class="t-body case-tile__industry">Industry: Education</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="variant">
+      <h3 class="variant__name">В4 · Статьи отдельными карточками</h3>
+      <p class="variant__note">Кейсы остаются сплошной сеткой с общими линиями — «каталог работ»,
+         а статьи разъезжаются в отдельные карточки с зазором 24. Разница видна ещё до того,
+         как прочитан хоть один заголовок. Минус: ломает единый ритм линий на сайте.</p>
+      <div class="variant__stage">
+        <div class="v-loose">
+          <a class="post-card" href="#">
+            <div class="post-card__body">
+              <time class="t-overline" datetime="2023-09-07">Sep 7, 2023</time>
+              <h4 class="t-h3">Elevate your business with Salesforce Sales Cloud</h4>
+              <p class="t-body post-card__excerpt">Looking to grow your business, find new customers, and close deals faster than ever before? Then look no further than Salesforce Sales Cloud.</p>
+            </div>
+            <div class="post-card__media"><img src="../assets/cover-demo-a.webp" width="1600" height="900" alt="" role="presentation"></div>
+          </a>
+          <a class="case-tile" href="#">
+            <div class="case-tile__media"><img src="../assets/case-kepandi.webp" width="720" height="126" alt="Kepandi"></div>
+            <div class="case-tile__body">
+              <div class="t-overline">Web Development</div>
+              <h4 class="t-h3">Kepandi is a Norwegian webshop for fashion and accessories</h4>
+              <p class="t-body case-tile__excerpt">Kepandi is a Norwegian webshop for fashion and accessories. The webshop was developed from scratch based on a visual platform.</p>
+              <p class="t-body case-tile__industry">Industry: Fashion and Accessories</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 3 · ОБЛОЖКИ ════════════════════════════════════════════════ -->
+  <section class="group">
+    <h2>3 · Обложки статей — три направления</h2>
+    <p>Пробные кадры, по одному на направление. Выберете одно — сгенерирую по нему все двенадцать,
+       с разными сюжетами под темы статей. Кадры со staging (Magarpatta City, портреты Pranshu
+       и Amit) остаются настоящими: их не трогаем.</p>
+
+    <div class="variant">
+      <div class="variant__stage">
+        <div class="covers">
+          <figure>
+            <img src="../assets/cover-demo-a.webp" alt="Двое коллег у монитора с дашбордом в светлом офисе">
+            <figcaption><b>A · Репортаж в офисе</b>Люди за работой, тёплый дневной свет, светлое дерево.
+              Ближе всего к фотографиям команды на других страницах; легко продолжать — сюжет найдётся
+              под любую тему. Риск: похоже на сток, если кадры окажутся однообразными.</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/cover-demo-b.webp" alt="Проход серверной, металл и кабель, красный индикатор">
+            <figcaption><b>B · Техника вблизи</b>Тёмные кадры, металл, единственный красный огонёк.
+              Самые «технологичные» и хорошо ложатся на тёмную подложку, как нынешние рисованные кадры.
+              Риск: у статей про людей и культуру сюжета не найдётся.</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/cover-demo-c.webp" alt="Фасад северного офисного здания на низком солнце">
+            <figcaption><b>C · Архитектура и фактуры</b>Геометрия, свет, тёплый камень, красный блик
+              в стекле. Спокойно и не спорит с логотипами клиентов в соседней сетке кейсов.
+              Риск: связь с темой статьи слабая — кадры декоративны.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

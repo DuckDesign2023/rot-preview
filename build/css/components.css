@@ -575,18 +575,33 @@ ul { margin: 0; padding: 0; list-style: none; }
 .post-card__media {
   flex: 1 1 auto;
   min-height: 160px;
-  background: var(--gray-100);
+  background: var(--bg-warm);
   overflow: hidden;
+  /* полоса на стыке текста и картинки — всегда в потоке, цвет загорается
+     на наведении (как в плитке кейса, только там стык ниже картинки) */
+  border-top: var(--border-width) solid transparent;
 }
 
-.post-card__media > img { width: 100%; height: 100%; object-fit: cover; }
+.post-card__media > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
 
-/* Ховер по общему правилу: верхняя линия загорается акцентом, фон уходит
-   в тёплый белый. Рифмуется с активной карточкой адреса (83:654).
-   В Elementor: контейнер с HTML Tag = a, вкладка Hover (Border Color + Background). */
-a.post-card:hover {
-  background: var(--bg-warm);
-  border-top-color: var(--color-accent);
+/* CUSTOM-CSS: ховер карточки меняет её содержимое — полоса на стыке
+   загорается акцентом, обложка подрастает. Карточка при этом не заливается
+   (решение пользователя 2026-09-21, то же правило, что у плиток кейсов).
+   Наведение родителя на ребёнка панель Elementor не умеет: Custom CSS
+   виджета Loop Item, реестр №24. */
+a.post-card:hover .post-card__media,
+a.post-card:focus-visible .post-card__media { border-top-color: var(--color-accent); }
+
+a.post-card:hover .post-card__media > img,
+a.post-card:focus-visible .post-card__media > img { transform: scale(1.06); }
+
+@media (hover: none) {
+  a.post-card:hover .post-card__media > img { transform: none; }
 }
 
 /* ══ 8. HEADER ═════════════════════════════════════════════════
