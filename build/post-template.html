@@ -95,33 +95,27 @@
         Insights
       </a>
 
-      <div class="article" data-el="container">
+      <article class="article article--post" data-el="container">
 
-        <div class="article__aside" data-el="container">
-          <div class="t-overline" data-el="text">Insights</div>
-          <!-- Дата и рубрика — виджеты Post Date и Post Terms.
-               Рубрика ведёт на /insights/?category=…: тот же фильтр,
-               что чипами на списке. -->
-          <div class="article-meta" data-el="container">
-            <div class="article-meta__item" data-el="container">
-              <div class="t-overline" data-el="text">Published</div>
-              <time class="t-body article-meta__value" datetime="2023-09-15" data-el="post-date">Sep 15, 2023</time>
-            </div>
-            <div class="article-meta__item" data-el="container">
-              <div class="t-overline" data-el="text">Category</div>
-              <div class="t-body article-meta__value" data-el="post-terms">Salesforce</div>
-            </div>
+        <div class="article__head" data-el="container">
+          <h1 class="t-h1 article__title" data-el="post-title">Salesforce + WordPress integration</h1>
+          <!-- дата и рубрика строкой под заголовком: виджеты Post Info
+               и Post Terms в одном контейнере (правка пользователя
+               2026-09-21 — колонка-лейбл убрана) -->
+          <div class="t-body article-meta article-meta--inline" data-el="container">
+            <time datetime="2023-09-15" data-el="post-date">Sep 15, 2023</time>
+            <span class="article-meta__sep" aria-hidden="true">·</span>
+            <a href="insights.html" data-wp="/insights/" data-el="post-terms">Salesforce</a>
           </div>
         </div>
 
-        <article class="article__main" data-el="container">
-          <h1 class="t-h1 article__title" data-el="post-title">Salesforce + WordPress integration</h1>
+        <div class="article__cover" data-el="featured-image">
+          <img src="../assets/insights-salesforce-wordpress.webp" width="1600" height="900" alt="Two colleagues reviewing a CRM dashboard on a monitor in a bright office">
+        </div>
 
-          <div class="article__cover" data-el="featured-image">
-            <img src="../assets/insights-salesforce-wordpress.webp" width="1600" height="900" alt="Two colleagues reviewing a CRM dashboard on a monitor in a bright office">
-          </div>
-
+        <div class="article__grid" data-el="container">
           <div class="article__body" data-el="post-content">
+
             <p>Crafting compelling websites that seamlessly merge your Salesforce CRM data with WordPress through the WordPress Connect tool opens the door to a world of possibilities. Websites and content management serve as vital instruments for organizations to connect with their target audience, impart information about their offerings, and persuade them to engage with their enterprise. WordPress Connect simplifies the process by providing a user-friendly bridge for WordPress and Salesforce integration. This unique tool empowers you and your team to harness the CRM capabilities of Salesforce and the content management prowess of WordPress to build robust websites and oversee their performance to achieve desired results.</p>
 
             <h2>Features</h2>
@@ -168,8 +162,12 @@
 
             <p>At Red Orange Technologies, we specialize in helping organizations like yours to improve customer engagement through Salesforce. Contact us today for a detailed discussion on how Salesforce can boost your WordPress website and take your company to the next level.</p>
           </div>
-        </article>
 
+          <!-- место под боковую панель: варианты — build/post-side-variants.html -->
+
+        </div>
+
+      </article>
       </div>
     </div>
   </section>
@@ -181,7 +179,7 @@
     <div class="section__inner" data-el="container">
 
       <div class="section-head" data-el="container">
-        <div class="t-overline section-head__label" data-el="text">Insights</div>
+        <div class="t-overline section-head__label" data-el="text">Read next</div>
         <h2 class="t-h1 section-head__lead" data-el="heading">Related articles</h2>
       </div>
 

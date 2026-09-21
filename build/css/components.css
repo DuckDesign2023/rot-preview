@@ -4571,3 +4571,63 @@ a.post-feature:hover { background: var(--gray-100); }
   .case-cta__actions { flex-direction: column; }
   .case-cta__actions .btn { width: 100%; text-align: center; }
 }
+
+/* ── Правка блока 50 · шапка записи (2026-09-21, правка пользователя) ─
+   Колонка-лейбл с надписью «Insights» убрана: слово встречалось на
+   странице трижды (кнопка назад, лейбл, шапка «ещё статьи»).
+   Дата и рубрика ушли строкой под заголовок — как в любом блоге.
+   Текст держит меру 640 у левого поля, справа освобождается место
+   под боковую панель (оглавление / призыв / гайд). */
+
+.article--post { display: flex; flex-direction: column; gap: var(--space-md); }
+
+.article__head { display: flex; flex-direction: column; gap: var(--space-xs); }
+
+.article-meta--inline {
+  display: flex;
+  flex-direction: row;          /* базовый .article-meta — колонка */
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2xs);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--gray-500);
+}
+
+.article-meta--inline .article-meta__sep { color: var(--gray-300); }
+.article-meta--inline a { color: inherit; text-decoration: none; transition: color .2s ease; }
+.article-meta--inline a:hover { color: var(--color-accent); }
+
+/* Обложка записи — во всю ширину полосы; пропорция шире, чем у кадра
+   в карточке, иначе на 1360 кадр занимает пол-экрана */
+.article--post .article__cover { aspect-ratio: 21 / 9; margin-top: var(--space-sm); }
+
+.article__grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.article__grid .article__body { flex: 0 1 var(--article-width); }
+
+.article__side {
+  position: sticky;
+  top: var(--space-lg);
+  flex: 0 0 var(--col-label);
+  width: var(--col-label);
+}
+
+@media (max-width: 1024px) {
+  .article--post .article__cover { aspect-ratio: 16 / 9; }
+  .article__grid { flex-direction: column; gap: var(--space-lg); margin-top: var(--space-lg); }
+  .article__grid .article__body { flex: 0 1 auto; max-width: var(--article-width); }
+  .article__side { position: static; flex: 0 0 auto; width: 100%; }
+}
+
+@media (max-width: 767px) {
+  .article--post .article__cover { aspect-ratio: 3 / 2; }
+  .article__grid .article__body { max-width: none; }
+}
