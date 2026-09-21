@@ -4064,7 +4064,11 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   justify-content: center;
   aspect-ratio: 2 / 1;              /* логотипу хватает; 16 : 10 давало 280 px серого поля */
   padding: var(--space-lg);
-  background: var(--gray-100);
+  overflow: hidden;                 /* лого растёт внутри поля, за край не выходит */
+  background: var(--bg-warm);       /* та же тёплая подложка, что под иллюстрациями */
+  /* полоса под картинкой: всегда в потоке, цвет загорается на наведении —
+     иначе плитка подпрыгивала бы на 1 px */
+  border-bottom: var(--border-width) solid transparent;
 }
 
 .case-tile__media img {
@@ -4073,6 +4077,7 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   max-width: 56%;
   max-height: 64px;
   object-fit: contain;
+  transition: transform .3s ease;
 }
 
 .case-tile__body {
@@ -4088,9 +4093,19 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
    (анти-слоп: капс только на коротких лейблах). Цвет Gray 500. */
 .case-tile__industry { margin-top: auto; padding-top: var(--space-2xs); color: var(--gray-500); }
 
-a.case-tile:hover {
-  background: var(--bg-warm);
-  border-top-color: var(--color-accent);
+/* CUSTOM-CSS: ховер плитки меняет её содержимое (полоса под картинкой
+   загорается, лого подрастает) — наведение родителя на ребёнка Elementor
+   нативно не умеет, это Custom CSS виджета Loop Item, реестр №24.
+   Решение пользователя 2026-09-21: карточку не заливать, работает картинка. */
+a.case-tile:hover .case-tile__media,
+a.case-tile:focus-visible .case-tile__media { border-bottom-color: var(--color-accent); }
+
+a.case-tile:hover .case-tile__media img,
+a.case-tile:focus-visible .case-tile__media img { transform: scale(1.08); }
+
+/* наведение — только там, где есть курсор: на тапе ховер «залипает» */
+@media (hover: none) {
+  a.case-tile:hover .case-tile__media img { transform: none; }
 }
 
 /* ══ 53. POST FEATURE — выделенная статья над сеткой ════════════════
@@ -4127,40 +4142,50 @@ a.post-feature:hover { background: var(--gray-100); }
    чип — заливка Primary Dark, текст белый (акцент не тратим: он у кнопок
    действия). Elementor: Taxonomy Filter (Pro) для Loop Grid, стили
    Normal / Hover / Active; счётчиков у виджета нет — в WP их не будет. */
+/* Вкладки, а не кнопки-чипы (решение пользователя 2026-09-21): на странице
+   и так две системы обводок — линии сетки и полоса «показать больше», —
+   а чипы добавляли третью. Здесь работает язык макета: приглушённый ряд,
+   в котором активное «загорается» акцентом, как номера леджера.
+   Ряд лежит на тонкой линии, активная вкладка перекрывает её акцентной.
+   Elementor: Taxonomy Filter → Items, состояния Normal / Hover / Active. */
+
 .filter {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2xs);
-  margin-bottom: var(--space-lg);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  border-bottom: var(--border-width) solid var(--hairline);
 }
 
 .filter-chip {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: var(--space-2xs);
-  padding: 10px var(--space-sm);
-  border: var(--border-width) solid var(--gray-300);
-  border-radius: var(--radius-btn);
-  background: var(--color-white);
-  color: var(--color-dark);
+  margin-bottom: -1px;              /* акцентная линия ложится поверх общей */
+  padding: 0 0 12px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: none;
+  color: var(--gray-500);
   font-family: var(--font-primary);
-  font-size: var(--fs-body);
-  line-height: 1.2;
+  font-size: var(--fs-lead);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
   cursor: pointer;
-  transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+  transition: color .2s ease, border-color .2s ease;
 }
 
-.filter-chip__count { color: var(--gray-500); }
-.filter-chip:hover { border-color: var(--color-dark); }
+.filter-chip__count { font-size: var(--fs-body); color: var(--gray-400); }
+.filter-chip:hover { color: var(--color-dark); }
 
 .filter-chip[aria-pressed="true"] {
-  background: var(--color-dark);
-  border-color: var(--color-dark);
-  color: var(--color-white);
+  color: var(--color-dark);
+  border-bottom-color: var(--color-accent);
 }
-.filter-chip[aria-pressed="true"] .filter-chip__count { color: rgba(255, 255, 255, .7); }
+.filter-chip[aria-pressed="true"] .filter-chip__count { color: var(--text-faint); }
 
-.filter-chip:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.filter-chip:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
 
 @media (max-width: 1024px) {
   .post-grid--3,
@@ -4388,9 +4413,10 @@ a.post-feature:hover { background: var(--gray-100); }
 
 /* ── Атом · пагинация списка (2026-09-21) ─────────────────────────
    Виджет Loop Grid → Pagination (Numbers + Previous/Next). Оформление
-   ровно как у чипов фильтра (блок 54): те же поля, обводка и заливка
-   текущего — фильтр и пагинация стоят на одной странице и должны
-   читаться одной группой управления, а не двумя разными.
+   в одном ряду с кнопкой «показать больше» — обводка Gray 300, поля
+   10 / 16, текущая страница залита Primary Dark: это органы управления
+   выдачей. Рубрики (блок 54) оформлены вкладками и в эту группу
+   не входят — они про содержание, а не про листание.
    Выравнивание по левому краю сетки, как всё на странице. */
 
 .pager {
@@ -4436,5 +4462,25 @@ a.post-feature:hover { background: var(--gray-100); }
    контейнер скрывается целиком (у .btn свой display — скрывать нужно
    обёртку, находка 2026-09-18). */
 
-.load-more { margin-top: var(--space-lg); }
+.load-more { margin-top: 0; }
 .load-more[hidden] { display: none; }
+
+/* Кнопка — ещё одна полоса сетки: во всю ширину, теми же линиями
+   Gray 200 и без скругления. Заметнее обычной кнопки и не спорит
+   с главным призывом страницы, потому что держится на линиях,
+   а не на акценте. Отступ сверху — общий Gap контейнера (44).
+   Elementor: Button, Width 100 %, Min Height 72, Border 1 Gray 200,
+   Radius 0; Hover — фон Primary Dark, текст белый. */
+.load-more__btn {
+  width: 100%;
+  min-height: 72px;
+  border-color: var(--gray-200);
+  border-radius: 0;
+  color: var(--color-dark);
+}
+
+.load-more__btn:hover {
+  background: var(--color-dark);
+  border-color: var(--color-dark);
+  color: var(--color-white);
+}
