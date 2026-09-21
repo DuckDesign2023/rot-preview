@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case Studies | Red Orange Technologies</title>
-  <meta name="description" content="Featured case studies from Red Orange Technologies: Salesforce, web development and IT consulting projects for clients in India, Norway and beyond.">
+  <title>Terms &amp; Conditions | Red Orange Technologies</title>
+  <meta name="description" content="The terms that govern the use of the Red Orange Technologies website and services.">
+  <meta name="robots" content="noindex, follow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/cases.css">
+  <link rel="stylesheet" href="css/legal.css">
 </head>
 <body>
 
-<!-- ══ HEADER — 152:1823 → Theme Builder → Header (общий с главной) ══ -->
+<!-- шапку на всех страницах собирает tools/ro_header.py -->
 <header class="site-header" data-el="container" data-name="header">
   <a class="site-header__logo" href="index.html" data-wp="/" data-el="image" aria-label="Red Orange Technologies — home">
     <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
@@ -80,7 +81,7 @@
         </div>
       </div>
       <a class="t-nav site-nav__link" href="insights.html" data-wp="/insights/">Blog</a>
-      <a class="t-nav site-nav__link" href="cases.html" data-wp="/cases/" aria-current="page">Cases</a>
+      <a class="t-nav site-nav__link" href="cases.html" data-wp="/cases/">Cases</a>
     </nav>
 
     <div class="site-menu__cta" data-el="container">
@@ -104,164 +105,80 @@
   </div>
 </header>
 
-<!-- затемнение под мобильным меню: сосед хедера, иначе
-     оказывается внутри его stacking context и накрывает логотип -->
 <div class="site-menu-backdrop" hidden></div>
 
 <main>
 
-  <!-- Макета нет: список собран из библиотеки блоков по staging /case-studies/
-       (9 кейсов). Заголовки, отрывки, направления и отрасли — со staging
-       дословно; кавычки вокруг заголовков сняты. Плитка — логотип клиента
-       со staging, вырезанный из его обложки (assets/_src/cases/).
-       В WordPress: кейсы — записи CPT «Cases», сетка — Loop Grid,
-       фильтр — Taxonomy Filter (Pro). Страницы кейсов пока не свёрстаны. -->
-
-  <!-- ══ 1 · HERO — блок 9 без плитки визуала ═══════════════════════ -->
-  <section class="section cs-hero" data-el="container" data-name="hero">
+  <!-- ══ LEGAL — макета нет: блок 50 «article» + оглавление в боковой колонке.
+       Текст дословно со staging (/terms-conditions/) — это правовой документ клиента,
+       редактировать его нельзя. В WordPress — обычная страница: заголовок
+       Post Title, тело одним виджетом Post Content (текст живёт в редакторе),
+       оглавление — виджет Table of Contents (Pro) в липкой колонке. -->
+  <section class="section s-legal" data-el="container" data-name="legal">
     <div class="section__inner" data-el="container">
-      <div class="hero" data-el="container">
-        <div class="hero__top" data-el="container">
-          <div class="cs-hero__headline" data-el="container">
-            <span class="badge" data-el="text">Case studies</span>
-            <h1 class="t-display hero__title" data-el="heading">Featured case studies</h1>
-          </div>
-          <div class="hero__aside" data-el="container">
-            <p class="t-lead hero__lead" data-el="text">We are working with the best. Our dedication to working with industry leaders reflects our pursuit of innovation and quality.</p>
-            <div class="hero__actions" data-el="container">
-              <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
-            </div>
-          </div>
+      <article class="article article--post" data-el="container">
+
+        <div class="article__head" data-el="container">
+          <div class="t-overline legal__label" data-el="text">Legal</div>
+          <h1 class="t-h1 article__title" data-el="post-title">Terms &amp; Conditions</h1>
+          <p class="t-body legal__updated" data-el="text">Last updated 21 September 2026</p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ══ 2 · CASES — фильтр (блок 54) + сетка плиток кейсов (блок 52) ══ -->
-  <section class="section cs-list" data-el="container" data-name="cases">
-    <div class="section__inner" data-el="container">
-      <div class="filter" role="group" aria-label="Filter case studies by service" data-el="taxonomy-filter">
-        <button class="filter-chip" type="button" aria-pressed="true" data-filter="all">All <span class="filter-chip__count">9</span></button>
-        <button class="filter-chip" type="button" aria-pressed="false" data-filter="salesforce">Salesforce <span class="filter-chip__count">5</span></button>
-        <button class="filter-chip" type="button" aria-pressed="false" data-filter="web-development">Web Development <span class="filter-chip__count">3</span></button>
-        <button class="filter-chip" type="button" aria-pressed="false" data-filter="it-consulting">IT Consulting <span class="filter-chip__count">2</span></button>
-      </div>
-      <div class="case-grid" data-el="loop-grid" data-step="6" aria-live="polite">
-        <a class="case-tile" href="case-template.html" data-wp="/cases/hdfc-bank-indias-largest-private-bank/" data-cats="salesforce" data-el="container">
-          <div class="case-tile__media" data-el="container">
-            <img src="../assets/case-hdfc.webp" width="720" height="126" alt="HDFC Bank" loading="lazy" data-el="image">
+        <div class="article__grid" data-el="container">
+          <div class="article__body" data-el="post-content">
+            <p>This Terms and Conditions Agreement ("Agreement") is a legal agreement between you ("User" or "You") and <strong>Red Orange Technologies Pvt Ltd</strong> ("Company," "We," "Us," or "Our") governing your use of the software development services and related content provided by Red Orange Technologies Pvt Ltd on this website: www.redorangetechnologies.com ("Website").</p>
+            <p>By accessing or using the Website, you agree to be bound by the terms and conditions set forth in this Agreement. If you do not agree to these terms, please do not access or use the Website.</p>
+            <h2 id="acceptance">1. Acceptance of Terms</h2>
+            <p><strong>1.1.</strong> By accessing or using the Website, you agree to be bound by the terms and conditions set forth in this Agreement.</p>
+            <p><strong>1.2.</strong> If you are using the Website on behalf of an organization, you represent and warrant that you have the authority to bind the organization to these terms, and your agreement to these terms will be treated as the agreement of the organization.</p>
+            <h2 id="scope">2. Scope of Services</h2>
+            <p><strong>2.1.</strong> The Website provides information about the services offered by Red Orange Technologies Pvt Ltd including but not limited to software development, consulting, design, and related services ("Services").</p>
+            <p><strong>2.2.</strong> The scope and details of the Services will be defined in separate agreements, proposals, or statements of work provided by Red Orange Technologies Pvt Ltd to the User.</p>
+            <h2 id="ip">3. Intellectual Property Rights</h2>
+            <p><strong>3.1.</strong> All content and materials available on the Website, including but not limited to text, graphics, logos, button icons, images, audio clips, and software, are the property of Red Orange Technologies Pvt Ltd and are protected by appropriate intellectual property laws.</p>
+            <p><strong>3.2.</strong> Users are granted a limited, non-exclusive, non-transferable, and revocable license to access and use the Website for personal and non-commercial purposes.</p>
+            <h2 id="privacy">4. Privacy Policy</h2>
+            <p><strong>4.1.</strong> The Company's <a href="#" data-wp="/privacy/">Privacy Policy</a> governs the collection, use, and storage of personal information provided by Users. By using the Website, you consent to the practices outlined in the Privacy Policy.</p>
+            <h2 id="conduct">5. User Conduct</h2>
+            <p><strong>5.1.</strong> Users agree to comply with all applicable laws and regulations when using the Website.</p>
+            <p><strong>5.2.</strong> Users shall not engage in any activity that disrupts or interferes with the functioning of the Website or any related servers or networks.</p>
+            <h2 id="liability">6. Limitation of Liability</h2>
+            <p><strong>6.1.</strong> The Company shall not be liable for any direct, indirect, incidental, consequential, special, or exemplary damages arising from the use or inability to use the Website or Services.</p>
+            <h2 id="termination">7. Termination</h2>
+            <p><strong>7.1.</strong> The Company reserves the right to suspend or terminate access to the Website and Services at any time, with or without cause.</p>
+            <p><strong>7.2.</strong> Upon termination, all rights and licenses granted to the User will cease immediately.</p>
+            <h2 id="law">8. Governing Law and Jurisdiction</h2>
+            <p><strong>8.1.</strong> This Agreement shall be governed by and construed in accordance with the laws of India.</p>
+            <p><strong>8.2.</strong> Any dispute arising out of or related to this Agreement shall be subject to the exclusive jurisdiction of the courts in India.</p>
+            <h2 id="changes">9. Changes to Terms and Conditions</h2>
+            <p><strong>9.1.</strong> The Company reserves the right to modify or update this Agreement at any time, and such changes shall be effective immediately upon posting on the Website.</p>
+            <p><strong>9.2.</strong> Users are encouraged to review this Agreement periodically to stay informed of any updates.</p>
+            <p>By accessing or using the Website, you acknowledge that you have read, understood, and agree to be bound by this Terms and Conditions Agreement. If you have any questions or concerns, please contact us at <a href="mailto:contact@redorangetechnologies.com">contact@redorangetechnologies.com</a> or visit the <a href="contact.html" data-wp="/company/contact/">Contact</a> section of our website.</p>
           </div>
-          <div class="case-tile__body" data-el="container">
-            <div class="t-overline" data-el="text">Salesforce</div>
-            <h2 class="t-h3" data-el="heading">HDFC Bank: India’s Largest Private Bank</h2>
-            <p class="t-body case-tile__excerpt" data-el="text">Headquartered in Mumbai, HDFC Bank Limited stands as a prominent Indian banking and financial services institution. As of August 2023, it holds the distinction of being India’s largest private-sector bank in terms of assets and ranks as the world’s fifth-largest bank by market capitalization.</p>
-            <p class="t-body case-tile__industry" data-el="text">Industry: Financial/Lending</p>
-          </div>
-        </a>
-        <a class="case-tile" href="#" data-wp="/cases/star-autoco-driving-excellence-in-oslo/" data-cats="salesforce" data-el="container">
-          <div class="case-tile__media" data-el="container">
-            <img src="../assets/case-star-autoco.webp" width="720" height="57" alt="Star Autoco" loading="lazy" data-el="image">
-          </div>
-          <div class="case-tile__body" data-el="container">
-            <div class="t-overline" data-el="text">Salesforce</div>
-            <h2 class="t-h3" data-el="heading">Star Autoco: Driving Excellence in Oslo</h2>
-            <p class="t-body case-tile__excerpt" data-el="text">Star Autoco is a trusted destination for premium used cars in Oslo, where quality meets value. Star Autoco is committed to offering a wide range of reliable used cars while providing outstanding customer service.</p>
-            <p class="t-body case-tile__industry" data-el="text">Industry: Automobile</p>
-          </div>
-        </a>
-        <a class="case-tile" href="#" data-wp="/cases/unified-finance-crm/" data-cats="salesforce" data-el="container">
-          <div class="case-tile__media" data-el="container">
-            <img src="../assets/client-loandepot.webp" width="550" height="110" alt="loanDepot" loading="lazy" data-el="image">
-          </div>
-          <div class="case-tile__body" data-el="container">
-            <div class="t-overline" data-el="text">Salesforce</div>
-            <h2 class="t-h3" data-el="heading">Unified Finance CRM</h2>
-            <p class="t-body case-tile__excerpt" data-el="text">With the recent acquisition of multiple financial lending companies, the need was to have a central CRM solution that is accessible to everyone across the board. One system was desired instead of multiple systems currently being used.</p>
-            <p class="t-body case-tile__industry" data-el="text">Industry: Financial/Lending</p>
-          </div>
-        </a>
-        <a class="case-tile" href="#" data-wp="/cases/flame-university-elevating-academic-excellence/" data-cats="salesforce" data-el="container">
-          <div class="case-tile__media" data-el="container">
-            <img src="../assets/client-flame.webp" width="608" height="231" alt="FLAME University" loading="lazy" data-el="image">
-          </div>
-          <div class="case-tile__body" data-el="container">
-            <div class="t-overline" data-el="text">Salesforce</div>
-            <h2 class="t-h3" data-el="heading">FLAME University: Elevating Academic Excellence</h2>
-            <p class="t-body case-tile__excerpt" data-el="text">FLAME University (Foundation for Liberal and Management Education), a private co-educational and fully residential university based in Pune, India gets a complete 360-degree view and detailed information of their students, faculty, and staff members by leveraging Salesforce Experience Cloud.</p>
-            <p class="t-body case-tile__industry" data-el="text">Industry: Education</p>
-          </div>
-        </a>
-        <a class="case-tile" href="#" data-wp="/cases/capitalvista-gateway-to-financial-excellence/" data-cats="salesforce" data-el="container">
-          <div class="case-tile__media" data-el="container">
-            <img src="../assets/case-maple.webp" width="720" height="174" alt="Maple Advance" loading="lazy" data-el="image">
-          </div>
-          <div class="case-tile__body" data-el="container">
-            <div class="t-overline" data-el="text">Salesforce</div>
-            <h2 class="t-h3" data-el="heading">CapitalVista: Gateway to Financial Excellence</h2>
-            <p class="t-body case-tile__excerpt" data-el="text">A financial Company that is a provider of financial services and offers funding, pre-approved and business loans, cash advances, alternative lending, and traditional banking services.</p>
-            <p class="t-body case-tile__industry" data-el="text">Industry: Financial/Lending</p>
-          </div>
-        </a>
-        <a class="case-tile" href="#" data-wp="/cases/elevating-digital-presence-the-website-development-journey-of-aspire-digital-solutions/" data-cats="web-development" data-el="container">
-          <div class="case-tile__media" data-el="container">
-            <img src="../assets/client-aspire.webp" width="276" height="73" alt="Aspire Digital Solutions" loading="lazy" data-el="image">
-          </div>
-          <div class="case-tile__body" data-el="container">
-            <div class="t-overline" data-el="text">Web Development</div>
-            <h2 class="t-h3" data-el="heading">Elevating Digital Presence – The Website Development Journey of Aspire Digital Solutions</h2>
-            <p class="t-body case-tile__excerpt" data-el="text">Aspired Digital Solutions is a US based, digital marketing agency that helps local businesses address the challenges they face online and in the marketplace.They are marketing and business technology experts offering a full range of solutions to help local businesses grow.</p>
-            <p class="t-body case-tile__industry" data-el="text">Industry: </p>
-          </div>
-        </a>
-        <a class="case-tile" href="#" data-wp="/cases/kommunikasjonshuset-involve-is-a-norwegian-based-advertising-and-communication-company/" data-cats="it-consulting" data-el="container">
-          <div class="case-tile__media" data-el="container">
-            <img src="../assets/case-involve.webp" width="720" height="173" alt="Involve" loading="lazy" data-el="image">
-          </div>
-          <div class="case-tile__body" data-el="container">
-            <div class="t-overline" data-el="text">IT Consulting</div>
-            <h2 class="t-h3" data-el="heading">Kommunikasjonshuset Involve is a Norwegian based advertising and communication company</h2>
-            <p class="t-body case-tile__excerpt" data-el="text">Kommunikasjonshuset Involve is a Norwegian based advertising and communication company with a significant share of customers in industries such as real estate, retail, banking, pharma, telecom and public companies and entities in Norway.</p>
-            <p class="t-body case-tile__industry" data-el="text">Industry: Advertising and Communication</p>
-          </div>
-        </a>
-        <a class="case-tile" href="#" data-wp="/cases/kepandi-is-a-norwegian-webshop-for-fashion-and-accessories/" data-cats="web-development" data-el="container">
-          <div class="case-tile__media" data-el="container">
-            <img src="../assets/case-kepandi.webp" width="720" height="182" alt="Kepandi" loading="lazy" data-el="image">
-          </div>
-          <div class="case-tile__body" data-el="container">
-            <div class="t-overline" data-el="text">Web Development</div>
-            <h2 class="t-h3" data-el="heading">Kepandi is a Norwegian webshop for fashion and accessories</h2>
-            <p class="t-body case-tile__excerpt" data-el="text">Kepandi is a Norwegian webshop for fashion and accessories. The webshop was developed from scratch based on a visual platform and a business idea that the store should gradually develop with more brands and product areas.</p>
-            <p class="t-body case-tile__industry" data-el="text">Industry: Fashion and Accessories</p>
-          </div>
-        </a>
-        <a class="case-tile" href="#" data-wp="/cases/norwegian-dance-association/" data-cats="it-consulting web-development" data-el="container">
-          <div class="case-tile__media" data-el="container">
-            <img src="../assets/case-norges-danseforbund.webp" width="720" height="212" alt="Norges Danseforbund" loading="lazy" data-el="image">
-          </div>
-          <div class="case-tile__body" data-el="container">
-            <div class="t-overline" data-el="text">IT Consulting</div>
-            <h2 class="t-h3" data-el="heading">Norwegian Dance Association</h2>
-            <p class="t-body case-tile__excerpt" data-el="text">The Norwegian Dance association is a voluntary association that organizes dance training and dance clubs  throughout Norway.</p>
-            <p class="t-body case-tile__industry" data-el="text">Industry: Dance Training and Dance Clubs</p>
-          </div>
-        </a>
-      </div>
 
-      <!-- Loop Grid → Pagination: Load on Click. Порция 6 = два ровных
-           ряда по три; смена фильтра возвращает выдачу к первой порции. -->
-      <div class="load-more" data-el="container">
-        <button class="btn btn--outline load-more__btn" type="button" data-el="button">Show more cases</button>
-      </div>
+          <aside class="article__side" data-el="container">
+            <nav class="legal-toc" aria-label="On this page" data-el="toc">
+              <div class="t-overline legal-toc__label" data-el="text">On this page</div>
+              <a class="t-nav legal-toc__link" href="#acceptance">1. Acceptance of Terms</a>
+              <a class="t-nav legal-toc__link" href="#scope">2. Scope of Services</a>
+              <a class="t-nav legal-toc__link" href="#ip">3. Intellectual Property Rights</a>
+              <a class="t-nav legal-toc__link" href="#privacy">4. Privacy Policy</a>
+              <a class="t-nav legal-toc__link" href="#conduct">5. User Conduct</a>
+              <a class="t-nav legal-toc__link" href="#liability">6. Limitation of Liability</a>
+              <a class="t-nav legal-toc__link" href="#termination">7. Termination</a>
+              <a class="t-nav legal-toc__link" href="#law">8. Governing Law and Jurisdiction</a>
+              <a class="t-nav legal-toc__link" href="#changes">9. Changes to Terms and Conditions</a>
+            </nav>
+            <p class="t-body legal-toc__note" data-el="text">See also the <a href="#" data-wp="/privacy/">Privacy Policy</a>.</p>
+          </aside>
+        </div>
+
+      </article>
     </div>
   </section>
 
 </main>
 
-
-
-
-<!-- ══ 10 · FOOTER — 152:131 → Theme Builder → Footer ═════════════ -->
 <footer class="site-footer" id="contact" data-el="container" data-name="footer">
   <div class="site-footer__photo" aria-hidden="true"></div>
   <div class="site-footer__wash" aria-hidden="true"></div>
@@ -398,6 +315,5 @@
 </footer>
 
 <script src="js/main.js"></script>
-
 </body>
 </html>

@@ -1,0 +1,73 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — правовые страницы
+   (/privacy/ и /terms/)
+
+   Макета в Figma НЕТ. Страница — блок 50 «article» в варианте --post
+   (колонка 988 по центру: текст 640 + 32 + боковая колонка 316), в боковой
+   колонке вместо подписки — оглавление документа.
+
+   Текст дословно со staging (`/privacy-policy/`, `/terms-conditions/`) —
+   это правовой документ клиента, редактировать его нельзя.
+
+   В WordPress это обычные страницы: заголовок — Post Title, тело — один
+   виджет Post Content, оглавление — виджет **Table of Contents (Pro)**
+   с Motion Effects → Sticky. Ритм секции — как у статьи Insights.
+   ══════════════════════════════════════════════════════════════ */
+
+.s-legal { padding-top: 84px; padding-bottom: 140px; }
+
+/* Лейбл и дата обрамляют заголовок, как дата и рубрика у записи */
+.legal__label { color: var(--text-muted); }
+.legal__updated { color: var(--text-body); }
+
+/* Оглавление: лейбл + список ссылок с волосяными линиями — тот же приём,
+   что у колонок футера и подменю. Номера пунктов уже есть в заголовках,
+   своей нумерации список не заводит. */
+.legal-toc {
+  display: flex;
+  flex-direction: column;
+  border-top: var(--border-width) solid var(--hairline);
+  padding-top: var(--space-sm);
+}
+
+.legal-toc__label { padding-bottom: var(--space-2xs); }
+
+.legal-toc__link {
+  padding: var(--space-2xs) 0;
+  border-bottom: var(--border-width) solid var(--hairline);
+  transition: color .2s ease;
+}
+
+.legal-toc__link:last-of-type { border-bottom: 0; }
+.legal-toc__link:hover { color: var(--color-accent); }
+
+.legal-toc__note { color: var(--text-body); }
+
+/* Ссылки внутри правового текста — подчёркнуты: в сплошном абзаце цвет
+   один не читается как ссылка (в Elementor: Post Content → Link, Underline) */
+.article__body a,
+.legal-toc__note a {
+  color: var(--color-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--gray-300);
+  transition: color .2s ease, text-decoration-color .2s ease;
+}
+
+.article__body a:hover,
+.legal-toc__note a:hover {
+  color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
+}
+
+@media (max-width: 1024px) {
+  .s-legal { padding-top: 56px; padding-bottom: 116px; }
+
+  /* оглавление уходит под текст — там оно уже не навигация, а перечень;
+     в Elementor: Table of Contents → Advanced → Responsive, Order */
+  .legal-toc { margin-top: var(--space-lg); }
+}
+
+@media (max-width: 767px) {
+  .s-legal { padding-top: 40px; padding-bottom: 92px; }
+}

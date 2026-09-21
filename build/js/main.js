@@ -94,72 +94,86 @@
     applyMode();
   }
 
-  /* ── Мега-меню Solutions ──────────────────────────────────────
-     Десктоп: раскрывается наведением, закрывается с задержкой 120 мс —
-     панель начинается от нижнего края хедера, между ней и пунктом есть
-     зазор, и без задержки курсор «проваливался» по дороге. Планшет и
-     мобильный: аккордеон по тапу. Клавиатура: Enter / Space на кнопке,
-     Esc закрывает и возвращает фокус. Клик мимо панели тоже закрывает.
-     В WordPress не переносится — всё это делает виджет Mega Menu (Pro). */
-  var megaItem = document.querySelector('.site-nav__item--mega');
-  var megaTrigger = megaItem && megaItem.querySelector('.site-nav__trigger');
+  /* ── Пункты-разделы без своей страницы (Solutions, Company) ───
+     У них пункт — кнопка, а не ссылка. Десктоп: раскрываются наведением,
+     закрываются с задержкой 120 мс — панель начинается от нижнего края
+     шапки (мега-меню) и между ней и пунктом есть зазор, без задержки
+     курсор «проваливается» по дороге. Планшет и мобильный: аккордеон
+     по тапу. Клавиатура: Enter / Space на кнопке, Esc закрывает
+     и возвращает фокус. Клик мимо тоже закрывает.
+     В WordPress не переносится — это делают виджеты Nav Menu и Mega Menu. */
+  var navTriggers = Array.prototype.slice.call(
+    document.querySelectorAll('.site-nav__trigger'));
 
-  if (megaItem && megaTrigger) {
+  if (navTriggers.length) {
     var hoverable = window.matchMedia('(min-width: 1025px) and (hover: hover)');
-    var megaTimer = null;
 
-    var setMega = function (open) {
-      window.clearTimeout(megaTimer);
-      megaItem.dataset.open = open ? 'true' : 'false';
-      megaTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    };
+    var openItems = navTriggers.map(function (trigger) {
+      var item = trigger.parentElement;
+      var timer = null;
 
-    megaTrigger.addEventListener('click', function () {
-      setMega(megaItem.dataset.open !== 'true');
+      var set = function (open) {
+        window.clearTimeout(timer);
+        item.dataset.open = open ? 'true' : 'false';
+        trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      };
+
+      trigger.addEventListener('click', function () {
+        set(item.dataset.open !== 'true');
+      });
+
+      item.addEventListener('mouseenter', function () {
+        if (hoverable.matches) set(true);
+      });
+
+      item.addEventListener('mouseleave', function () {
+        if (!hoverable.matches) return;
+        window.clearTimeout(timer);
+        timer = window.setTimeout(function () { set(false); }, 120);
+      });
+
+      item.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () { set(false); });
+      });
+
+      item.addEventListener('focusout', function (event) {
+        if (hoverable.matches && !item.contains(event.relatedTarget)) set(false);
+      });
+
+      set(false);
+      return { item: item, trigger: trigger, set: set };
     });
 
-    megaItem.addEventListener('mouseenter', function () {
-      if (hoverable.matches) setMega(true);
-    });
-
-    megaItem.addEventListener('mouseleave', function () {
-      if (!hoverable.matches) return;
-      window.clearTimeout(megaTimer);
-      megaTimer = window.setTimeout(function () { setMega(false); }, 120);
-    });
-
-    // курсор ушёл на соседний пункт меню — панель закрывается сразу
-    Array.prototype.forEach.call(megaItem.parentElement.children, function (sibling) {
-      if (sibling === megaItem) return;
-      sibling.addEventListener('mouseenter', function () {
-        if (hoverable.matches) setMega(false);
+    // курсор ушёл на соседний пункт меню — раскрытая панель закрывается сразу
+    openItems.forEach(function (entry) {
+      Array.prototype.forEach.call(entry.item.parentElement.children, function (sibling) {
+        if (sibling === entry.item) return;
+        sibling.addEventListener('mouseenter', function () {
+          if (hoverable.matches) entry.set(false);
+        });
       });
     });
 
-    megaItem.querySelectorAll('.mega-card').forEach(function (card) {
-      card.addEventListener('click', function () { setMega(false); });
-    });
-
-    megaItem.addEventListener('focusout', function (event) {
-      if (hoverable.matches && !megaItem.contains(event.relatedTarget)) setMega(false);
-    });
-
     document.addEventListener('click', function (event) {
-      if (megaItem.dataset.open === 'true' && !megaItem.contains(event.target)) setMega(false);
+      openItems.forEach(function (entry) {
+        if (entry.item.dataset.open === 'true' && !entry.item.contains(event.target)) entry.set(false);
+      });
     });
 
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && megaItem.dataset.open === 'true') {
-        setMega(false);
-        megaTrigger.focus();
-      }
+      if (event.key !== 'Escape') return;
+      openItems.forEach(function (entry) {
+        if (entry.item.dataset.open !== 'true') return;
+        entry.set(false);
+        entry.trigger.focus();
+      });
     });
 
-    var onHoverMode = function () { setMega(false); };
+    var onHoverMode = function () {
+      openItems.forEach(function (entry) { entry.set(false); });
+    };
     if (hoverable.addEventListener) hoverable.addEventListener('change', onHoverMode);
     else hoverable.addListener(onHoverMode);
-
-    setMega(false);
   }
 
   document.querySelectorAll('[role="tablist"]').forEach(function (list) {

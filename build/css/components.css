@@ -775,8 +775,10 @@ a.post-card:focus-visible .post-card__media > img { transform: scale(1.06); }
 .site-nav { position: relative; }
 .site-nav__item--mega { position: static; }
 
-/* У Solutions нет своей страницы, поэтому пункт — button, а не ссылка.
-   Типографику даёт .t-nav, здесь снимаем только системный вид кнопки. */
+/* У Solutions и Company нет своей страницы, поэтому их пункты — button,
+   а не ссылки (правка пользователя 2026-09-21: Company вёл на ту же
+   страницу, что About us в подменю). Типографику даёт .t-nav, здесь
+   снимаем только системный вид кнопки. */
 .site-nav__trigger {
   display: inline-flex;
   align-items: center;
@@ -788,11 +790,19 @@ a.post-card:focus-visible .post-card__media > img { transform: scale(1.06); }
   cursor: pointer;
 }
 
-.site-nav__item--mega[data-open="true"] > .site-nav__trigger {
+.site-nav__item[data-open="true"] > .site-nav__trigger {
   color: var(--color-dark);
 }
 
-.site-nav__item--mega[data-open="true"] .site-nav__chevron { transform: rotate(180deg); }
+.site-nav__item[data-open="true"] > .site-nav__trigger .site-nav__chevron { transform: rotate(180deg); }
+
+/* Подменю у пункта-кнопки (Company) раскрывается тем же состоянием, что
+   и мега-панель: наведение — CSS, тап и клавиатура — data-open из main.js */
+.site-nav__item[data-open="true"] > .site-nav__sub {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
 
 /* Коробка панели повторяет .site-nav__sub: белый фон, обводка 1 `Hairline`,
    паддинг 8. Разница только в ширине и в том, что внутри сетка. */
@@ -812,7 +822,7 @@ a.post-card:focus-visible .post-card__media > img { transform: scale(1.06); }
   transition: opacity .2s ease, transform .2s ease, visibility .2s;
 }
 
-.site-nav__item--mega[data-open="true"] .site-nav__mega {
+.site-nav__item[data-open="true"] .site-nav__mega {
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 0);
@@ -2302,12 +2312,16 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
     border-bottom-color: var(--hairline);
   }
 
+  /* Отступ вложенности задают сами пункты, а не контейнер: иначе волосяные
+     линии подменю короче линий верхнего уровня, и в панели видны две разные
+     ширины (замечание пользователя 2026-09-21). Теперь все линии идут
+     от края до края панели, а вложенность читается по отступу текста. */
   .site-nav__sub {
     position: static;
     display: none;
     width: 100%;
     min-width: 0;
-    padding: 0 0 0 var(--space-sm);
+    padding: 0;
     border: 0;
     opacity: 1;
     visibility: visible;
@@ -2329,7 +2343,7 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
     display: none;
     width: 100%;
     max-width: none;
-    padding: 0 0 0 var(--space-sm);
+    padding: 0;
     border: 0;
     opacity: 1;
     visibility: visible;
@@ -2338,10 +2352,13 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 
   /* Сдвиг −50 % (центровка по строке меню на десктопе) снимается селектором
      той же силы — в потоке панели он увёз бы её за левый край. */
-  .site-nav__item--mega[data-open="true"] .site-nav__mega {
+  .site-nav__item[data-open="true"] .site-nav__mega {
     display: block;
     transform: none;
   }
+
+  /* подменю пункта-кнопки в панели меню */
+  .site-nav__item[data-open="true"] > .site-nav__sub { display: flex; }
 
   .site-nav__mega-grid {
     grid-template-columns: 1fr;
@@ -2353,7 +2370,7 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
     grid-template-columns: 48px 1fr;
     gap: var(--space-sm);
     align-items: center;
-    padding: var(--space-sm) 0;
+    padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
     border-bottom: var(--border-width) solid var(--hairline);
   }
 
@@ -2371,7 +2388,7 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   }
 
   .site-nav__sublink {
-    padding: var(--space-sm) 0;
+    padding: var(--space-sm) 0 var(--space-sm) var(--space-sm);
     white-space: normal;
     border-bottom: var(--border-width) solid var(--hairline);
   }
