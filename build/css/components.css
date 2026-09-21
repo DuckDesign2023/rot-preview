@@ -683,6 +683,10 @@ a.post-card:focus-visible .post-card__media > img { transform: scale(1.06); }
 /* Указатель «здесь есть вложенные пункты». На десктопе он только знак:
    раскрывает наведение, поэтому кнопка не ловит курсор и не берёт фокус
    (tabindex снимает main.js). На планшете и мобильном — настоящая кнопка. */
+/* Цвет стрелки — как у пункта меню (Neutral Gray 500), а не `inherit`:
+   при inherit она брала тёмный цвет body и в панели читалась жирнее стрелок
+   у Solutions и Company, которые лежат внутри .t-nav (замечание пользователя
+   2026-09-21). Темнеет вместе с пунктом — на наведении и у текущего раздела. */
 .site-nav__toggle {
   display: inline-flex;
   align-items: center;
@@ -691,10 +695,14 @@ a.post-card:focus-visible .post-card__media > img { transform: scale(1.06); }
   padding: 0;
   border: 0;
   background: none;
-  color: inherit;
+  color: var(--gray-500);
   cursor: pointer;
   pointer-events: none;
+  transition: color .2s ease;
 }
+
+.site-nav__item:hover > .site-nav__toggle,
+.site-nav__item[data-current="ancestor"] > .site-nav__toggle { color: var(--color-dark); }
 
 .site-nav__chevron {
   width: 9px;
@@ -2274,10 +2282,14 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
     white-space: normal;
   }
 
+  /* Зона нажатия остаётся 44, но стрелка прижата к правому краю строки:
+     по центру кнопки она стояла на 17 px левее стрелок Solutions и Company
+     и ряд читался кривым (замечание пользователя 2026-09-21). */
   .site-nav__toggle {
     pointer-events: auto;
     width: 44px;
     flex: 0 0 44px;
+    justify-content: flex-end;
     border-bottom: var(--border-width) solid var(--hairline);
   }
 
