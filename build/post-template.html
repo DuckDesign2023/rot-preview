@@ -163,7 +163,29 @@
             <p>At Red Orange Technologies, we specialize in helping organizations like yours to improve customer engagement through Salesforce. Contact us today for a detailed discussion on how Salesforce can boost your WordPress website and take your company to the next level.</p>
           </div>
 
-          <!-- место под боковую панель: варианты — build/post-side-variants.html -->
+          <!-- ══ Боковая колонка: подписка (блок 60) + баннер (блок 61) ══
+               Выбор пользователя 2026-09-21. Две секции держатся в 500 по
+               высоте, то есть на десктопе видны целиком без прокрутки.
+               Баннер показан в версии «случайный кейс»; версия «продукты» —
+               на доске build/post-side-variants.html. -->
+          <aside class="article__side" data-el="container">
+
+            <form class="side-sub" data-el="form">
+              <div class="t-h3" data-el="heading">Get Insights by email</div>
+              <p class="t-body" data-el="text">One short letter a month: what we build and what we learn.</p>
+              <input class="side-sub__field" type="email" name="email" placeholder="Work email" aria-label="Work email" required data-el="form-field">
+              <button class="btn btn--primary" type="submit" data-el="button">Subscribe</button>
+              <p class="side-sub__note" data-el="text">No spam, unsubscribe any time.</p>
+            </form>
+
+            <a class="side-banner" href="case-template.html" data-wp="/cases/hdfc-bank-indias-largest-private-bank/" data-el="container">
+              <div class="t-overline" data-el="text">Case study</div>
+              <div class="t-h3 side-banner__title" data-el="heading">HDFC Bank: India&rsquo;s Largest Private Bank</div>
+              <p class="t-body side-banner__excerpt" data-el="text">Salesforce support and optimisation for India&rsquo;s largest private-sector bank.</p>
+              <span class="btn btn--tertiary side-banner__link" data-el="button">Read the case</span>
+            </a>
+
+          </aside>
 
         </div>
 

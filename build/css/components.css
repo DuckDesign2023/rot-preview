@@ -4618,6 +4618,9 @@ a.post-feature:hover { background: var(--gray-100); }
   top: var(--space-lg);
   flex: 0 0 var(--col-label);
   width: var(--col-label);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);   /* 24: вместе с блоками держит пару в 500 */
 }
 
 @media (max-width: 1024px) {
@@ -4631,3 +4634,114 @@ a.post-feature:hover { background: var(--gray-100); }
   .article--post .article__cover { aspect-ratio: 3 / 2; }
   .article__grid .article__body { max-width: none; }
 }
+
+/* ── 60 · Side Subscribe — подписка на Insights в боковой колонке ──
+   Выбор пользователя 2026-09-21: в правом поле статьи стоит форма, но
+   не за гайд, а на рассылку. В Elementor — виджет Form (Pro): одно поле
+   Email + кнопка, Actions After Submit → Email + интеграция рассылки.
+   Высота блока ≈ 290 при ширине 316: вместе с баннером ниже
+   укладывается в 500, то есть видны оба без прокрутки. */
+
+.side-sub {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);   /* 12, а не 16: пара блоков должна держаться в 500 */
+  padding: var(--space-md);
+  background: var(--bg-warm);
+}
+
+.side-sub__field {
+  width: 100%;
+  padding: 12px var(--space-sm);
+  border: var(--border-width) solid var(--gray-300);
+  border-radius: var(--radius-btn);
+  background: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  line-height: 1.4;
+  color: var(--color-dark);
+}
+
+.side-sub__field::placeholder { color: var(--gray-500); }
+.side-sub__field:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-color: var(--color-dark); }
+.side-sub .btn { width: 100%; }
+.side-sub__note { font-size: 12px; line-height: 1.4; color: var(--gray-500); }
+
+/* ── 61 · Side Banner — компактная плитка под подпиской ────────────
+   Две версии наполнения, выбираются одна: `--case` (случайный кейс,
+   Loop Grid по CPT Cases с Order By Random и Posts 1) и `--products`
+   (переход в раздел продуктов, статичный блок).
+   Обе держатся в ~170 по высоте: вместе с подпиской ровно 500. */
+
+.side-banner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  padding: var(--space-md);
+  border: var(--border-width) solid var(--gray-200);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .2s ease;
+}
+
+.side-banner:hover { border-color: var(--color-dark); }
+
+/* заголовок кейса — не длиннее двух строк, иначе плитка растёт
+   и пара «подписка + баннер» вылезает из 500 (CUSTOM-CSS, реестр №22) */
+.side-banner__title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  line-height: 1.25;
+}
+
+.side-banner__link {
+  /* внутри баннера это подпись-ссылка, а не отдельная кнопка: кликабельна
+     вся плитка, поэтому вертикальные поля кнопки сняты — с ними пара
+     «подписка + баннер» не влезала в 500 */
+  margin-top: var(--space-2xs);
+  padding: 0;
+  align-self: flex-start;
+}
+
+/* отрывок кейса — две строки: третья выводила пару «подписка + баннер»
+   за 500 по высоте, и на десктопе блок переставал помещаться целиком */
+.side-banner__excerpt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* версия «продукты» — тёмная плашка: единственное тёмное пятно
+   в колонке, работает как точка перехода, а не как ещё один текст */
+.side-banner--products {
+  background: var(--bg-near-black);
+  border-color: var(--bg-near-black);
+  color: var(--color-white);
+}
+
+.side-banner--products .t-overline { color: var(--text-on-dark-40); }
+.side-banner--products:hover { border-color: var(--color-accent); }
+
+.side-banner__list { display: flex; flex-direction: column; }
+
+.side-banner__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2xs);
+  padding: 10px 0;
+  border-top: var(--border-width) solid var(--hairline-on-dark);
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  line-height: 1.2;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.side-banner__item:first-of-type { border-top: 0; }
+.side-banner__item:hover { color: var(--color-accent); }
+.side-banner__item svg { flex: 0 0 24px; width: 24px; height: 9px; }

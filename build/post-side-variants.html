@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Что поставить справа в статье — три варианта | Red Orange Technologies</title>
+  <title>Боковая колонка статьи — два варианта баннера | Red Orange Technologies</title>
   <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,50 +11,36 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/components.css">
   <style>
-    /* Служебная доска выбора: три варианта боковой панели шаблона записи,
-       каждый — в контексте настоящего текста статьи.
-       Префикс `sv-` намеренно не встречается в components.css. */
+    /* Служебная доска выбора. Префикс `sv-` не встречается в components.css. */
     body { background: var(--color-white); }
 
     .board       { max-width: 1360px; margin: 0 auto; padding: 56px var(--gutter) 120px; }
     .board h1    { margin: 0 0 16px; font-size: var(--fs-h1); font-weight: 500; line-height: 1.1; letter-spacing: -0.04em; }
-    .board__lead { max-width: 760px; margin: 0 0 64px; color: var(--text-lead); font-size: var(--fs-lead); line-height: 1.5; }
+    .board__lead { max-width: 760px; margin: 0 0 56px; color: var(--text-lead); font-size: var(--fs-lead); line-height: 1.5; }
 
-    .sv          { margin-top: 72px; padding-top: 28px; border-top: 1px solid var(--hairline); }
+    .sv          { margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--hairline); }
     .sv:first-of-type { margin-top: 0; }
     .sv__name    { display: flex; align-items: baseline; gap: 12px; margin: 0 0 6px; font-size: var(--fs-h2); font-weight: 600; letter-spacing: -0.02em; }
     .sv__tag     { padding: 3px 8px; background: var(--accent-tint); border: 1px solid var(--accent-tint-line); color: var(--color-accent);
                    font-family: var(--font-badge); font-size: 12px; font-weight: 600; letter-spacing: -0.02em; }
-    .sv__note    { margin: 0 0 32px; max-width: 760px; color: var(--gray-500); font-size: var(--fs-body); line-height: 1.5; }
-    .sv__stage   { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-lg);
-                   padding: 32px; border: 1px solid var(--gray-200); }
-    .sv__text    { flex: 0 1 var(--article-width); }
-    .sv__side    { flex: 0 0 var(--col-label); width: var(--col-label); }
+    .sv__note    { margin: 0 0 28px; max-width: 760px; color: var(--gray-500); font-size: var(--fs-body); line-height: 1.5; }
+    .sv__stage   { display: flex; align-items: flex-start; gap: 64px; padding: 32px; border: 1px solid var(--gray-200); }
+    .sv__side    { flex: 0 0 var(--col-label); width: var(--col-label); display: flex; flex-direction: column; gap: var(--space-md); }
 
-    /* ── 1 · оглавление ──────────────────────────────────────────── */
-    .sv-toc      { display: flex; flex-direction: column; gap: 12px; padding-left: 16px; border-left: 1px solid var(--hairline); }
-    .sv-toc__label { color: var(--text-muted); }
-    .sv-toc a    { color: var(--gray-500); font-size: var(--fs-body); line-height: 1.4; text-decoration: none; transition: color .2s ease; }
-    .sv-toc a:hover { color: var(--color-dark); }
-    .sv-toc a[aria-current="true"] { color: var(--color-dark); }
-    .sv-toc__mark { position: relative; }
-    .sv-toc__mark::before { content: ""; position: absolute; left: -17px; top: 4px; width: 2px; height: 14px; background: var(--color-accent); }
+    /* линейка высоты: 500 по правому краю колонки */
+    .sv__ruler   { position: relative; flex: 0 0 auto; width: 88px; height: 500px; border-left: 1px dashed var(--gray-300); }
+    .sv__ruler span { position: absolute; left: 10px; color: var(--gray-500); font-size: 12px; line-height: 1.2; }
+    .sv__ruler span:first-child { top: 0; }
+    .sv__ruler span:last-child  { bottom: -6px; }
 
-    /* ── 3 · гайд ────────────────────────────────────────────────── */
-    .sv-guide    { display: flex; flex-direction: column; gap: var(--space-md); padding: var(--space-md); background: var(--bg-warm); }
-    .sv-guide__cover { aspect-ratio: 3 / 4; display: flex; align-items: flex-end; padding: 16px; background: var(--bg-near-black); }
-    .sv-guide__cover span { color: var(--color-white); font-size: var(--fs-body); line-height: 1.3; }
-    .sv-guide__field { width: 100%; padding: 12px var(--space-sm); border: 1px solid var(--gray-300); background: var(--color-white);
-                       font-family: var(--font-primary); font-size: var(--fs-body); color: var(--color-dark); }
-    .sv-guide__field::placeholder { color: var(--gray-500); }
-    .sv-guide .btn { width: 100%; }
-    .sv-guide__note { color: var(--gray-500); font-size: 12px; line-height: 1.4; }
+    .sv__facts   { flex: 1 1 auto; display: flex; flex-direction: column; gap: 12px; }
+    .sv__fact    { display: flex; gap: 12px; align-items: baseline; color: var(--text-lead); font-size: var(--fs-body); line-height: 1.5; }
+    .sv__fact b  { flex: 0 0 148px; color: var(--color-dark); font-weight: 600; }
 
     @media (max-width: 1024px) {
-      .sv__stage { flex-direction: column; }
-      .sv__side  { flex: 0 0 auto; width: 100%; }
-      .sv-toc    { padding-left: 0; border-left: 0; border-top: 1px solid var(--hairline); padding-top: 16px; }
-      .sv-toc__mark::before { display: none; }
+      .sv__stage { flex-direction: column; gap: 32px; }
+      .sv__side, .sv__ruler { flex: 0 0 auto; width: 100%; height: auto; border-left: 0; }
+      .sv__ruler { display: none; }
     }
   </style>
 </head>
@@ -62,115 +48,83 @@
 
 <div class="board">
 
-  <h1>Что поставить справа в статье</h1>
-  <p class="board__lead">Колонка-лейбл убрана, дата и рубрика ушли под заголовок — справа от текста
-     освободилась полоса 316. Ниже три варианта, каждый показан рядом с настоящим текстом статьи
-     «Salesforce&nbsp;+ WordPress integration». Панель во всех трёх липкая: едет вместе с чтением.
-     Выберите один — поставлю в шаблон.</p>
+  <h1>Боковая колонка статьи</h1>
+  <p class="board__lead">Выбрана форма за почту — но не за гайд, а на рассылку, и под ней второй блок.
+     Обе секции держатся в 500&nbsp;px по высоте, то есть на десктопе видны целиком.
+     Разница только во втором блоке: случайный кейс или переход в продукты.
+     Пунктир справа — отметка 500. Сейчас в шаблоне стоит первый вариант.</p>
 
-  <!-- ══ 1 ══════════════════════════════════════════════════════════ -->
+  <!-- ══ A ══════════════════════════════════════════════════════════ -->
   <section class="sv">
-    <h2 class="sv__name">1 · Оглавление статьи <span class="sv__tag">рекомендую</span></h2>
-    <p class="sv__note">У этой записи десять подзаголовков и экранов пять текста. Оглавление показывает
-       структуру до чтения и даёт прыгнуть в нужный раздел; активный пункт подсвечивается при прокрутке.
-       В Elementor это готовый виджет Table of Contents (Pro) — собирается сам из заголовков, для новых
-       статей ничего делать не нужно. Минус: призыва к действию на экране нет, он остаётся только
-       в конце страницы и в шапке.</p>
+    <h2 class="sv__name">A · Подписка + случайный кейс <span class="sv__tag">стоит в шаблоне</span></h2>
+    <p class="sv__note">Второй блок — Loop Grid по CPT Cases на одну запись с сортировкой Random:
+       на каждой статье и при каждом заходе выпадает свой кейс, ставить ничего вручную не нужно.
+       Ведёт читателя из теории в доказательство — от статьи про интеграцию к живому проекту.</p>
     <div class="sv__stage">
-      <div class="sv__text">
-        <div class="article__body">
-          <h2>Features</h2>
-          <h3>Lead generation through web-to-lead forms</h3>
-          <p>Integrating WordPress with Salesforce streamlines your lead management efforts considerably. By creating personalized web-to-lead forms, you can invite site visitors to share their information, signaling their interest in your business or products.</p>
-          <h3>Streamlined user management</h3>
-          <p>WordPress Connect enables synchronization between your WordPress and Salesforce user databases, simplifying user management to a tee.</p>
-        </div>
+      <div class="sv__side">
+        <form class="side-sub">
+          <div class="t-h3">Get Insights by email</div>
+          <p class="t-body">One short letter a month: what we build and what we learn.</p>
+          <input class="side-sub__field" type="email" placeholder="Work email" aria-label="Work email">
+          <button class="btn btn--primary" type="submit">Subscribe</button>
+          <p class="side-sub__note">No spam, unsubscribe any time.</p>
+        </form>
+        <a class="side-banner" href="case-template.html">
+          <div class="t-overline">Case study</div>
+          <div class="t-h3 side-banner__title">HDFC Bank: India&rsquo;s Largest Private Bank</div>
+          <p class="t-body side-banner__excerpt">Salesforce support and optimisation for India&rsquo;s largest private-sector bank.</p>
+          <span class="btn btn--tertiary side-banner__link">Read the case</span>
+        </a>
       </div>
-      <aside class="sv__side">
-        <nav class="sv-toc" aria-label="In this article">
-          <div class="t-overline sv-toc__label">In this article</div>
-          <a class="sv-toc__mark" href="#" aria-current="true">Lead generation through web-to-lead forms</a>
-          <a href="#">Streamlined user management</a>
-          <a href="#">Member-specific websites</a>
-          <a href="#">Monitoring user activity</a>
-          <a href="#">Optimizing e-commerce ventures</a>
-          <a href="#">Tracking Salesforce campaigns</a>
-          <a href="#">User access and permissions</a>
-          <a href="#">Custom object integration</a>
-          <a href="#">Data security assurance</a>
-          <a href="#">Industries that benefit</a>
-        </nav>
-      </aside>
+      <div class="sv__ruler"><span>0</span><span>500 px</span></div>
+      <div class="sv__facts">
+        <div class="sv__fact"><b>Высота</b> 489 px — подписка 263, зазор 24, баннер 202</div>
+        <div class="sv__fact"><b>В Elementor</b> Form (Pro) + Loop Grid, Posts 1, Order by Rand, Loop Item — своя компактная плитка</div>
+        <div class="sv__fact"><b>Обновление</b> само: новые кейсы попадают в ротацию без правки шаблона</div>
+        <div class="sv__fact"><b>Куда ведёт</b> на страницу кейса — следующий шаг после чтения статьи</div>
+        <div class="sv__fact"><b>Слабое место</b> случайный кейс может не совпасть с темой статьи; лечится фильтром запроса по рубрике</div>
+      </div>
     </div>
   </section>
 
-  <!-- ══ 2 ══════════════════════════════════════════════════════════ -->
+  <!-- ══ B ══════════════════════════════════════════════════════════ -->
   <section class="sv">
-    <h2 class="sv__name">2 · Призыв с человеком</h2>
-    <p class="sv__note">Та же панель, что уже стоит в шаблоне кейса: лицо, одна фраза и две кнопки.
-       Страница получает призыв на каждом экране чтения, а сайт — единый приём на обоих шаблонах.
-       Минус: у статьи повод слабее, чем у кейса — читатель пока просто изучает тему, а не смотрел
-       на ваш проект. И человека придётся менять под рубрику, иначе Henning будет отвечать
-       за статьи про индийскую команду.</p>
+    <h2 class="sv__name">B · Подписка + переход в продукты</h2>
+    <p class="sv__note">Второй блок — тёмная плашка со списком продуктов: единственное тёмное пятно
+       в колонке, поэтому читается как точка перехода, а не как ещё один текст. Статичный блок,
+       один на все статьи: ведёт из блога в коммерческую часть сайта.</p>
     <div class="sv__stage">
-      <div class="sv__text">
-        <div class="article__body">
-          <h2>Features</h2>
-          <h3>Lead generation through web-to-lead forms</h3>
-          <p>Integrating WordPress with Salesforce streamlines your lead management efforts considerably. By creating personalized web-to-lead forms, you can invite site visitors to share their information, signaling their interest in your business or products.</p>
-          <h3>Streamlined user management</h3>
-          <p>WordPress Connect enables synchronization between your WordPress and Salesforce user databases, simplifying user management to a tee.</p>
+      <div class="sv__side">
+        <form class="side-sub">
+          <div class="t-h3">Get Insights by email</div>
+          <p class="t-body">One short letter a month: what we build and what we learn.</p>
+          <input class="side-sub__field" type="email" placeholder="Work email" aria-label="Work email">
+          <button class="btn btn--primary" type="submit">Subscribe</button>
+          <p class="side-sub__note">No spam, unsubscribe any time.</p>
+        </form>
+        <div class="side-banner side-banner--products">
+          <div class="t-overline">Our products</div>
+          <div class="side-banner__list">
+            <a class="side-banner__item" href="nova-for-salesforce.html">NOVA for Salesforce
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 9" aria-hidden="true"><path fill="currentColor" d="M18.7528 0C19.8793 1.21001 20.8534 2.13213 21.675 2.76634C22.4966 3.39221 23.2716 3.85953 24 4.16829V4.73157C23.1615 5.13213 22.3483 5.64534 21.5606 6.27121C20.7729 6.88873 19.8327 7.79833 18.7401 9H17.7618C18.558 7.32267 19.3923 6.03338 20.2647 5.13213H0V3.86787H20.2647C19.621 3.05841 19.172 2.45758 18.9179 2.06537C18.6638 1.67316 18.2869 0.984701 17.7872 0H18.7528Z"/></svg>
+            </a>
+            <a class="side-banner__item" href="workhub.html">WorkHub
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 9" aria-hidden="true"><path fill="currentColor" d="M18.7528 0C19.8793 1.21001 20.8534 2.13213 21.675 2.76634C22.4966 3.39221 23.2716 3.85953 24 4.16829V4.73157C23.1615 5.13213 22.3483 5.64534 21.5606 6.27121C20.7729 6.88873 19.8327 7.79833 18.7401 9H17.7618C18.558 7.32267 19.3923 6.03338 20.2647 5.13213H0V3.86787H20.2647C19.621 3.05841 19.172 2.45758 18.9179 2.06537C18.6638 1.67316 18.2869 0.984701 17.7872 0H18.7528Z"/></svg>
+            </a>
+            <a class="side-banner__item" href="novalab.html">NOVAlab
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 9" aria-hidden="true"><path fill="currentColor" d="M18.7528 0C19.8793 1.21001 20.8534 2.13213 21.675 2.76634C22.4966 3.39221 23.2716 3.85953 24 4.16829V4.73157C23.1615 5.13213 22.3483 5.64534 21.5606 6.27121C20.7729 6.88873 19.8327 7.79833 18.7401 9H17.7618C18.558 7.32267 19.3923 6.03338 20.2647 5.13213H0V3.86787H20.2647C19.621 3.05841 19.172 2.45758 18.9179 2.06537C18.6638 1.67316 18.2869 0.984701 17.7872 0H18.7528Z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
-      <aside class="sv__side">
-        <div class="case-cta" style="position: static;">
-          <div class="case-cta__person">
-            <div class="case-cta__photo"><img src="../assets/person-henning.webp" width="640" height="800" alt="Henning Børve Figenschou"></div>
-            <div class="case-cta__name">
-              <span class="t-h3">Henning Børve Figenschou</span>
-              <span class="t-body case-cta__role">CEO, Europe</span>
-            </div>
-          </div>
-          <p class="t-body">Planning a Salesforce project? We can tell you what this looks like on a real integration.</p>
-          <div class="case-cta__actions">
-            <a class="btn btn--primary" href="#">Book a meeting</a>
-            <a class="btn btn--tertiary" href="salesforce.html">Salesforce services</a>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- ══ 3 ══════════════════════════════════════════════════════════ -->
-  <section class="sv">
-    <h2 class="sv__name">3 · Гайд за почту</h2>
-    <p class="sv__note">Лид-магнит: обложка материала, одно поле и кнопка. У клиента такой документ уже
-       есть — «CPQ Decision Guide», он отдаётся по форме в футере Appero (блок 49), и механика
-       переиспользуется один в один. Даёт не встречу, а контакт — то есть работает даже с теми,
-       кто ещё не готов говорить. Минус: под каждую рубрику нужен свой материал, иначе один и тот же
-       гайд будет висеть у статей про культуру и наём.</p>
-    <div class="sv__stage">
-      <div class="sv__text">
-        <div class="article__body">
-          <h2>Features</h2>
-          <h3>Lead generation through web-to-lead forms</h3>
-          <p>Integrating WordPress with Salesforce streamlines your lead management efforts considerably. By creating personalized web-to-lead forms, you can invite site visitors to share their information, signaling their interest in your business or products.</p>
-          <h3>Streamlined user management</h3>
-          <p>WordPress Connect enables synchronization between your WordPress and Salesforce user databases, simplifying user management to a tee.</p>
-        </div>
+      <div class="sv__ruler"><span>0</span><span>500 px</span></div>
+      <div class="sv__facts">
+        <div class="sv__fact"><b>Высота</b> ≈ 460 px — подписка 263, зазор 24, плашка ≈ 173</div>
+        <div class="sv__fact"><b>В Elementor</b> контейнер с тремя ссылками; редактировать раз в жизни</div>
+        <div class="sv__fact"><b>Обновление</b> руками: появится четвёртый продукт — добавить строку</div>
+        <div class="sv__fact"><b>Куда ведёт</b> в коммерческую часть сайта, минуя кейсы</div>
+        <div class="sv__fact"><b>Слабое место</b> один и тот же блок на всех статьях: постоянному читателю он быстро примелькается</div>
       </div>
-      <aside class="sv__side">
-        <div class="sv-guide">
-          <div class="sv-guide__cover"><span>CPQ Decision<br>Guide 2026</span></div>
-          <div>
-            <div class="t-h3" style="margin-bottom: 8px;">Free guide</div>
-            <p class="t-body">How to decide between native CPQ, Appero and a custom build — 18 pages, no sales pitch.</p>
-          </div>
-          <input class="sv-guide__field" type="email" placeholder="Work email" aria-label="Work email">
-          <a class="btn btn--primary" href="#">Download the guide</a>
-          <p class="sv-guide__note">We only use your address to send the file and occasional Insights. Unsubscribe any time.</p>
-        </div>
-      </aside>
     </div>
   </section>
 
