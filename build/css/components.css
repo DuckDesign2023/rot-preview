@@ -617,16 +617,15 @@ a.post-card:focus-visible .post-card__media > img { transform: scale(1.06); }
   position: relative;
   z-index: 70;
   background: var(--color-white);
-  /* Меню (732 px: шесть пунктов, два из них со стрелкой подменю) плюс лого 200
-     и колонка действий (EN / NO + кнопка, 221) помещаются в строку от 1265.
-     Ниже пункты переносятся на вторую строку — высота хедера при этом не
-     растёт, потому что бокс логотипа (62) выше двух строк меню (24 + 8 + 24).
-     Зазор линейный: 16 на 1265 → 32 на 1440 (значение макета). Формулу меняли
-     дважды: 2.2vw не хватило после появления NO (перенос с 1294), а «4vw − 25.6»
-     — после стрелок подменю, которые добавили 32 px (перенос с 1285).
-     Текущая «10vw − 112» кладёт зазор на пол ровно там, где меню перестаёт
-     помещаться. В Elementor: Gap → единица «custom», то же выражение. */
-  column-gap: clamp(16px, 10vw - 112px, var(--col-gap));
+  /* Меню из пяти пунктов (314 px текста: Solutions ▾ · Products ▾ ·
+     Company ▾ · Blog · Cases) плюс лого 200 и колонка действий (тогл языка
+     и кнопка, 251) требуют при зазоре 32 ровно 1037 — на 27 больше, чем
+     остаётся на самой узкой десктопной ширине (1025 минус полоса прокрутки).
+     Поэтому зазор линейный: 20 на 1025 → 32 (значение макета) на 1440.
+     После сборки направлений в мега-меню (2026-09-21) меню стало вдвое уже,
+     и прежняя формула «10vw − 112» с порогом 1265 больше не нужна.
+     В Elementor: Gap → единица «custom», то же выражение. */
+  column-gap: clamp(20px, 2.9vw - 9.7px, var(--col-gap));
   row-gap: var(--space-2xs);
   padding: 4px var(--gutter);
 }
@@ -648,7 +647,7 @@ a.post-card:focus-visible .post-card__media > img { transform: scale(1.06); }
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  column-gap: clamp(16px, 10vw - 112px, var(--col-gap));   /* тот же, что у хедера */
+  column-gap: clamp(20px, 2.9vw - 9.7px, var(--col-gap));  /* тот же, что у хедера */
   row-gap: var(--space-2xs);
   min-width: 0;
 }
@@ -753,6 +752,145 @@ a.post-card:focus-visible .post-card__media > img { transform: scale(1.06); }
   box-shadow: inset 2px 0 0 var(--color-accent);
 }
 
+/* ── Мега-меню Solutions ───────────────────────────────────────
+   Правка пользователя 2026-09-21: четыре направления (AI & Product
+   Development · Salesforce · Staff Augmentation · Appero) свёрнуты в один
+   пункт. В панели у каждого направления свой знак, заголовок и строка
+   описания — те же иллюстрации, что у карточек «What we do» на главной,
+   поэтому меню и страница говорят одним языком.
+
+   Вторая итерация (в тот же день): панель во всю ширину с тенью выбивалась
+   из ряда обычных дропов. Теперь это такая же коробка, как у Products
+   и Company — белая, с волосяной обводкой по кругу, без тени, — только шире:
+   640 и сетка 2 × 2. Стоит по центру строки меню, а не страницы.
+   Заголовок карточки сбавлен до кегля пункта (14 / 500), описание — 12.
+
+   В Elementor это виджет **Mega Menu (Pro)**: пункт с типом Dropdown →
+   содержимое = сохранённый контейнер (Grid, 2 колонки, Gap 8), позиция
+   Relative to menu item. Открытие, ARIA и мобильный аккордеон виджет берёт
+   на себя — скрипт эталона (main.js) в WordPress не переносится. */
+
+/* Точка отсчёта панели — строка меню целиком (у пункта position не нужен):
+   панель центрируется по списку пунктов, как просил пользователь. */
+.site-nav { position: relative; }
+.site-nav__item--mega { position: static; }
+
+/* У Solutions нет своей страницы, поэтому пункт — button, а не ссылка.
+   Типографику даёт .t-nav, здесь снимаем только системный вид кнопки. */
+.site-nav__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  border: 0;
+  border-bottom: var(--border-width) solid transparent;
+  background: none;
+  cursor: pointer;
+}
+
+.site-nav__item--mega[data-open="true"] > .site-nav__trigger {
+  color: var(--color-dark);
+}
+
+.site-nav__item--mega[data-open="true"] .site-nav__chevron { transform: rotate(180deg); }
+
+/* Коробка панели повторяет .site-nav__sub: белый фон, обводка 1 `Hairline`,
+   паддинг 8. Разница только в ширине и в том, что внутри сетка. */
+.site-nav__mega {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  z-index: 80;
+  width: 640px;
+  max-width: calc(100vw - 2 * var(--gutter));
+  padding: var(--space-2xs);
+  background: var(--color-white);
+  border: var(--border-width) solid var(--hairline);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -4px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+}
+
+.site-nav__item--mega[data-open="true"] .site-nav__mega {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.site-nav__mega-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.mega-card {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: var(--space-xs);
+  align-items: center;
+  padding: var(--space-2xs);
+  transition: background-color .2s ease;
+}
+
+.mega-card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+.mega-card__thumb {
+  display: block;
+  aspect-ratio: 4 / 3;
+  background: var(--bg-warm);
+  overflow: hidden;
+  transition: background-color .2s ease;
+}
+
+/* Знак снят с холста 316 × 358 и стоит по центру — Cover берёт середину
+   композиции, иначе в плитке 64 × 48 от него остаётся точка. */
+.mega-card__thumb > img { width: 100%; height: 100%; object-fit: cover; }
+
+.mega-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+/* Заголовок — кегль пункта меню и Medium, не Heading 3: карточка живёт
+   внутри меню и не должна звучать громче самих пунктов. */
+.mega-card__title {
+  display: block;
+  font-size: var(--fs-nav);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-dark);
+  transition: color .2s ease;
+}
+
+.mega-card__desc {
+  display: block;
+  font-size: var(--fs-body-sm);
+  line-height: 1.4;
+  color: var(--text-body);
+}
+
+/* Подсветка строки — нативный контрол (Hover → Background). CUSTOM-CSS здесь
+   только цвет заголовка: ховер родителя, меняющий ребёнка, контролами
+   Elementor не собирается (directives/elementor-limits.md).
+   Наведение — только с мышью. */
+.mega-card:hover { background: var(--bg-warm); }
+.mega-card:hover .mega-card__title { color: var(--color-accent); }
+
+.mega-card[aria-current="page"] .mega-card__title { color: var(--color-accent); }
+
+@media (hover: none) {
+  .mega-card:hover { background: none; }
+  .mega-card:hover .mega-card__title { color: var(--color-dark); }
+}
+
+/* Пункт-раздел, внутри которого текущая страница (Blog на карточке поста,
+   Cases на странице кейса): тёмный текст без акцентной линии — линия
+   означает «ты ровно здесь». */
+.site-nav__link[data-current="ancestor"] { color: var(--color-dark); }
+
 /* Колонка действий — по содержимому (в макете 200). С переключателем EN / NO
    (правка клиента 2026-09-15) она 221: фиксированные 200 выталкивали кнопку
    за край, а min-width 200 не давал колонке ужаться на мобильном — на 320
@@ -765,18 +903,55 @@ a.post-card:focus-visible .post-card__media > img { transform: scale(1.06); }
   gap: var(--space-sm);
 }
 
-/* ── Переключатель языка EN / NO ──────────────────────────────────
-   Клиент 2026-09-15 (ROT_website_feedback.pdf): «Add NO option». Текущий язык —
-   Primary Dark и aria-current, второй приглушён, как пункты меню; наведение
-   темнит. Норвежских страниц пока нет, NO ведёт на «#»: переводы появятся
-   на этапе WordPress. Elementor: виджет переключателя языков WPML / Polylang
-   (или Nav Menu с пунктами языков) — Typography Nav Link, цвета те же. */
-/* EN и NO — пара: между ними 8, до кнопки 16, поэтому читаются отдельно от CTA */
-.lang-switch { display: flex; align-items: center; gap: var(--space-2xs); }
+/* ── Переключатель языка EN / NO — сегментный тогл ────────────────
+   Клиент 2026-09-15 (ROT_website_feedback.pdf): «Add NO option». Пара ссылок
+   EN · NO читалась как два пункта меню, поэтому 2026-09-21 по просьбе
+   пользователя она стала тоглом: рамка, внутри две буквы, активная половина
+   залита. Тона тихие (вторая итерация того же дня): тёмная заливка активного
+   сегмента спорила с красной кнопкой рядом. Семантика при этом не тумблера
+   (тумблер — вкл/выкл), а
+   выбора одного из двух, поэтому в разметке две ссылки в `role="group"`
+   с `aria-current`, а не чекбокс.
 
-.lang-switch__item { transition: color .2s ease; }
-.lang-switch__item[aria-current="true"],
-.lang-switch__item:hover { color: var(--color-dark); }
+   Норвежских страниц пока нет, NO ведёт на «#»: переводы появятся на этапе
+   WordPress. Elementor: виджет переключателя языков WPML / Polylang, рамка
+   и заливка активного сегмента — CUSTOM-CSS хедера (контролов «сегмент»
+   у виджета нет). */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  border: var(--border-width) solid var(--gray-200);
+  border-radius: var(--radius-btn);
+  background: var(--color-white);
+}
+
+/* Половина тогла: 34 + 34 + рамка и паддинг = 76 × 32 — ниже кнопки 48,
+   поэтому язык не спорит с CTA. */
+.lang-toggle__opt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  padding: 4px var(--space-2xs);
+  border-radius: 2px;
+  font-family: var(--font-primary);
+  font-size: var(--fs-nav);
+  line-height: 20px;
+  color: var(--gray-500);
+  transition: background-color .2s ease, color .2s ease;
+}
+
+/* Активный сегмент — светлая заливка и тёмный текст. Заливка Primary Dark
+   с белым текстом (первая версия) спорила с красной кнопкой рядом:
+   в колонке действий получались два тяжёлых пятна. */
+.lang-toggle__opt[aria-current="true"] {
+  background: var(--gray-100);
+  color: var(--color-dark);
+}
+
+.lang-toggle__opt:hover { color: var(--color-dark); }
+.lang-toggle__opt:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 
 /* Пока панель открыта, страница за ней не прокручивается. Без этой строки
    полоса прокрутки исчезает вместе с прокруткой, рабочая ширина прибавляет
@@ -2117,8 +2292,15 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
     box-shadow: none;
   }
 
-  /* раздел, внутри которого текущая страница: обычный тёмный текст */
-  .site-nav__item[data-current="ancestor"] > .site-nav__link--parent { color: var(--color-dark); }
+  /* Раздел, внутри которого текущая страница: обычный тёмный текст и обычная
+     волосяная линия. Акцентное подчёркивание здесь читалось как ошибка (решение
+     пользователя 2026-09-16): у Products и Company линия делится между ссылкой
+     и стрелкой, а у Solutions тянется во всю ширину строки и выглядит
+     разделителем раздела. */
+  .site-nav__item[data-current="ancestor"] > .site-nav__link--parent {
+    color: var(--color-dark);
+    border-bottom-color: var(--hairline);
+  }
 
   .site-nav__sub {
     position: static;
@@ -2133,6 +2315,50 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   }
 
   .site-nav__toggle[aria-expanded="true"] ~ .site-nav__sub { display: flex; }
+
+  /* Solutions в панели — тот же аккордеон, что Products и Company: строка
+     на всю ширину, стрелка справа, под ней карточки направлений строками.
+     В Elementor мобильный вид мега-меню виджет собирает сам. */
+  .site-nav__trigger {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .site-nav__mega {
+    position: static;
+    display: none;
+    width: 100%;
+    max-width: none;
+    padding: 0 0 0 var(--space-sm);
+    border: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  /* Сдвиг −50 % (центровка по строке меню на десктопе) снимается селектором
+     той же силы — в потоке панели он увёз бы её за левый край. */
+  .site-nav__item--mega[data-open="true"] .site-nav__mega {
+    display: block;
+    transform: none;
+  }
+
+  .site-nav__mega-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Строка карточки: плитка 48 + текст, зона нажатия от 72 — выше 44 */
+  .mega-card {
+    grid-template-columns: 48px 1fr;
+    gap: var(--space-sm);
+    align-items: center;
+    padding: var(--space-sm) 0;
+    border-bottom: var(--border-width) solid var(--hairline);
+  }
+
+  .mega-card:hover { background: none; }   /* в панели строки не подсвечиваются */
+  .mega-card__thumb { aspect-ratio: 1; }
 
   .site-nav__toggle[aria-expanded="true"] .site-nav__chevron { transform: rotate(180deg); }
 
@@ -2274,15 +2500,16 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 
   .address { padding-bottom: var(--space-md); }
 
-  /* хедер: лого ужимается, переключатель языка уезжает в мобильное меню,
-     зазоры сжимаются — иначе CTA и тогл не помещаются в 375 */
+  /* Хедер: лого ужимается, зазоры сжимаются. Тогл языка (76 × 32) в строке
+     остаётся: лого 120 + 12 + тогл 76 + 12 + бургер 44 = 264 при рабочих 335
+     на 375. До 2026-09-21 язык уезжал в панель — парой ссылок EN · NO он был
+     шире и не помещался. */
   .site-header { gap: var(--space-xs); }
   .site-header__logo { width: 120px; height: auto; }
   .site-header__actions { gap: var(--space-xs); }
-  .site-header__actions .site-nav__link,
-  .site-header__actions .lang-switch { display: none; }
+  .site-header__actions .site-nav__link { display: none; }
 
-  /* EN и CTA показываются внутри панели — в строке хедера для них нет места */
+  /* CTA показывается внутри панели — в строке хедера для него нет места */
   .site-menu__cta {
     display: flex;
     align-items: center;
@@ -2290,9 +2517,14 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
     padding-top: var(--space-md);
   }
 
-  .site-menu__cta .lang-switch { gap: var(--space-md); }
-  .site-menu__cta .lang-switch__item { padding-block: var(--space-2xs); }
+  .site-menu__cta .btn { flex: 1 1 auto; }
   .site-header .btn { padding-inline: var(--space-xs); }
+
+  /* Описание направления в панели скрыто: на 375 четыре карточки с
+     описаниями уводят Blog и Cases далеко вниз. Без описания карточка —
+     обычная строка меню. */
+  .mega-card { grid-template-columns: 40px 1fr; }
+  .mega-card__desc { display: none; }
 
   .logo-strip__row img { height: 24px; }
   .logo-strip__item--tall img { height: 32px; }

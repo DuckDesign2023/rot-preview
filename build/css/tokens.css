@@ -54,6 +54,8 @@
   --fs-overline: 14px;   /* Overline       · Medium 500 · lh 1.1 · ls −0.04em · UPPERCASE */
   --fs-nav:      14px;   /* Nav Link       · Regular 400 · lh 24px · ls 0 */
   --fs-button:   16px;   /* Button         · Regular 400 · lh 24px · ls 0 */
+  --fs-body-sm:  12px;   /* Body Small     · Regular 400 · lh 1.4 — описание карточки
+                            в мега-меню (добавлен 2026-09-21) */
   --fs-badge:    12px;   /* Badge          · Inter SemiBold 600 · lh 1.0 · ls −0.02em */
 
   /* ── Сетка → Site Settings → Layout ─────────────────────────── */

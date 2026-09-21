@@ -1,13 +1,13 @@
 /* ══════════════════════════════════════════════════════════════
    Red Orange Technologies — эталон, минимальный ванильный JS.
 
-   ВНИМАНИЕ: в WordPress этот файл НЕ переносится. Он делает четыре вещи —
-   переключает табы «Selected cases», открывает мобильное меню, отдаёт
+   ВНИМАНИЕ: в WordPress этот файл НЕ переносится. Он переключает табы
+   «Selected cases», открывает мобильное меню и мега-меню Solutions, отдаёт
    whitepaper после формы в футере Appero и раскрывает шаги процесса
-   (блок 28). Первые три в Elementor нативные — Nested Tabs, Nav Menu (Pro)
-   и Form (Pro) с действием Redirect. Шагам процесса нужен свой сниппет:
-   раскрытие наведением на десктопе и резерв высоты виджет не умеет
-   (spec/page-salesforce.md, реестр паспорта №20).
+   (блок 28). Первые четыре в Elementor нативные — Nested Tabs, Nav Menu (Pro),
+   Mega Menu (Pro) и Form (Pro) с действием Redirect. Шагам процесса нужен
+   свой сниппет: раскрытие наведением на десктопе и резерв высоты виджет
+   не умеет (spec/page-salesforce.md, реестр паспорта №20).
    Всё остальное работает без JS — на CSS.
    ══════════════════════════════════════════════════════════════ */
 (function () {
@@ -92,6 +92,74 @@
     else compact.addListener(applyMode);
 
     applyMode();
+  }
+
+  /* ── Мега-меню Solutions ──────────────────────────────────────
+     Десктоп: раскрывается наведением, закрывается с задержкой 120 мс —
+     панель начинается от нижнего края хедера, между ней и пунктом есть
+     зазор, и без задержки курсор «проваливался» по дороге. Планшет и
+     мобильный: аккордеон по тапу. Клавиатура: Enter / Space на кнопке,
+     Esc закрывает и возвращает фокус. Клик мимо панели тоже закрывает.
+     В WordPress не переносится — всё это делает виджет Mega Menu (Pro). */
+  var megaItem = document.querySelector('.site-nav__item--mega');
+  var megaTrigger = megaItem && megaItem.querySelector('.site-nav__trigger');
+
+  if (megaItem && megaTrigger) {
+    var hoverable = window.matchMedia('(min-width: 1025px) and (hover: hover)');
+    var megaTimer = null;
+
+    var setMega = function (open) {
+      window.clearTimeout(megaTimer);
+      megaItem.dataset.open = open ? 'true' : 'false';
+      megaTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+
+    megaTrigger.addEventListener('click', function () {
+      setMega(megaItem.dataset.open !== 'true');
+    });
+
+    megaItem.addEventListener('mouseenter', function () {
+      if (hoverable.matches) setMega(true);
+    });
+
+    megaItem.addEventListener('mouseleave', function () {
+      if (!hoverable.matches) return;
+      window.clearTimeout(megaTimer);
+      megaTimer = window.setTimeout(function () { setMega(false); }, 120);
+    });
+
+    // курсор ушёл на соседний пункт меню — панель закрывается сразу
+    Array.prototype.forEach.call(megaItem.parentElement.children, function (sibling) {
+      if (sibling === megaItem) return;
+      sibling.addEventListener('mouseenter', function () {
+        if (hoverable.matches) setMega(false);
+      });
+    });
+
+    megaItem.querySelectorAll('.mega-card').forEach(function (card) {
+      card.addEventListener('click', function () { setMega(false); });
+    });
+
+    megaItem.addEventListener('focusout', function (event) {
+      if (hoverable.matches && !megaItem.contains(event.relatedTarget)) setMega(false);
+    });
+
+    document.addEventListener('click', function (event) {
+      if (megaItem.dataset.open === 'true' && !megaItem.contains(event.target)) setMega(false);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && megaItem.dataset.open === 'true') {
+        setMega(false);
+        megaTrigger.focus();
+      }
+    });
+
+    var onHoverMode = function () { setMega(false); };
+    if (hoverable.addEventListener) hoverable.addEventListener('change', onHoverMode);
+    else hoverable.addListener(onHoverMode);
+
+    setMega(false);
   }
 
   document.querySelectorAll('[role="tablist"]').forEach(function (list) {

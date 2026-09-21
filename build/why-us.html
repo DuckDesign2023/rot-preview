@@ -19,15 +19,47 @@
   <a class="site-header__logo" href="index.html" data-wp="/" data-el="image" aria-label="Red Orange Technologies — home">
     <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
   </a>
-  <!-- Панель меню: внутри только виджет Nav Menu (пункты берутся из меню
-       WordPress) и отдельный блок с языком и CTA — ссылки правятся
+  <!-- Панель меню: внутри только виджет Nav Menu / Mega Menu (пункты берутся
+       из меню WordPress) и отдельный блок с языком и CTA — ссылки правятся
        в «Внешний вид → Меню», не трогая Elementor -->
   <div class="site-menu" id="site-menu" data-el="container">
     <nav class="site-nav" data-el="nav-menu" aria-label="Main">
-      <a class="t-nav site-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
-      <a class="t-nav site-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
-      <a class="t-nav site-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce</a>
-      <a class="t-nav site-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+      <!-- Solutions: четыре направления одним мега-меню (Elementor: Mega Menu, Pro) -->
+      <div class="site-nav__item site-nav__item--mega" data-el="container">
+        <button class="t-nav site-nav__link site-nav__link--parent site-nav__trigger" type="button" aria-expanded="false" aria-controls="mega-solutions">Solutions<svg class="site-nav__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1.25 5 5 9 1.25"/></svg></button>
+        <div class="site-nav__mega" id="mega-solutions" data-el="container">
+          <div class="site-nav__mega-grid" data-el="container">
+          <a class="mega-card" href="ai-product-development.html" data-wp="/ai-product-development/" data-el="container">
+            <span class="mega-card__thumb" data-el="image"><img src="../assets/card-ai.svg" width="316" height="358" alt="" loading="lazy"></span>
+            <span class="mega-card__body" data-el="container">
+              <span class="mega-card__title" data-el="heading">AI &amp; Product Development</span>
+              <span class="mega-card__desc" data-el="text">Digital products, AI solutions and custom software.</span>
+            </span>
+          </a>
+          <a class="mega-card" href="salesforce.html" data-wp="/salesforce-services/" data-el="container">
+            <span class="mega-card__thumb" data-el="image"><img src="../assets/card-salesforce.svg" width="316" height="358" alt="" loading="lazy"></span>
+            <span class="mega-card__body" data-el="container">
+              <span class="mega-card__title" data-el="heading">Salesforce</span>
+              <span class="mega-card__desc" data-el="text">Consulting, implementation, development, integrations.</span>
+            </span>
+          </a>
+          <a class="mega-card" href="staff-augmentation.html" data-wp="/staff-augmentation/" data-el="container">
+            <span class="mega-card__thumb" data-el="image"><img src="../assets/card-staff.svg" width="316" height="358" alt="" loading="lazy"></span>
+            <span class="mega-card__body" data-el="container">
+              <span class="mega-card__title" data-el="heading">Staff Augmentation</span>
+              <span class="mega-card__desc" data-el="text">Senior specialists and dedicated teams on demand.</span>
+            </span>
+          </a>
+          <a class="mega-card" href="appero.html" data-wp="/salesforce/appero-quote/" data-el="container">
+            <span class="mega-card__thumb" data-el="image"><img src="../assets/card-appero.svg" width="316" height="358" alt="" loading="lazy"></span>
+            <span class="mega-card__body" data-el="container">
+              <span class="mega-card__title" data-el="heading">Appero</span>
+              <span class="mega-card__desc" data-el="text">CPQ for the Nordics and India, native to Salesforce.</span>
+            </span>
+          </a>
+          </div>
+        </div>
+      </div>
       <div class="site-nav__item" data-el="container">
         <a class="t-nav site-nav__link site-nav__link--parent" href="products.html" data-wp="/products/">Products</a>
         <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="sub-products" aria-label="Products submenu"><svg class="site-nav__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1.25 5 5 9 1.25"/></svg></button>
@@ -42,26 +74,24 @@
         <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="sub-company" aria-label="Company submenu"><svg class="site-nav__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1.25 5 5 9 1.25"/></svg></button>
         <div class="site-nav__sub" id="sub-company" data-el="container">
           <a class="t-nav site-nav__sublink" href="about.html" data-wp="/company/">About us</a>
-          <a class="t-nav site-nav__sublink" href="why-us.html" data-wp="/company/why-us/">Why us</a>
+          <a class="t-nav site-nav__sublink" href="why-us.html" data-wp="/company/why-us/" aria-current="page">Why us</a>
           <a class="t-nav site-nav__sublink" href="team.html" data-wp="/company/team/">Team</a>
           <a class="t-nav site-nav__sublink" href="careers.html" data-wp="/company/careers/">Careers</a>
           <a class="t-nav site-nav__sublink" href="locations.html" data-wp="/company/locations/">Locations</a>
         </div>
       </div>
+      <a class="t-nav site-nav__link" href="insights.html" data-wp="/insights/">Blog</a>
+      <a class="t-nav site-nav__link" href="cases.html" data-wp="/cases/">Cases</a>
     </nav>
 
     <div class="site-menu__cta" data-el="container">
-      <div class="lang-switch" role="group" aria-label="Language" data-el="container">
-        <a class="t-nav lang-switch__item" href="#" aria-current="true" lang="en" data-el="text">EN</a>
-        <a class="t-nav lang-switch__item" href="#" lang="nb" hreflang="nb" data-el="text">NO</a>
-      </div>
       <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
     </div>
   </div>
   <div class="site-header__actions" data-el="container">
-      <div class="lang-switch" role="group" aria-label="Language" data-el="container">
-        <a class="t-nav lang-switch__item" href="#" aria-current="true" lang="en" data-el="text">EN</a>
-        <a class="t-nav lang-switch__item" href="#" lang="nb" hreflang="nb" data-el="text">NO</a>
+    <div class="lang-toggle" role="group" aria-label="Language" data-el="container">
+        <a class="lang-toggle__opt" href="#" aria-current="true" lang="en" hreflang="en" data-el="text">EN</a>
+        <a class="lang-toggle__opt" href="#" lang="nb" hreflang="nb" data-el="text">NO</a>
       </div>
     <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
     <button class="site-header__burger" type="button" data-el="button"
@@ -484,8 +514,8 @@
             <a class="footer-nav__link" href="about.html" data-wp="/company/">About us</a>
             <a class="footer-nav__link" href="why-us.html" data-wp="/company/why-us/">Why us</a>
             <a class="footer-nav__link" href="team.html" data-wp="/company/team/">Team</a>
-            <a class="footer-nav__link" href="#" data-wp="/cases/">Case studies</a>
-            <a class="footer-nav__link" href="#" data-wp="/insights/">Blog</a>
+            <a class="footer-nav__link" href="cases.html" data-wp="/cases/">Case studies</a>
+            <a class="footer-nav__link" href="insights.html" data-wp="/insights/">Blog</a>
             <a class="footer-nav__link" href="careers.html" data-wp="/company/careers/">Careers</a>
           </div>
         </div>

@@ -338,9 +338,12 @@
       <span class="kit-item__name">Header</span>
       <span class="kit-item__meta">83:476 → Theme Builder → Header</span>
       <span class="kit-item__note">
-        Лого 200 × 62 · меню gap 32, Nav Link Gray 500 · справа EN и кнопка (колонка 200).
+        Лого 200 × 62 · меню gap 32, Nav Link Gray 500 · справа тогл языка и кнопка.
+        Пункты (2026-09-21): <b>Solutions</b> — мега-меню из четырёх направлений
+        (виджет <b>Mega Menu, Pro</b>), дальше Products, Company, Blog, Cases.
         Ховер пункта — цвет темнеет и проявляется акцентная линия снизу
-        (в Elementor: Nav Menu → Pointer: Underline).
+        (в Elementor: Nav Menu → Pointer: Underline). Язык — сегментный тогл:
+        рамка Gray 200, внутри две буквы, активная половина залита Gray 100.
         На ≤ 1024 меню сворачивается в тогл — виджет <b>Nav Menu (Pro)</b>, Breakpoint: Tablet;
         иконка тогла — один SVG, а не три блока по 2 px: отдельные боксы округляются к
         пиксельной сетке независимо и при системном масштабе 125 % дают полосы разной толщины.
@@ -356,15 +359,17 @@
           </div>
         </div>
         <nav class="site-nav">
-          <a class="t-nav site-nav__link" href="#">Staff Augmentation</a>
-          <a class="t-nav site-nav__link" href="#">Appero</a>
-          <a class="t-nav site-nav__link" href="#">Salesforce</a>
-          <a class="t-nav site-nav__link" href="#">AI &amp; Product Development</a>
+          <span class="t-nav site-nav__link site-nav__link--parent">Solutions</span>
           <a class="t-nav site-nav__link" href="#">Products</a>
           <a class="t-nav site-nav__link" href="#">Company</a>
+          <a class="t-nav site-nav__link" href="#">Blog</a>
+          <a class="t-nav site-nav__link" href="#">Cases</a>
         </nav>
         <div class="site-header__actions">
-          <a class="t-nav site-nav__link" href="#">EN</a>
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <span class="lang-toggle__opt" aria-current="true">EN</span>
+            <span class="lang-toggle__opt">NO</span>
+          </div>
           <a class="btn btn--primary" href="#">Book a meeting</a>
           <span class="site-header__burger" aria-hidden="true">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
