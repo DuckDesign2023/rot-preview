@@ -4579,7 +4579,17 @@ a.post-feature:hover { background: var(--gray-100); }
    Текст держит меру 640 у левого поля, справа освобождается место
    под боковую панель (оглавление / призыв / гайд). */
 
-.article--post { display: flex; flex-direction: column; gap: var(--space-md); }
+.article--post {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  /* статья стоит по центру страницы колонкой 988 = текст 640 + 32 + панель 316
+     (правка пользователя 2026-09-21): на 1360 заголовок и обложка во всю
+     ширину выглядели плакатом, а не статьёй */
+  width: 100%;
+  max-width: var(--post-width);
+  margin-inline: auto;
+}
 
 .article__head { display: flex; flex-direction: column; gap: var(--space-xs); }
 
@@ -4601,12 +4611,11 @@ a.post-feature:hover { background: var(--gray-100); }
 
 /* Обложка записи — во всю ширину полосы; пропорция шире, чем у кадра
    в карточке, иначе на 1360 кадр занимает пол-экрана */
-.article--post .article__cover { aspect-ratio: 21 / 9; margin-top: var(--space-sm); }
+.article--post .article__cover { aspect-ratio: 16 / 9; margin-top: var(--space-sm); }
 
 .article__grid {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
   gap: var(--space-lg);
   margin-top: var(--space-xl);
 }
@@ -4625,6 +4634,7 @@ a.post-feature:hover { background: var(--gray-100); }
 
 @media (max-width: 1024px) {
   .article--post .article__cover { aspect-ratio: 16 / 9; }
+  .article--post { max-width: none; }
   .article__grid { flex-direction: column; gap: var(--space-lg); margin-top: var(--space-lg); }
   .article__grid .article__body { flex: 0 1 auto; max-width: var(--article-width); }
   .article__side { position: static; flex: 0 0 auto; width: 100%; }
@@ -4714,27 +4724,22 @@ a.post-feature:hover { background: var(--gray-100); }
   overflow: hidden;
 }
 
-/* версия «продукты» — тёмная плашка: единственное тёмное пятно
-   в колонке, работает как точка перехода, а не как ещё один текст */
-.side-banner--products {
-  background: var(--bg-near-black);
-  border-color: var(--bg-near-black);
-  color: var(--color-white);
-}
-
-.side-banner--products .t-overline { color: var(--text-on-dark-40); }
-.side-banner--products:hover { border-color: var(--color-accent); }
+/* Версия «продукты» — леджер: номер и название строкой, разделённые
+   тонкой линией. Тот же приём, что у списка продуктов на главной
+   (блок 3), поэтому блок читается как часть сайта, а не как баннер.
+   Переделано 2026-09-21: тёмная плашка со стрелками пользователю
+   не подошла. */
+.side-banner--products { gap: var(--space-2xs); }
 
 .side-banner__list { display: flex; flex-direction: column; }
 
 .side-banner__item {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-2xs);
+  align-items: baseline;
+  gap: var(--space-xs);
   padding: 10px 0;
-  border-top: var(--border-width) solid var(--hairline-on-dark);
-  color: var(--color-white);
+  border-top: var(--border-width) solid var(--hairline);
+  color: var(--color-dark);
   font-family: var(--font-primary);
   font-size: var(--fs-body);
   line-height: 1.2;
@@ -4743,5 +4748,6 @@ a.post-feature:hover { background: var(--gray-100); }
 }
 
 .side-banner__item:first-of-type { border-top: 0; }
+.side-banner__num { flex: 0 0 auto; color: var(--text-faint); transition: color .2s ease; }
 .side-banner__item:hover { color: var(--color-accent); }
-.side-banner__item svg { flex: 0 0 24px; width: 24px; height: 9px; }
+.side-banner__item:hover .side-banner__num { color: var(--color-accent); }

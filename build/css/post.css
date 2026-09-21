@@ -15,6 +15,15 @@
    ══════════════════════════════════════════════════════════════ */
 
 .p-article { padding-top: 84px;  padding-bottom: 120px; }
+
+/* Кнопка «назад» держится левого края статьи, а не края страницы:
+   статья центрирована колонкой 988 (правка пользователя 2026-09-21) */
+.p-article .section__inner { align-items: center; }
+.p-article .article-back { width: 100%; max-width: var(--post-width); align-self: center; }  /* у атома свой align-self: flex-start */
+
+@media (max-width: 1024px) {
+  .p-article .article-back { max-width: none; }
+}
 .p-related { padding-top: 0;     padding-bottom: 140px; }
 
 @media (max-width: 1024px) {

@@ -105,7 +105,7 @@
           <div class="t-body article-meta article-meta--inline" data-el="container">
             <time datetime="2023-09-15" data-el="post-date">Sep 15, 2023</time>
             <span class="article-meta__sep" aria-hidden="true">·</span>
-            <a href="insights.html" data-wp="/insights/" data-el="post-terms">Salesforce</a>
+            <a href="#" data-wp="/insights/" data-el="post-terms">Salesforce</a>
           </div>
         </div>
 
@@ -166,8 +166,8 @@
           <!-- ══ Боковая колонка: подписка (блок 60) + баннер (блок 61) ══
                Выбор пользователя 2026-09-21. Две секции держатся в 500 по
                высоте, то есть на десктопе видны целиком без прокрутки.
-               Баннер показан в версии «случайный кейс»; версия «продукты» —
-               на доске build/post-side-variants.html. -->
+               Второй блок — переход в продукты (выбор пользователя);
+               оформление леджером, варианты — build/post-side-variants.html. -->
           <aside class="article__side" data-el="container">
 
             <form class="side-sub" data-el="form">
@@ -178,12 +178,14 @@
               <p class="side-sub__note" data-el="text">No spam, unsubscribe any time.</p>
             </form>
 
-            <a class="side-banner" href="case-template.html" data-wp="/cases/hdfc-bank-indias-largest-private-bank/" data-el="container">
-              <div class="t-overline" data-el="text">Case study</div>
-              <div class="t-h3 side-banner__title" data-el="heading">HDFC Bank: India&rsquo;s Largest Private Bank</div>
-              <p class="t-body side-banner__excerpt" data-el="text">Salesforce support and optimisation for India&rsquo;s largest private-sector bank.</p>
-              <span class="btn btn--tertiary side-banner__link" data-el="button">Read the case</span>
-            </a>
+            <div class="side-banner side-banner--products" data-el="container">
+              <div class="t-overline" data-el="text">Our products</div>
+              <div class="side-banner__list" data-el="container">
+                <a class="side-banner__item" href="nova-for-salesforce.html" data-wp="/products/nova-for-salesforce/" data-el="button"><span class="side-banner__num">01</span> NOVA for Salesforce</a>
+                <a class="side-banner__item" href="workhub.html" data-wp="/products/workhub/" data-el="button"><span class="side-banner__num">02</span> WorkHub</a>
+                <a class="side-banner__item" href="novalab.html" data-wp="/products/novalab/" data-el="button"><span class="side-banner__num">03</span> NOVAlab</a>
+              </div>
+            </div>
 
           </aside>
 
