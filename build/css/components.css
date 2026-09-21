@@ -575,11 +575,10 @@ ul { margin: 0; padding: 0; list-style: none; }
 .post-card__media {
   flex: 1 1 auto;
   min-height: 160px;
+  margin: 6px;                      /* поле вокруг кадра: картинка — вставка
+                                       внутри плитки, а не её край */
   background: var(--bg-warm);
   overflow: hidden;
-  /* полоса на стыке текста и картинки — всегда в потоке, цвет загорается
-     на наведении (как в плитке кейса, только там стык ниже картинки) */
-  border-top: var(--border-width) solid transparent;
 }
 
 .post-card__media > img {
@@ -589,13 +588,16 @@ ul { margin: 0; padding: 0; list-style: none; }
   transition: transform .3s ease;
 }
 
-/* CUSTOM-CSS: ховер карточки меняет её содержимое — полоса на стыке
-   загорается акцентом, обложка подрастает. Карточка при этом не заливается
-   (решение пользователя 2026-09-21, то же правило, что у плиток кейсов).
+/* CUSTOM-CSS: ховер карточки статьи (решение пользователя 2026-09-21) —
+   обложка подрастает, а акцент уходит на ЗАГОЛОВОК, без линии на стыке.
+   Так статья и кейс ведут себя по-разному: у кейса загорается полоса под
+   логотипом клиента, у статьи — её название. Карточка не заливается.
    Наведение родителя на ребёнка панель Elementor не умеет: Custom CSS
    виджета Loop Item, реестр №24. */
-a.post-card:hover .post-card__media,
-a.post-card:focus-visible .post-card__media { border-top-color: var(--color-accent); }
+a.post-card:hover .t-h3,
+a.post-card:focus-visible .t-h3 { color: var(--color-accent); }
+
+a.post-card .t-h3 { transition: color .2s ease; }
 
 a.post-card:hover .post-card__media > img,
 a.post-card:focus-visible .post-card__media > img { transform: scale(1.06); }
@@ -4025,10 +4027,6 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
 .post-grid--3 .post-card__body { flex: 1 1 auto; }
 .post-grid--3 .post-card__media { flex: 0 0 auto; min-height: 0; aspect-ratio: 16 / 10; }
 
-/* Обложка-иллюстрация: кадр генератора лежит на Near Black, как кадры
-   дизайнера в тёмных секциях. Elementor: контейнер обложки Background #121212. */
-.post-card__media--art { background: var(--bg-near-black); }
-
 /* Заголовок карточки в 2–4 строки: у Heading 3 lh 1.0 строки слипаются —
    в карточках списков 1.25 (Typography → Line Height в Loop Item). */
 .post-grid--3 .t-h3,
@@ -4079,9 +4077,10 @@ textarea.field__control { height: 126px; padding: var(--space-xs); resize: verti
   justify-content: center;
   aspect-ratio: 2 / 1;              /* логотипу хватает; 16 : 10 давало 280 px серого поля */
   padding: var(--space-lg);
+  margin: 6px;                      /* то же поле, что у карточки статьи */
   overflow: hidden;                 /* лого растёт внутри поля, за край не выходит */
   background: var(--bg-warm);       /* та же тёплая подложка, что под иллюстрациями */
-  /* полоса под картинкой: всегда в потоке, цвет загорается на наведении —
+  /* полоса под плашкой: всегда в потоке, цвет загорается на наведении —
      иначе плитка подпрыгивала бы на 1 px */
   border-bottom: var(--border-width) solid transparent;
 }
@@ -4426,49 +4425,59 @@ a.post-feature:hover { background: var(--gray-100); }
   .article__cover { aspect-ratio: 3 / 2; }
 }
 
-/* ── Атом · пагинация списка (2026-09-21) ─────────────────────────
-   Виджет Loop Grid → Pagination (Numbers + Previous/Next). Оформление
-   в одном ряду с кнопкой «показать больше» — обводка Gray 300, поля
-   10 / 16, текущая страница залита Primary Dark: это органы управления
-   выдачей. Рубрики (блок 54) оформлены вкладками и в эту группу
-   не входят — они про содержание, а не про листание.
-   Выравнивание по левому краю сетки, как всё на странице. */
+/* ── Атом · полоса листания (2026-09-21, выбор пользователя) ──────
+   Пагинация Insights — не набор кнопок, а ещё один ряд сетки: слева
+   «новее», справа «старее», посередине счёт записей. Видно объём архива,
+   обе стороны читаются одним движением глаз, и полоса рифмуется с кнопкой
+   «показать больше» на кейсах — оба списка заканчиваются одинаково.
+   Elementor: Loop Grid → Pagination = Previous/Next внутри контейнера
+   (Min Height 72, Border 1 Gray 200, Justify Space Between) плюс текст
+   счёта: Dynamic Tag с номерами текущей выдачи. */
 
 .pager {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2xs);
-  margin-top: var(--space-lg);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  min-height: 72px;
+  padding: 0 var(--space-md);
+  border: var(--border-width) solid var(--gray-200);
 }
 
-.pager__item {
+.pager__side {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2xs);
-  padding: 10px var(--space-sm);
-  border: var(--border-width) solid var(--gray-300);
-  border-radius: var(--radius-btn);
-  background: var(--color-white);
-  color: var(--color-dark);
+  gap: var(--space-xs);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gray-500);
   font-family: var(--font-primary);
-  font-size: var(--fs-body);
-  line-height: 1.2;
+  font-size: var(--fs-button);
+  line-height: 24px;
   text-decoration: none;
-  transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+  cursor: pointer;
+  transition: color .2s ease;
 }
 
-.pager__item:hover { border-color: var(--color-dark); }
+.pager__side:hover { color: var(--color-accent); }
 
-.pager__item--current {
-  background: var(--color-dark);
-  border-color: var(--color-dark);
-  color: var(--color-white);
-}
+/* край архива: сторона гаснет и перестаёт нажиматься */
+.pager__side[aria-disabled="true"] { opacity: .35; pointer-events: none; }
 
-.pager__item:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.pager__count { color: var(--color-dark); font-family: var(--font-primary); font-size: var(--fs-body); }
+.pager__count b { font-weight: 600; }
 
 .pager__icon { flex: 0 0 24px; width: 24px; height: 9px; }
 .pager__icon svg { display: block; width: 100%; height: 100%; }
+.pager__side--prev .pager__icon svg { transform: scaleX(-1); }
+
+@media (max-width: 767px) {
+  /* на телефоне счёт уезжает под стрелки, иначе строка не помещается */
+  .pager { flex-wrap: wrap; row-gap: var(--space-xs); padding: var(--space-md); }
+  .pager__side { flex: 0 0 auto; }
+  .pager__count { order: 3; flex: 1 0 100%; text-align: center; }
+}
 
 /* ── Атом · «показать больше» (2026-09-21) ────────────────────────
    Виджет Loop Grid → Pagination = **Load on Click**: кнопка под сеткой
