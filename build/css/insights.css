@@ -3,11 +3,13 @@
    Макета в Figma нет: список собран из библиотеки блоков по staging
    /blog/. Карточки — блок 9 (post-grid--3), выделенная статья — блок 53.
    Здесь только вертикальный ритм и заголовок hero.
+   Порядок секций (правка пользователя 2026-09-21): герой → список →
+   выделенная статья. Шапки у списка нет — заголовок страницы в герое.
    ══════════════════════════════════════════════════════════════ */
 
 .in-hero     { padding-top: 84px; padding-bottom: 40px; }
-.in-featured { padding-top: 40px; padding-bottom: 0; }
-.in-list     { padding-top: 120px; padding-bottom: 120px; } /* перед футером */
+.in-list     { padding-top: 40px; padding-bottom: 120px; }
+.in-featured { padding-top: 0;    padding-bottom: 120px; } /* перед футером */
 
 .in-hero .hero__top { align-items: flex-start; }
 .in-hero__headline {
@@ -19,16 +21,14 @@
   gap: var(--space-md);
 }
 
-.in-list .post-grid { margin-top: var(--space-xl); }
-
 @media (max-width: 1024px) {
   .in-hero     { padding-top: 64px; padding-bottom: 32px; }
-  .in-featured { padding-top: 32px; }
-  .in-list     { padding-top: 96px; padding-bottom: 96px; }
+  .in-list     { padding-top: 32px; padding-bottom: 96px; }
+  .in-featured { padding-bottom: 96px; }
 }
 
 @media (max-width: 767px) {
   .in-hero     { padding-top: 48px; padding-bottom: 24px; }
-  .in-featured { padding-top: 24px; }
-  .in-list     { padding-top: 72px; padding-bottom: 72px; }
+  .in-list     { padding-top: 24px; padding-bottom: 72px; }
+  .in-featured { padding-bottom: 72px; }
 }

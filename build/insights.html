@@ -106,29 +106,11 @@
     </div>
   </section>
 
-  <!-- ══ 2 · FEATURED — блок 53 post feature: норвежская статья ══════ -->
-  <section class="section in-featured" data-el="container" data-name="featured">
-    <div class="section__inner" data-el="container">
-      <a class="post-feature" href="#" data-wp="/no/insights/eksterne-utviklingsteam/" lang="nb" data-el="container">
-        <div class="post-feature__head" data-el="container">
-          <div class="t-overline" data-el="text">Featured · Norsk</div>
-          <h2 class="t-h1 t-h1--normal post-feature__title" data-el="heading">Hvordan eksterne utviklingsteam løser mangelen på utviklere&nbsp;- norsk kontakt og global kompetanse</h2>
-        </div>
-        <div class="post-feature__body" data-el="container">
-          <p class="t-lead" data-el="text">Norske teknologiledere kjenner godt på utfordringen: det har aldri vært vanskeligere å finne dyktige utviklere lokalt.</p>
-          <span class="btn btn--outline post-feature__cta" data-el="button">Les artikkelen</span>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- ══ 3 · ALL ARTICLES — section-head + блок 9 post grid, 3 колонки ══ -->
+  <!-- ══ 2 · ARTICLES — блок 9 post grid, 3 колонки (Loop Grid) ═══════
+       Шапки секции нет: заголовок страницы в герое её уже закрывает,
+       вторая «All articles» была повтором (правка пользователя 2026-09-21). -->
   <section class="section in-list" data-el="container" data-name="articles">
     <div class="section__inner" data-el="container">
-      <div class="section-head" data-el="container">
-        <div class="t-overline section-head__label" data-el="text">All articles</div>
-        <h2 class="t-h1 section-head__lead" data-el="heading">Latest news, thinking and updates from Red Orange Technologies</h2>
-      </div>
       <div class="post-grid post-grid--3" data-el="loop-grid">
         <a class="post-card" href="#" data-wp="/insights/discover-the-it-hub-of-magarpatta-city-pune/" data-el="container">
           <div class="post-card__body" data-el="container">
@@ -251,6 +233,24 @@
           </div>
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- ══ 3 · FEATURED — блок 53 post feature: норвежская статья ══════
+       Стоит ПОСЛЕ списка (правка пользователя 2026-09-21): список —
+       главное на странице, выделенная статья закрывает её. -->
+  <section class="section in-featured" data-el="container" data-name="featured">
+    <div class="section__inner" data-el="container">
+      <a class="post-feature" href="#" data-wp="/no/insights/eksterne-utviklingsteam/" lang="nb" data-el="container">
+        <div class="post-feature__head" data-el="container">
+          <div class="t-overline" data-el="text">Featured · Norsk</div>
+          <h2 class="t-h1 t-h1--normal post-feature__title" data-el="heading">Hvordan eksterne utviklingsteam løser mangelen på utviklere&nbsp;- norsk kontakt og global kompetanse</h2>
+        </div>
+        <div class="post-feature__body" data-el="container">
+          <p class="t-lead" data-el="text">Norske teknologiledere kjenner godt på utfordringen: det har aldri vært vanskeligere å finne dyktige utviklere lokalt.</p>
+          <span class="btn btn--outline post-feature__cta" data-el="button">Les artikkelen</span>
+        </div>
+      </a>
     </div>
   </section>
 
