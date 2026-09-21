@@ -4264,3 +4264,124 @@ a.post-feature:hover { background: var(--gray-100); }
 @media (max-width: 767px) {
   .office-map { height: 360px; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   Блоки шаблонов записи и кейса (2026-09-21)
+   В WordPress это два шаблона Theme Builder — Single Post и
+   Single Case, — поэтому каждый блок собран из виджетов, у которых
+   есть динамический источник (Post Title, Post Content, Featured
+   Image, Post Date, Post Terms, поля CPT).
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 56 · Case Layout — липкая колонка фактов + повествование ──────
+   Сетка та же, что у section-head и блока 50: колонка 316 + 32 + 1012.
+   Колонка держится на экране всю прокрутку (Elementor Pro → Motion
+   Effects → Sticky, «Stay in container»). Во Free — статичная колонка,
+   поведение страницы от этого не ломается. */
+
+.case { display: flex; gap: var(--col-gap); align-items: flex-start; }
+
+.case__aside {
+  position: sticky;
+  top: var(--space-lg);
+  flex: 0 0 var(--col-label);
+  width: var(--col-label);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.case__main {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* Логотип клиента — то же поле, что в плитке списка кейсов (блок 52):
+   серая подложка, лого по центру, не шире 56 % и не выше 64 */
+.case-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 2 / 1;
+  padding: var(--space-lg);
+  background: var(--gray-100);
+}
+
+.case-logo img { max-width: 56%; max-height: 64px; object-fit: contain; }
+
+/* Факты: минимум фурнитуры — только тонкие линии, без рамок и заливок */
+.case-facts { display: flex; flex-direction: column; border-top: 1px solid var(--hairline); }
+
+.case-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.case-fact__value { color: var(--color-dark); }
+
+/* ── 57 · Article Meta — дата и рубрика записи в колонке-лейбле ────
+   Виджеты Post Date и Post Terms под лейблом «Insights». */
+
+.article-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--hairline);
+}
+
+.article-meta__item { display: flex; flex-direction: column; gap: 4px; }
+.article-meta__value { color: var(--color-dark); }
+
+/* ── 58 · Article Cover — обложка записи над текстом ───────────────
+   Виджет Featured Image; шире колонки чтения (640) и уже секции —
+   ровно по колонке повествования. Пропорция задана, чтобы не прыгала
+   вёрстка; SVG-кадры Insights лежат на тёмной подложке. */
+
+.article__cover {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--bg-near-black);
+}
+
+.article__cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* Правка блока 50: в статье появилась третья ступень заголовков
+   (Solution / Result в кейсе). Ровно столько ступеней, сколько
+   уровней в тексте — h3 тише h2 и держит свой абзац рядом. */
+.article__body h3 {
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--color-dark);
+}
+
+.article__body > * + h3 { margin-top: var(--space-lg); }
+.article__body > h3 + * { margin-top: var(--space-xs); }
+
+/* Кейс читается по той же мере, но факты и списки шире текста:
+   у перечней «что сделали» строка короткая, колонка 640 их не жмёт */
+.case__main .article__body { max-width: var(--article-width); }
+
+@media (max-width: 1024px) {
+  .case { flex-direction: column; gap: var(--space-md); }
+  .case__aside { position: static; flex: 0 0 auto; width: 100%; flex-direction: row; gap: var(--space-lg); }
+  .case-logo { flex: 0 0 240px; aspect-ratio: 2 / 1; }
+  .case-facts { flex: 1 1 auto; }
+  .case__main { width: 100%; gap: var(--space-lg); }
+}
+
+@media (max-width: 767px) {
+  .case__aside { flex-direction: column; gap: var(--space-md); }
+  .case-logo { flex: 0 0 auto; width: 100%; }
+  .case__main { gap: var(--space-md); }
+  .article__cover { aspect-ratio: 3 / 2; }
+}

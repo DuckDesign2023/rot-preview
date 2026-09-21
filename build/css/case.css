@@ -1,0 +1,42 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — шаблон кейса (/cases/<slug>/).
+
+   Макета в Figma НЕТ. Страница — образец шаблона Theme Builder →
+   Single Case для CPT «Cases»: весь текст приходит из записи,
+   Elementor для нового кейса открывать не нужно. Показана на самом
+   объёмном кейсе staging (HDFC Bank) — если в шаблон ложится он,
+   ложатся и восемь остальных.
+
+   Блоки: 56 case layout (липкая колонка фактов), 50 article (тело),
+   52 case tile grid (ещё кейсы), 11 split (закрывающая полоса).
+   Здесь — только вертикальный ритм секций.
+   ══════════════════════════════════════════════════════════════ */
+
+.c-case    { padding-top: 84px;  padding-bottom: 120px; }
+.c-related { padding-top: 0;     padding-bottom: 120px; }
+.c-cta     { padding-top: 0;     padding-bottom: 140px; }
+
+/* Шапка кейса: лейбл направления, заголовок, лид — как у героя
+   подстраниц, но без плитки визуала: визуал кейса — логотип клиента
+   в колонке фактов */
+.c-case__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+  max-width: 1012px;   /* ширина колонки повествования */
+}
+
+@media (max-width: 1024px) {
+  .c-case    { padding-top: 56px; padding-bottom: 96px; }
+  .c-related { padding-bottom: 96px; }
+  .c-cta     { padding-bottom: 112px; }
+  .c-case__head { max-width: none; }
+}
+
+@media (max-width: 767px) {
+  .c-case    { padding-top: 40px; padding-bottom: 72px; }
+  .c-related { padding-bottom: 72px; }
+  .c-cta     { padding-bottom: 72px; }
+  .c-cta .btn { width: 100%; text-align: center; }
+}

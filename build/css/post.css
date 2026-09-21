@@ -1,0 +1,28 @@
+/* ══════════════════════════════════════════════════════════════
+   Red Orange Technologies — шаблон записи Insights (/insights/<slug>/).
+
+   Макета в Figma НЕТ. Страница — образец шаблона Theme Builder →
+   Single Post: заголовок, дата, рубрика, обложка и тело приходят
+   из записи. Показана на записи staging «Salesforce + WordPress
+   integration» (15 September 2023) — обычная статья с обложкой,
+   рубрикой и длинным телом.
+
+   Норвежская статья `article-eksterne-utviklingsteam.html` — тот же
+   шаблон без обложки: пустое Featured Image скрывается условием.
+
+   Блоки: 50 article (тело), 57 article meta, 58 article cover,
+   9 post grid (ещё статьи). Здесь — только ритм секций.
+   ══════════════════════════════════════════════════════════════ */
+
+.p-article { padding-top: 84px;  padding-bottom: 120px; }
+.p-related { padding-top: 0;     padding-bottom: 140px; }
+
+@media (max-width: 1024px) {
+  .p-article { padding-top: 56px; padding-bottom: 96px; }
+  .p-related { padding-bottom: 116px; }
+}
+
+@media (max-width: 767px) {
+  .p-article { padding-top: 40px; padding-bottom: 72px; }
+  .p-related { padding-bottom: 92px; }
+}

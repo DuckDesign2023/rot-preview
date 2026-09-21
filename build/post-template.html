@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salesforce + WordPress integration | Red Orange Technologies</title>
+  <meta name="description" content="How WordPress Connect bridges Salesforce CRM and WordPress: web-to-lead forms, user management, campaign tracking and data security.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/post.css">
+</head>
+<body>
+
+<!-- ══ HEADER — 152:1823 → Theme Builder → Header (общий с главной) ══ -->
+<header class="site-header" data-el="container" data-name="header">
+  <a class="site-header__logo" href="index.html" data-wp="/" data-el="image" aria-label="Red Orange Technologies — home">
+    <img src="../assets/logo-redorange.webp" width="338" height="59" alt="Red Orange Technologies">
+  </a>
+  <!-- Панель меню: внутри только виджет Nav Menu (пункты берутся из меню
+       WordPress) и отдельный блок с языком и CTA — ссылки правятся
+       в «Внешний вид → Меню», не трогая Elementor -->
+  <div class="site-menu" id="site-menu" data-el="container">
+    <nav class="site-nav" data-el="nav-menu" aria-label="Main">
+      <a class="t-nav site-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+      <a class="t-nav site-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+      <a class="t-nav site-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce</a>
+      <a class="t-nav site-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+      <div class="site-nav__item" data-el="container">
+        <a class="t-nav site-nav__link site-nav__link--parent" href="products.html" data-wp="/products/">Products</a>
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="sub-products" aria-label="Products submenu"><svg class="site-nav__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1.25 5 5 9 1.25"/></svg></button>
+        <div class="site-nav__sub" id="sub-products" data-el="container">
+          <a class="t-nav site-nav__sublink" href="nova-for-salesforce.html" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+          <a class="t-nav site-nav__sublink" href="workhub.html" data-wp="/products/workhub/">WorkHub</a>
+          <a class="t-nav site-nav__sublink" href="novalab.html" data-wp="/products/novalab/">NOVAlab</a>
+        </div>
+      </div>
+      <div class="site-nav__item" data-el="container">
+        <a class="t-nav site-nav__link site-nav__link--parent" href="about.html" data-wp="/company/">Company</a>
+        <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="sub-company" aria-label="Company submenu"><svg class="site-nav__chevron" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1.25 5 5 9 1.25"/></svg></button>
+        <div class="site-nav__sub" id="sub-company" data-el="container">
+          <a class="t-nav site-nav__sublink" href="about.html" data-wp="/company/">About us</a>
+          <a class="t-nav site-nav__sublink" href="why-us.html" data-wp="/company/why-us/">Why us</a>
+          <a class="t-nav site-nav__sublink" href="team.html" data-wp="/company/team/">Team</a>
+          <a class="t-nav site-nav__sublink" href="careers.html" data-wp="/company/careers/">Careers</a>
+          <a class="t-nav site-nav__sublink" href="locations.html" data-wp="/company/locations/">Locations</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="site-menu__cta" data-el="container">
+      <div class="lang-switch" role="group" aria-label="Language" data-el="container">
+        <a class="t-nav lang-switch__item" href="#" aria-current="true" lang="en" data-el="text">EN</a>
+        <a class="t-nav lang-switch__item" href="#" lang="nb" hreflang="nb" data-el="text">NO</a>
+      </div>
+      <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    </div>
+  </div>
+  <div class="site-header__actions" data-el="container">
+      <div class="lang-switch" role="group" aria-label="Language" data-el="container">
+        <a class="t-nav lang-switch__item" href="#" aria-current="true" lang="en" data-el="text">EN</a>
+        <a class="t-nav lang-switch__item" href="#" lang="nb" hreflang="nb" data-el="text">NO</a>
+      </div>
+    <a class="btn btn--primary" href="#contact" data-el="button">Book a meeting</a>
+    <button class="site-header__burger" type="button" data-el="button"
+            aria-expanded="false" aria-controls="site-menu" aria-label="Open menu">
+      <svg class="burger-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect class="burger-icon__bar burger-icon__bar--top" x="0" y="5"  width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--mid" x="0" y="11" width="24" height="2"/>
+        <rect class="burger-icon__bar burger-icon__bar--bot" x="0" y="17" width="24" height="2"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- затемнение под мобильным меню: сосед хедера, иначе
+     оказывается внутри его stacking context и накрывает логотип -->
+<div class="site-menu-backdrop" hidden></div>
+
+<main>
+
+  <!-- ══ 1 · ARTICLE — шаблон записи Insights ════════════════════════
+       Theme Builder → Single Post. Из записи приходит всё: Post Title,
+       Post Date, Post Terms (рубрика), Featured Image, Post Content.
+       Текст — запись staging /blogs/salesforce-wordpress-integration/
+       от 15 September 2023, дословно.
+       Блоки: 50 article + 57 article meta + 58 article cover. -->
+  <section class="section p-article" data-el="container" data-name="article">
+    <div class="section__inner" data-el="container">
+
+      <a class="t-nav article-back" href="#" data-wp="/insights/" data-el="button">
+        <span class="article-back__icon" data-el="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 9"><path fill="currentColor" d="M18.7528 0C19.8793 1.21001 20.8534 2.13213 21.675 2.76634C22.4966 3.39221 23.2716 3.85953 24 4.16829V4.73157C23.1615 5.13213 22.3483 5.64534 21.5606 6.27121C20.7729 6.88873 19.8327 7.79833 18.7401 9H17.7618C18.558 7.32267 19.3923 6.03338 20.2647 5.13213H0V3.86787H20.2647C19.621 3.05841 19.172 2.45758 18.9179 2.06537C18.6638 1.67316 18.2869 0.984701 17.7872 0H18.7528Z"/></svg></span>
+        Insights
+      </a>
+
+      <div class="article" data-el="container">
+
+        <div class="article__aside" data-el="container">
+          <div class="t-overline" data-el="text">Insights</div>
+          <!-- Дата и рубрика — виджеты Post Date и Post Terms.
+               Рубрика ведёт на /insights/?category=…: тот же фильтр,
+               что чипами на списке. -->
+          <div class="article-meta" data-el="container">
+            <div class="article-meta__item" data-el="container">
+              <div class="t-overline" data-el="text">Published</div>
+              <time class="t-body article-meta__value" datetime="2023-09-15" data-el="post-date">Sep 15, 2023</time>
+            </div>
+            <div class="article-meta__item" data-el="container">
+              <div class="t-overline" data-el="text">Category</div>
+              <div class="t-body article-meta__value" data-el="post-terms">Salesforce</div>
+            </div>
+          </div>
+        </div>
+
+        <article class="article__main" data-el="container">
+          <h1 class="t-h1 article__title" data-el="post-title">Salesforce + WordPress integration</h1>
+
+          <div class="article__cover" data-el="featured-image">
+            <img src="../assets/insights-salesforce-wordpress.svg" width="640" height="400" alt="" role="presentation">
+          </div>
+
+          <div class="article__body" data-el="post-content">
+            <p>Crafting compelling websites that seamlessly merge your Salesforce CRM data with WordPress through the WordPress Connect tool opens the door to a world of possibilities. Websites and content management serve as vital instruments for organizations to connect with their target audience, impart information about their offerings, and persuade them to engage with their enterprise. WordPress Connect simplifies the process by providing a user-friendly bridge for WordPress and Salesforce integration. This unique tool empowers you and your team to harness the CRM capabilities of Salesforce and the content management prowess of WordPress to build robust websites and oversee their performance to achieve desired results.</p>
+
+            <h2>Features</h2>
+
+            <h3>Lead generation through web-to-lead forms</h3>
+            <p>Integrating WordPress with Salesforce streamlines your lead management efforts considerably. By creating personalized web-to-lead forms, you can invite site visitors to share their information, signaling their interest in your business or products. As these forms are filled, new leads are automatically funneled into your Salesforce CRM. This automated process saves valuable time and effort, sparing your sales representatives from manual data entry. Thanks to WordPress Salesforce integration, real-time lead capture is seamlessly facilitated through these web-to-lead forms.</p>
+
+            <h3>Streamlined user management</h3>
+            <p>WordPress Connect enables synchronization between your WordPress and Salesforce user databases, simplifying user management to a tee. By configuring core WordPress functions, you can seamlessly combine datasets from both platforms, facilitating lead generation and customer activity tracking. This connector even allows for the syncing of fields between Salesforce and WordPress, ensuring that everyone in your organization accesses the same centralized database, fostering a cohesive and efficient workflow.</p>
+
+            <h3>Effortless management of member-specific websites</h3>
+            <p>WordPress Salesforce integration keeps user account statuses synchronized for websites intended solely for customer or member access. This enables you to tag qualified leads as customers or members within your Salesforce database and automatically update their profiles with the appropriate customer tag. This not only grants them access to exclusive web content but also streamlines prospect-to-customer processes, freeing up your sales representatives to focus on other critical sales activities.</p>
+
+            <h3>Monitoring user activity</h3>
+            <p>The increasing demand for personalized sales and marketing efforts necessitates a keen understanding of user behavior. By integrating Salesforce with WordPress using WordPress Connect, you gain the ability to track the activities of specific users and visitors on your website. This tracking provides insights into their navigation paths and interactions while logged in, enabling you to discern their preferences. Armed with this knowledge, you can leverage your CRM database to deliver tailor-made services and approach prospects strategically, enhancing their buying journey with precisely what they seek. The process is as simple as creating a custom Salesforce object and populating it with relevant user activity details.</p>
+
+            <h3>Optimizing e-commerce ventures</h3>
+            <p>If your WordPress site serves as the digital storefront for your e-commerce venture, Salesforce WordPress integration becomes a powerful ally. This integration links your e-commerce customer data with your CRM, ensuring comprehensive recording of customer information in dedicated Salesforce objects. Additionally, it allows seamless synchronization of product listings, catalogs, and inventory with your Salesforce database. This potent combination empowers you to utilize CRM functionality for effective e-commerce management, enhancing sales, delivering personalized customer experiences, and maximizing revenue generation.</p>
+
+            <h3>Tracking Salesforce campaigns</h3>
+            <p>Websites play a pivotal role in marketing and sales campaigns. With Salesforce WordPress integration, you can effortlessly monitor campaign participants who visit your website. By associating WordPress actions with your Salesforce CRM, you can easily track the involvement of specific prospects and customers in your campaigns. Moreover, unique campaign IDs assigned to prospects filling specific web-to-lead WordPress forms facilitate tracking of their activities throughout your campaign. The integrated platform further enables monitoring of specific actions performed by your prospects during the campaign, providing invaluable insights. This includes tracking who reads specific blogs on your website and the number of views within a specified timeframe.</p>
+
+            <h3>User access and permissions</h3>
+            <p>Maintaining data security and restricting access to authorized personnel are paramount in accounting processes. Integrating Salesforce and Quickbooks allows you to establish precise user access and permissions for various records and objects within your database. This level of control safeguards transactions, minimizing risks associated with data breaches, unauthorized access, and fraud.</p>
+
+            <h3>Custom object integration</h3>
+            <p>By connecting your Salesforce organization with WordPress through WordPress Connect, you can create dedicated Salesforce objects tailored to your website&rsquo;s activities. These objects house records and fields pertinent to activities specific to your website. For instance, if you operate an online store and wish to track individual item sales, you can create a custom Salesforce object for each item, complete with sales and procurement details.</p>
+
+            <h3>Data security assurance</h3>
+            <p>WordPress Connect places a premium on data security and privacy within the integrated platform. The tool employs layered security measures and user permission settings to thwart unauthorized data access. Rest assured, your information collected through WordPress forms and Salesforce campaigns remains confidential and secure.</p>
+
+            <h3>User-friendly functionality</h3>
+            <p>The functionality and user interface of WordPress Connect cater to both technical and non-technical users within your company. Whether you&rsquo;re a programming expert or an amateur, this tool ensures a hassle-free experience when working on the integrated platform.</p>
+
+            <h2>Industries that could benefit from a Salesforce integration</h2>
+            <ul>
+              <li><strong>E-commerce:</strong> WordPress Salesforce integration offers a 360-degree view of your company&rsquo;s e-commerce operations, simplifying order management and customer tracking on your website.</li>
+              <li><strong>Real estate:</strong> Real estate developers can leverage WordPress Connect to generate leads and streamline inquiries and bookings for properties.</li>
+              <li><strong>Marketing and sales:</strong> Harness the power of WordPress Salesforce integration to monitor website visitors, capture leads, and run targeted Salesforce campaigns, enhancing your company&rsquo;s online marketing efforts.</li>
+              <li><strong>Non-profits:</strong> Are you running a non-profit organization and looking for ways to improve your reach? With WordPress Salesforce integration, your organization can track online traction and gather valuable data to tailor your activities accordingly. This seamless integration can unlock the full potential of your Salesforce CRM and WordPress website, making your organization more efficient and effective in achieving your goals.</li>
+            </ul>
+
+            <p>WordPress Connect is your gateway to a world where seamless integration unlocks the full potential of your Salesforce CRM and WordPress website, empowering your organization to achieve its goals efficiently and effectively across a range of industries.</p>
+
+            <p>At Red Orange Technologies, we specialize in helping organizations like yours to improve customer engagement through Salesforce. Contact us today for a detailed discussion on how Salesforce can boost your WordPress website and take your company to the next level.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2 · RELATED — ещё статьи (блок 9, модификатор post-grid--3) ══
+       В WordPress — Loop Grid: 3 записи, Query → Related по рубрике,
+       текущая исключена. Тот же Loop Item, что на списке Insights. -->
+  <section class="section p-related" data-el="container" data-name="related">
+    <div class="section__inner" data-el="container">
+
+      <div class="section-head" data-el="container">
+        <div class="t-overline section-head__label" data-el="text">Insights</div>
+        <h2 class="t-h1 section-head__lead" data-el="heading">Related articles</h2>
+      </div>
+
+      <div class="post-grid post-grid--3" data-el="loop-grid">
+        <a class="post-card" href="#" data-wp="/insights/elevate-your-business-with-salesforce-sales-cloud/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2023-09-07" data-el="text">Sep 7, 2023</time>
+            <h3 class="t-h3" data-el="heading">Elevate your business with Salesforce Sales Cloud</h3>
+            <p class="t-body post-card__excerpt" data-el="text">Looking to grow your business, find new customers, and close deals faster than ever before? Then look no further than Salesforce Sales Cloud, the world’s leading CRM platform. At Red Orange Technologies, we’re committed to making life easier for your salespeople and increasing your sales department’s productivity by implementing, integrating, and offering consulting for Salesforce Sales Cloud.</p>
+          </div>
+          <div class="post-card__media post-card__media--art" data-el="image">
+            <img src="../assets/insights-sales-cloud.svg" width="640" height="400" alt="" role="presentation" loading="lazy">
+          </div>
+        </a>
+        <a class="post-card" href="#" data-wp="/insights/red-orange-technologies-pushing-automation-with-salesforce-hubspot-and-sap/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2023-09-11" data-el="text">Sep 11, 2023</time>
+            <h3 class="t-h3" data-el="heading">Red Orange Technologies pushing automation with Salesforce HubSpot and SAP</h3>
+            <p class="t-body post-card__excerpt" data-el="text">Customer Relationship Management (CRM) and Enterprise Resource Planning (ERP) systems are the two main solutions when it comes to automating core business processes. And businesses often choose between Salesforce, HubSpot, and SAP to integrate CRM and ERP. Integrating these platforms can profoundly streamline operations and elevate you to new heights.</p>
+          </div>
+          <div class="post-card__media post-card__media--art" data-el="image">
+            <img src="../assets/insights-automation.svg" width="640" height="400" alt="" role="presentation" loading="lazy">
+          </div>
+        </a>
+        <a class="post-card" href="#" data-wp="/insights/mastering-integration-achieve-seamless-user-experience-and-data-foundations-together-with-red-orange-technologies/" data-el="container">
+          <div class="post-card__body" data-el="container">
+            <time class="t-overline" datetime="2023-09-21" data-el="text">Sep 21, 2023</time>
+            <h3 class="t-h3" data-el="heading">Mastering Integration: Achieve seamless user experience and data foundations together with Red Orange Technologies</h3>
+            <p class="t-body post-card__excerpt" data-el="text">To stay ahead in the digital landscape, organizations must achieve a seamless user experience and efficient data foundation. These two business features assist them in optimizing operations and drive growth.</p>
+          </div>
+          <div class="post-card__media post-card__media--art" data-el="image">
+            <img src="../assets/insights-integration.svg" width="640" height="400" alt="" role="presentation" loading="lazy">
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+
+
+
+<!-- ══ 10 · FOOTER — 152:131 → Theme Builder → Footer ═════════════ -->
+<footer class="site-footer" id="contact" data-el="container" data-name="footer">
+  <div class="site-footer__photo" aria-hidden="true"></div>
+  <div class="site-footer__wash" aria-hidden="true"></div>
+  <div class="site-footer__glow" aria-hidden="true"></div>
+
+  <div class="site-footer__inner" data-el="container">
+
+    <div class="footer-top" data-el="container">
+
+      <div class="footer-contact" data-el="container">
+        <div class="t-overline footer-contact__label" data-el="text">Get in touch</div>
+        <h2 class="t-h1 t-h1--normal" data-el="heading">Collaborate with us for complete IT solutions</h2>
+        <p class="t-lead footer-contact__lead" data-el="text">We're happy to answer any questions and help determine which of our services best fit your needs.</p>
+
+        <div class="check-list" data-el="container">
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Client-oriented</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Independent</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Competent</span>
+            </div>
+          </div>
+          <div class="check-list__col" data-el="container">
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Results-driven</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Problem-solving</span>
+            </div>
+            <div class="check-item" data-el="container">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.6253 7H17.5331C17.3799 7 17.2346 7.07031 17.1409 7.19062L10.6987 15.3516L7.60963 11.4375C7.5629 11.3782 7.50333 11.3302 7.43541 11.2972C7.36749 11.2642 7.29296 11.247 7.21744 11.2469H6.12525C6.02057 11.2469 5.96275 11.3672 6.02682 11.4484L10.3065 16.8703C10.5065 17.1234 10.8909 17.1234 11.0924 16.8703L18.7237 7.2C18.7878 7.12031 18.7299 7 18.6253 7Z"/></svg>
+              <span class="t-body" data-el="text">Transparent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-form" data-el="container">
+        <h2 class="t-h2 footer-form__title" data-el="heading">Let us talk about your next solution</h2>
+        <form class="form" data-el="form" action="#" method="post">
+          <div class="form__row" data-el="container">
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-first" data-el="text">First name</label>
+              <input class="field__control" id="f-first" name="first-name" type="text" autocomplete="given-name">
+            </div>
+            <div class="field" data-el="container">
+              <label class="t-body" for="f-last" data-el="text">Last name</label>
+              <input class="field__control" id="f-last" name="last-name" type="text" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-email" data-el="text">Email</label>
+            <input class="field__control" id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+          <div class="field" data-el="container">
+            <label class="t-body" for="f-company" data-el="text">Company</label>
+            <input class="field__control" id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field field--last" data-el="container">
+            <label class="t-body" for="f-message" data-el="text">Message</label>
+            <textarea class="field__control" id="f-message" name="message" rows="5"></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit" data-el="button">Send message</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-nav" data-el="container">
+      <div class="footer-nav__cols" data-el="container">
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Solutions</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="staff-augmentation.html" data-wp="/staff-augmentation/">Staff Augmentation</a>
+            <a class="footer-nav__link" href="salesforce.html" data-wp="/salesforce-services/">Salesforce Services</a>
+            <a class="footer-nav__link" href="appero.html" data-wp="/salesforce/appero-quote/">Appero</a>
+            <a class="footer-nav__link" href="ai-product-development.html" data-wp="/ai-product-development/">AI &amp; Product Development</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Products</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="nova-for-salesforce.html" data-wp="/products/nova-for-salesforce/">NOVA for Salesforce</a>
+            <a class="footer-nav__link" href="workhub.html" data-wp="/products/workhub/">WorkHub</a>
+            <a class="footer-nav__link" href="novalab.html" data-wp="/products/novalab/">NOVAlab</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Company</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="about.html" data-wp="/company/">About us</a>
+            <a class="footer-nav__link" href="why-us.html" data-wp="/company/why-us/">Why us</a>
+            <a class="footer-nav__link" href="team.html" data-wp="/company/team/">Team</a>
+            <a class="footer-nav__link" href="#" data-wp="/cases/">Case studies</a>
+            <a class="footer-nav__link" href="#" data-wp="/insights/">Blog</a>
+            <a class="footer-nav__link" href="careers.html" data-wp="/company/careers/">Careers</a>
+          </div>
+        </div>
+
+        <div class="footer-nav__col" data-el="container">
+          <div class="t-overline footer-nav__label" data-el="text">Contact</div>
+          <div class="footer-nav__links" data-el="container">
+            <a class="footer-nav__link" href="locations.html#asker" data-wp="/company/locations/#asker">Asker, Norway</a>
+            <a class="footer-nav__link" href="locations.html#pune" data-wp="/company/locations/#pune">Pune, India</a>
+            <a class="footer-nav__link" href="locations.html#mohali" data-wp="/company/locations/#mohali">Mohali, India</a>
+            <a class="footer-nav__link" href="mailto:contact@redorangetechnologies.com">contact@redorangetechnologies.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="divider divider--ondark-soft" data-el="divider">
+
+      <div class="footer-bottom" data-el="container">
+        <span class="footer-bottom__copy" data-el="text">© 2026 Red Orange Technologies</span>
+        <a href="#" data-wp="/terms/" data-el="text">Terms &amp; Conditions</a>
+        <a href="#" data-wp="/privacy/" data-el="text">Privacy Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
