@@ -3,7 +3,7 @@
    Только Free-виджеты Elementor (Heading, Text Editor, Button, Image)
    и контейнеры: страница должна собираться без лицензии Pro и
    работать как шаблон для Elementor → Tools → Maintenance Mode.
-   Три композиции на выбор: .mm--a «полоса», .mm--b «тёмная», .mm--c «сплит».
+   Композиция «полоса» (вариант A, выбран пользователем 2026-09-22).
    Desktop-first, медиазапросы только 1024 / 767.
    ══════════════════════════════════════════════════════════════ */
 
@@ -130,60 +130,6 @@
 .mm__meta a { color: var(--color-dark); }
 .mm__meta a:hover { color: var(--color-accent); }
 
-/* ══ B · тёмная ═══════════════════════════════════════════════ */
-.mm--b { background: var(--bg-near-black); color: var(--color-white); }
-
-.mm--b .t-display, .mm--b .t-h3, .mm--b .mm__meta a, .mm--b .mm__phone { color: var(--color-white); }
-.mm--b .t-lead   { color: var(--text-on-dark-80); }
-.mm--b .t-body   { color: var(--text-on-dark-80); }
-.mm--b .t-overline { color: var(--footer-label); }   /* 40 % белого не проходит 4.5:1 */
-.mm--b .mm__meta { color: var(--footer-label); }
-.mm--b .mm__phone { border-color: var(--hairline-on-dark); }
-.mm--b .mm__footer-inner, .mm--b .mm__meta { border-color: var(--hairline-on-dark); }
-.mm--b .mm__office + .mm__office { border-color: var(--hairline-on-dark); }
-
-/* в тёмной версии заголовок один на всю ширину — без колонки-лейбла */
-.mm--b .mm__title { max-width: 1100px; }
-.mm--b .mm__lead  { max-width: 604px; }
-
-.mm--b .mm__offices { display: grid; grid-template-columns: repeat(3, 1fr); }
-.mm--b .mm__office { border-top: 1px solid var(--hairline-on-dark); padding: var(--space-md) var(--space-md) 40px 0; }
-.mm--b .mm__office--home { border-top-color: var(--color-accent); }
-
-/* ══ C · сплит ════════════════════════════════════════════════ */
-/* CUSTOM-CSS: grid-row span у фото — в Elementor Grid Container нет
-   контрола размещения ребёнка; в спеку блока 64 */
-.mm--c {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr auto;
-}
-
-.mm--c .mm__side { grid-column: 2; grid-row: 1 / 4; }
-
-.mm--c .mm__main { padding-inline: var(--gutter); }
-.mm--c .mm__inner { gap: var(--space-xl); }
-.mm--c .mm__title { max-width: 560px; }
-.mm--c .mm__lead  { max-width: 480px; }
-
-.mm--c .mm__side {
-  position: relative;
-  background: var(--bg-warm);
-  overflow: hidden;
-}
-.mm--c .mm__side > img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-}
-
-.mm--c .mm__footer { padding-inline: var(--gutter); }
-.mm--c .mm__footer-inner { grid-template-columns: 1fr; border-top: 1px solid var(--hairline); }
-.mm--c .mm__office { flex-direction: row; gap: var(--space-md); padding: var(--space-xs) 0; align-items: baseline; }
-.mm--c .mm__office + .mm__office { padding-left: 0; border-left: 0; border-top: 1px solid var(--hairline-soft); }
-.mm--c .mm__office .t-h3 { flex: 0 0 140px; }
-.mm--c .mm__office .t-body { max-width: none; }
-
 /* ══ Планшет ══════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .mm__main { padding-block: var(--space-2xl); }
@@ -192,9 +138,6 @@
   .mm__label { flex: 0 0 auto; padding-top: 0; }
   .mm__visual { min-height: 360px; }
 
-  .mm--c { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; }
-  .mm--c .mm__side { grid-column: 1; grid-row: 3; min-height: 360px; }
-  .mm--c .mm__footer { grid-row: 4; padding-top: var(--space-lg); }
 }
 
 /* ══ Мобильный ════════════════════════════════════════════════ */
@@ -204,14 +147,8 @@
   .mm__main { padding-block: var(--space-2xl); }
   .mm__visual { min-height: 240px; }
 
-  .mm__footer-inner, .mm--b .mm__offices { grid-template-columns: 1fr; }
+  .mm__footer-inner { grid-template-columns: 1fr; }
   .mm__office + .mm__office { padding-left: 0; border-left: 0; border-top: 1px solid var(--hairline); }
-  .mm--b .mm__office { padding-bottom: var(--space-md); }
-  .mm--b .mm__office + .mm__office { border-top-color: var(--hairline-on-dark); }
   .mm__office { padding-right: 0; }
   .mm__meta { flex-direction: column; gap: var(--space-2xs); }
-
-  .mm--c .mm__side { min-height: 240px; }
-  .mm--c .mm__office { flex-direction: column; gap: var(--space-2xs); }
-  .mm--c .mm__office .t-h3 { flex: 0 0 auto; }   /* в колонке basis 140 стал бы высотой */
 }
